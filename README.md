@@ -40,6 +40,7 @@
 - [プライベートなnpmパッケージ](articles/0192bc96-0021-7e81-956f-0489d3d877f2/README.md)
 - [メモリ上のELFバイナリを実行するPythonコード](articles/0192bc96-356e-7cde-83e0-2639cf783e3a/README.md)
 - [Realtekの汎用ASIOドライバー](articles/0192bca2-e6a5-75ff-87e7-36446aafa536/README.md)
+- [WindowsにおけるPythonのshebang（？）](articles/0192d0e9-8a12-77fa-884f-0f05abb1505b/README.md)
 
 ---
 
@@ -874,3 +875,33 @@ c5051533b798a2ff4da58e746b651243e08f2bf1a1a5bdbca50c2e3b4432c9d9 *Realtek-High-D
 「INSTALL」ではなく「EXTRACT」を選択。フォルダを作成して収めるような親切なことはしてくれないので、ぶちまけたくなければ新規フォルダを作成して選択すること。
 
 `{展開先}\RealtekHDAudio\ASIO\Install.exe`を実行して、指示に従いインストールする。
+
+## WindowsにおけるPythonのshebang（？）
+
+- https://qiita.com/snipsnipsnip/items/50e4ca88e3ce3f8cffda
+
+ちなみに`py`ランチャーは`#!/usr/bin/python`をいい感じにしてくれるらしい。
+
+- https://docs.python.org/ja/3/using/windows.html#shebang-lines
+
+ここで話題にするのは、バッチファイルにPythonを埋め込みたいという話。
+
+```
+@py -x "%~f0" "%*" & exit /b %errorlevel%
+
+import time
+
+print("Hello")
+time.sleep(10000)
+```
+
+`py(thon) -x`オプションがキモ。1行目を無視してくれる。
+
+```
+> py --help | Select-String -CaseSensitive "^-x"
+
+-x     : skip first line of source, allowing use of non-Unix forms of #!cmd
+```
+
+引数のクォーテーション周りの挙動が怪しい気もする？とりあえず全部つけておけば問題ないだろうと思っている。
+
