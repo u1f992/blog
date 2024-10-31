@@ -41,6 +41,7 @@
 - [メモリ上のELFバイナリを実行するPythonコード](articles/0192bc96-356e-7cde-83e0-2639cf783e3a/README.md)
 - [Realtekの汎用ASIOドライバー](articles/0192bca2-e6a5-75ff-87e7-36446aafa536/README.md)
 - [WindowsにおけるPythonのshebang（？）](articles/0192d0e9-8a12-77fa-884f-0f05abb1505b/README.md)
+- [HTMLの前処理について雑感](articles/0192e054-20e7-7a85-86e8-0f42192227d6/README.md)
 
 ---
 
@@ -905,3 +906,36 @@ time.sleep(10000)
 
 引数のクォーテーション周りの挙動が怪しい気もする？とりあえず全部つけておけば問題ないだろうと思っている。
 
+
+## HTMLの前処理について雑感
+
+### 正規表現ベースの処理
+
+かんたんにルールを差し込める。sedなら一定の移植性もある。VivliostyleならNode.jsでも十分合理的。
+
+Markdown程度の、どのようなHTMLが出力されるか予測できる範囲なら安定性もさほど問題ないはず。
+
+DOMにのっとっておらず、容易にvalidでなくなりうる。
+
+正直なところ抵抗がある。
+
+### DOMベースの処理
+
+「正しい」方法。実装はプログラミングそのもの。
+
+Webブラウザ以外にDOMを十全に操作する方法がない
+
+- Node.js+JSDOM？
+  - 追加の依存が　と思ったけど実はVivliostyle CLIはフォークしたJSDOMに依存しているので意外とアリかもしれない
+- Node.js+Playwright？
+  - 文書にscriptを埋め込むことになり、すべてのスクリプトがVivliostyleからでも正常に実行できるとは限らないので、Vivliostyleで直接組版できなくなる
+- Node.jsからシングルバイナリに？
+  - なしではないと思うがよく知らない
+- Python？
+  - 書くのはいいけど特にWindowsでの移植性が著しく低い、セットアップが手間。
+  - ほぼ確実にBeautifulSoupに依存するのでvenvの世話も必要
+  - とはいえPythonくらい入れとかんかいとは思う。pyランチャーもあり悪くはない
+- Pythonからシングルバイナリに？
+  - 実際には署名周りでほぼ無理
+- C言語で書く？
+  - しんどすぎ
