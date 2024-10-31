@@ -42,6 +42,7 @@
 - [Realtekの汎用ASIOドライバー](articles/0192bca2-e6a5-75ff-87e7-36446aafa536/README.md)
 - [WindowsにおけるPythonのshebang（？）](articles/0192d0e9-8a12-77fa-884f-0f05abb1505b/README.md)
 - [HTMLの前処理について雑感](articles/0192e054-20e7-7a85-86e8-0f42192227d6/README.md)
+- [MSYS2のポータブル環境](articles/0192e10e-9d82-7ef4-8e4b-4c1f7359b3e7/README.md)
 
 ---
 
@@ -939,3 +940,16 @@ Webブラウザ以外にDOMを十全に操作する方法がない
   - 実際には署名周りでほぼ無理
 - C言語で書く？
   - しんどすぎ
+
+## MSYS2のポータブル環境
+
+```
+> Invoke-WebRequest -Uri https://github.com/msys2/msys2-installer/releases/download/2024-07-27/msys2-base-x86_64-20240727.sfx.exe -OutFile msys2-base-x86_64-20240727.sfx.exe
+> .\msys2-base-x86_64-20240727.sfx.exe -y "-o$PWD\"
+> cd .\msys64\
+> .\msys2_shell.cmd -defterm -here -no-start -ucrt64
+
+$ pacman -Suy
+$ # コアシステムの更新が行われた場合はMSYS2シェルが終了するので、再度起動してもう一度`pacman -Suy`を実行する
+```
+
