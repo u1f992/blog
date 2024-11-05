@@ -1,4 +1,6 @@
-## MSYS2 UCRT64で[gdome2](http://gdome2.cs.unibo.it/)をビルドする
+## MSYS2 UCRT64でgdome2をビルドする
+
+[gdome2](http://gdome2.cs.unibo.it/)
 
 - http://gdome2.cs.unibo.it/
 - https://www.gnu.org/software/gettext/manual/html_node/config_002eguess.html

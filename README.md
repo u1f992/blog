@@ -43,7 +43,7 @@
 - [WindowsにおけるPythonのshebang（？）](articles/0192d0e9-8a12-77fa-884f-0f05abb1505b/README.md)
 - [HTMLの前処理について雑感](articles/0192e054-20e7-7a85-86e8-0f42192227d6/README.md)
 - [MSYS2のポータブル環境](articles/0192e10e-9d82-7ef4-8e4b-4c1f7359b3e7/README.md)
-- [MSYS2 UCRT64で[gdome2](http://gdome2.cs.unibo.it/)をビルドする](articles/0192e2dd-ff19-70dd-9a75-038df515996c/README.md)
+- [MSYS2 UCRT64でgdome2をビルドする](articles/0192e2dd-ff19-70dd-9a75-038df515996c/README.md)
 
 ---
 
@@ -955,7 +955,9 @@ $ # コアシステムの更新が行われた場合はMSYS2シェルが終了�
 ```
 
 
-## MSYS2 UCRT64で[gdome2](http://gdome2.cs.unibo.it/)をビルドする
+## MSYS2 UCRT64でgdome2をビルドする
+
+[gdome2](http://gdome2.cs.unibo.it/)
 
 - http://gdome2.cs.unibo.it/
 - https://www.gnu.org/software/gettext/manual/html_node/config_002eguess.html
