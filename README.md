@@ -44,6 +44,7 @@
 - [HTMLの前処理について雑感](articles/0192e054-20e7-7a85-86e8-0f42192227d6/README.md)
 - [MSYS2のポータブル環境](articles/0192e10e-9d82-7ef4-8e4b-4c1f7359b3e7/README.md)
 - [MSYS2 UCRT64でgdome2をビルドする](articles/0192e2dd-ff19-70dd-9a75-038df515996c/README.md)
+- [CUERipperメモ](articles/019333d9-b6e8-770a-94c4-f57f586152ba/README.md)
 
 ---
 
@@ -908,7 +909,6 @@ time.sleep(10000)
 
 引数のクォーテーション周りの挙動が怪しい気もする？とりあえず全部つけておけば問題ないだろうと思っている。
 
-
 ## HTMLの前処理について雑感
 
 ### 正規表現ベースの処理
@@ -1012,3 +1012,22 @@ CFLAGS=-Wno-implicit-int ./configure
 CFLAGS=-Wno-implicit-int mingw32-make --jobs=$(nproc)
 CFLAGS=-Wno-implicit-int mingw32-make install
 ```
+
+## CUERipperメモ
+
+http://cue.tools/wiki/Main_Page
+
+2.2.6
+
+- lossless
+- image
+- flac
+- libFLAC
+  - Verify: True
+  - MD5: True
+- C2ErrorMode: Mode296
+  - Autoでは`Exception: Error reading CD: IoctlFailed`が発生（PIONEER BD-RW BDR-UD03 1.14）
+  - AutoはMode294->Mode296の順番で試行するが、一部ディスクドライブではMode294に対応していないようだ https://hydrogenaud.io/index.php/topic,122176.0.html
+- 667（おまかせ）
+- Mode: 8
+- Paranoid
