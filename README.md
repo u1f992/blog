@@ -45,6 +45,7 @@
 - [MSYS2のポータブル環境](articles/0192e10e-9d82-7ef4-8e4b-4c1f7359b3e7/README.md)
 - [MSYS2 UCRT64でgdome2をビルドする](articles/0192e2dd-ff19-70dd-9a75-038df515996c/README.md)
 - [CUERipperメモ](articles/019333d9-b6e8-770a-94c4-f57f586152ba/README.md)
+- [PDFから「しおり」を抽出](articles/01933dc7-1b4a-7d58-9bb9-e473c4b877f7/README.md)
 
 ---
 
@@ -1031,3 +1032,11 @@ http://cue.tools/wiki/Main_Page
 - 667（おまかせ）
 - Mode: 8
 - Paranoid
+
+## PDFから「しおり」を抽出
+
+```
+$ pdftk book.pdf dump_data | grep -E 'BookmarkTitle' | python3 -c "import sys, html; [print(html.unescape(line.strip())) for line in sys.stdin]" | grep -E '第[0-9]+章'
+```
+
+日本語だとエンコードされてしまうから、Pythonを挟むのが肝
