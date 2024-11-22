@@ -46,6 +46,7 @@
 - [MSYS2 UCRT64でgdome2をビルドする](articles/0192e2dd-ff19-70dd-9a75-038df515996c/README.md)
 - [CUERipperメモ](articles/019333d9-b6e8-770a-94c4-f57f586152ba/README.md)
 - [PDFから「しおり」を抽出](articles/01933dc7-1b4a-7d58-9bb9-e473c4b877f7/README.md)
+- [PDFをPNGに変換](articles/01935161-66d4-7c5b-9fac-472547dcb5e4/README.md)
 
 ---
 
@@ -1040,3 +1041,25 @@ $ pdftk book.pdf dump_data | grep -E 'BookmarkTitle' | python3 -c "import sys, h
 ```
 
 日本語だとエンコードされてしまうから、Pythonを挟むのが肝
+
+## PDFをPNGに変換
+
+#### 全ページ
+
+```
+$ gs -dSAFER -dBATCH -dNOPAUSE -r300 -sDEVICE=pngalpha -sOutputFile=page_%03d.png input.pdf
+```
+
+#### 指定ページのみ
+
+```
+$ gs -dSAFER -dBATCH -dNOPAUSE -r300 -dFirstPage=344 -dLastPage=344 -sDEVICE=pngalpha -sOutputFile=page_344.png page_344.pdf
+```
+
+背景は透過なので、必要に応じて白背景を置く。
+
+```
+$ magick page_*.png -background white -alpha remove -alpha off page_*.png
+```
+
+コンテナ内で↑の作業をすると権限で不都合がありそう（`--user $(id -u):$(id -g)`）
