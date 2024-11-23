@@ -47,6 +47,7 @@
 - [CUERipperメモ](articles/019333d9-b6e8-770a-94c4-f57f586152ba/README.md)
 - [PDFから「しおり」を抽出](articles/01933dc7-1b4a-7d58-9bb9-e473c4b877f7/README.md)
 - [PDFをPNGに変換](articles/01935161-66d4-7c5b-9fac-472547dcb5e4/README.md)
+- [白背景を詰める](articles/01935308-3b79-7444-8aeb-993a16fa72f4/README.md)
 
 ---
 
@@ -1063,3 +1064,24 @@ $ magick page_*.png -background white -alpha remove -alpha off page_*.png
 ```
 
 コンテナ内で↑の作業をすると権限で不都合がありそう（`--user $(id -u):$(id -g)`）
+
+## 白背景を詰める
+
+trimのアルゴリズムの都合、全体が背景色以外で囲われている場合、その枠が削除されてしまう。
+
+https://qiita.com/yoya/items/62879e6e03d5a70eed09
+
+```
+$ magick input.png -bordercolor white -border 1x1 -trim +repage output.png
+```
+
+```
+$ docker run \
+    --rm \
+    --tty \
+    --user $(id -u):$(id -g) \
+    --mount type=bind,source=.,target=/workdir \
+    --workdir /workdir \
+    --entrypoint /usr/local/bin/magick \
+    dpokidov/imagemagick:7.1.1-39
+```
