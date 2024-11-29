@@ -947,37 +947,36 @@ Webブラウザ以外にDOMを十全に操作する方法がない
 
 ## MSYS2のポータブル環境
 
-#### shell.sh
+#### shell.bat
 
-```sh
-#!/bin/bash
+```bat
+@ECHO OFF
+SETLOCAL ENABLEDELAYEDEXPANSION
 
-set -eu
+IF NOT DEFINED TARGET_DIR SET "TARGET_DIR=.env"
 
-if [ -z "${TARGET_DIR:-}" ]; then
-    echo "Usage: TARGET_DIR=target_dir $0"
-    exit 1
-fi
+IF EXIST "%TARGET_DIR%\msys64\msys2_shell.cmd" (
+    CD "%TARGET_DIR%\msys64"
+    msys2_shell.cmd -defterm -here -no-start %*
+    EXIT /B 0
+)
 
-if [ -e "$TARGET_DIR/msys64/msys2_shell.cmd" ]; then
-    cd "$TARGET_DIR"
-    cd msys64/
-    cmd.exe /C msys2_shell.cmd -defterm -here -no-start "$@"
-    exit 0
-fi
+MKDIR "%TARGET_DIR%" 2>NUL
+CD "%TARGET_DIR%"
 
-mkdir -p "$TARGET_DIR"
-cd "$TARGET_DIR"
+IF NOT EXIST msys2-base-x86_64-20241116.sfx.exe (
+    POWERSHELL -Command "Invoke-WebRequest -Uri https://github.com/msys2/msys2-installer/releases/download/2024-11-16/msys2-base-x86_64-20241116.sfx.exe -OutFile msys2-base-x86_64-20241116.sfx.exe"
+)
+msys2-base-x86_64-20241116.sfx.exe -y
+CD msys64
 
-curl --location --remote-name https://github.com/msys2/msys2-installer/releases/download/2024-11-16/msys2-base-x86_64-20241116.sfx.exe
-./msys2-base-x86_64-20241116.sfx.exe -y
-cd msys64/
-# The shell exits with a non-zero status due to core system updates
-echo "yes | pacman -Suy && exit" | cmd.exe /C msys2_shell.cmd -defterm -here -no-start || true
-# This time update packages
-echo "yes | pacman -Suy && exit" | cmd.exe /C msys2_shell.cmd -defterm -here -no-start || true
+REM The shell exits with a non-zero status due to core system updates
+cmd /C msys2_shell.cmd -defterm -here -no-start -c "yes | pacman -Suy"
 
-cmd.exe /C msys2_shell.cmd -defterm -here -no-start "$@"
+REM This time update packages
+cmd /C msys2_shell.cmd -defterm -here -no-start -c "yes | pacman -Suy"
+
+msys2_shell.cmd -defterm -here -no-start %*
 ```
 
 ## MSYS2 UCRT64でgdome2をビルドする
