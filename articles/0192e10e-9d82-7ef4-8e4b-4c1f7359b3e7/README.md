@@ -1,33 +1,33 @@
 ## MSYS2のポータブル環境
 
-#### shell.bat
+#### shell.cmd
 
 ```bat
-@ECHO OFF
-SETLOCAL ENABLEDELAYEDEXPANSION
+@echo off
+setlocal enabledelayedexpansion
 
-IF NOT DEFINED TARGET_DIR SET "TARGET_DIR=.env"
+if not defined TARGET_DIR set "TARGET_DIR=.msys2"
 
-IF EXIST "%TARGET_DIR%\msys64\msys2_shell.cmd" (
-    CD "%TARGET_DIR%\msys64"
+if exist "%TARGET_DIR%\msys64\msys2_shell.cmd" (
+    cd "%TARGET_DIR%\msys64"
     msys2_shell.cmd -defterm -here -no-start %*
-    EXIT /B 0
+    exit /b 0
 )
 
-MKDIR "%TARGET_DIR%" 2>NUL
-CD "%TARGET_DIR%"
+mkdir "%TARGET_DIR%"
+cd "%TARGET_DIR%"
 
-IF NOT EXIST msys2-base-x86_64-20241116.sfx.exe (
-    POWERSHELL -Command "Invoke-WebRequest -Uri https://github.com/msys2/msys2-installer/releases/download/2024-11-16/msys2-base-x86_64-20241116.sfx.exe -OutFile msys2-base-x86_64-20241116.sfx.exe"
-)
+powershell -Command "Invoke-WebRequest -Uri https://github.com/msys2/msys2-installer/releases/download/2024-11-16/msys2-base-x86_64-20241116.sfx.exe -OutFile msys2-base-x86_64-20241116.sfx.exe"
 msys2-base-x86_64-20241116.sfx.exe -y
-CD msys64
+cd msys64
 
-REM The shell exits with a non-zero status due to core system updates
-cmd /C msys2_shell.cmd -defterm -here -no-start -c "yes | pacman -Suy"
+rem The shell exits with a non-zero status due to core system updates
+cmd /C msys2_shell.cmd -defterm -here -no-start -c "pacman -Suy --noconfirm"
 
-REM This time update packages
-cmd /C msys2_shell.cmd -defterm -here -no-start -c "yes | pacman -Suy"
+rem This time update packages
+cmd /C msys2_shell.cmd -defterm -here -no-start -c "pacman -Suy --noconfirm"
+
+cmd /C msys2_shell.cmd -defterm -here -no-start -ucrt64 -c "pacman -S --noconfirm mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-toolchain"
 
 msys2_shell.cmd -defterm -here -no-start %*
 ```
