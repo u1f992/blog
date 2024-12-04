@@ -33,7 +33,6 @@
 - [MSYS2シェル内でvimを開くとき](articles/0192bc94-3f7c-7af9-a4f3-e913e49c66fd/README.md)
 - [PythonスクリプトでGUIのファイル選択ウィンドウを出す](articles/0192bc94-7ec4-7485-857c-e7740ef2f251/README.md)
 - [Ghostscriptの`inkcov`と`ink_cov`](articles/0192bc94-cecb-7136-946e-b166c175a9a5/README.md)
-- [DockerでTeXツールチェイン](articles/0192bc95-10f0-7c3f-99bf-06caeeee6b51/README.md)
 - [JapanColor2001Coated.icc](articles/0192bc95-5738-7898-91eb-52f419a9a534/README.md)
 - [qpdf](articles/0192bc95-8b91-7727-8e89-ec30b9c57400/README.md)
 - [PlatformIO+Arduino-Picoの更新](articles/0192bc95-c61c-744d-ac0f-76d28bc30d3b/README.md)
@@ -48,6 +47,7 @@
 - [PDFから「しおり」を抽出](articles/01933dc7-1b4a-7d58-9bb9-e473c4b877f7/README.md)
 - [PDFをPNGに変換](articles/01935161-66d4-7c5b-9fac-472547dcb5e4/README.md)
 - [白背景を詰める](articles/01935308-3b79-7444-8aeb-993a16fa72f4/README.md)
+- [基本的にDocker内で使っているツール類](articles/01938f77-d329-755c-8dd0-24fc4492e621/README.md)
 
 ---
 
@@ -755,28 +755,6 @@ gs -dSAFER -dNOPAUSE -dBATCH -o- -sDEVICE=inkcov Y.pdf
 gs -dSAFER -dNOPAUSE -dBATCH -o- -sDEVICE=ink_cov Y.pdf
 ```
 
-## DockerでTeXツールチェイン
-
-```
-docker run --mount "type=bind,source=$PWD,target=/workdir" --workdir /workdir --interactive --tty --rm registry.gitlab.com/islandoftex/images/texlive:TL2023-historic bash
-```
-
-使い道はないかもしれないけどGUIも出せる。WSLなら：
-
-```
-docker run \
-    --env "DISPLAY=${DISPLAY:-:0.0}" \
-    --volume /mnt/wslg/.X11-unix/:/tmp/.X11-unix \
-    --mount "type=bind,source=$PWD,target=/workdir" \
-    --workdir /workdir \
-    --interactive \
-    --tty \
-    --rm \
-    registry.gitlab.com/islandoftex/images/texlive:TL2023-historic bash
-```
-
-https://qiita.com/U-1F992/items/c75ffa7373a49d216862
-
 ## JapanColor2001Coated.icc
 
 https://www.adobe.com/support/downloads/iccprofiles/iccprofiles_win.html
@@ -1066,13 +1044,36 @@ https://qiita.com/yoya/items/62879e6e03d5a70eed09
 $ magick input.png -bordercolor white -border 1x1 -trim +repage output.png
 ```
 
+## 基本的にDocker内で使っているツール類
+
+GUIが必要な時は`--env "DISPLAY=${DISPLAY:-:0.0} --volume /mnt/wslg/.X11-unix/:/tmp/.X11-unix`（WSL）
+
+- https://qiita.com/U-1F992/items/c75ffa7373a49d216862
+
+### Ghostscript
+
 ```
 $ docker run \
+    --entrypoint /usr/bin/gs \
+    --interactive \
+    --mount type=bind,source=$(pwd),target=/workdir \
     --rm \
     --tty \
     --user $(id -u):$(id -g) \
-    --mount type=bind,source=.,target=/workdir \
     --workdir /workdir \
+    registry.gitlab.com/islandoftex/images/texlive:TL2023-historic
+```
+
+### ImageMagick
+
+```
+$ docker run \
     --entrypoint /usr/local/bin/magick \
+    --interactive \
+    --mount type=bind,source=$(pwd),target=/workdir \
+    --rm \
+    --tty \
+    --user $(id -u):$(id -g) \
+    --workdir /workdir \
     dpokidov/imagemagick:7.1.1-39
 ```
