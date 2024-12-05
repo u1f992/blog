@@ -48,6 +48,7 @@
 - [PDFをPNGに変換](articles/01935161-66d4-7c5b-9fac-472547dcb5e4/README.md)
 - [白背景を詰める](articles/01935308-3b79-7444-8aeb-993a16fa72f4/README.md)
 - [基本的にDocker内で使っているツール類](articles/01938f77-d329-755c-8dd0-24fc4492e621/README.md)
+- [`*.ai` → `*.pdf`](articles/0193949c-0606-7614-8cee-5b821c9a6e56/README.md)
 
 ---
 
@@ -1072,4 +1073,20 @@ $ docker run \
     --user $(id -u):$(id -g) \
     --workdir /workdir \
     dpokidov/imagemagick:7.1.1-39
+```
+
+## `*.ai` → `*.pdf`
+
+アウトライン化されていたら多分大丈夫
+
+```
+$ gs \
+    -dBATCH \
+    -dNOPAUSE \
+    -dSAFER \
+    -sDEVICE=pdfwrite \
+    -dCompatibilityLevel=1.4 \
+    -dPDFSETTINGS=/prepress \
+    -sOutputFile=output.pdf \
+    input.ai
 ```
