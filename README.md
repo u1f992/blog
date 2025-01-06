@@ -50,6 +50,7 @@
 - [基本的にDocker内で使っているツール類](articles/01938f77-d329-755c-8dd0-24fc4492e621/README.md)
 - [`*.ai` → `*.pdf`](articles/0193949c-0606-7614-8cee-5b821c9a6e56/README.md)
 - [CSS `rgb()`の小数点数を特定要素に設定する](articles/0193dd27-ddcb-7d77-84e8-565fa818cafe/README.md)
+- [コマンドプロンプトの起動時スクリプト](articles/019439e6-6b18-7dd9-add3-7582c1253921/README.md)
 
 ---
 
@@ -1214,3 +1215,16 @@ if __name__ == "__main__":
 ```
 
 </details>
+
+## コマンドプロンプトの起動時スクリプト
+
+- https://github.com/Schniz/fnm?tab=readme-ov-file#windows-command-prompt-aka-batch-aka-wincmd
+- https://superuser.com/questions/144347/is-there-windows-equivalent-to-the-bashrc-file-in-linux/144348#144348
+- https://ss64.com/nt/cmd.html
+
+```
+> reg add "HKEY_CURRENT_USER\Software\Microsoft\Command Processor" /v AutoRun /t REG_SZ /d "%USERPROFILE%\autorun.cmd" /f
+```
+
+なお初期値は設定なし
+
