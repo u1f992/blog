@@ -51,6 +51,7 @@
 - [`*.ai` → `*.pdf`](articles/0193949c-0606-7614-8cee-5b821c9a6e56/README.md)
 - [CSS `rgb()`の小数点数を特定要素に設定する](articles/0193dd27-ddcb-7d77-84e8-565fa818cafe/README.md)
 - [コマンドプロンプトの起動時スクリプト](articles/019439e6-6b18-7dd9-add3-7582c1253921/README.md)
+- [漢字かな交じり文の読みを調べる（Windows＋Excel）](articles/0194a7a3-dd04-7957-9a0f-8cda83172878/README.md)
 
 ---
 
@@ -1228,3 +1229,64 @@ if __name__ == "__main__":
 
 なお初期値は設定なし
 
+
+## 漢字かな交じり文の読みを調べる（Windows＋Excel）
+
+- https://learn.microsoft.com/en-us/office/vba/api/excel.application.getphonetic
+
+```ts
+import fs from "node:fs";
+
+const winax = await (async () => {
+  try {
+    return (await import("winax")).default;
+  } catch {
+    return null;
+  }
+})();
+
+function withCache(fn: (input: string) => string, cacheFile: string) {
+  return (input: string) => {
+    const cache = (() => {
+      try {
+        const parsed = JSON.parse(
+          fs.readFileSync(cacheFile, {
+            encoding: "utf-8",
+          }),
+        );
+        return parsed && typeof parsed === "object" ? parsed : {};
+      } catch {
+        return {};
+      }
+    })() as Record<string, any>;
+    if (input in cache) {
+      return cache[input];
+    }
+    cache[input] = fn(input);
+    fs.writeFileSync(cacheFile, JSON.stringify(cache), {
+      encoding: "utf-8",
+    });
+    return cache[input];
+  };
+}
+
+function excelGetPhonetic(input: string) {
+  if (winax === null) {
+    return input;
+  }
+  try {
+    const excel = new winax.Object("Excel.Application");
+    try {
+      return excel.GetPhonetic(input) as string;
+    } catch {
+      return input;
+    } finally {
+      excel.Quit();
+    }
+  } catch {
+    return input;
+  }
+}
+
+console.log(withCache(excelGetPhonetic, "cache.json")("寿限無"));
+```
