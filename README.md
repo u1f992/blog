@@ -1282,6 +1282,7 @@ function excelGetPhonetic(input: string) {
       return input;
     } finally {
       excel.Quit();
+      winax.release(excel);
     }
   } catch {
     return input;
