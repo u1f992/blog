@@ -1516,9 +1516,11 @@ https://www.lenovo.com/jp/ja/dc/accessories-and-software/keyboards-and-mice/trac
 
 3種類ある
 
-- 通常
+- Low Profile
 - ロープロファイル
 - スーパーロープロファイル
+
+1つ目と2つ目の違いは？
 
 どれに該当するかは以下で検索
 
