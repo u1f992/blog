@@ -57,6 +57,7 @@
 - [AppImageをランチャーに追加する（Ubuntu 24.04）](articles/0194d66f-55fa-7755-93b3-7b488b50edaa/README.md)
 - [RDPメモ](articles/0194ed9c-6542-7516-b04b-c25dccd11704/README.md)
 - [`text-box`メモ](articles/01951267-68df-7629-8afc-4572753e5735/README.md)
+- [トラックポイントキャップを買い換える](articles/01951e68-af72-78bc-8b57-faa9d8219340/README.md)
 
 ---
 
@@ -1508,3 +1509,25 @@ p + p:last-child {    /* 直前がpであり、かつコンテナの最後の要
     text-box: trim-both cap alphabetic;
 }
 ```
+
+## トラックポイントキャップを買い換える
+
+https://www.lenovo.com/jp/ja/dc/accessories-and-software/keyboards-and-mice/trackpoint-caps/
+
+3種類ある
+
+- 通常
+- ロープロファイル
+- スーパーロープロファイル
+
+どれに該当するかは以下で検索
+
+https://support.lenovo.com/jp/ja/accessorieslookup
+
+| 品番 | プロファイル |
+| --- | --- |
+| 20KG | スーパーロープロファイル |
+| 20QE | ロープロファイル |
+| 21KC | ロープロファイル |
+
+参照：https://support.lenovo.com/jp/ja/solutions/um006391-accessories-and-options-compatibility-matrix-ocm
