@@ -1,5 +1,45 @@
 ## PDFの指定したページをトリミングして出力
 
+メモ：こっちのほうが楽かも
+
+```python
+import fitz
+
+
+def in2pt(in_: float) -> float:
+    return in_ * 72
+
+
+LEFT_PAGE = (
+    in2pt(1.857),
+    in2pt(1.85),
+    in2pt(1.857) + in2pt(5.83),
+    in2pt(1.85) + in2pt(8.27),
+)
+RIGHT_PAGE = (
+    in2pt(8.867),
+    in2pt(1.85),
+    in2pt(8.867) + in2pt(5.83),
+    in2pt(1.85) + in2pt(8.27),
+)
+
+pdf = fitz.open("../../Downloads/cover0325.pdf")
+dst = fitz.open()
+
+for page, cropbox in (
+    (0, LEFT_PAGE),
+    (1, LEFT_PAGE),
+    # (5, RIGHT_PAGE),
+    (7, LEFT_PAGE),
+    (7, RIGHT_PAGE),
+    # (10, LEFT_PAGE),
+):
+    pdf[page].set_cropbox(fitz.Rect(*cropbox))
+    dst.insert_pdf(pdf, page, page)
+
+dst.save("out.pdf")
+```
+
 座標指定は左下原点のbp
 
 #### pdfcroppages.py
