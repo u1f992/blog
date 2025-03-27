@@ -14,7 +14,7 @@
 - [PDF切り出しに使うTeXのテンプレート](articles/0192bc87-2614-7d9a-9d53-ab3ba166e71b/README.md)
 - [カレントディレクトリ以下のPNG画像をJPGに変換する](articles/0192bc87-6e0d-7670-8897-90c2e79490ae/README.md)
 - [PSoC 4ハードウェア設計上の注意事項](articles/0192bc87-e358-7964-8446-a721b0b89fcf/README.md)
-- [貧弱なJavaScriptでUUIDを生成する](articles/0192bc88-03ef-7d7f-8c08-6c0d12074c54/README.md)
+- [ES3相当のJavaScriptでUUID風文字列を生成する](articles/0192bc88-03ef-7d7f-8c08-6c0d12074c54/README.md)
 - [PDFの指定したページをトリミングして出力](articles/0192bc89-1b1d-7c66-b6ad-9cc47c17acc2/README.md)
 - [WSLのディスクサイズを削減](articles/0192bc8a-4a12-77fc-964d-f225677966f8/README.md)
 - [MSYS2環境を現在のターミナルで開く](articles/0192bc8c-6edd-7651-9e5c-5791658a2064/README.md)
@@ -320,27 +320,38 @@ find . -name "*.png" -type f -print0 | xargs -0 -P8 -n1 optipng -o7
 
 https://community.infineon.com/t5/%E3%83%8A%E3%83%AC%E3%83%83%E3%82%B8%E3%83%99%E3%83%BC%E3%82%B9%E3%82%A2%E3%83%BC%E3%83%86%E3%82%A3%E3%82%AF%E3%83%AB-KBA/AN88619-PSoC-4%E3%83%8F%E3%83%BC%E3%83%89%E3%82%A6%E3%82%A7%E3%82%A2%E8%A8%AD%E8%A8%88%E4%B8%8A%E3%81%AE%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85-Community-Translated-JA/ta-p/250231
 
-## 貧弱なJavaScriptでUUIDを生成する
-
-そもそも筋がいい方法ではないが、雑なUUID風文字列よりはいいだろう。
+## ES3相当のJavaScriptでUUID風文字列を生成する
 
 ```js
-/** From: https://stackoverflow.com/a/8809472 */
-function generateUUID() { // Public Domain/MIT
-    var d = new Date().getTime();//Timestamp
-    var d2 = ((typeof performance !== 'undefined') && performance.now && (performance.now()*1000)) || 0;//Time in microseconds since page-load or 0 if unsupported
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random() * 16;//random number between 0 and 16
-        if(d > 0){//Use timestamp until depleted
-            r = (d + r)%16 | 0;
-            d = Math.floor(d/16);
-        } else {//Use microseconds since page-load if supported
-            r = (d2 + r)%16 | 0;
-            d2 = Math.floor(d2/16);
-        }
-        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-    });
+/**
+ * RFC4122 version 4 compliant UUID generator
+ *
+ * Based on: https://stackoverflow.com/a/8809472 (Public Domain / MIT)
+ *
+ * @returns {string}
+ */
+function generateUUID() {
+  var d = new Date().getTime(); // Timestamp
+  var d2 = // Time in microseconds since page-load or 0 if unsupported
+    typeof performance !== "undefined" && performance.now
+      ? performance.now() * 1000
+      : 0;
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    var r = Math.random() * 16; // random number between 0 and 16
+    if (d > 0) {
+      // Use timestamp until depleted
+      r = (d + r) % 16 | 0;
+      d = Math.floor(d / 16);
+    } else {
+      // Use microseconds since page-load if supported
+      r = (d2 + r) % 16 | 0;
+      d2 = Math.floor(d2 / 16);
+    }
+    return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
+  });
 }
+
+WScript.Echo(generateUUID());
 ```
 
 ## PDFの指定したページをトリミングして出力
