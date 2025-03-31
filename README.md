@@ -59,6 +59,7 @@
 - [`text-box`メモ](articles/01951267-68df-7629-8afc-4572753e5735/README.md)
 - [トラックポイントキャップを買い換える](articles/01951e68-af72-78bc-8b57-faa9d8219340/README.md)
 - [Native Accessのアップデートを阻止する](articles/01952945-f85d-7592-b79c-d6b37ce7fd3a/README.md)
+- [Vivliostyle CLIでフォルダ内のMarkdownを1ファイルにまとめて組版するスニペット](articles/0195ea9c-bb8d-7eb0-a9a0-bb9d9df22905/README.md)
 
 ---
 
@@ -1656,3 +1657,92 @@ $ sudo chattr +i ~/.wineprefixes/Native-Access_2_3.7.0/drive_c/users/mukai/AppDa
 ```
 
 さすがにディレクトリを変えたりするほど器用ではないらしい。
+
+## Vivliostyle CLIでフォルダ内のMarkdownを1ファイルにまとめて組版するスニペット
+
+出力HTMLは別ディレクトリに置いたほうがよさそう。
+
+この方法だとリアルタイムプレビューが効かない。vivliostyle.config.jsに埋め込むのではなく別スクリプトで用意しておいて、[paulmillr/chokidar](https://github.com/paulmillr/chokidar)とかで監視して（別ディレクトリに）出力したほうがいいかも。
+
+<figure>
+<figcaption>vivliostyle.config.js</figcaption>
+
+```js
+// @ts-check
+
+const fs = require("node:fs");
+const path = require("node:path");
+
+/**
+ * @param {string} dir
+ */
+function getMarkdownFiles(dir) {
+  return fs
+    .readdirSync(dir)
+    .filter((filename) => filename.endsWith(".md"))
+    .sort()
+    .map((filename) => path.posix.join(dir, filename));
+}
+/**
+ * @param {string[]} lines
+ */
+function trimEmptyTopAndBottom(lines) {
+  const start = lines.findIndex((line) => line.trim() !== "");
+  const end =
+    lines.length - [...lines].reverse().findIndex((line) => line.trim() !== "");
+  return start === -1 ? [] : lines.slice(start, end);
+}
+/**
+ * @param {string[]} filenames
+ */
+function concatFiles(filenames) {
+  return (
+    filenames
+      .reduce((/** @type {string[]} */ blocks, filename) => {
+        const content = fs.readFileSync(filename, "utf-8");
+        const lines = content.split(/\r?\n/);
+        const trimmedLines = trimEmptyTopAndBottom(lines);
+        if (trimmedLines.length === 0) {
+          return blocks;
+        }
+        if (blocks.length > 0) {
+          blocks.push("");
+        }
+        return blocks.concat(trimmedLines);
+      }, [])
+      .join("\n") + "\n"
+  );
+}
+/**
+ * @param {string} dir
+ */
+function concatMarkdownFiles(dir) {
+  const outputPath = path.join(dir, "_.md");
+  const files = getMarkdownFiles(dir).filter(
+    (file) => path.resolve(file) !== path.resolve(outputPath)
+  );
+  const content = concatFiles(files);
+  fs.writeFileSync(outputPath, content, { encoding: "utf-8" });
+  return outputPath;
+}
+
+/** @type {import('@vivliostyle/cli').VivliostyleConfigSchema} */
+const vivliostyleConfig = {
+  title: "title",
+  author: "author",
+  language: "ja",
+  theme: "./css",
+  image: "ghcr.io/vivliostyle/cli:8.19.0",
+  entry: [
+    concatMarkdownFiles("01"),
+    concatMarkdownFiles("02"),
+    /* ... */
+  ],
+  output: ["./output.pdf"],
+  workspaceDir: ".vivliostyle",
+};
+
+module.exports = vivliostyleConfig;
+```
+
+</figure>
