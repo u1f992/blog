@@ -1660,6 +1660,10 @@ $ sudo chattr +i ~/.wineprefixes/Native-Access_2_3.7.0/drive_c/users/mukai/AppDa
 
 ## Vivliostyle CLIでフォルダ内のMarkdownを1ファイルにまとめて組版するスニペット
 
+ファイルをまたぐと改ページされてしまうが、節ごとにファイルを分割したい時もある。最近だと、ファイルは短いほどAIの補助を受けやすそうだ。
+
+なおファイル名でソートできるようにしておく。`01/01.md, 01/02.md`など。
+
 出力HTMLは別ディレクトリに置いたほうがよさそう。
 
 この方法だとリアルタイムプレビューが効かない。vivliostyle.config.jsに埋め込むのではなく別スクリプトで用意しておいて、[paulmillr/chokidar](https://github.com/paulmillr/chokidar)とかで監視して（別ディレクトリに）出力したほうがいいかも。
