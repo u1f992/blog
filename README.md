@@ -60,6 +60,7 @@
 - [トラックポイントキャップを買い換える](articles/01951e68-af72-78bc-8b57-faa9d8219340/README.md)
 - [Native Accessのアップデートを阻止する](articles/01952945-f85d-7592-b79c-d6b37ce7fd3a/README.md)
 - [Vivliostyle CLIでフォルダ内のMarkdownを1ファイルにまとめて組版するスニペット](articles/0195ea9c-bb8d-7eb0-a9a0-bb9d9df22905/README.md)
+- [Vivliostyle×devcontainerメモ](articles/01969029-5b82-7fc3-a23b-2055c0205ae0/README.md)
 
 ---
 
@@ -1792,3 +1793,35 @@ module.exports = vivliostyleConfig;
 ```
 
 </figure>
+
+## Vivliostyle×devcontainerメモ
+
+- https://code.visualstudio.com/docs/devcontainers/containers
+- WindowsではWSL経由で良い感じになるので何もしなくてよい
+- MacではXQuartzが必要。インストールして再ログインするだけ
+
+#### .devcontainer/Dockerfile
+
+```
+FROM ghcr.io/vivliostyle/cli:8.20.0
+# RUN apt-get update && apt-get --yes --no-install-recommends install \
+#         foo \
+#     && rm -rf /var/lib/apt/lists/*
+ENTRYPOINT ["/usr/bin/bash"]
+```
+
+#### .devcontainer/devcontainer.json
+
+```json
+{
+  "build": {
+    "dockerfile": "./Dockerfile",
+    "context": "."
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["esbenp.prettier-vscode"]
+    }
+  }
+}
+```
