@@ -62,6 +62,8 @@
 - [Vivliostyle CLIでフォルダ内のMarkdownを1ファイルにまとめて組版するスニペット](articles/0195ea9c-bb8d-7eb0-a9a0-bb9d9df22905/README.md)
 - [Vivliostyle×devcontainerメモ](articles/01969029-5b82-7fc3-a23b-2055c0205ae0/README.md)
 - [ChromiumとGhostscriptで表現できる色](articles/0196aef3-fee5-7cf1-bc9b-ba25187678de/README.md)
+- [woff2.dockerfile](articles/0196c8ad-dd12-72bc-b9c7-dec35c735fd9/README.md)
+- [Emscriptenのdevcontainer環境](articles/0196c8af-1ad7-71fa-a98e-b95012af991d/README.md)
 
 ---
 
@@ -1990,4 +1992,106 @@ if (isMainThread) {
 true
 > JSON.stringify(json[1])===JSON.stringify(json[2])
 true
+```
+
+## woff2.dockerfile
+
+```
+FROM ubuntu:24.04
+
+RUN apt-get update \
+    && apt-get install --yes \
+        cmake \
+        g++ \
+        git \
+        pkg-config \
+    && rm -rf /var/lib/apt/lists/* \
+    \
+    && git init woff2 \
+    && cd woff2/ \
+    && git remote add origin https://github.com/google/woff2.git \
+    && git fetch --depth 1 origin 0f4d304faa1c62994536dc73510305c7357da8d4 \
+    && git checkout FETCH_HEAD \
+    && git submodule update --init --recursive \
+    \
+    # https://github.com/google/brotli/tree/533843e3546cd24c8344eaa899c6b0b681c8d222
+    && cd brotli \
+    && mkdir out \
+    && cd out \
+    && cmake -DCMAKE_BUILD_TYPE=Release .. \
+    && cmake --build . --config Release --target install \
+    && cd ../.. \
+    \
+    # https://github.com/google/woff2/tree/0f4d304faa1c62994536dc73510305c7357da8d4
+    && mkdir out-static \
+    && cd out-static \
+    && cmake -DBUILD_SHARED_LIBS=OFF .. \
+    && make \
+    && make install
+```
+
+## Emscriptenのdevcontainer環境
+
+Dockerfileと補完とフォーマットの設定
+
+#### .devcontainer/emscripten.dockerfile
+
+```
+FROM emscripten/emsdk:4.0.8
+RUN apt-get update && apt-get --yes --no-install-recommends install \
+        clang-format \
+    && rm -rf /var/lib/apt/lists/*
+```
+
+#### .devcontainer/devcontainer.json
+
+```json
+{
+    "build": {
+        "dockerfile": "./Dockerfile",
+        "context": "."
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools-extension-pack",
+                "xaver.clang-format"
+            ]
+        }
+    }
+}
+```
+
+### .vscode/c_cpp_properties.json
+
+```json
+{
+    "configurations": [
+        {
+            "name": "CMake",
+            "compileCommands": "${config:cmake.buildDirectory}/compile_commands.json",
+            "configurationProvider": "ms-vscode.cmake-tools",
+            "includePath": ["/emsdk/upstream/emscripten/system/include/**"]
+        }
+    ],
+    "version": 4
+}
+```
+
+### .vscode/settings.json
+
+```json
+{
+    "[c]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "[cpp]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "files.associations": {
+        "emscripten.h": "c"
+    }
+}
 ```
