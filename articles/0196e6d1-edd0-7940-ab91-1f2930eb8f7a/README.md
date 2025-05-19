@@ -352,5 +352,4 @@ const log = new TextDecoder().decode(
   new Uint8Array(ret.outputStreams.map(({ charCode }) => charCode))
 );
 console.log(log);
-
 ```
