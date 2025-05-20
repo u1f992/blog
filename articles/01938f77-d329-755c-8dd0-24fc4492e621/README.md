@@ -7,6 +7,30 @@ GUIが必要な時は`--env "DISPLAY=${DISPLAY:-:0.0} --volume /mnt/wslg/.X11-un
 ### Ghostscript
 
 ```
+FROM ubuntu:24.04 AS builder
+RUN apt-get update && apt-get --yes install \
+        gcc \
+        make \
+        wget \
+    && rm -rf /var/lib/apt/lists/* \
+    && wget https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10051/ghostscript-10.05.1.tar.gz \
+    && tar xvf ghostscript-10.05.1.tar.gz \
+    && cd ghostscript-10.05.1 \
+    && ./configure --prefix=/usr/local \
+    && make -j$(nproc) \
+    && make install
+
+FROM ubuntu:24.04
+COPY --from=builder /usr/local/. /usr/local/
+
+ENTRYPOINT [ "gs" ]
+```
+
+```
+docker build -f ghostscript.dockerfile -t ghostscript:10.05.1 .
+```
+
+```
 $ docker run \
     --entrypoint /usr/bin/gs \
     --interactive \
@@ -15,8 +39,10 @@ $ docker run \
     --tty \
     --user $(id -u):$(id -g) \
     --workdir /workdir \
-    registry.gitlab.com/islandoftex/images/texlive:TL2023-historic
+    ghostscript:10.05.1
 ```
+
+`registry.gitlab.com/islandoftex/images/texlive:TL<year>-historic`にも入っているので、他のPDF周りのツールを使うときはこちらのほうが便利なこともある。
 
 ### ImageMagick
 
