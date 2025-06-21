@@ -54,7 +54,7 @@
 - [漢字かな交じり文の読みを調べる（Windows＋Excel）](articles/0194a7a3-dd04-7957-9a0f-8cda83172878/README.md)
 - [SVGの`text`要素のアウトライン化と選択・検索を両立させる](articles/0194b5a6-20b9-7e06-ac1d-5412b4342236/README.md)
 - [ディスクのフルバックアップイメージをマウントする](articles/0194c92a-d133-7f46-a3c6-191bbbc756f1/README.md)
-- [AppImageをランチャーに追加する（Ubuntu 24.04）](articles/0194d66f-55fa-7755-93b3-7b488b50edaa/README.md)
+- [AppImageを手動でインストールする（Ubuntu 24.04）](articles/0194d66f-55fa-7755-93b3-7b488b50edaa/README.md)
 - [RDPメモ](articles/0194ed9c-6542-7516-b04b-c25dccd11704/README.md)
 - [`text-box`メモ](articles/01951267-68df-7629-8afc-4572753e5735/README.md)
 - [トラックポイントキャップを買い換える](articles/01951e68-af72-78bc-8b57-faa9d8219340/README.md)
@@ -1469,25 +1469,45 @@ $ kpartx -d /path/to/hdd.img
 $ rm -rf /path/to/mount
 ```
 
-## AppImageをランチャーに追加する（Ubuntu 24.04）
+## AppImageを手動でインストールする（Ubuntu 24.04）
 
 ```
-$ mv foobar.AppImage ~/.local/bin/foobar
-$ cd ~/.local/bin/foobar
-$ chmod +x foobar
-$ foobar --appimage-extract
-$ cp squashfs-root/foobar.desktop ~/.local/share/applications/
-$ chmod +x ~/.local/share/applications/foobar.desktop
-$ cp squashfs-root/foobar.png ~/.local/share/applications/
-$ rm -rf squashfs-root
+$ mkdir ~/.local/bin/arduino-ide && cd ~/.local/bin/arduino-ide/
+$ mv ~/Downloads/arduino-ide_2.3.6_Linux_64bit.AppImage .
+$ chmod +x arduino-ide_2.3.6_Linux_64bit.AppImage
+$ ./arduino-ide_2.3.6_Linux_64bit.AppImage --appimage-extract
+$ chmod +x ~/.local/bin/arduino-ide/squashfs-root/arduino-ide.desktop
+$ ln -s ~/.local/bin/arduino-ide/squashfs-root/arduino-ide.desktop ~/.local/share/applications/arduino-ide.desktop
+$ cat ~/.local/share/applications/arduino-ide.desktop 
+[Desktop Entry]
+Name=Arduino IDE
+Exec=AppRun --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=arduino-ide
+StartupWMClass=Arduino IDE
+X-AppImage-Version=2.3.6
+Comment=Arduino IDE
+Categories=Development;
+$ nano ~/.local/share/applications/arduino-ide.desktop 
+$ cat ~/.local/share/applications/arduino-ide.desktop 
+[Desktop Entry]
+Name=Arduino IDE
+Exec=/home/mukai/.local/bin/arduino-ide/squashfs-root/AppRun --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=/home/mukai/.local/bin/arduino-ide/squashfs-root/arduino-ide.png
+StartupWMClass=Arduino IDE
+X-AppImage-Version=2.3.6
+Comment=Arduino IDE
+Categories=Development;
 ```
 
-- もとのAppImageより`squashfs-root`を残したほうがいい？
 - `*.desktop`には実行権限が必要
 - `*.desktop`が正しい`Exec`/`Icon`を指しているか確認する。
-  - `Exec`はパスが通っていればコマンド名でいい
+  - `~/`を解釈しないので注意
+  - `Exec`はパスが通っていればコマンド名でいい。通っていなければ絶対パスで指定
   - `Icon`は絶対パスで指定
-
 
 ## RDPメモ
 
