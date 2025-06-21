@@ -1493,7 +1493,7 @@ $ nano ~/.local/share/applications/arduino-ide.desktop
 $ cat ~/.local/share/applications/arduino-ide.desktop 
 [Desktop Entry]
 Name=Arduino IDE
-Exec=/home/mukai/.local/bin/arduino-ide/squashfs-root/AppRun --no-sandbox %U
+Exec=/home/mukai/.local/bin/arduino-ide/arduino-ide_2.3.6_Linux_64bit.AppImage --no-sandbox %U
 Terminal=false
 Type=Application
 Icon=/home/mukai/.local/bin/arduino-ide/squashfs-root/arduino-ide.png
@@ -1508,6 +1508,23 @@ Categories=Development;
   - `~/`を解釈しないので注意
   - `Exec`はパスが通っていればコマンド名でいい。通っていなければ絶対パスで指定
   - `Icon`は絶対パスで指定
+
+### Arduino IDE
+
+展開済み`squashfs-root`内の実行ファイルを実行すればよいと思うのだが、これはAppImage内部の特定の手順で実行することを前提としているようだ。
+
+```
+$ /home/mukai/.local/bin/arduino-ide/squashfs-root/AppRun --no-sandbox
+/home/mukai/.local/bin/arduino-ide/squashfs-root/AppRun: 行 45: /arduino-ide: そのようなファイルやディレクトリはありません
+```
+
+これなら起動する。
+
+```
+$ APPDIR="/home/mukai/.local/bin/arduino-ide/squashfs-root" /home/mukai/.local/bin/arduino-ide/squashfs-root/AppRun --no-sandbox
+```
+
+`*.desktop`で環境変数を指定して起動することはできないらしい。また、`APPDIR`以外にも内部環境変数を利用するのかもしれない。おとなしく`*.AppImage`を直接実行するように編集した。
 
 ## RDPメモ
 
