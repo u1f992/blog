@@ -2519,6 +2519,8 @@ console.log(log);
 
 ## PDF内のラスタ画像を置換
 
+### Python
+
 - https://stackoverflow.com/questions/34937871/how-can-i-replace-image-in-pdf-programmatically-using-command-line-ideally
 
 ```python
@@ -2563,6 +2565,104 @@ see the file COPYING for details.
 Processing pages 1 through 1.
 Page 1
  0.00000  1.56637  0.00000  0.00000 CMYK OK
+```
+
+### JavaScript
+
+```javascript
+// @ts-check
+
+import fs from "node:fs";
+import * as mupdf from "mupdf";
+
+const doc = mupdf.PDFDocument.openDocument("output.pdf").asPDF();
+if (doc === null) {
+  throw new Error();
+}
+const pdfDoc = /** @type {mupdf.PDFDocument} */ (doc);
+const page = pdfDoc.loadPage(0);
+for (const { key, value, parent } of getPageImages(page)) {
+  const image = doc.loadImage(value);
+
+  // const png = image.toPixmap().asPNG();
+  // fs.writeFileSync("old.png", png);
+
+  const newImageBuffer = fs.readFileSync("m100_cmyk.tiff");
+  const newImageObj = new mupdf.Image(newImageBuffer);
+  const newImage = doc.addImage(newImageObj);
+
+  parent.put(key, newImage);
+}
+const buf = pdfDoc.saveToBuffer();
+fs.writeFileSync("new.pdf", buf.asUint8Array());
+
+/**
+ * @param {mupdf.PDFPage} page
+ *
+ * サンプルの関数では`mupdf.Image`を得ることができるが、`mupdf.Image`からは画像を置き換えるためのxrefを取り出せない。 https://mupdfjs.readthedocs.io/en/latest/deprecated.html#extracting-document-images-and-text
+ *
+ * ```
+ * export function getPageImages(page) {
+ *   const images = [];
+ *   page.toStructuredText("preserve-images").walk({
+ *     onImageBlock(bbox, matrix, image) {
+ *       images.push({ bbox, matrix, image });
+ *     },
+ *   });
+ *   return images;
+ * }
+ * ```
+ */
+export function getPageImages(page) {
+  /**
+   * @param {mupdf.PDFObject} xobjects
+   * @returns {{ key: string | number; value: mupdf.PDFObject; parent: mupdf.PDFObject }[]}
+   */
+  function getImages(xobjects) {
+    const ret = [];
+    xobjects.forEach((value, key) => {
+      const indirectObj = value;
+      const isIndirect = value.isIndirect();
+      if (isIndirect) {
+        value = value.resolve();
+      }
+
+      const subtype = value.get("Subtype");
+      if (!subtype.isName()) {
+        return;
+      }
+      const name = subtype.asName();
+      if (name === "Image") {
+        if (isIndirect) {
+          // We need indirect object of image for `PDFDocument.prototype.loadImage`
+          // > Load an Image from a PDFObject (typically an indirect reference to an image resource).
+          // https://mupdf.readthedocs.io/en/latest/reference/javascript/types/PDFDocument.html#PDFDocument.prototype.loadImage
+          ret.push({ key, value: indirectObj, parent: xobjects });
+        } else {
+          // FIXME: ここに到達することがあるのか不明。対処がこれで正しいかも不明。
+          console.warn('name === "Image" && !isIndirect');
+
+          // > Add obj to the PDF as a numbered object, and return an indirect reference to it.
+          // https://mupdf.readthedocs.io/en/latest/reference/javascript/types/PDFDocument.html#PDFDocument.prototype.addObject
+          ret.push({
+            key,
+            value: xobjects._doc.addObject(value),
+            parent: xobjects,
+          });
+        }
+      } else if (name === "Form") {
+        ret.push(...getImages(value.get("Resources").get("XObject")));
+      }
+    });
+    return ret;
+  }
+
+  let pageObj = page.getObject();
+  if (pageObj.isIndirect()) {
+    pageObj = pageObj.resolve();
+  }
+  return getImages(pageObj.get("Resources").get("XObject"));
+}
 ```
 
 <details>
