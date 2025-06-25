@@ -65,7 +65,7 @@
 - [woff2.dockerfile](articles/0196c8ad-dd12-72bc-b9c7-dec35c735fd9/README.md)
 - [Emscriptenのdevcontainer環境](articles/0196c8af-1ad7-71fa-a98e-b95012af991d/README.md)
 - [GhostscriptをWASMにしたい](articles/0196e6d1-edd0-7940-ab91-1f2930eb8f7a/README.md)
-- [PDF内のラスタ画像を置換](articles/0197a636-f1e1-76ae-a625-c813a2b80a3d/README.md)
+- [PDF内のビットマップ画像を別の画像に置換するそこそこまともな方法](articles/0197a636-f1e1-76ae-a625-c813a2b80a3d/README.md)
 
 ---
 
@@ -2517,7 +2517,7 @@ const log = new TextDecoder().decode(
 console.log(log);
 ```
 
-## PDF内のラスタ画像を置換
+## PDF内のビットマップ画像を別の画像に置換するそこそこまともな方法
 
 ### Python
 
