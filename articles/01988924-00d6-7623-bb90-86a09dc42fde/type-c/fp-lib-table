@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "2169900001")(type "KiCad")(uri "${KIPRJMOD}/2169900001")(options "")(descr ""))
+  (lib (name "GT-USB-7014D")(type "KiCad")(uri "${KIPRJMOD}/GT-USB-7014D/GT-USB-7014D.pretty")(options "")(descr ""))
+)
