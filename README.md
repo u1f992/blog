@@ -67,6 +67,7 @@
 - [GhostscriptをWASMにしたい](articles/0196e6d1-edd0-7940-ab91-1f2930eb8f7a/README.md)
 - [PDF内のビットマップ画像を別の画像に置換するそこそこまともな方法](articles/0197a636-f1e1-76ae-a625-c813a2b80a3d/README.md)
 - [ミッドマウントタイプのUSB Type-C レセプタクルについて](articles/01988924-00d6-7623-bb90-86a09dc42fde/README.md)
+- [だいたい狙った時間で指定したファイルを配信するローカルサーバ](articles/0198bfcb-cbef-7e17-8c11-4ce3bc66c47a/README.md)
 
 ---
 
@@ -2726,3 +2727,114 @@ JLCPCB Assembly Parts Libで[Molex 2169900001](https://www.molex.com/en-us/produ
 寸法資料上の数値はほとんど同じで、フットプリントを重ねてもほとんど違いはなかった。
 
 ![](img-1.png)
+
+## だいたい狙った時間で指定したファイルを配信するローカルサーバ
+
+```py
+import http.server
+import math
+import time
+from urllib.parse import urlparse, parse_qs
+
+PORT = 8080
+FONT_ROUTE = "/NotoSansJP-VariableFont_wght.ttf"
+FONT_PATH = "Noto_Sans_JP/NotoSansJP-VariableFont_wght.ttf"
+CHUNK = 32  # bytes
+SECONDS_PARAM = "s"  # 受信完了までの目標秒数
+
+with open(FONT_PATH, "rb") as f:
+    FONT_DATA = f.read()
+
+FONT_SIZE = len(FONT_DATA)
+
+
+class SlowHandler(http.server.BaseHTTPRequestHandler):
+    def do_GET(self):
+        url = urlparse(self.path)
+        if url.path != FONT_ROUTE:
+            self.send_error(404)
+            return
+
+        q = parse_qs(url.query)
+        s = None
+        raw = q.get(SECONDS_PARAM, [None])[0]
+        if raw is not None:
+            try:
+                s = float(raw)
+            except ValueError:
+                s = None
+
+        self.send_response(200)
+        self.send_header("Content-Type", "font/ttf")
+        self.send_header("Content-Length", str(FONT_SIZE))
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
+
+        if not s or s <= 0:
+            try:
+                self.wfile.write(FONT_DATA)
+            except BrokenPipeError:
+                pass
+            return
+
+        chunks = max(1, math.ceil(FONT_SIZE / CHUNK))
+
+        start = time.perf_counter()
+        try:
+            offset = 0
+            idx = 0
+            while offset < FONT_SIZE:
+                self.wfile.write(FONT_DATA[offset : offset + CHUNK])
+                self.wfile.flush()
+
+                idx += 1
+                offset += CHUNK
+
+                # 理想スケジュール：i個目のチャンク送信直後の時刻 = (s * i) / chunks
+                target = (s * idx) / chunks
+                now = time.perf_counter() - start
+                sleep_for = target - now
+                if sleep_for > 0:
+                    time.sleep(sleep_for)
+
+        except BrokenPipeError:
+            pass
+
+
+http.server.ThreadingHTTPServer(("0.0.0.0", PORT), SlowHandler).serve_forever()
+```
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @page {
+        size: A5;
+      }
+      @font-face {
+        font-family: "Noto Sans JP";
+        src: url("http://localhost:8080/NotoSansJP-VariableFont_wght.ttf?s=10");
+        font-display: swap;
+        font-weight: 100 900;
+        font-style: normal;
+      }
+      p {
+        font-family: "Noto Sans JP", serif;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      フォントのダウンロードが非常に遅いので、しばらく明朝で表示されます。
+    </p>
+  </body>
+</html>
+```
+
+Vivliostyleにおける`font-display: swap`の挙動が気になったので作ったけど、先にフォント全体を読み込むのでスワップは起こらないことがわかって不要だった。
+
