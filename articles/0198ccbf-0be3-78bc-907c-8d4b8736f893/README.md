@@ -5,7 +5,7 @@
 <ul>
 <li>
 
-マイクロソフトソフトウェアライセンス条項（日本語版、最終更新：2024年4月） https://www.microsoft.com/useterms/
+マイクロソフトソフトウェアライセンス条項（Useterms_OEM_Windows_11_Japanese.pdf、最終更新：2024年4月） https://www.microsoft.com/useterms/
 
 > 2\. インストールと使用権
 >
