@@ -4,6 +4,16 @@ Linuxで作業するのも慣れてきたけど、Windowsが必要なことも�
 
 Windows 11のインストールメディアのISOイメージは[Microsoftのページ](https://www.microsoft.com/ja-jp/software-download/windows11)からダウンロードできる。もとのPCで回復メディアを作ってもいいのかな。あえてそうする必要はなさそう。
 
+Stable virtio-win ISOを用意しておく。virtio-winのダウンロード先はたらい回し式になっている。
+
+- https://github.com/virtio-win/kvm-guest-drivers-windows Fedoraのページ見てね
+  - https://docs.fedoraproject.org/en-US/quick-docs/creating-windows-virtual-machines-using-virtio-drivers/index.html virtio-win-pkg-scriptsのページ見てね
+    - https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md
+
+メモリやCPUの使用数は上限を提示されるので、ほどほどに指定する。RAM:12288MB/16GB、CPU:6/8にした。
+
+### ライセンス情報をダンプ
+
 OEM版のWindowsは次の情報でライセンス認証されている。
 
 <dl>
@@ -36,9 +46,7 @@ $ sudo apparmor_parser -r /etc/apparmor.d/abstractions/libvirt-qemu
 AppArmor parser error for /etc/apparmor.d/abstractions/libvirt-qemu in profile /etc/apparmor.d/abstractions/openssl at line 13: syntax error, unexpected TOK_MODE, expecting TOK_OPEN
 ```
 
-メモリやCPUの使用数は上限を提示されるので、ほどほどに指定する。
-
-virt-managerで「インストールの前に設定をカスタマイズする」を有効にしてXMLを編集する。
+virt-managerで「インストールの前に設定をカスタマイズする」を有効にしてXMLを編集する。名前空間の設定が重要。
 
 ```xml
 <domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
@@ -55,6 +63,8 @@ virt-managerで「インストールの前に設定をカスタマイズする�
   </qemu:commandline>
 </domain>
 ```
+
+### CPUトポロジーの手動設定
 
 Windowsにはソケット数の制限があり（[参考1](https://qiita.com/rxg03350/items/e76a6a858f6b9ac267b3#3161-cpu%E6%95%B0%E3%81%AE%E8%A8%AD%E5%AE%9A%E5%A4%89%E6%9B%B4)、[参考2](https://learn.microsoft.com/en-us/answers/questions/4032319/what-is-the-maximum-number-of-cpu-and-cores-suppor)）、virt-managerの初期構成では指示したコア数をすべて別ソケットに割り当てる（例：6コア割当→6ソケット各1コア）。そのため、CPUトポロジーを明示してやらないと性能が出ない。この制限の具体的な数値について、公式な情報が見つからない。コミュニティ回答によると、Windows 10にならって次の通りだろうとのこと。
 
@@ -73,20 +83,41 @@ Windowsにはソケット数の制限があり（[参考1](https://qiita.com/rxg
 
 通常のPCは1ソケットであり、変な構成のシミュレーションでなければ、6コア割当なら1ソケット6コアに直せばよい。
 
-virtio-winのインストールのため、Windowsインストールメディア用のほかにCD-ROMデバイスがもう1つ必要。
+### ディスクの設定
 
-べつによいが、virtio-winのダウンロード先はたらい回し式になっている。
+SATAディスクのディスクバスを~~VirtIO~~ SCSIに変更する。［ハードウェアを追加 > コントローラー］を選択、「種類」を「SCSI」に、「モデル」を「VirtIO SCSI」に設定して［完了］をクリック。
 
-- https://github.com/virtio-win/kvm-guest-drivers-windows Fedoraのページ見てね
-  - https://docs.fedoraproject.org/en-US/quick-docs/creating-windows-virtual-machines-using-virtio-drivers/index.html virtio-win-pkg-scriptsのページ見てね
-    - https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md
+<ul>
+<li>
+<a href="https://forum.proxmox.com/threads/virtio-vs-scsi.52893/post-245981">VirtIO vs SCSI | Proxmox Support Forum</a>
+<blockquote>
+<p>What I can tell is that the scsi virtio is better maintained and virtio-blk is the older one.</p>
+</blockquote>
+</li>
+<li>
+<a href="https://blog.zgock-lab.net/2019/01/26/gvtg2/">openSUSE Tumbleweed上のKVM仮想マシンでIntel iGPUを共有する(GVT-g)その２ - それすらもコアの果て</a>
+<blockquote>
+<p>今回はvirtioを使用するため、ディスクの設定をデフォルトのSATAから変更します</p>
+<p>詳細オプションから「SCSI」を選択します</p>
+<p>ここで「virtio」を選択可能ですが、現在はレガシーな手法とされており、VirtIO SCSIコントローラを使用して制御するのが推奨されています</p>
+<p>（中略）</p>
+<p>「ハードウェアを追加」からVirtIO SCSIコントローラを追加します</p>
+<p>ここで明示的に追加しないと、libvirtがlsilogicエミュレーションのコントローラを勝手に追加しますのでかならず明示的に追加してください</p>
+</blockquote>
+</li>
+</ul>
 
-Stable virtio-win ISOを用意しておく。SATA CD-ROMデバイスを追加して、ISOを選択する。SATAディスクのディスクバスをVirtIOに変更する。
+### virtio-win用にCD-ROMデバイスを追加
 
+virtio-winのインストールのため、Windowsインストールメディア用のほかにCD-ROMデバイスがもう1つ必要。SATA CD-ROMデバイスを追加して、ISOを選択する。
 
+### NIC
 
-VM上のWindowsとホストのCPU内蔵グラフィックを共有したい
+「デバイスのモデル」を「virtio」に変更する。
 
+### VM上のWindowsとホストのCPU内蔵グラフィックを共有したい
+
+- [Intel GVT-g - ArchWiki](https://wiki.archlinux.org/title/Intel_GVT-g)
 - [Ubuntu+KVM+GVT-gで仮想GPUを仮想環境に割り当てる #Ubuntu - Qiita](https://qiita.com/edidi-n/items/ad8f2d6fab84d958f2e7)
 - [openSUSE Tumbleweed上のKVM仮想マシンでIntel iGPUを共有する(GVT-g)その１ - それすらもコアの果て](https://blog.zgock-lab.net/2019/01/23/gvtg/)
 - [openSUSE Tumbleweed上のKVM仮想マシンでIntel iGPUを共有する(GVT-g)その２ - それすらもコアの果て](https://blog.zgock-lab.net/2019/01/26/gvtg2/)
@@ -95,238 +126,202 @@ VM上のWindowsとホストのCPU内蔵グラフィックを共有したい
 
 今回はIntel Core i8-8665U（第8世代）。11世代以降は別途調べ直し
 
-### 1. ホストのカーネルパラメータとモジュールの設定
-
-#### 1-A. カーネルパラメータの設定
+### カーネルパラメータの設定
 
 ```
 $ sudo nano /etc/default/grub
 
 # GRUB_CMDLINE_LINUXに追記
-GRUB_CMDLINE_LINUX="i915.enable_gvt=1 i915.enable_guc=0 intel_iommu=on"
+GRUB_CMDLINE_LINUX="intel_iommu=on i915.enable_gvt=1 i915.enable_guc=0"
 
 # 反映
 $ sudo update-grub
 ```
 
 <dl>
+<dt><code>intel_iommu=on</code></dt><dd>IOMMUの有効化。安全に実デバイスをVMへ割り当てるための機構。</dd>
 <dt><code>i915.enable_gvt=1</code></dt><dd>GVT-gホスト対応を有効化。i915はモジュール名。</dd>
 <dt><code>i915.enable_guc=0</code></dt><dd>GuC＝スケジューラ/サブミッション（＋一部電源管理）をGPU内のマイコンで処理。HuC＝エンコード系のメディア処理をオフロードして省電力・低負荷化。GVT-gでは無効にしたほうが安定するらしい。</dd>
-<dt><code>intel_iommu=on</code></dt><dd>IOMMUの有効化。安全に実デバイスをVMへ割り当てるための機構。</dd>
 </dl>
 
-#### 1-B. 起動時に明示的にkvmgtをロード
+### モジュールをロード
 
 ```
-$ sudo nano /etc/modules-load.d/kvmgt.conf
+# 存在チェック
+$ sudo modprobe --dry-run --verbose kvmgt vfio-iommu-type1 mdev
 
-# 1行追記
-kvmgt
+$ echo "kvmgt" | sudo tee /etc/modules-load.d/kvmgt.conf
+$ echo "vfio-iommu-type1" | sudo tee /etc/modules-load.d/vfio-iommu-type1.conf
+$ echo "mdev" | sudo tee /etc/modules-load.d/mdev.conf
 ```
 
-#### 1-C. KVMのMSR例外対策（Windows ゲストの安定化）
+ここで一度再起動。
+
+mdevctlを使えば仮想GPUの自動確保もやってもらえる。
 
 ```
-$ sudo nano /etc/modprobe.d/kvm.conf
-
-# 1行追記
-options kvm ignore_msrs=Y report_ignored_msrs=N
+$ sudo apt --yes install mdevctl
+$ mdevctl types
+0000:00:02.0
+  i915-GVTg_V5_4
+    Available instances: 1
+    Device API: vfio-pci
+    Name: GVTg_V5_4
+    Description: low_gm_size: 128MB, high_gm_size: 512MB, fence: 4, resolution: 1920x1200, weight: 4
+  i915-GVTg_V5_8
+    Available instances: 2
+    Device API: vfio-pci
+    Name: GVTg_V5_8
+    Description: low_gm_size: 64MB, high_gm_size: 384MB, fence: 4, resolution: 1024x768, weight: 2
+$ sudo mdevctl define --auto --uuid $(uuidgen) --parent 0000:00:02.0 --type i915-GVTg_V5_8
 ```
 
-ここで一度再起動。`sudo dmesg | grep iommu`で確認。
-
-### 2. GVT-g（mdev）の設定
-
-まずはGPUのPCIアドレスを特定する。
+`--auto`がそれ
 
 ```
-$ lspci -nn -D | grep -i 'vga\|igd\|uhd'
-0000:00:02.0 VGA compatible controller [0300]: Intel Corporation WhiskeyLake-U GT2 [UHD Graphics 620] [8086:3ea0] (rev 02)
-
-$ find /sys/class/drm/card*
-/sys/class/drm/card1
-/sys/class/drm/card1-DP-1
-/sys/class/drm/card1-DP-2
-/sys/class/drm/card1-HDMI-A-1
-/sys/class/drm/card1-eDP-1
-
-$ readlink -f /sys/class/drm/card1/device
-/sys/devices/pci0000:00/0000:00:02.0
+  -a, --auto
+          Automatically start device on parent availability
 ```
 
-対応しているGVT-g（mdv）を調べる。
+カツカツな設定（weight:4/fence:4）にすると失敗する。ここで`golden_hw_state failed with error -2`は実際にはエラーではないらしい（[参考](https://github.com/intel/gvt-linux/issues/212)）
 
 ```
-$ ls /sys/devices/pci0000\:00/0000\:00\:02.0/mdev_supported_types/
-i915-GVTg_V5_4  i915-GVTg_V5_8
-
-$ cat /sys/devices/pci0000\:00/0000\:00\:02.0/mdev_supported_types/i915-GVTg_V5_4/description
-low_gm_size: 128MB
-high_gm_size: 512MB
-fence: 4
-resolution: 1920x1200
-weight: 4
-
-$ cat /sys/devices/pci0000\:00/0000\:00\:02.0/mdev_supported_types/i915-GVTg_V5_8/description
-low_gm_size: 64MB
-high_gm_size: 384MB
-fence: 4
-resolution: 1024x768
-weight: 2
+mukai@mukai-ThinkPad-X1-Carbon-7th:~$ sudo dmesg | grep -i gvt
+[    0.000000] Command line: BOOT_IMAGE=/boot/vmlinuz-6.14.0-27-generic root=UUID=e21f1775-eca7-40bf-9752-96720ff71178 ro intel_iommu=on i915.enable_gvt=1 i915.enable_guc=0 quiet splash vt.handoff=7
+[    0.058214] Kernel command line: BOOT_IMAGE=/boot/vmlinuz-6.14.0-27-generic root=UUID=e21f1775-eca7-40bf-9752-96720ff71178 ro intel_iommu=on i915.enable_gvt=1 i915.enable_guc=0 quiet splash vt.handoff=7
+[    5.412043] i915 0000:00:02.0: Direct firmware load for i915/gvt/vid_0x8086_did_0x3ea0_rid_0x02.golden_hw_state failed with error -2
+[   77.118191] gvt: fail to alloc low gm space from host
+[   77.118382] gvt: failed to create intel vgpu: -28
 ```
 
-<dl>
-<dt><code>low_gm_size／high_gm_size</code></dt><dd>vGPUの予約VRAM（最小/最大）容量</dd>
-<dt><code>fence</code></dt><dd>ホスト側の枠数</dd>
-<dt><code>weight</code></dt><dd>このタイプが消費する枠（そのものではない。ゲストでweight:4/fence:4を使い切ってもホストは無事）</dd>
-</dl>
-
-### 3. vGPUの作成
+割り当てられたIDは次のコマンドで確認できる。
 
 ```
-$ UUID="$(uuidgen)"
-$ echo "$UUID" | sudo tee /sys/devices/pci0000\:00/0000\:00\:02.0/mdev_supported_types/i915-GVTg_V5_4/create
-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-$ ls -d /sys/devices/pci0000\:00/0000\:00\:02.0/* | grep "$UUID"
-/sys/devices/pci0000:00/0000:00:02.0/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+$ mdevctl list -d
+ae6411d7-151d-485d-98e7-fa377c478da0 0000:00:02.0 i915-GVTg_V5_8 auto
+
+$ sudo mdevctl start --uuid ae6411d7-151d-485d-98e7-fa377c478da0
+$ sudo systemctl restart libvirtd
 ```
 
-メモ：削除は`echo 1 | sudo tee /sys/bus/mdev/devices/$UUID/remove`
+［ハードウェアを追加 > MDEVホストデバイス］を選択、先ほどのUUIDのデバイスを選択して［完了］をクリック。
 
-vGPUはホストの電源を落とすたびに削除されるので、次のようなスクリプトでVMの起動にフックして作成されるようにする。
-
-- [Intel GVT-g - ArchWiki](https://wiki.archlinux.org/title/Intel_GVT-g) 1.2.1 Option 1: libvirt QEMU hook
-
-<blockquote>
-<figure>
-<figcaption>/etc/libvirt/hooks/qemu<figcaption>
-
-```sh
-#!/bin/sh
-GVT_PCI=<GVT_PCI>
-GVT_GUID=<GVT_GUID>
-MDEV_TYPE=<GVT_TYPE>
-DOMAIN=<DOMAIN name>
-if [ $# -ge 3 ]; then
-    if [[ " $DOMAIN " =~ .*\ $1\ .* ]] && [ "$2" = "prepare" ] && [ "$3" = "begin" ]; then
-        echo "$GVT_GUID" > "/sys/devices/pci0000:00/$GVT_PCI/mdev_supported_types/$MDEV_TYPE/create"
-    elif [[ " $DOMAIN " =~ .*\ $1\ .* ]] && [ "$2" = "release" ] && [ "$3" = "end" ]; then
-        echo 1 > "/sys/devices/pci0000:00/$GVT_PCI/$GVT_GUID/remove"
-    fi
-fi
+```xml
+<hostdev mode="subsystem" type="mdev" managed="yes" model="vfio-pci" display="off" ramfb="off">
+  <source>
+    <address uuid="ae6411d7-151d-485d-98e7-fa377c478da0"/>
+  </source>
+</hostdev>
 ```
 
-</figure>
+［概要］のXMLタブを開く。名前空間の設定が重要（ライセンス情報の参照時に追加した）。
 
-Do not forget to make the file [executable](https://wiki.archlinux.org/title/Executable) and to quote each variable value e.g. `GVT_PCI="0000:00:02.0"`. You will also need to restart the libvirtd daemon so that it is aware of the new hook.
-
-<div>
-
-Note:
-
-- If you use libvirt user session, you need to tweak the script to use privilege elevation commands, such as pkexec(1) or a no-password sudo.
-- The XML of the domain is feed to the hook script through stdin. You can use `xmllint` and XPath expression to extract `GVT_GUID` from stdin, e.g.:<pre><code>GVT_GUID="$(xmllint --xpath 'string(/domain/devices/hostdev[@type="mdev"][@display="on"]/source/address/@uuid)' -)"</code></pre>
-
-</div>
-</blockquote>
-
-`[[ ]]`がbash拡張なのでshebangは`#!/bin/bash`が正しそう。
-
-libvirtをどちらで動かしているか確認する
-
-```
-$ virsh uri
-qemu:///system
-# or qemu:///session
-```
-
-`qemu:///system`なら書いてある通りにすればよい。
-
-<details>
-<summary><code>qemu:///session</code>なら</summary>
-
-hooksのパスは`~/.config/libvirt/hooks/qemu`
-
-権限を考慮して変更するとこんな感じ（`sudo tee`使用）
-
-```
-#!/bin/bash
-GVT_PCI=<GVT_PCI>
-GVT_GUID=<GVT_GUID>
-MDEV_TYPE=<GVT_TYPE>
-DOMAIN=<DOMAIN name>
-if [ $# -ge 3 ]; then
-    if [[ " $DOMAIN " =~ .*\ $1\ .* ]] && [ "$2" = "prepare" ] && [ "$3" = "begin" ]; then
-        echo "$GVT_GUID" | sudo /usr/bin/tee "/sys/devices/pci0000:00/$GVT_PCI/mdev_supported_types/$MDEV_TYPE/create" >/dev/null
-    elif [[ " $DOMAIN " =~ .*\ $1\ .* ]] && [ "$2" = "release" ] && [ "$3" = "end" ]; then
-        echo 1 | sudo /usr/bin/tee "/sys/devices/pci0000:00/$GVT_PCI/$GVT_GUID/remove" >/dev/null
-    fi
-fi
-```
-
-`/etc/sudoers.d/libvirt-mdev`に追記
-
-```
-Cmnd_Alias MDEV_TEE_CMDS = \
-    /usr/bin/tee /sys/devices/pci0000\:00/0000\:00\:02.0/mdev_supported_types/*/create, \
-    /usr/bin/tee /sys/devices/pci0000\:00/0000\:00\:02.0/*/remove
-
-mukai ALL=(root) NOPASSWD: MDEV_TEE_CMDS
-```
-
-</details>
-
-権限を付与してデーモンを再起動する。
-
-```
-sudo chmod +x /etc/libvirt/hooks/qemu
-sudo systemctl restart libvirtd
-```
-
-### 4. vGPUの割り当て
-
-ディスプレイの「リッスン」を「なし」に変更、「OpenGL」にチェックを入れる。
-
-ビデオはQXLのままにする。
-
-ハードウェアを追加。「MDEVホストデバイス」から先ほどのUUIDのデバイスを選択。
-
-上部の［インストールの開始］をクリックする。先ほどディスクバスをVirtIOにしたことで、ドライバをインストールするまでディスクを見つけられない状態になっている。「インストールの種類を選んでください」画面では［カスタム］を選択してドライバを読み込む。
-
-`viogpudo`・`Balloon`のドライバーもインストール
-
-Windowsのインストールが済んだら一旦VMを終了
-
-MDEV xxxx…のXMLを開き、`display=on`に変更する。ビデオQXLをNoneに変更する。
-
-概要のXMLから末尾に以下を追加
-
-```
+```xml
+<domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
+  <!-- ... -->
   <qemu:override>
     <qemu:device alias="hostdev0">
       <qemu:frontend>
         <qemu:property name="x-igd-opregion" type="bool" value="true"/>
-        <qemu:property name="driver" type="string" value="vfio-pci-nohotplug"/>
-        <qemu:property name="ramfb" type="bool" value="true"/>
       </qemu:frontend>
     </qemu:device>
   </qemu:override>
+</domain>
 ```
 
-ChatGPTがいうには
+UEFI（OVMF）のゲストではDMA-BUFディスプレイが表示されない。「[extract the OpROM](http://120.25.59.132:3000/vbios_gvt_uefi.rom) from the kernel patch ([source](https://www.reddit.com/r/VFIO/comments/av736o/creating_a_clover_bios_nonuefi_install_for_qemu/ehdz6mf/)) and feed it to QEMU as an override.」してやる必要がある（[参考](https://wiki.archlinux.org/title/Intel_GVT-g)）。
+
+<details>
+<summary>ビルドしてやりたかったが起動しなかった</summary>
+
+`i915ovmf.rom`をビルドする。2月11日以降のArch Linuxの変更でビルドできなくなっているので、それ以前のコンテナでビルドする。
 
 ```
-- name="x-igd-opregion" type="bool" value="true"
+$ docker run -it --rm archlinux:base-devel-20250209.0.306557 bash
 
-Intel iGPU（IGD）用の “OpRegion（VBT 含む）” をゲストへ露出します。これにより物理出力のコネクタ情報などをゲスト側ドライバが取得でき、Windows での画面出力が有効化されます。IGD を mdev/VFIO で使う際に必須とされます。
-
-- name="driver" type="string" value="vfio-pci-nohotplug"
-
-QEMU の VFIO デバイスを**“nohotplug” 派生**に切り替えます。
-
-これは後述の ramfb を使うために必須で、ramfb はファームウェア（fw_cfg）に依存しホットプラグと両立しないため、ramfb は nohotplug 版にだけ実装されています。
-
-- name="ramfb" type="bool" value="true"
-
-RAM Framebuffer（ramfb）を有効化。UEFI/ブート段階から簡易フレームバッファで画面表示でき、GPUドライバがロードされる前の POST/UEFI/ブート画面も見られるようになります（VNC/SPICE/egl-headless 等のグラフィクスと併用）。
+# pacman -Sy --noconfirm git sudo python acpica
+# useradd -m builder
+# passwd -d builder
+# echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+# su - builder
+$ git clone https://aur.archlinux.org/i915ovmf.git
+$ cd i915ovmf
+$ makepkg -s --noconfirm
+$ mkdir output
+$ bsdtar -xvf i915ovmf-*.pkg.tar.zst -C output
+x .BUILDINFO
+x .MTREE
+x .PKGINFO
+x var/
+x var/lib/
+x var/lib/libvirt/
+x var/lib/libvirt/qemu/
+x var/lib/libvirt/qemu/drivers/
+x var/lib/libvirt/qemu/drivers/i915ovmf.rom
 ```
+
+別ターミナルから
+
+```
+$ docker ps
+$ docker cp <コンテナID>:/home/builder/i915ovmf/output ./i915ovmf
+$ sudo mkdir -p /var/lib/libvirt/qemu/drivers
+$ sudo cp ./i915ovmf/var/lib/libvirt/qemu/drivers/i915ovmf.rom /var/lib/libvirt/qemu/drivers/
+```
+
+</details>
+
+http://120.25.59.132:3000/vbios_gvt_uefi.rom からダウンロードして適当な場所に置く。`sha256:33e540db0838fd49236087d2cda21f4eaa38672f6b2ac56f45351799858de085`
+
+```xml
+<!-- ... -->
+  <qemu:override>
+    <qemu:device alias="hostdev0">
+      <qemu:frontend>
+        <!-- ... -->
+        <qemu:property name="romfile" type="string" value="/home/mukai/win11/vbios_gvt_uefi.rom"/>
+        <!-- ... -->
+      </qemu:frontend>
+    </qemu:device>
+  </qemu:override>
+<!-- ... -->
+```
+
+RAMFBディスプレイを有効化
+
+```xml
+<!-- ... -->
+  <qemu:override>
+    <qemu:device alias="hostdev0">
+      <qemu:frontend>
+        <!-- ... -->
+        <qemu:property name="driver" type="string" value="vfio-pci-nohotplug"/>
+        <qemu:property name="ramfb" type="bool" value="true"/>
+        <!-- ... -->
+      </qemu:frontend>
+    </qemu:device>
+  </qemu:override>
+<!-- ... -->
+```
+
+「Output using SPICE with MESA EGL」に従う。注意書きが少ないから。
+
+- hostdevのdisplayをonに変更
+- `<graphics>`と`<video>`を削除
+- 以下を追加
+
+```
+    <graphics type='spice'>
+      <listen type='none'/>
+      <gl enable='yes'/>
+    </graphics>
+    <video>
+      <model type='none'/>
+    </video>
+```
+
+virtio-winのディスクから以下のドライバをインストールする
+
+- NetKVM
+- Balloon
+- vioscsi
