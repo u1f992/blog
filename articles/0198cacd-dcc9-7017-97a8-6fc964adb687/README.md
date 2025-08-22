@@ -86,3 +86,11 @@ Stable virtio-win ISOを用意しておく。SATA CD-ROMデバイスを追加し
 Windows用のVirtIO GPUはまだ微妙らしい。ビデオはQXLのままにする。
 
 上部の［インストールの開始］をクリックする。先ほどディスクバスをVirtIOにしたことで、ドライバをインストールするまでディスクを見つけられない状態になっている。「インストールの種類を選んでください」画面では［カスタム］を選択してドライバを読み込む。
+
+VM上のWindowsとホストのCPU内蔵グラフィックを共有したい
+
+- [Ubuntu+KVM+GVT-gで仮想GPUを仮想環境に割り当てる #Ubuntu - Qiita](https://qiita.com/edidi-n/items/ad8f2d6fab84d958f2e7)
+- [openSUSE Tumbleweed上のKVM仮想マシンでIntel iGPUを共有する(GVT-g)その１ - それすらもコアの果て](https://blog.zgock-lab.net/2019/01/23/gvtg/)
+- [openSUSE Tumbleweed上のKVM仮想マシンでIntel iGPUを共有する(GVT-g)その２ - それすらもコアの果て](https://blog.zgock-lab.net/2019/01/26/gvtg2/)
+- [KVM環境でIntel iGPUグラフィックを仮想マシンにパススルー(というか共有)する - naba_san’s diary](https://naba-san.hatenablog.com/entry/2022/09/19/005709)
+- [libvirt で GPU の仮想化を有効にしてみる - delete from hateblo.jp where 1=1;](https://deletefrom.hateblo.jp/entry/2023/09/26/024129)

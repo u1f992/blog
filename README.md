@@ -67,9 +67,10 @@
 - [GhostscriptをWASMにしたい](articles/0196e6d1-edd0-7940-ab91-1f2930eb8f7a/README.md)
 - [PDF内のビットマップ画像を別の画像に置換するそこそこまともな方法](articles/0197a636-f1e1-76ae-a625-c813a2b80a3d/README.md)
 - [ミッドマウントタイプのUSB Type-C レセプタクルについて](articles/01988924-00d6-7623-bb90-86a09dc42fde/README.md)
-- [だいたい狙った時間で指定したファイルを配信するローカルサーバ](articles/0198bfcb-cbef-7e17-8c11-4ce3bc66c47a/README.md)
+- [だいたい狙った時間で指定したファイルを配信するローカルサーバ](articles/0198bfcb-cbef-7e17-8c11-4ce3bc66c47a/README.md)
 - [ラップトップにプリインストールされたOEM版Windows 11をKVM上にインストールし直して利用する](articles/0198cacd-dcc9-7017-97a8-6fc964adb687/README.md)
 - [OEM版WindowsをLinuxに置き換えたあとにそのライセンスをKVM等の上で使うことに問題はあるのか](articles/0198ccbf-0be3-78bc-907c-8d4b8736f893/README.md)
+- [GitHub上のPythonパッケージをインストールする](articles/0198cf48-ef65-7a71-9d3b-10be054e876f/README.md)
 
 ---
 
@@ -2929,6 +2930,15 @@ Stable virtio-win ISOを用意しておく。SATA CD-ROMデバイスを追加し
 Windows用のVirtIO GPUはまだ微妙らしい。ビデオはQXLのままにする。
 
 上部の［インストールの開始］をクリックする。先ほどディスクバスをVirtIOにしたことで、ドライバをインストールするまでディスクを見つけられない状態になっている。「インストールの種類を選んでください」画面では［カスタム］を選択してドライバを読み込む。
+
+VM上のWindowsとホストのCPU内蔵グラフィックを共有したい
+
+- [Ubuntu+KVM+GVT-gで仮想GPUを仮想環境に割り当てる #Ubuntu - Qiita](https://qiita.com/edidi-n/items/ad8f2d6fab84d958f2e7)
+- [openSUSE Tumbleweed上のKVM仮想マシンでIntel iGPUを共有する(GVT-g)その１ - それすらもコアの果て](https://blog.zgock-lab.net/2019/01/23/gvtg/)
+- [openSUSE Tumbleweed上のKVM仮想マシンでIntel iGPUを共有する(GVT-g)その２ - それすらもコアの果て](https://blog.zgock-lab.net/2019/01/26/gvtg2/)
+- [KVM環境でIntel iGPUグラフィックを仮想マシンにパススルー(というか共有)する - naba_san’s diary](https://naba-san.hatenablog.com/entry/2022/09/19/005709)
+- [libvirt で GPU の仮想化を有効にしてみる - delete from hateblo.jp where 1=1;](https://deletefrom.hateblo.jp/entry/2023/09/26/024129)
+
 ## OEM版WindowsをLinuxに置き換えたあとにそのライセンスをKVM等の上で使うことに問題はあるのか
 
 もとWindowsがインストールされていたPC上で、1インスタンスのみ運用する場合に限り、問題ない。
@@ -2988,3 +2998,17 @@ http://blog.syo-ko.com/?eid=2057#gsc.tab=0 （2014年）
 </ul>
 
 
+
+## GitHub上のPythonパッケージをインストールする
+
+ルートがPythonプロジェクトになっているGitHubリポジトリは`git+https://github.com/～`とすればよいのだけど、例えば[MarkItDown](https://github.com/microsoft/markitdown)はモノレポになっていて、コアとCLIアプリは[packages/markitdown](https://github.com/microsoft/markitdown/tree/main/packages/markitdown)にある。このようなリポジトリに対してはURLフラグメント`subdirectory`を指定するとよい。
+
+- [VCS Support - pip documentation v25.2](https://pip.pypa.io/en/stable/topics/vcs-support/#url-fragments)
+
+`uv tool`や`pipx`と組み合わせるとさらに便利。
+
+```
+PS > uv tool install git+https://github.com/microsoft/markitdown#subdirectory=packages/markitdown
+```
+
+よく読んだらMarkItDownはPyPIにもアップロードされていた。ぼんやりしていたみたい。
