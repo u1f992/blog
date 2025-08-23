@@ -113,7 +113,7 @@ virtio-winのインストールのため、Windowsインストールメディア
 
 ### NIC
 
-「デバイスのモデル」を「virtio」に変更する。
+「デバイスのモデル」を「virtio」に変更する。Windows Updateが走るとうざいので「リンクの状態：アクティブ」のチェックを外す。
 
 ### VM上のWindowsとホストのCPU内蔵グラフィックを共有したい
 
@@ -176,12 +176,29 @@ $ mdevctl types
 $ sudo mdevctl define --auto --uuid $(uuidgen) --parent 0000:00:02.0 --type i915-GVTg_V5_8
 ```
 
-`--auto`がそれ
+~~`--auto`がそれ~~
 
 ```
   -a, --auto
           Automatically start device on parent availability
 ```
+
+mdevctl 1.3.0の自動起動の設定では`/usr/sbin/mdevctl`を参照しているが（[参考](https://github.com/mdevctl/mdevctl/blob/48e26971b0a21464e0432dcdc36f3cd10a1629c8/60-mdevctl.rules)）、Ubuntu 24.04では`/usr/bin/mdevctl`にインストールされるので自動起動が失敗している。[報告済み](https://bugs.launchpad.net/ubuntu/+source/mdevctl/+bug/2121264)
+
+```
+$ which mdevctl
+/usr/bin/mdevctl
+$ journalctl -u systemd-udevd -b | grep mdevctl
+ 8月 23 08:00:36 mukai-ThinkPad-X1-Carbon-7th mdevctl[509]: /bin/sh: 1: /usr/sbin/mdevctl: not found
+```
+
+仕方ないのでとりあえずシンボリックリンクを追加
+
+```
+$ sudo ln -s /usr/bin/mdevctl /usr/sbin/mdevctl
+```
+
+再起動して`mdevctl list`で起動していることを確認。
 
 カツカツな設定（weight:4/fence:4）にすると失敗する。ここで`golden_hw_state failed with error -2`は実際にはエラーではないらしい（[参考](https://github.com/intel/gvt-linux/issues/212)）
 
@@ -325,3 +342,7 @@ virtio-winのディスクから以下のドライバをインストールする
 - NetKVM
 - Balloon
 - vioscsi
+
+ネットワークに繋がないとインストールできませんと抜かすので`Shift+F10`・`start ms-cxh:localonly`で回避（[参考](https://x.com/witherornot1337/status/1906050664741937328)）。インストール後一旦シャットダウン、ネットワークを復帰させて再起動。ネットワークにつなげてWindows Updateを適用するとグラフィックドライバがあたり、タスク マネージャーでもGPU 0が見えるようになる。これでたぶん成功。
+
+一般的なアドバイスとして、スリープ無効化とBitLocker解除。
