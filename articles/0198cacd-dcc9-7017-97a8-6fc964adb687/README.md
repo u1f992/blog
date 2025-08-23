@@ -346,3 +346,22 @@ virtio-winのディスクから以下のドライバをインストールする
 ネットワークに繋がないとインストールできませんと抜かすので`Shift+F10`・`start ms-cxh:localonly`で回避（[参考](https://x.com/witherornot1337/status/1906050664741937328)）。インストール後一旦シャットダウン、ネットワークを復帰させて再起動。ネットワークにつなげてWindows Updateを適用するとグラフィックドライバがあたり、タスク マネージャーでもGPU 0が見えるようになる。これでたぶん成功。
 
 一般的なアドバイスとして、スリープ無効化とBitLocker解除。
+
+vioserialをインストール。再起動。[SPICE > Download > Guest > Windows binaries](https://www.spice-space.org/download.html#windows-binaries)からWindows SPICE agent単体のインストーラーをダウンロード。Windows QXL-WDDM-DOD driverとWindows QXL driverはグラフィックドライバぽいから今回の構成では悪影響がありそうだ。再起動。ゲスト〜ホスト間でコピペできるようになる。
+
+~~同じサイトからSpice WebDAV daemonのインストーラーをダウンロード。一旦シャットダウン。~~
+
+~~［ハードウェアを追加 > チャンネル］「デバイスの種類」を「Spiceポート（spiceport）」に変更。名前とチャンネルを`org.spice-space.webdav.0`に変更して［完了］（[参考](https://www.spice-space.org/spice-user-manual.html#_folder_sharing)）起動してインストーラーからインストール。再起動~~
+
+https://blog.sergeantbiggs.net/posts/file-sharing-with-qemu-and-virt-manager/
+https://donbulinux.hatenablog.jp/entry/2024/07/12/150851
+
+ホストで`sudo apt install virtiofsd`
+
+virtiofsを動作させる要件として、［メモリー > Enable shared memory］を有効化。［ハードウェアを追加 > ファイルシステム］「Driver」は「virtiofs」に設定し、共有したいホスト上のパスを指定。`/home/mukai/Public`など。
+
+「ターゲットパス」は要注意。「share」とでもしておく。
+
+> The target path is a bit of a misnomer. It’s not actually a path, just an identifier that we use as a mount point in our guest file system.
+
+[WinFsp](https://winfsp.dev/)とvirtio-winディスクに含まれているvirtio-win-guest-tools.exeをインストール（[参考](https://donbulinux.hatenablog.jp/entry/2024/07/12/150851)）このときドライバーとかSPICE agentがまるっと入っている気がする。再起動。サービス「VirtioFsSvc」が実行中の間だけZ:ドライブとして共有ドライブが見える。タスクマネージャーの「サービス」から「VirtioFsSvc」を探し、右クリック > サービス管理ツールを開く。「VirtIO-FS Service」のプロパティを開き、スタートアップの種類を「自動」に変更して適用。再起動してZ:ドライブが自動で見えていたら成功。

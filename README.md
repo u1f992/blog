@@ -67,10 +67,10 @@
 - [GhostscriptをWASMにしたい](articles/0196e6d1-edd0-7940-ab91-1f2930eb8f7a/README.md)
 - [PDF内のビットマップ画像を別の画像に置換するそこそこまともな方法](articles/0197a636-f1e1-76ae-a625-c813a2b80a3d/README.md)
 - [ミッドマウントタイプのUSB Type-C レセプタクルについて](articles/01988924-00d6-7623-bb90-86a09dc42fde/README.md)
-- [だいたい狙った時間で指定したファイルを配信するローカルサーバ](articles/0198bfcb-cbef-7e17-8c11-4ce3bc66c47a/README.md)
+- [だいたい狙った時間で指定したファイルを配信するローカルサーバ](articles/0198bfcb-cbef-7e17-8c11-4ce3bc66c47a/README.md)
 - [ラップトップにプリインストールされたOEM版Windows 11をKVM上にインストールし直して利用する](articles/0198cacd-dcc9-7017-97a8-6fc964adb687/README.md)
 - [OEM版WindowsをLinuxに置き換えたあとにそのライセンスをKVM等の上で使うことに問題はあるのか](articles/0198ccbf-0be3-78bc-907c-8d4b8736f893/README.md)
-- [GitHub上のPythonパッケージをインストールする](articles/0198cf48-ef65-7a71-9d3b-10be054e876f/README.md)
+- [GitHub上のPythonパッケージをインストールする](articles/0198cf48-ef65-7a71-9d3b-10be054e876f/README.md)
 
 ---
 
@@ -2848,6 +2848,16 @@ Linuxで作業するのも慣れてきたけど、Windowsが必要なことも�
 
 Windows 11のインストールメディアのISOイメージは[Microsoftのページ](https://www.microsoft.com/ja-jp/software-download/windows11)からダウンロードできる。もとのPCで回復メディアを作ってもいいのかな。あえてそうする必要はなさそう。
 
+Stable virtio-win ISOを用意しておく。virtio-winのダウンロード先はたらい回し式になっている。
+
+- https://github.com/virtio-win/kvm-guest-drivers-windows Fedoraのページ見てね
+  - https://docs.fedoraproject.org/en-US/quick-docs/creating-windows-virtual-machines-using-virtio-drivers/index.html virtio-win-pkg-scriptsのページ見てね
+    - https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md
+
+メモリやCPUの使用数は上限を提示されるので、ほどほどに指定する。RAM:12288MB/16GB、CPU:6/8にした。
+
+### ライセンス情報をダンプ
+
 OEM版のWindowsは次の情報でライセンス認証されている。
 
 <dl>
@@ -2880,9 +2890,7 @@ $ sudo apparmor_parser -r /etc/apparmor.d/abstractions/libvirt-qemu
 AppArmor parser error for /etc/apparmor.d/abstractions/libvirt-qemu in profile /etc/apparmor.d/abstractions/openssl at line 13: syntax error, unexpected TOK_MODE, expecting TOK_OPEN
 ```
 
-メモリやCPUの使用数は上限を提示されるので、ほどほどに指定する。
-
-virt-managerで「インストールの前に設定をカスタマイズする」を有効にしてXMLを編集する。
+virt-managerで「インストールの前に設定をカスタマイズする」を有効にしてXMLを編集する。名前空間の設定が重要。
 
 ```xml
 <domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
@@ -2899,6 +2907,8 @@ virt-managerで「インストールの前に設定をカスタマイズする�
   </qemu:commandline>
 </domain>
 ```
+
+### CPUトポロジーの手動設定
 
 Windowsにはソケット数の制限があり（[参考1](https://qiita.com/rxg03350/items/e76a6a858f6b9ac267b3#3161-cpu%E6%95%B0%E3%81%AE%E8%A8%AD%E5%AE%9A%E5%A4%89%E6%9B%B4)、[参考2](https://learn.microsoft.com/en-us/answers/questions/4032319/what-is-the-maximum-number-of-cpu-and-cores-suppor)）、virt-managerの初期構成では指示したコア数をすべて別ソケットに割り当てる（例：6コア割当→6ソケット各1コア）。そのため、CPUトポロジーを明示してやらないと性能が出ない。この制限の具体的な数値について、公式な情報が見つからない。コミュニティ回答によると、Windows 10にならって次の通りだろうとのこと。
 
@@ -2917,27 +2927,288 @@ Windowsにはソケット数の制限があり（[参考1](https://qiita.com/rxg
 
 通常のPCは1ソケットであり、変な構成のシミュレーションでなければ、6コア割当なら1ソケット6コアに直せばよい。
 
-virtio-winのインストールのため、Windowsインストールメディア用のほかにCD-ROMデバイスがもう1つ必要。
+### ディスクの設定
 
-べつによいが、virtio-winのダウンロード先はたらい回し式になっている。
+SATAディスクのディスクバスを~~VirtIO~~ SCSIに変更する。［ハードウェアを追加 > コントローラー］を選択、「種類」を「SCSI」に、「モデル」を「VirtIO SCSI」に設定して［完了］をクリック。
 
-- https://github.com/virtio-win/kvm-guest-drivers-windows Fedoraのページ見てね
-  - https://docs.fedoraproject.org/en-US/quick-docs/creating-windows-virtual-machines-using-virtio-drivers/index.html virtio-win-pkg-scriptsのページ見てね
-    - https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md
+<ul>
+<li>
+<a href="https://forum.proxmox.com/threads/virtio-vs-scsi.52893/post-245981">VirtIO vs SCSI | Proxmox Support Forum</a>
+<blockquote>
+<p>What I can tell is that the scsi virtio is better maintained and virtio-blk is the older one.</p>
+</blockquote>
+</li>
+<li>
+<a href="https://blog.zgock-lab.net/2019/01/26/gvtg2/">openSUSE Tumbleweed上のKVM仮想マシンでIntel iGPUを共有する(GVT-g)その２ - それすらもコアの果て</a>
+<blockquote>
+<p>今回はvirtioを使用するため、ディスクの設定をデフォルトのSATAから変更します</p>
+<p>詳細オプションから「SCSI」を選択します</p>
+<p>ここで「virtio」を選択可能ですが、現在はレガシーな手法とされており、VirtIO SCSIコントローラを使用して制御するのが推奨されています</p>
+<p>（中略）</p>
+<p>「ハードウェアを追加」からVirtIO SCSIコントローラを追加します</p>
+<p>ここで明示的に追加しないと、libvirtがlsilogicエミュレーションのコントローラを勝手に追加しますのでかならず明示的に追加してください</p>
+</blockquote>
+</li>
+</ul>
 
-Stable virtio-win ISOを用意しておく。SATA CD-ROMデバイスを追加して、ISOを選択する。SATAディスクのディスクバスをVirtIOに変更する。
+### virtio-win用にCD-ROMデバイスを追加
 
-Windows用のVirtIO GPUはまだ微妙らしい。ビデオはQXLのままにする。
+virtio-winのインストールのため、Windowsインストールメディア用のほかにCD-ROMデバイスがもう1つ必要。SATA CD-ROMデバイスを追加して、ISOを選択する。
 
-上部の［インストールの開始］をクリックする。先ほどディスクバスをVirtIOにしたことで、ドライバをインストールするまでディスクを見つけられない状態になっている。「インストールの種類を選んでください」画面では［カスタム］を選択してドライバを読み込む。
+### NIC
 
-VM上のWindowsとホストのCPU内蔵グラフィックを共有したい
+「デバイスのモデル」を「virtio」に変更する。Windows Updateが走るとうざいので「リンクの状態：アクティブ」のチェックを外す。
 
+### VM上のWindowsとホストのCPU内蔵グラフィックを共有したい
+
+- [Intel GVT-g - ArchWiki](https://wiki.archlinux.org/title/Intel_GVT-g)
 - [Ubuntu+KVM+GVT-gで仮想GPUを仮想環境に割り当てる #Ubuntu - Qiita](https://qiita.com/edidi-n/items/ad8f2d6fab84d958f2e7)
 - [openSUSE Tumbleweed上のKVM仮想マシンでIntel iGPUを共有する(GVT-g)その１ - それすらもコアの果て](https://blog.zgock-lab.net/2019/01/23/gvtg/)
 - [openSUSE Tumbleweed上のKVM仮想マシンでIntel iGPUを共有する(GVT-g)その２ - それすらもコアの果て](https://blog.zgock-lab.net/2019/01/26/gvtg2/)
 - [KVM環境でIntel iGPUグラフィックを仮想マシンにパススルー(というか共有)する - naba_san’s diary](https://naba-san.hatenablog.com/entry/2022/09/19/005709)
 - [libvirt で GPU の仮想化を有効にしてみる - delete from hateblo.jp where 1=1;](https://deletefrom.hateblo.jp/entry/2023/09/26/024129)
+
+今回はIntel Core i8-8665U（第8世代）。11世代以降は別途調べ直し
+
+### カーネルパラメータの設定
+
+```
+$ sudo nano /etc/default/grub
+
+# GRUB_CMDLINE_LINUXに追記
+GRUB_CMDLINE_LINUX="intel_iommu=on i915.enable_gvt=1 i915.enable_guc=0"
+
+# 反映
+$ sudo update-grub
+```
+
+<dl>
+<dt><code>intel_iommu=on</code></dt><dd>IOMMUの有効化。安全に実デバイスをVMへ割り当てるための機構。</dd>
+<dt><code>i915.enable_gvt=1</code></dt><dd>GVT-gホスト対応を有効化。i915はモジュール名。</dd>
+<dt><code>i915.enable_guc=0</code></dt><dd>GuC＝スケジューラ/サブミッション（＋一部電源管理）をGPU内のマイコンで処理。HuC＝エンコード系のメディア処理をオフロードして省電力・低負荷化。GVT-gでは無効にしたほうが安定するらしい。</dd>
+</dl>
+
+### モジュールをロード
+
+```
+# 存在チェック
+$ sudo modprobe --dry-run --verbose kvmgt vfio-iommu-type1 mdev
+
+$ echo "kvmgt" | sudo tee /etc/modules-load.d/kvmgt.conf
+$ echo "vfio-iommu-type1" | sudo tee /etc/modules-load.d/vfio-iommu-type1.conf
+$ echo "mdev" | sudo tee /etc/modules-load.d/mdev.conf
+```
+
+ここで一度再起動。
+
+mdevctlを使えば仮想GPUの自動確保もやってもらえる。
+
+```
+$ sudo apt --yes install mdevctl
+$ mdevctl types
+0000:00:02.0
+  i915-GVTg_V5_4
+    Available instances: 1
+    Device API: vfio-pci
+    Name: GVTg_V5_4
+    Description: low_gm_size: 128MB, high_gm_size: 512MB, fence: 4, resolution: 1920x1200, weight: 4
+  i915-GVTg_V5_8
+    Available instances: 2
+    Device API: vfio-pci
+    Name: GVTg_V5_8
+    Description: low_gm_size: 64MB, high_gm_size: 384MB, fence: 4, resolution: 1024x768, weight: 2
+$ sudo mdevctl define --auto --uuid $(uuidgen) --parent 0000:00:02.0 --type i915-GVTg_V5_8
+```
+
+~~`--auto`がそれ~~
+
+```
+  -a, --auto
+          Automatically start device on parent availability
+```
+
+mdevctl 1.3.0の自動起動の設定では`/usr/sbin/mdevctl`を参照しているが（[参考](https://github.com/mdevctl/mdevctl/blob/48e26971b0a21464e0432dcdc36f3cd10a1629c8/60-mdevctl.rules)）、Ubuntu 24.04では`/usr/bin/mdevctl`にインストールされるので自動起動が失敗している。[報告済み](https://bugs.launchpad.net/ubuntu/+source/mdevctl/+bug/2121264)
+
+```
+$ which mdevctl
+/usr/bin/mdevctl
+$ journalctl -u systemd-udevd -b | grep mdevctl
+ 8月 23 08:00:36 mukai-ThinkPad-X1-Carbon-7th mdevctl[509]: /bin/sh: 1: /usr/sbin/mdevctl: not found
+```
+
+仕方ないのでとりあえずシンボリックリンクを追加
+
+```
+$ sudo ln -s /usr/bin/mdevctl /usr/sbin/mdevctl
+```
+
+再起動して`mdevctl list`で起動していることを確認。
+
+カツカツな設定（weight:4/fence:4）にすると失敗する。ここで`golden_hw_state failed with error -2`は実際にはエラーではないらしい（[参考](https://github.com/intel/gvt-linux/issues/212)）
+
+```
+mukai@mukai-ThinkPad-X1-Carbon-7th:~$ sudo dmesg | grep -i gvt
+[    0.000000] Command line: BOOT_IMAGE=/boot/vmlinuz-6.14.0-27-generic root=UUID=e21f1775-eca7-40bf-9752-96720ff71178 ro intel_iommu=on i915.enable_gvt=1 i915.enable_guc=0 quiet splash vt.handoff=7
+[    0.058214] Kernel command line: BOOT_IMAGE=/boot/vmlinuz-6.14.0-27-generic root=UUID=e21f1775-eca7-40bf-9752-96720ff71178 ro intel_iommu=on i915.enable_gvt=1 i915.enable_guc=0 quiet splash vt.handoff=7
+[    5.412043] i915 0000:00:02.0: Direct firmware load for i915/gvt/vid_0x8086_did_0x3ea0_rid_0x02.golden_hw_state failed with error -2
+[   77.118191] gvt: fail to alloc low gm space from host
+[   77.118382] gvt: failed to create intel vgpu: -28
+```
+
+割り当てられたIDは次のコマンドで確認できる。
+
+```
+$ mdevctl list -d
+ae6411d7-151d-485d-98e7-fa377c478da0 0000:00:02.0 i915-GVTg_V5_8 auto
+
+$ sudo mdevctl start --uuid ae6411d7-151d-485d-98e7-fa377c478da0
+$ sudo systemctl restart libvirtd
+```
+
+［ハードウェアを追加 > MDEVホストデバイス］を選択、先ほどのUUIDのデバイスを選択して［完了］をクリック。
+
+```xml
+<hostdev mode="subsystem" type="mdev" managed="yes" model="vfio-pci" display="off" ramfb="off">
+  <source>
+    <address uuid="ae6411d7-151d-485d-98e7-fa377c478da0"/>
+  </source>
+</hostdev>
+```
+
+［概要］のXMLタブを開く。名前空間の設定が重要（ライセンス情報の参照時に追加した）。
+
+```xml
+<domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
+  <!-- ... -->
+  <qemu:override>
+    <qemu:device alias="hostdev0">
+      <qemu:frontend>
+        <qemu:property name="x-igd-opregion" type="bool" value="true"/>
+      </qemu:frontend>
+    </qemu:device>
+  </qemu:override>
+</domain>
+```
+
+UEFI（OVMF）のゲストではDMA-BUFディスプレイが表示されない。「[extract the OpROM](http://120.25.59.132:3000/vbios_gvt_uefi.rom) from the kernel patch ([source](https://www.reddit.com/r/VFIO/comments/av736o/creating_a_clover_bios_nonuefi_install_for_qemu/ehdz6mf/)) and feed it to QEMU as an override.」してやる必要がある（[参考](https://wiki.archlinux.org/title/Intel_GVT-g)）。
+
+<details>
+<summary>ビルドしてやりたかったが起動しなかった</summary>
+
+`i915ovmf.rom`をビルドする。2月11日以降のArch Linuxの変更でビルドできなくなっているので、それ以前のコンテナでビルドする。
+
+```
+$ docker run -it --rm archlinux:base-devel-20250209.0.306557 bash
+
+# pacman -Sy --noconfirm git sudo python acpica
+# useradd -m builder
+# passwd -d builder
+# echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+# su - builder
+$ git clone https://aur.archlinux.org/i915ovmf.git
+$ cd i915ovmf
+$ makepkg -s --noconfirm
+$ mkdir output
+$ bsdtar -xvf i915ovmf-*.pkg.tar.zst -C output
+x .BUILDINFO
+x .MTREE
+x .PKGINFO
+x var/
+x var/lib/
+x var/lib/libvirt/
+x var/lib/libvirt/qemu/
+x var/lib/libvirt/qemu/drivers/
+x var/lib/libvirt/qemu/drivers/i915ovmf.rom
+```
+
+別ターミナルから
+
+```
+$ docker ps
+$ docker cp <コンテナID>:/home/builder/i915ovmf/output ./i915ovmf
+$ sudo mkdir -p /var/lib/libvirt/qemu/drivers
+$ sudo cp ./i915ovmf/var/lib/libvirt/qemu/drivers/i915ovmf.rom /var/lib/libvirt/qemu/drivers/
+```
+
+</details>
+
+http://120.25.59.132:3000/vbios_gvt_uefi.rom からダウンロードして適当な場所に置く。`sha256:33e540db0838fd49236087d2cda21f4eaa38672f6b2ac56f45351799858de085`
+
+```xml
+<!-- ... -->
+  <qemu:override>
+    <qemu:device alias="hostdev0">
+      <qemu:frontend>
+        <!-- ... -->
+        <qemu:property name="romfile" type="string" value="/home/mukai/win11/vbios_gvt_uefi.rom"/>
+        <!-- ... -->
+      </qemu:frontend>
+    </qemu:device>
+  </qemu:override>
+<!-- ... -->
+```
+
+RAMFBディスプレイを有効化
+
+```xml
+<!-- ... -->
+  <qemu:override>
+    <qemu:device alias="hostdev0">
+      <qemu:frontend>
+        <!-- ... -->
+        <qemu:property name="driver" type="string" value="vfio-pci-nohotplug"/>
+        <qemu:property name="ramfb" type="bool" value="true"/>
+        <!-- ... -->
+      </qemu:frontend>
+    </qemu:device>
+  </qemu:override>
+<!-- ... -->
+```
+
+「Output using SPICE with MESA EGL」に従う。注意書きが少ないから。
+
+- hostdevのdisplayをonに変更
+- `<graphics>`と`<video>`を削除
+- 以下を追加
+
+```
+    <graphics type='spice'>
+      <listen type='none'/>
+      <gl enable='yes'/>
+    </graphics>
+    <video>
+      <model type='none'/>
+    </video>
+```
+
+virtio-winのディスクから以下のドライバをインストールする
+
+- NetKVM
+- Balloon
+- vioscsi
+
+ネットワークに繋がないとインストールできませんと抜かすので`Shift+F10`・`start ms-cxh:localonly`で回避（[参考](https://x.com/witherornot1337/status/1906050664741937328)）。インストール後一旦シャットダウン、ネットワークを復帰させて再起動。ネットワークにつなげてWindows Updateを適用するとグラフィックドライバがあたり、タスク マネージャーでもGPU 0が見えるようになる。これでたぶん成功。
+
+一般的なアドバイスとして、スリープ無効化とBitLocker解除。
+
+vioserialをインストール。再起動。[SPICE > Download > Guest > Windows binaries](https://www.spice-space.org/download.html#windows-binaries)からWindows SPICE agent単体のインストーラーをダウンロード。Windows QXL-WDDM-DOD driverとWindows QXL driverはグラフィックドライバぽいから今回の構成では悪影響がありそうだ。再起動。ゲスト〜ホスト間でコピペできるようになる。
+
+~~同じサイトからSpice WebDAV daemonのインストーラーをダウンロード。一旦シャットダウン。~~
+
+~~［ハードウェアを追加 > チャンネル］「デバイスの種類」を「Spiceポート（spiceport）」に変更。名前とチャンネルを`org.spice-space.webdav.0`に変更して［完了］（[参考](https://www.spice-space.org/spice-user-manual.html#_folder_sharing)）起動してインストーラーからインストール。再起動~~
+
+https://blog.sergeantbiggs.net/posts/file-sharing-with-qemu-and-virt-manager/
+https://donbulinux.hatenablog.jp/entry/2024/07/12/150851
+
+ホストで`sudo apt install virtiofsd`
+
+virtiofsを動作させる要件として、［メモリー > Enable shared memory］を有効化。［ハードウェアを追加 > ファイルシステム］「Driver」は「virtiofs」に設定し、共有したいホスト上のパスを指定。`/home/mukai/Public`など。
+
+「ターゲットパス」は要注意。「share」とでもしておく。
+
+> The target path is a bit of a misnomer. It’s not actually a path, just an identifier that we use as a mount point in our guest file system.
+
+[WinFsp](https://winfsp.dev/)とvirtio-winディスクに含まれているvirtio-win-guest-tools.exeをインストール（[参考](https://donbulinux.hatenablog.jp/entry/2024/07/12/150851)）このときドライバーとかSPICE agentがまるっと入っている気がする。再起動。サービス「VirtioFsSvc」が実行中の間だけZ:ドライブとして共有ドライブが見える。タスクマネージャーの「サービス」から「VirtioFsSvc」を探し、右クリック > サービス管理ツールを開く。「VirtIO-FS Service」のプロパティを開き、スタートアップの種類を「自動」に変更して適用。再起動してZ:ドライブが自動で見えていたら成功。
 
 ## OEM版WindowsをLinuxに置き換えたあとにそのライセンスをKVM等の上で使うことに問題はあるのか
 
