@@ -73,7 +73,7 @@
 - [GitHub上のPythonパッケージをインストールする](articles/0198cf48-ef65-7a71-9d3b-10be054e876f/README.md)
 - [Ardourのインストール時警告（frequency scaling）に対応する](articles/01995510-f66f-7199-8af1-826b203d4f98/README.md)
 - [ポエム](articles/01997f2d-7b25-7613-8ab6-f6d7aa254364/README.md)
-- [](articles/0199838e-d973-7bf4-8fcb-bd8df3660c65/README.md)
+- [WindowsでCodex CLIのMCPにPlaywrightを追加する](articles/0199838e-d973-7bf4-8fcb-bd8df3660c65/README.md)
 - [ふつうのPCにSPIを生やす](articles/0199b078-c5f8-7d90-b63a-390c41cbb142/README.md)
 
 ---
@@ -3544,7 +3544,7 @@ $ systemctl reboot
 
 私は、信条の実践として基本的にOSSを使用して活動します。私たち自身がどの製品を利用するかについて受け身であってはならず、主体的に選択し責任を負うべきだと私は考えます。OSSの利点を透明性のみによって説明しようとすると、「すべてのソースコードを読めるものか」と考える人もいます。OSSを中心に据えることは、必ずしも利用するすべてのソフトウェアを理解し、ゼロから創造することを意味しません。自分の力量の範囲で理解し、改善や貢献に関与する営為そのものにこそ価値があります。
 
-# WindowsでCodex CLIのMCPにPlaywrightを追加する
+## WindowsでCodex CLIのMCPにPlaywrightを追加する
 
 [Claude Codeでも壊れる](https://qiita.com/u1f992/items/29160e7a9238652fd337)し、やっぱりWindowsを使わないのが正解。
 

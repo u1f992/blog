@@ -1,4 +1,4 @@
-# WindowsでCodex CLIのMCPにPlaywrightを追加する
+## WindowsでCodex CLIのMCPにPlaywrightを追加する
 
 [Claude Codeでも壊れる](https://qiita.com/u1f992/items/29160e7a9238652fd337)し、やっぱりWindowsを使わないのが正解。
 
