@@ -1,70 +1,70 @@
 # 雑記帳
 
-- [このリポジトリの使い方](articles/0192bc26-0274-7afd-884e-2b1c281803c2/README.md)
-- [Windows Terminalでtmuxを起動するワークアラウンド](articles/0192bc2f-0917-7ea9-a216-050a39e24dc5/README.md)
-- [Vimの正規表現の先読み・後読み](articles/0192bc81-e319-7600-95b6-4b1decd06e27/README.md)
-- [Scribusを経由して印刷仕様のPDFを出力する](articles/0192bc82-be64-76fe-8d1a-cf40d8377fad/README.md)
-- [mintty.exeでWSLを起動する](articles/0192bc83-270f-7de8-9497-3bbc28d5affa/README.md)
-- [MSYS2にいつも入れてるもの](articles/0192bc83-5780-76f8-a69d-4cf519b25b4f/README.md)
-- [JScriptをバッチファイルに埋め込む（Shebangもどき）](articles/0192bc83-a5de-7ad6-9632-21f469ff6e5a/README.md)
-- [WSL2のNode.jsにPlaywrightでChrome入れたけど動かん](articles/0192bc85-588a-7e31-9e2f-6364e42152b1/README.md)
-- [Invoke-WebRequestのリダイレクトをトレースしたい（wip）](articles/0192bc85-79d4-7bfd-99c3-45282a4fb244/README.md)
-- [ワーキングディレクトリ内のファイル名がある正規表現にマッチするファイルから、ある正規表現にマッチする行を抽出する on WSL](articles/0192bc85-ccc7-778e-8615-fb5c0e424eba/README.md)
-- [シンボリックリンクを含むGitリポジトリ](articles/0192bc86-b1bb-7a96-b096-ec7e994ce895/README.md)
-- [PDF切り出しに使うTeXのテンプレート](articles/0192bc87-2614-7d9a-9d53-ab3ba166e71b/README.md)
-- [カレントディレクトリ以下のPNG画像をJPGに変換する](articles/0192bc87-6e0d-7670-8897-90c2e79490ae/README.md)
-- [PSoC 4ハードウェア設計上の注意事項](articles/0192bc87-e358-7964-8446-a721b0b89fcf/README.md)
-- [ES3相当のJavaScriptでUUID風文字列を生成する](articles/0192bc88-03ef-7d7f-8c08-6c0d12074c54/README.md)
-- [PDFの指定したページをトリミングして出力](articles/0192bc89-1b1d-7c66-b6ad-9cc47c17acc2/README.md)
-- [WSLのディスクサイズを削減](articles/0192bc8a-4a12-77fc-964d-f225677966f8/README.md)
-- [MSYS2環境を現在のターミナルで開く](articles/0192bc8c-6edd-7651-9e5c-5791658a2064/README.md)
-- [MarkdownのテーブルをHTMLに置換](articles/0192bc8e-04de-7648-ade2-e0ccaf7d2033/README.md)
-- [WindowsのセットアップをMSアカウントなしで行う](articles/0192bc8e-8d00-7033-9b50-61f3bbfe0647/README.md)
-- [現在のPowerShellセッションにMSYS2のパスを追加](articles/0192bc8e-ff23-7bb9-97c5-075aeaacd9f0/README.md)
-- [ChatGPTにプロジェクトのファイル全部食わせる](articles/0192bc8f-8faf-7263-b196-60026e00296e/README.md)
-- [追跡中のすべてのC言語ファイルにフォーマッタをかける](articles/0192bc90-fd9a-7d6a-aa08-69ffbf1b77db/README.md)
-- [WSL2にデスクトップを生やす](articles/0192bc91-5a09-729c-ad7d-fb412cdaadd6/README.md)
-- [VirtualBoxの右上に出てくる通知センターを消す](articles/0192bc91-ba73-7ede-b781-43c03d683761/README.md)
-- [VirtualBoxのディスクイメージの履歴をクリアする](articles/0192bc92-24e5-7906-983b-c4e2fbbfdf27/README.md)
-- [MSYS2でddrescueのビルド](articles/0192bc92-6cbe-717a-a64b-e4558161e869/README.md)
-- [tmux](articles/0192bc92-b5df-7541-a355-dc1ee54c4be2/README.md)
-- [GNU Screen 4.9.1のビルド](articles/0192bc93-21f7-78d1-adcf-32e5b10a9268/README.md)
-- [C言語の規格書](articles/0192bc93-fea7-738e-8373-9d5d64a9e45c/README.md)
-- [MSYS2シェル内でvimを開くとき](articles/0192bc94-3f7c-7af9-a4f3-e913e49c66fd/README.md)
-- [PythonスクリプトでGUIのファイル選択ウィンドウを出す](articles/0192bc94-7ec4-7485-857c-e7740ef2f251/README.md)
-- [Ghostscriptの`inkcov`と`ink_cov`](articles/0192bc94-cecb-7136-946e-b166c175a9a5/README.md)
-- [JapanColor2001Coated.icc](articles/0192bc95-5738-7898-91eb-52f419a9a534/README.md)
-- [qpdf](articles/0192bc95-8b91-7727-8e89-ec30b9c57400/README.md)
-- [PlatformIO+Arduino-Picoの更新](articles/0192bc95-c61c-744d-ac0f-76d28bc30d3b/README.md)
-- [プライベートなnpmパッケージ](articles/0192bc96-0021-7e81-956f-0489d3d877f2/README.md)
-- [メモリ上のELFバイナリを実行するPythonコード](articles/0192bc96-356e-7cde-83e0-2639cf783e3a/README.md)
-- [Realtekの汎用ASIOドライバー](articles/0192bca2-e6a5-75ff-87e7-36446aafa536/README.md)
-- [WindowsにおけるPythonのshebang（？）](articles/0192d0e9-8a12-77fa-884f-0f05abb1505b/README.md)
-- [HTMLの前処理について雑感](articles/0192e054-20e7-7a85-86e8-0f42192227d6/README.md)
-- [MSYS2のポータブル環境](articles/0192e10e-9d82-7ef4-8e4b-4c1f7359b3e7/README.md)
-- [MSYS2 UCRT64でgdome2をビルドする](articles/0192e2dd-ff19-70dd-9a75-038df515996c/README.md)
-- [CUERipperメモ](articles/019333d9-b6e8-770a-94c4-f57f586152ba/README.md)
-- [PDFから「しおり」を抽出](articles/01933dc7-1b4a-7d58-9bb9-e473c4b877f7/README.md)
-- [PDFをPNGに変換](articles/01935161-66d4-7c5b-9fac-472547dcb5e4/README.md)
-- [白背景を詰める](articles/01935308-3b79-7444-8aeb-993a16fa72f4/README.md)
-- [基本的にDocker内で使っているツール類](articles/01938f77-d329-755c-8dd0-24fc4492e621/README.md)
-- [`*.ai` → `*.pdf`](articles/0193949c-0606-7614-8cee-5b821c9a6e56/README.md)
-- [CSS `rgb()`の小数点数を特定要素に設定する](articles/0193dd27-ddcb-7d77-84e8-565fa818cafe/README.md)
-- [コマンドプロンプトの起動時スクリプト](articles/019439e6-6b18-7dd9-add3-7582c1253921/README.md)
-- [漢字かな交じり文の読みを調べる（Windows＋Excel）](articles/0194a7a3-dd04-7957-9a0f-8cda83172878/README.md)
-- [SVGの`text`要素のアウトライン化と選択・検索を両立させる](articles/0194b5a6-20b9-7e06-ac1d-5412b4342236/README.md)
-- [ディスクのフルバックアップイメージをマウントする](articles/0194c92a-d133-7f46-a3c6-191bbbc756f1/README.md)
-- [AppImageを手動でインストールする（Ubuntu 24.04）](articles/0194d66f-55fa-7755-93b3-7b488b50edaa/README.md)
-- [RDPメモ](articles/0194ed9c-6542-7516-b04b-c25dccd11704/README.md)
-- [`text-box`メモ](articles/01951267-68df-7629-8afc-4572753e5735/README.md)
-- [トラックポイントキャップを買い換える](articles/01951e68-af72-78bc-8b57-faa9d8219340/README.md)
-- [Native Accessのアップデートを阻止する](articles/01952945-f85d-7592-b79c-d6b37ce7fd3a/README.md)
-- [Vivliostyle CLIでフォルダ内のMarkdownを1ファイルにまとめて組版するスニペット](articles/0195ea9c-bb8d-7eb0-a9a0-bb9d9df22905/README.md)
-- [Vivliostyle×devcontainerメモ](articles/01969029-5b82-7fc3-a23b-2055c0205ae0/README.md)
-- [ChromiumとGhostscriptで表現できる色](articles/0196aef3-fee5-7cf1-bc9b-ba25187678de/README.md)
-- [woff2.dockerfile](articles/0196c8ad-dd12-72bc-b9c7-dec35c735fd9/README.md)
-- [Emscriptenのdevcontainer環境](articles/0196c8af-1ad7-71fa-a98e-b95012af991d/README.md)
-- [GhostscriptをWASMにしたい](articles/0196e6d1-edd0-7940-ab91-1f2930eb8f7a/README.md)
+- [このリポジトリの使い方](articles/0192bc26-0274-7afd-884e-2b1c281803c2/README.md)
+- [Windows Terminalでtmuxを起動するワークアラウンド](articles/0192bc2f-0917-7ea9-a216-050a39e24dc5/README.md)
+- [Vimの正規表現の先読み・後読み](articles/0192bc81-e319-7600-95b6-4b1decd06e27/README.md)
+- [Scribusを経由して印刷仕様のPDFを出力する](articles/0192bc82-be64-76fe-8d1a-cf40d8377fad/README.md)
+- [mintty.exeでWSLを起動する](articles/0192bc83-270f-7de8-9497-3bbc28d5affa/README.md)
+- [MSYS2にいつも入れてるもの](articles/0192bc83-5780-76f8-a69d-4cf519b25b4f/README.md)
+- [JScriptをバッチファイルに埋め込む（Shebangもどき）](articles/0192bc83-a5de-7ad6-9632-21f469ff6e5a/README.md)
+- [WSL2のNode.jsにPlaywrightでChrome入れたけど動かん](articles/0192bc85-588a-7e31-9e2f-6364e42152b1/README.md)
+- [Invoke-WebRequestのリダイレクトをトレースしたい（wip）](articles/0192bc85-79d4-7bfd-99c3-45282a4fb244/README.md)
+- [ワーキングディレクトリ内のファイル名がある正規表現にマッチするファイルから、ある正規表現にマッチする行を抽出する on WSL](articles/0192bc85-ccc7-778e-8615-fb5c0e424eba/README.md)
+- [シンボリックリンクを含むGitリポジトリ](articles/0192bc86-b1bb-7a96-b096-ec7e994ce895/README.md)
+- [PDF切り出しに使うTeXのテンプレート](articles/0192bc87-2614-7d9a-9d53-ab3ba166e71b/README.md)
+- [カレントディレクトリ以下のPNG画像をJPGに変換する](articles/0192bc87-6e0d-7670-8897-90c2e79490ae/README.md)
+- [PSoC 4ハードウェア設計上の注意事項](articles/0192bc87-e358-7964-8446-a721b0b89fcf/README.md)
+- [ES3相当のJavaScriptでUUID風文字列を生成する](articles/0192bc88-03ef-7d7f-8c08-6c0d12074c54/README.md)
+- [PDFの指定したページをトリミングして出力](articles/0192bc89-1b1d-7c66-b6ad-9cc47c17acc2/README.md)
+- [WSLのディスクサイズを削減](articles/0192bc8a-4a12-77fc-964d-f225677966f8/README.md)
+- [MSYS2環境を現在のターミナルで開く](articles/0192bc8c-6edd-7651-9e5c-5791658a2064/README.md)
+- [MarkdownのテーブルをHTMLに置換](articles/0192bc8e-04de-7648-ade2-e0ccaf7d2033/README.md)
+- [WindowsのセットアップをMSアカウントなしで行う](articles/0192bc8e-8d00-7033-9b50-61f3bbfe0647/README.md)
+- [現在のPowerShellセッションにMSYS2のパスを追加](articles/0192bc8e-ff23-7bb9-97c5-075aeaacd9f0/README.md)
+- [ChatGPTにプロジェクトのファイル全部食わせる](articles/0192bc8f-8faf-7263-b196-60026e00296e/README.md)
+- [追跡中のすべてのC言語ファイルにフォーマッタをかける](articles/0192bc90-fd9a-7d6a-aa08-69ffbf1b77db/README.md)
+- [WSL2にデスクトップを生やす](articles/0192bc91-5a09-729c-ad7d-fb412cdaadd6/README.md)
+- [VirtualBoxの右上に出てくる通知センターを消す](articles/0192bc91-ba73-7ede-b781-43c03d683761/README.md)
+- [VirtualBoxのディスクイメージの履歴をクリアする](articles/0192bc92-24e5-7906-983b-c4e2fbbfdf27/README.md)
+- [MSYS2でddrescueのビルド](articles/0192bc92-6cbe-717a-a64b-e4558161e869/README.md)
+- [tmux](articles/0192bc92-b5df-7541-a355-dc1ee54c4be2/README.md)
+- [GNU Screen 4.9.1のビルド](articles/0192bc93-21f7-78d1-adcf-32e5b10a9268/README.md)
+- [C言語の規格書](articles/0192bc93-fea7-738e-8373-9d5d64a9e45c/README.md)
+- [MSYS2シェル内でvimを開くとき](articles/0192bc94-3f7c-7af9-a4f3-e913e49c66fd/README.md)
+- [PythonスクリプトでGUIのファイル選択ウィンドウを出す](articles/0192bc94-7ec4-7485-857c-e7740ef2f251/README.md)
+- [Ghostscriptの`inkcov`と`ink_cov`](articles/0192bc94-cecb-7136-946e-b166c175a9a5/README.md)
+- [JapanColor2001Coated.icc](articles/0192bc95-5738-7898-91eb-52f419a9a534/README.md)
+- [qpdf](articles/0192bc95-8b91-7727-8e89-ec30b9c57400/README.md)
+- [PlatformIO+Arduino-Picoの更新](articles/0192bc95-c61c-744d-ac0f-76d28bc30d3b/README.md)
+- [プライベートなnpmパッケージ](articles/0192bc96-0021-7e81-956f-0489d3d877f2/README.md)
+- [メモリ上のELFバイナリを実行するPythonコード](articles/0192bc96-356e-7cde-83e0-2639cf783e3a/README.md)
+- [Realtekの汎用ASIOドライバー](articles/0192bca2-e6a5-75ff-87e7-36446aafa536/README.md)
+- [WindowsにおけるPythonのshebang（？）](articles/0192d0e9-8a12-77fa-884f-0f05abb1505b/README.md)
+- [HTMLの前処理について雑感](articles/0192e054-20e7-7a85-86e8-0f42192227d6/README.md)
+- [MSYS2のポータブル環境](articles/0192e10e-9d82-7ef4-8e4b-4c1f7359b3e7/README.md)
+- [MSYS2 UCRT64でgdome2をビルドする](articles/0192e2dd-ff19-70dd-9a75-038df515996c/README.md)
+- [CUERipperメモ](articles/019333d9-b6e8-770a-94c4-f57f586152ba/README.md)
+- [PDFから「しおり」を抽出](articles/01933dc7-1b4a-7d58-9bb9-e473c4b877f7/README.md)
+- [PDFをPNGに変換](articles/01935161-66d4-7c5b-9fac-472547dcb5e4/README.md)
+- [白背景を詰める](articles/01935308-3b79-7444-8aeb-993a16fa72f4/README.md)
+- [基本的にDocker内で使っているツール類](articles/01938f77-d329-755c-8dd0-24fc4492e621/README.md)
+- [`*.ai` → `*.pdf`](articles/0193949c-0606-7614-8cee-5b821c9a6e56/README.md)
+- [CSS `rgb()`の小数点数を特定要素に設定する](articles/0193dd27-ddcb-7d77-84e8-565fa818cafe/README.md)
+- [コマンドプロンプトの起動時スクリプト](articles/019439e6-6b18-7dd9-add3-7582c1253921/README.md)
+- [漢字かな交じり文の読みを調べる（Windows＋Excel）](articles/0194a7a3-dd04-7957-9a0f-8cda83172878/README.md)
+- [SVGの`text`要素のアウトライン化と選択・検索を両立させる](articles/0194b5a6-20b9-7e06-ac1d-5412b4342236/README.md)
+- [ディスクのフルバックアップイメージをマウントする](articles/0194c92a-d133-7f46-a3c6-191bbbc756f1/README.md)
+- [AppImageを手動でインストールする（Ubuntu 24.04）](articles/0194d66f-55fa-7755-93b3-7b488b50edaa/README.md)
+- [RDPメモ](articles/0194ed9c-6542-7516-b04b-c25dccd11704/README.md)
+- [`text-box`メモ](articles/01951267-68df-7629-8afc-4572753e5735/README.md)
+- [トラックポイントキャップを買い換える](articles/01951e68-af72-78bc-8b57-faa9d8219340/README.md)
+- [Native Accessのアップデートを阻止する](articles/01952945-f85d-7592-b79c-d6b37ce7fd3a/README.md)
+- [Vivliostyle CLIでフォルダ内のMarkdownを1ファイルにまとめて組版するスニペット](articles/0195ea9c-bb8d-7eb0-a9a0-bb9d9df22905/README.md)
+- [Vivliostyle×devcontainerメモ](articles/01969029-5b82-7fc3-a23b-2055c0205ae0/README.md)
+- [ChromiumとGhostscriptで表現できる色](articles/0196aef3-fee5-7cf1-bc9b-ba25187678de/README.md)
+- [woff2.dockerfile](articles/0196c8ad-dd12-72bc-b9c7-dec35c735fd9/README.md)
+- [Emscriptenのdevcontainer環境](articles/0196c8af-1ad7-71fa-a98e-b95012af991d/README.md)
+- [GhostscriptをWASMにしたい](articles/0196e6d1-edd0-7940-ab91-1f2930eb8f7a/README.md)
 - [PDF内のビットマップ画像を別の画像に置換するそこそこまともな方法](articles/0197a636-f1e1-76ae-a625-c813a2b80a3d/README.md)
 - [ミッドマウントタイプのUSB Type-C レセプタクルについて](articles/01988924-00d6-7623-bb90-86a09dc42fde/README.md)
 - [だいたい狙った時間で指定したファイルを配信するローカルサーバ](articles/0198bfcb-cbef-7e17-8c11-4ce3bc66c47a/README.md)
@@ -78,6 +78,7 @@
 - [可変抵抗によるLED光量調整](articles/0199b2bd-3393-791d-bedd-9858cc706526/README.md)
 - [FFmpegでmp4からgifに変換](articles/0199b308-a0a2-7d44-86b1-dd2327d4f433/README.md)
 - [Ubuntu 24.04作業ログ](articles/0199b484-c4c0-79bc-9570-7791f59940d9/README.md)
+- [環境変数の取り扱いの指針](articles/0199c69e-5b30-70e5-8788-15733124b791/README.md)
 
 ---
 
@@ -4597,3 +4598,44 @@ AppArmor parser error for /etc/apparmor.d/abstractions/libvirt-qemu in profile /
 なんかエラー出てるけど直接は関係なさそう。
 
 virt-managerで「インストールの前に設定をカスタマイズする」を有効にしてXMLを編集する
+
+## 環境変数の取り扱いの指針
+
+空文字を真とするか迷うことが多い。シェルの挙動では空文字は偽。
+
+```
+$ sh -c 'if [ "$VAR" ]; then echo "true"; else echo "false"; fi'
+false
+$ VAR="" sh -c 'if [ "$VAR" ]; then echo "true"; else echo "false"; fi'
+false
+$ VAR="foo" sh -c 'if [ "$VAR" ]; then echo "true"; else echo "false"; fi'
+true
+```
+
+つまりJavaScriptで同じ挙動にするなら単に`!envVar`でよい。おそらくこの理解は因果関係が逆転していて、実際にはJavaScriptがシェルの慣習に合わせたのだろう。
+
+```js
+import { inspect } from "node:util";
+
+const envVar = process.env["VAR"];
+//    ^? string | undefined
+
+if (!envVar) {
+  envVar;
+  // ^? "" | undefined
+  console.log(`"" or undefined: ${inspect(envVar)}`);
+} else {
+  envVar;
+  // ^? string
+  console.log(`string: ${inspect(envVar)}`);
+}
+```
+
+```
+$ node example.js
+"" or undefined: undefined
+$ VAR="" node example.js
+"" or undefined: ''
+$ VAR="foo" node example.js
+string: 'foo'
+```
