@@ -120,25 +120,16 @@ $ sudo ufw enable
 $ sudo ufw allow from 10.8.0.0/24 to any port 3389
 ```
 
-<figure>
-<figcaption>%USERPROFILE%\wireguard.conf</figcaption>
+SSHも開ける
 
 ```
-[Interface]
-Address = 10.8.0.2/24
-PrivateKey = (client_private.key の中身)
-
-[Peer]
-PublicKey = (server_public.key の中身)
-Endpoint = (global_ip.txt に書かれたIP):51820
-AllowedIPs = 10.8.0.0/24
+$ sudo apt install openssh-server
+$ sudo systemctl status ssh
+$ sudo systemctl enable --now ssh  # disabledなら
+$ sudo ufw allow from 10.8.0.0/24 to any port 22
 ```
 
-</figure>
-
-`10.8.0.1:3389`にアクセス……つながらない。ルーターの設定を変えないといけなかった。
-
-「DHCP固定割当」と「ポートマッピング設定」を設定
+あとはGLM-MN3350のページに移設。
 
 Ubuntuの「リモートログイン」機能でやりたかった
 
@@ -184,22 +175,6 @@ exec /bin/sh /etc/X11/Xsession
 `/etc/gdm3/custom.conf`のWayland無効化は必要ないようだ。
 
 終了時にちゃんとログアウトする。しないと実機側で「Session Already Running」と表示されて締め出されてしまう。この場合は`Ctrl+Alt+F3`でttyを切り替え、ログインして`sudo systemctl stop xrdp`と`sudo pkill -KILL -u $(whoami)`。
-
-### SSH
-
-VPN内に対して追加でポートを開ける。
-
-```
-$ sudo apt install openssh-server
-$ sudo systemctl status ssh
-$ sudo systemctl enable --now ssh  # disabledなら
-$ sudo ufw allow from 10.8.0.0/24 to any port 22
-```
-
-```
-PS > ssh mukai@10.8.0.1
-```
-
 
 ### Docker
 

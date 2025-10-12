@@ -92,7 +92,7 @@ $ sudo systemctl enable --now ssh  # disabledなら
 クライアント側でもwireguardを有効化する。
 
 <figure>
-<figcaption>wireguard.conf</figcaption>
+<figcaption>wg0.conf</figcaption>
 
 ```
 [Interface]
@@ -103,9 +103,12 @@ PrivateKey = (client_private.key の中身)
 PublicKey = (glm-mn3350_public.key の中身)
 Endpoint = (GLM-MN3350のグローバルIP):51820
 AllowedIPs = 10.8.0.0/24
+PersistentKeepalive = 25
 ```
 
 </figure>
+
+`PersistentKeepalive = 25`がないと、WoLで起動した後自動でVPNに接続されなかった。
 
 あとでWoLをやるつもり。
 
