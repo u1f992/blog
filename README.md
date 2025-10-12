@@ -79,6 +79,7 @@
 - [FFmpegでmp4からgifに変換](articles/0199b308-a0a2-7d44-86b1-dd2327d4f433/README.md)
 - [GLM-MN3350](articles/0199d804-fa2f-7925-82e1-003224f2d920/README.md)
 - [CLIでUSBストレージの安全な取り外し](articles/0199d80a-98e9-72fb-94aa-f24b5fe2ff78/README.md)
+- [再起動後にUEFIに入る](articles/0199d814-d1a6-7b4e-b283-44e72571f725/README.md)
 
 ---
 
@@ -4174,3 +4175,12 @@ $ dmesg | tail -n 10
 ...
 usb 1-3.2: USB disconnect, device number XX
 ```
+
+## 再起動後にUEFIに入る
+
+```
+$ sudo systemctl reboot --firmware-setup
+```
+
+- ルート権限必須
+- レガシーBIOSに対しては動作しない（物理入力でがんばる）
