@@ -67,19 +67,22 @@
 - [GhostscriptをWASMにしたい](articles/0196e6d1-edd0-7940-ab91-1f2930eb8f7a/README.md)
 - [PDF内のビットマップ画像を別の画像に置換するそこそこまともな方法](articles/0197a636-f1e1-76ae-a625-c813a2b80a3d/README.md)
 - [ミッドマウントタイプのUSB Type-C レセプタクルについて](articles/01988924-00d6-7623-bb90-86a09dc42fde/README.md)
-- [だいたい狙った時間で指定したファイルを配信するローカルサーバ](articles/0198bfcb-cbef-7e17-8c11-4ce3bc66c47a/README.md)
+- [だいたい狙った時間で指定したファイルを配信するローカルサーバ](articles/0198bfcb-cbef-7e17-8c11-4ce3bc66c47a/README.md)
 - [ラップトップにプリインストールされたOEM版Windows 11をKVM上にインストールし直して利用する](articles/0198cacd-dcc9-7017-97a8-6fc964adb687/README.md)
 - [OEM版WindowsをLinuxに置き換えたあとにそのライセンスをKVM等の上で使うことに問題はあるのか](articles/0198ccbf-0be3-78bc-907c-8d4b8736f893/README.md)
-- [GitHub上のPythonパッケージをインストールする](articles/0198cf48-ef65-7a71-9d3b-10be054e876f/README.md)
-- [Ardourのインストール時警告（frequency scaling）に対応する](articles/01995510-f66f-7199-8af1-826b203d4f98/README.md)
-- [ポエム](articles/01997f2d-7b25-7613-8ab6-f6d7aa254364/README.md)
-- [WindowsでCodex CLIのMCPにPlaywrightを追加する](articles/0199838e-d973-7bf4-8fcb-bd8df3660c65/README.md)
+- [GitHub上のPythonパッケージをインストールする](articles/0198cf48-ef65-7a71-9d3b-10be054e876f/README.md)
+- [Ardourのインストール時警告（frequency scaling）に対応する](articles/01995510-f66f-7199-8af1-826b203d4f98/README.md)
+- [ポエム](articles/01997f2d-7b25-7613-8ab6-f6d7aa254364/README.md)
+- [WindowsでCodex CLIのMCPにPlaywrightを追加する](articles/0199838e-d973-7bf4-8fcb-bd8df3660c65/README.md)
 - [ふつうのPCにSPIを生やす](articles/0199b078-c5f8-7d90-b63a-390c41cbb142/README.md)
 - [可変抵抗によるLED光量調整](articles/0199b2bd-3393-791d-bedd-9858cc706526/README.md)
 - [FFmpegでmp4からgifに変換](articles/0199b308-a0a2-7d44-86b1-dd2327d4f433/README.md)
 - [GLM-MN3350](articles/0199d804-fa2f-7925-82e1-003224f2d920/README.md)
 - [CLIでUSBストレージの安全な取り外し](articles/0199d80a-98e9-72fb-94aa-f24b5fe2ff78/README.md)
 - [再起動後にUEFIに入る](articles/0199d814-d1a6-7b4e-b283-44e72571f725/README.md)
+- [Ubuntu 24.04作業ログ](articles/0199b484-c4c0-79bc-9570-7791f59940d9/README.md)
+- [環境変数の取り扱いの指針](articles/0199c69e-5b30-70e5-8788-15733124b791/README.md)
+- [WSL＋Dockerディスク食いすぎ](articles/0199c74b-3b67-79c4-9b9d-82a950aa4d73/README.md)
 
 ---
 
@@ -4048,139 +4051,3 @@ $ sha256sum *.gif
 f12d30d20c4bf9483f17e08f16fada73e232b54b34f3d5898c956d42567f7564  output-oneline.gif
 f12d30d20c4bf9483f17e08f16fada73e232b54b34f3d5898c956d42567f7564  output.gif
 ```
-
-## GLM-MN3350
-
-- https://www.gm-japan.co.jp/product/mn3350/
-
-<dl>
-<dt>CPU</dt><dd>Intel Celeron N3350 1.1-2.4GHz</dd>
-<dt>RAM</dt><dd>4GB</dd>
-<dt>ストレージ</dt><dd>64GB</dd>
-<dt>備考</dt><dd>2021年にメルカリで購入</dd>
-</dl>
-
-Ubuntu Server 24.04.3をインストール。デフォルトから変更する点は、キーボード設定を「Layout: Japanese / Variant: Japanese」、「Search for third-party drivers」を有効化。他にはenp1s0がDHCP有効になっている点が後で重要だった。
-
-インストール直後の再起動後、`networkctl status enp1s0`を実行し`192.168.0.3`を割り当てられたことを確認。サーバーをシャットダウン。ルーターに固定割り当て設定を追加。ルーターの設定を永続化し再起動。サーバーを再起動。するとなぜか`192.168.0.4`を割り当てられている。
-
-Ubuntu Serverが既定で使用するsystemd-networkdのDHCPクライアントは、デフォルトでDUIDをClient IDに使用する（Ubuntu Desktopが使用するNetworkManagerの内蔵DHCPクライアントはMACを使用する？　未確認）。
-
-/etc/netplan/99-set-dhcp-identifier-mac.yamlを以下の内容で作成する。なお同ディレクトリには50-cloud-init.yamlが存在するが、cloud-init自体は/etc/cloud/cloud-init.disabledによって無効化されている（ローカルマシンにインストールされていることを検知して自動で無効化する？　未確認）。ファイル名は任意だが既存の設定ファイルに順序で負けない名前にすること。
-
-```
-network:
-  version: 2
-  ethernets:
-    enp1s0:
-      dhcp4: true
-      dhcp-identifier: mac
-```
-
-再起動後`networkctl status enp1s0`を実行し、`.3`を割り当てられたことを確認する。
-
-このマシンをVPNサーバーとし、VPN経由でSSHアクセスを開放する。
-
-```
-$ sudo apt update
-$ sudo apt --yes install wireguard
-$ cd ~/wireguard
-$ bash
-$ umask 077
-$ wg genkey | tee glm-mn3350_private.key | wg pubkey > glm-mn3350_public.key
-$ wg genkey | tee client_private.key | wg pubkey > client_public.key
-$ exit
-```
-
-<figure>
-<figcaption>/etc/wireguard/wg0.conf</figcaption>
-
-```
-[Interface]
-Address = 10.8.0.1/24
-ListenPort = 51820
-PrivateKey = (glm-mn3350_private.keyの中身)
-
-[Peer]
-PublicKey = (client_public.keyの中身)
-AllowedIPs = 10.8.0.2/32
-```
-
-</figure>
-
-メモ：Vimで、termの内容を選択してヤンクする。termウィンドウにカーソルがある状態で`Ctrl+W`、`Shift+N`。`i`で通常のターミナルに復帰。
-
-WireGuardを有効化。
-
-```
-$ sudo systemctl enable --now wg-quick@wg0
-```
-
-Ubuntu Serverでは、既定ではファイアウォールが起動していない。
-
-```
-$ sudo ufw status
-Status: inactive
-$ sudo ufw enable
-Firewall is active and enabled on system startup
-```
-
-```
-$ sudo ufw allow 51820/udp
-$ sudo ufw allow from 10.8.0.0/24 to any port 22
-```
-
-ルーター側で「ポートマッピング設定」を行う。
-
-SSHサーバーをインストールして有効化。
-
-```
-$ sudo apt install openssh-server
-$ sudo systemctl status ssh
-$ sudo systemctl enable --now ssh  # disabledなら
-```
-
-クライアント側でもwireguardを有効化する。
-
-<figure>
-<figcaption>wireguard.conf</figcaption>
-
-```
-[Interface]
-Address = 10.8.0.2/24
-PrivateKey = (client_private.key の中身)
-
-[Peer]
-PublicKey = (glm-mn3350_public.key の中身)
-Endpoint = (GLM-MN3350のグローバルIP):51820
-AllowedIPs = 10.8.0.0/24
-```
-
-</figure>
-
-## CLIでUSBストレージの安全な取り外し
-
-`/dev/sde`を取り外す例。デバイスは`lsblk`で確認できる。
-
-```
-$ sync  # 数秒待つ。ステータスLEDなどがあれば動作が終了したことを確認する
-$ sudo umount /dev/sde*
-$ echo 1 | sudo tee /sys/block/sde/device/delete  # 数秒待ち、物理的に取り外す
-```
-
-確認
-
-```
-$ dmesg | tail -n 10
-...
-usb 1-3.2: USB disconnect, device number XX
-```
-
-## 再起動後にUEFIに入る
-
-```
-$ sudo systemctl reboot --firmware-setup
-```
-
-- ルート権限必須
-- レガシーBIOSに対しては動作しない（物理入力でがんばる）
