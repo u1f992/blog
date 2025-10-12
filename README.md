@@ -78,6 +78,7 @@
 - [可変抵抗によるLED光量調整](articles/0199b2bd-3393-791d-bedd-9858cc706526/README.md)
 - [FFmpegでmp4からgifに変換](articles/0199b308-a0a2-7d44-86b1-dd2327d4f433/README.md)
 - [GLM-MN3350](articles/0199d804-fa2f-7925-82e1-003224f2d920/README.md)
+- [CLIでUSBストレージの安全な取り外し](articles/0199d80a-98e9-72fb-94aa-f24b5fe2ff78/README.md)
 
 ---
 
@@ -4155,3 +4156,21 @@ AllowedIPs = 10.8.0.0/24
 ```
 
 </figure>
+
+## CLIでUSBストレージの安全な取り外し
+
+`/dev/sde`を取り外す例。デバイスは`lsblk`で確認できる。
+
+```
+$ sync  # 数秒待つ。ステータスLEDなどがあれば動作が終了したことを確認する
+$ sudo umount /dev/sde*
+$ echo 1 | sudo tee /sys/block/sde/device/delete  # 数秒待ち、物理的に取り外す
+```
+
+確認
+
+```
+$ dmesg | tail -n 10
+...
+usb 1-3.2: USB disconnect, device number XX
+```
