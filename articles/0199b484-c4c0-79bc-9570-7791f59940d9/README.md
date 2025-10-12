@@ -111,43 +111,12 @@ $ crontab -e
 */30 * * * * /home/mukai/wireguard/upload-global-ip.sh
 ```
 
-VPNを構築する
-
-```
-$ sudo apt update
-$ sudo apt --yes install wireguard
-$ cd ~/wireguard
-$ bash
-$ umask 077
-$ wg genkey | tee server_private.key | wg pubkey > server_public.key
-$ wg genkey | tee client_private.key | wg pubkey > client_public.key
-$ exit
-```
-
-<figure>
-<figcaption>/etc/wireguard/wg0.conf</figcaption>
-
-```
-[Interface]
-Address = 10.8.0.1/24
-ListenPort = 51820
-PrivateKey = (server_private.key の中身)
-
-[Peer]
-PublicKey = (client_public.key の中身)
-AllowedIPs = 10.8.0.2/32
-```
-
-</figure>
-
-```
-$ sudo systemctl enable --now wg-quick@wg0
-```
+~~VPNを構築する~~ VPNサーバーはGLM-MN3350に移した。
 
 ファイアウォールの設定
 
 ```
-$ sudo ufw allow 51820/udp
+$ sudo ufw enable
 $ sudo ufw allow from 10.8.0.0/24 to any port 3389
 ```
 

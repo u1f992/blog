@@ -83,6 +83,7 @@
 - [GLM-MN3350](articles/0199d804-fa2f-7925-82e1-003224f2d920/README.md)
 - [CLIでUSBストレージの安全な取り外し](articles/0199d80a-98e9-72fb-94aa-f24b5fe2ff78/README.md)
 - [再起動後にUEFIに入る](articles/0199d814-d1a6-7b4e-b283-44e72571f725/README.md)
+- [Z390-A PRO (MS-7B98)におけるWoL有効化](articles/0199d851-4ce7-724f-a0c9-6df368692ac3/README.md)
 
 ---
 
@@ -4165,43 +4166,12 @@ $ crontab -e
 */30 * * * * /home/mukai/wireguard/upload-global-ip.sh
 ```
 
-VPNを構築する
-
-```
-$ sudo apt update
-$ sudo apt --yes install wireguard
-$ cd ~/wireguard
-$ bash
-$ umask 077
-$ wg genkey | tee server_private.key | wg pubkey > server_public.key
-$ wg genkey | tee client_private.key | wg pubkey > client_public.key
-$ exit
-```
-
-<figure>
-<figcaption>/etc/wireguard/wg0.conf</figcaption>
-
-```
-[Interface]
-Address = 10.8.0.1/24
-ListenPort = 51820
-PrivateKey = (server_private.key の中身)
-
-[Peer]
-PublicKey = (client_public.key の中身)
-AllowedIPs = 10.8.0.2/32
-```
-
-</figure>
-
-```
-$ sudo systemctl enable --now wg-quick@wg0
-```
+~~VPNを構築する~~ VPNサーバーはGLM-MN3350に移した。
 
 ファイアウォールの設定
 
 ```
-$ sudo ufw allow 51820/udp
+$ sudo ufw enable
 $ sudo ufw allow from 10.8.0.0/24 to any port 3389
 ```
 
@@ -4782,6 +4752,34 @@ AllowedIPs = 10.8.0.0/24
 
 </figure>
 
+あとでWoLをやるつもり。
+
+```
+$ sudo apt install --yes wakeonlan
+$ cat wakeonlan-(client-name).sh 
+#!/bin/sh
+wakeonlan (client_mac)
+```
+
+VPNを介してクライアント間で通信（10.8.0.2に開けたSSHに10.8.0.3のスマホからアクセスしたい）には追加の設定が必要。
+
+1．IP転送
+
+```
+$ sudo vim /etc/sysctl.conf
+  # net.ipv4.ip_forward=1を有効化
+$ sudo sysctl -p
+```
+
+2．UFWで転送を許可
+
+```
+$ sudo ufw route allow in on wg0 out on wg0
+$ sudo vim /etc/default/ufw
+  # DEFAULT_FORWARD_POLICY="DROP"を"ACCEPT"に変更
+$ sudo ufw reload
+```
+
 ## CLIでUSBストレージの安全な取り外し
 
 `/dev/sde`を取り外す例。デバイスは`lsblk`で確認できる。
@@ -4808,3 +4806,26 @@ $ sudo systemctl reboot --firmware-setup
 
 - ルート権限必須
 - レガシーBIOSに対しては動作しない（物理入力でがんばる）
+
+## Z390-A PRO (MS-7B98)におけるWoL有効化
+
+- https://support.ask-corp.jp/hc/ja/articles/360046270034-MSI%E8%A3%BD%E3%83%9E%E3%82%B6%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89%E3%81%A7%E3%81%AEWake-On-LAN-WOL-%E3%81%AE%E8%A8%AD%E5%AE%9A%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+
+- `Settings\Advanced\Power Management Setup\ErP Ready`を`Disabled`に、
+- `Settings\Advanced\Wake Up Event Setup\Resume By PCI-E Device`と`Resume By Intel Onbord LAN/CNVi`を`Enabled`に
+
+OS側の設定も必要。
+
+```
+$ ip link show  # 有線LANのインターフェースを探す
+$ sudo ethtool eno1 | grep Wake-on
+	Supports Wake-on: pumbg
+	Wake-on: d  # disabled
+$ nmcli connection show | grep eno1
+netplan-eno1    10838d80-caeb-349e-ba73-08ed16d4d666  ethernet   eno1 
+$ sudo nmcli connection modify "netplan-eno1" 802-3-ethernet.wake-on-lan magic
+$ sudo nmcli connection up "netplan-eno1"
+$ sudo ethtool eno1 | grep Wake-on
+	Supports Wake-on: pumbg
+	Wake-on: g
+```
