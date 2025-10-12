@@ -118,18 +118,10 @@ wakeonlan (client_mac)
 
 VPNを介してクライアント間で通信（10.8.0.2に開けたSSHに10.8.0.3のスマホからアクセスしたい）には追加の設定が必要。
 
-1．IP転送
-
-```
-$ sudo vim /etc/sysctl.conf
-  # net.ipv4.ip_forward=1を有効化
-$ sudo sysctl -p
-```
-
-2．UFWで転送を許可
-
 ```
 $ sudo ufw route allow in on wg0 out on wg0
+$ sudo vim /etc/ufw/sysctl.conf
+  # net.ipv4.ip_forward=1を有効化
 $ sudo vim /etc/default/ufw
   # DEFAULT_FORWARD_POLICY="DROP"を"ACCEPT"に変更
 $ sudo ufw reload
