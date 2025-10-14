@@ -67,23 +67,24 @@
 - [GhostscriptをWASMにしたい](articles/0196e6d1-edd0-7940-ab91-1f2930eb8f7a/README.md)
 - [PDF内のビットマップ画像を別の画像に置換するそこそこまともな方法](articles/0197a636-f1e1-76ae-a625-c813a2b80a3d/README.md)
 - [ミッドマウントタイプのUSB Type-C レセプタクルについて](articles/01988924-00d6-7623-bb90-86a09dc42fde/README.md)
-- [だいたい狙った時間で指定したファイルを配信するローカルサーバ](articles/0198bfcb-cbef-7e17-8c11-4ce3bc66c47a/README.md)
+- [だいたい狙った時間で指定したファイルを配信するローカルサーバ](articles/0198bfcb-cbef-7e17-8c11-4ce3bc66c47a/README.md)
 - [ラップトップにプリインストールされたOEM版Windows 11をKVM上にインストールし直して利用する](articles/0198cacd-dcc9-7017-97a8-6fc964adb687/README.md)
 - [OEM版WindowsをLinuxに置き換えたあとにそのライセンスをKVM等の上で使うことに問題はあるのか](articles/0198ccbf-0be3-78bc-907c-8d4b8736f893/README.md)
-- [GitHub上のPythonパッケージをインストールする](articles/0198cf48-ef65-7a71-9d3b-10be054e876f/README.md)
-- [Ardourのインストール時警告（frequency scaling）に対応する](articles/01995510-f66f-7199-8af1-826b203d4f98/README.md)
-- [ポエム](articles/01997f2d-7b25-7613-8ab6-f6d7aa254364/README.md)
-- [WindowsでCodex CLIのMCPにPlaywrightを追加する](articles/0199838e-d973-7bf4-8fcb-bd8df3660c65/README.md)
+- [GitHub上のPythonパッケージをインストールする](articles/0198cf48-ef65-7a71-9d3b-10be054e876f/README.md)
+- [Ardourのインストール時警告（frequency scaling）に対応する](articles/01995510-f66f-7199-8af1-826b203d4f98/README.md)
+- [ポエム](articles/01997f2d-7b25-7613-8ab6-f6d7aa254364/README.md)
+- [WindowsでCodex CLIのMCPにPlaywrightを追加する](articles/0199838e-d973-7bf4-8fcb-bd8df3660c65/README.md)
 - [ふつうのPCにSPIを生やす](articles/0199b078-c5f8-7d90-b63a-390c41cbb142/README.md)
 - [可変抵抗によるLED光量調整](articles/0199b2bd-3393-791d-bedd-9858cc706526/README.md)
 - [FFmpegでmp4からgifに変換](articles/0199b308-a0a2-7d44-86b1-dd2327d4f433/README.md)
 - [Ubuntu 24.04作業ログ](articles/0199b484-c4c0-79bc-9570-7791f59940d9/README.md)
-- [環境変数の取り扱いの指針](articles/0199c69e-5b30-70e5-8788-15733124b791/README.md)
-- [WSL＋Dockerディスク食いすぎ](articles/0199c74b-3b67-79c4-9b9d-82a950aa4d73/README.md)
+- [環境変数の取り扱いの指針](articles/0199c69e-5b30-70e5-8788-15733124b791/README.md)
+- [WSL＋Dockerディスク食いすぎ](articles/0199c74b-3b67-79c4-9b9d-82a950aa4d73/README.md)
 - [GLM-MN3350](articles/0199d804-fa2f-7925-82e1-003224f2d920/README.md)
 - [CLIでUSBストレージの安全な取り外し](articles/0199d80a-98e9-72fb-94aa-f24b5fe2ff78/README.md)
 - [再起動後にUEFIに入る](articles/0199d814-d1a6-7b4e-b283-44e72571f725/README.md)
 - [Z390-A PRO (MS-7B98)におけるWoL有効化](articles/0199d851-4ce7-724f-a0c9-6df368692ac3/README.md)
+- [マシンのグローバルIPアドレスを定期的に特定のGistにアップロードする](articles/0199e067-737c-7025-ad6f-6e2e546fc451/README.md)
 
 ---
 
@@ -4175,25 +4176,16 @@ $ sudo ufw enable
 $ sudo ufw allow from 10.8.0.0/24 to any port 3389
 ```
 
-<figure>
-<figcaption>%USERPROFILE%\wireguard.conf</figcaption>
+SSHも開ける
 
 ```
-[Interface]
-Address = 10.8.0.2/24
-PrivateKey = (client_private.key の中身)
-
-[Peer]
-PublicKey = (server_public.key の中身)
-Endpoint = (global_ip.txt に書かれたIP):51820
-AllowedIPs = 10.8.0.0/24
+$ sudo apt install openssh-server
+$ sudo systemctl status ssh
+$ sudo systemctl enable --now ssh  # disabledなら
+$ sudo ufw allow from 10.8.0.0/24 to any port 22
 ```
 
-</figure>
-
-`10.8.0.1:3389`にアクセス……つながらない。ルーターの設定を変えないといけなかった。
-
-「DHCP固定割当」と「ポートマッピング設定」を設定
+あとはGLM-MN3350のページに移設。
 
 Ubuntuの「リモートログイン」機能でやりたかった
 
@@ -4239,22 +4231,6 @@ exec /bin/sh /etc/X11/Xsession
 `/etc/gdm3/custom.conf`のWayland無効化は必要ないようだ。
 
 終了時にちゃんとログアウトする。しないと実機側で「Session Already Running」と表示されて締め出されてしまう。この場合は`Ctrl+Alt+F3`でttyを切り替え、ログインして`sudo systemctl stop xrdp`と`sudo pkill -KILL -u $(whoami)`。
-
-### SSH
-
-VPN内に対して追加でポートを開ける。
-
-```
-$ sudo apt install openssh-server
-$ sudo systemctl status ssh
-$ sudo systemctl enable --now ssh  # disabledなら
-$ sudo ufw allow from 10.8.0.0/24 to any port 22
-```
-
-```
-PS > ssh mukai@10.8.0.1
-```
-
 
 ### Docker
 
@@ -4737,7 +4713,7 @@ $ sudo systemctl enable --now ssh  # disabledなら
 クライアント側でもwireguardを有効化する。
 
 <figure>
-<figcaption>wireguard.conf</figcaption>
+<figcaption>wg0.conf</figcaption>
 
 ```
 [Interface]
@@ -4748,9 +4724,12 @@ PrivateKey = (client_private.key の中身)
 PublicKey = (glm-mn3350_public.key の中身)
 Endpoint = (GLM-MN3350のグローバルIP):51820
 AllowedIPs = 10.8.0.0/24
+PersistentKeepalive = 25
 ```
 
 </figure>
+
+`PersistentKeepalive = 25`がないと、WoLで起動した後自動でVPNに接続されなかった。
 
 あとでWoLをやるつもり。
 
@@ -4821,3 +4800,39 @@ $ sudo ethtool eno1 | grep Wake-on
 	Supports Wake-on: pumbg
 	Wake-on: g
 ```
+
+## マシンのグローバルIPアドレスを定期的に特定のGistにアップロードする
+
+```
+$ cat upload-public-ip.sh
+#!/bin/sh -eu
+
+# - `Settings > Developer settings > Personal access tokens > Fine-grained tokens > Generate new token`
+#   - `Repository access > Public repositories`
+#   - `Permissions > Account > Add permissions > Gist`
+TOKEN="github_pat"
+GIST_ID="gist_id"
+HOSTNAME="$(/bin/hostname)"
+SAFE_HOSTNAME="$(/bin/echo "${HOSTNAME}" | /bin/tr --complement --delete 'A-Za-z0-9._-')"
+FILENAME="${SAFE_HOSTNAME}-public-ip.txt"
+IP="$(/bin/curl --fail --silent --show-error https://checkip.amazonaws.com | /bin/tr --delete '\n')"
+DESC="Public IP updated at $(/bin/date --utc +%Y-%m-%dT%H:%M:%SZ) on ${HOSTNAME}"
+
+# https://docs.github.com/en/rest/gists/gists?apiVersion=2022-11-28#update-a-gist
+/bin/curl --fail --silent --show-error \
+  --request PATCH \
+  --header "Accept: application/vnd.github+json" \
+  --header "Authorization: Bearer ${TOKEN}" \
+  --header "X-GitHub-Api-Version: 2022-11-28" \
+  "https://api.github.com/gists/${GIST_ID}" \
+  --data "{\"description\":\"${DESC}\",\"files\":{\"${FILENAME}\":{\"content\":\"${IP}\n\"}}}"
+
+$ crontab -e
+
+# 末尾に追記：
+# */30 * * * * /home/mukai/upload-public-ip.sh >> /home/mukai/upload-public-ip.log 2>&1
+```
+
+別解として[glotlabs/gdrive](https://github.com/glotlabs/gdrive)でGoogle Driveにアップロードする方法もあるが、少し手間。
+
+- [自宅のグローバルIPアドレスを外出先で知る #RDP - Qiita](https://qiita.com/itagagaki/items/7720d0632f9fd9c78673)
