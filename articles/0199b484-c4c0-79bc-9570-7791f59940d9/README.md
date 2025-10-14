@@ -94,7 +94,7 @@ $ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
 
 ```
 $ sudo ufw enable
-$ sudo ufw allow from 10.8.0.0/24 to any port 3389
+$ sudo ufw allow in on wg0 to any port 3389
 ```
 
 SSHも開ける
@@ -103,7 +103,7 @@ SSHも開ける
 $ sudo apt install openssh-server
 $ sudo systemctl status ssh
 $ sudo systemctl enable --now ssh  # disabledなら
-$ sudo ufw allow from 10.8.0.0/24 to any port 22
+$ sudo ufw allow in on wg0 proto tcp to any port 22
 ```
 
 あとはGLM-MN3350のページに移設済み。

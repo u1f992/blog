@@ -76,7 +76,7 @@ Firewall is active and enabled on system startup
 
 ```
 $ sudo ufw allow 51820/udp
-$ sudo ufw allow from 10.8.0.0/24 to any port 22
+$ sudo ufw allow in on wg0 proto tcp to any port 22
 ```
 
 ルーター側で「ポートマッピング設定」を行う。
