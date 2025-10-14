@@ -4136,36 +4136,13 @@ Chromeにログイン
 
 ［設定］＞［マウスとタッチパッド］＞［タッチパッド］タブ＞［Touchpad］無効化
 
-### RDPやってみたい
-
-固定グローバルIPがほしい。でもお試しなので契約するほどではないかな。クラウドストレージに書いておくことでわかるようにする方法がある。
-
-- [自宅のグローバルIPアドレスを外出先で知る #RDP - Qiita](https://qiita.com/itagagaki/items/7720d0632f9fd9c78673)
-
-[glotlabs/gdrive](https://github.com/glotlabs/gdrive)を導入する。
-
 これ毎回忘れる
 
 ```
 $ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
 ```
 
-<figure>
-<figcaption>~/wireguard/upload-global-ip.sh</figcaption>
-
-```sh
-#!/bin/bash
-IP=$(/usr/bin/curl -s https://checkip.amazonaws.com)
-/usr/bin/echo "$IP" > /tmp/global-ip.txt
-/home/mukai/.local/bin/gdrive files update <FILE_ID> /tmp/global-ip.txt
-```
-
-</figure>
-
-```
-$ crontab -e
-*/30 * * * * /home/mukai/wireguard/upload-global-ip.sh
-```
+### RDPやってみたい
 
 ~~VPNを構築する~~ VPNサーバーはGLM-MN3350に移した。
 
@@ -4185,7 +4162,7 @@ $ sudo systemctl enable --now ssh  # disabledなら
 $ sudo ufw allow from 10.8.0.0/24 to any port 22
 ```
 
-あとはGLM-MN3350のページに移設。
+あとはGLM-MN3350のページに移設済み。
 
 Ubuntuの「リモートログイン」機能でやりたかった
 
@@ -4803,8 +4780,10 @@ $ sudo ethtool eno1 | grep Wake-on
 
 ## マシンのグローバルIPアドレスを定期的に特定のGistにアップロードする
 
-```
-$ cat upload-public-ip.sh
+<figure>
+<figcaption>upload-public-ip.sh</figcaption>
+
+```sh
 #!/bin/sh -eu
 
 # - `Settings > Developer settings > Personal access tokens > Fine-grained tokens > Generate new token`
@@ -4826,13 +4805,17 @@ DESC="Public IP updated at $(/bin/date --utc +%Y-%m-%dT%H:%M:%SZ) on ${HOSTNAME}
   --header "X-GitHub-Api-Version: 2022-11-28" \
   "https://api.github.com/gists/${GIST_ID}" \
   --data "{\"description\":\"${DESC}\",\"files\":{\"${FILENAME}\":{\"content\":\"${IP}\n\"}}}"
+```
 
+</figure>
+
+```
 $ crontab -e
 
 # 末尾に追記：
 # */30 * * * * /home/mukai/upload-public-ip.sh >> /home/mukai/upload-public-ip.log 2>&1
 ```
 
-別解として[glotlabs/gdrive](https://github.com/glotlabs/gdrive)でGoogle Driveにアップロードする方法もあるが、少し手間。
+別解として[glotlabs/gdrive](https://github.com/glotlabs/gdrive)でGoogle Driveにアップロードする方法もあるが、セットアップ手順が少し面倒。
 
 - [自宅のグローバルIPアドレスを外出先で知る #RDP - Qiita](https://qiita.com/itagagaki/items/7720d0632f9fd9c78673)
