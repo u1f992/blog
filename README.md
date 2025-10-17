@@ -86,6 +86,7 @@
 - [Z390-A PRO (MS-7B98)におけるWoL有効化](articles/0199d851-4ce7-724f-a0c9-6df368692ac3/README.md)
 - [マシンのグローバルIPアドレスを定期的に特定のGistにアップロードする](articles/0199e067-737c-7025-ad6f-6e2e546fc451/README.md)
 - [SSH／RDPからでもカメラやマイクに触りたい](articles/0199f09e-6287-7636-b981-e8e8baa2c800/README.md)
+- [退避ファイルの拡張子はorgよりorigがよい](articles/0199f1a3-18bc-7e0f-872d-d8ac4587db31/README.md)
 
 ---
 
@@ -4854,3 +4855,12 @@ uaccessタグはsystemd-logindと連携して、現在アクティブなユー�
 $ uv run --with opencv-python python -c "import cv2; ret, _ = cv2.VideoCapture(0).read(); ret"
 True
 ```
+
+## 退避ファイルの拡張子はorgよりorigがよい
+
+- diff/patchが生成するのはorig
+  - 同じディレクトリに残す場合、origは無視するがorgはうまく無視できないソフトウェアがある……らしい https://qiita.com/tohta/items/5b48c328413e5772175a
+- orgはどちらかというとorganizationを思い起こす
+
+orz←これは失意体前屈
+
