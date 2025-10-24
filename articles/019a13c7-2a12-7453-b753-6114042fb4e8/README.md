@@ -489,7 +489,9 @@ https://www.ffmpeg.org/download.html
 
 Ubuntuのaptも公式の手順に含まれているから、これで良さそう
 
+```
 $ sudo apt update && sudo apt install --yes ffmpeg
+```
 
 ### プリンター
 
@@ -525,3 +527,11 @@ sudo apt  install tmux  # version 3.4-1ubuntu0.1
 ```
 
 aptだと若干遅れているけど、aptを勧められているな
+
+### ターミナルからクリップボードへコピー
+
+```
+$ sudo apt install xsel
+
+$ echo 'Hello, World!' | xsel --clipboard --input
+```
