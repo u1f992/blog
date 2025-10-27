@@ -40,6 +40,12 @@ peer: ...
 クライアント側の新規設定
 
 ```
+[Interface]
+...
+DNS = 1.1.1.1
+
+[Peer]
+...
 - AllowedIPs = 10.8.0.0/24
 + AllowedIPs = 0.0.0.0/0, ::/0
 ```
@@ -88,4 +94,15 @@ $ sudo systemctl restart wg-quick@wg0
 ```
 
 最後にクライアント側から実行する`curl https://checkip.amazonaws.com`の示すグローバルIPアドレスがVPNサーバーのものになっていれば成功。
+
+ところでどういう設定かわからずすこし気持ち悪いが、`0.0.0.0/0, ::/0`でもLANアクセスはVPNを通らない。実用的にはこれで助かるが……
+
+```
+$ ip route get 1.1.1.1
+1.1.1.1 dev wg0 table 51820 src 10.8.0.4 uid 1000 
+    cache 
+$ ip route get 192.168.8.246
+192.168.8.246 dev wlp0s20f3 src 192.168.8.69 uid 1000 
+    cache 
+```
 
