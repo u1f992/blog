@@ -535,3 +535,16 @@ $ sudo apt install xsel
 
 $ echo 'Hello, World!' | xsel --clipboard --input
 ```
+
+### traceroute
+
+```
+$ traceroute 1.1.1.1
+コマンド 'traceroute' が見つかりません。次の方法でインストールできます:
+sudo apt install inetutils-traceroute  # version 2:2.4-3ubuntu1, or
+sudo apt install traceroute            # version 1:2.1.5-1
+$ sudo apt install traceroute
+```
+
+前者はGNU inetutils版らしい。
+
