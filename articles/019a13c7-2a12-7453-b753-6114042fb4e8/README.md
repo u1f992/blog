@@ -153,13 +153,13 @@ Chromeで表示される広告に対するプライバシー強化について
 $ sudo apt --yes install wireguard
 $ sudo tee /etc/wireguard/wg0.conf >/dev/null <<EOF
 [Interface]
-Address = 10.8.0.4/24
+Address = 10.8.0.4/24, fd42:42:42::4/64
 PrivateKey = (mask)
 
 [Peer]
 PublicKey = qXCUF/jyT4hm7oVO9ftDTLz1MrpMAdh7CrUlqsHfICY=
 Endpoint = 118.156.113.172:51820
-AllowedIPs = 10.8.0.0/24
+AllowedIPs = 10.8.0.0/24, fd42:42:42::/64
 PersistentKeepalive = 25
 EOF
 $ sudo systemctl enable --now wg-quick@wg0
