@@ -551,3 +551,5 @@ $ sudo apt install traceroute
 ### VS Code拡張
 
 esbenp.prettier-vscode
+
+ユーザーの既定のフォーマッターをPrettierに変更`@id:editor.defaultFormatter @lang:typescript`

@@ -5521,6 +5521,8 @@ $ sudo apt install traceroute
 
 esbenp.prettier-vscode
 
+ユーザーの既定のフォーマッターをPrettierに変更`@id:editor.defaultFormatter @lang:typescript`
+
 ## WireGuard Android版アプリにおけるフルトンネル設定＋プライベートIPアドレス除外
 
 フルトンネル時のクライアント側のAllowedIPs設定値は「0.0.0.0/0, ::/0」だが、これではすべてのトラフィックがトンネルに入り、クライアント自身のLANの機器に到達できない（WireGuardサーバーを置いているLANの機器にアクセスする）。
