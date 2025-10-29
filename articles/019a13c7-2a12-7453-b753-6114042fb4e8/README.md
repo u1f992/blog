@@ -548,3 +548,6 @@ $ sudo apt install traceroute
 
 前者はGNU inetutils版らしい。
 
+### VS Code拡張
+
+esbenp.prettier-vscode

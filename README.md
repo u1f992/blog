@@ -5517,6 +5517,9 @@ $ sudo apt install traceroute
 
 前者はGNU inetutils版らしい。
 
+### VS Code拡張
+
+esbenp.prettier-vscode
 
 ## WireGuard Android版アプリにおけるフルトンネル設定＋プライベートIPアドレス除外
 
