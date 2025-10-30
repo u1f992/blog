@@ -553,3 +553,7 @@ $ sudo apt install traceroute
 esbenp.prettier-vscode
 
 ユーザーの既定のフォーマッターをPrettierに変更`@id:editor.defaultFormatter @lang:typescript`
+
+ms-azuretools.vscode-containers
+
+Dockerをインストールしている際の推奨機能らしい
