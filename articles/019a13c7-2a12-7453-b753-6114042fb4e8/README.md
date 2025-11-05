@@ -557,3 +557,9 @@ esbenp.prettier-vscode
 ms-azuretools.vscode-containers
 
 Dockerをインストールしている際の推奨機能らしい
+
+```
+$ npm install --global @devcontainers/cli
+$ devcontainer --version
+0.80.1
+```
