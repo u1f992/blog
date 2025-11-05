@@ -229,3 +229,36 @@ $ ip route get 192.168.8.246
     cache 
 ```
 
+### クライアント上のDockerの通信が異常に遅い
+
+（PID 1がSIGINTを無視するため中断できなくなるので`--init`が必要）
+
+```
+$ docker run --rm -it --init ubuntu:24.04 bash -c "apt update >/dev/null 2>&1 && apt install --yes curl >/dev/null 2>&1 && curl -o /dev/null -L 'https://github.com/freerouting/freerouting/releases/download/v2.1.0/freerouting-2.1.0.jar'"
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:--  0:00:36 --:--:--     0^C
+```
+
+これは最大伝送単位（MTU：Maximum Transmission Unit）のミスマッチが原因。物理インターフェースの最大サイズは1500であり、Dockerのブリッジネットワークも1500で送出しようとする。しかしWireGuardでは暗号化のオーバーヘッドで60（IPv4）〜80（IPv6）バイトかかり、既定でMTU=1420になる。さらに、Docker→WireGuardの仮想ネットワーク経路ではICMP Packet Too Big（PTB）の伝達も行われず、Docker側は正しいMTUを理解できない。
+
+ChatGPT曰く
+
+> - 仮想L2（bridge, veth）と仮想L3（tunnel, wg）をまたいでMTU情報を伝播する仕組みはない
+> - DockerのNAT実装がICMPエラーを透過的に返す設計になっていない
+
+WireGuardクライアント側でDockerブリッジネットワークのMTUを明示することで問題を回避できる。
+
+```
+$ cat /etc/docker/daemon.json 
+cat: /etc/docker/daemon.json: そのようなファイルやディレクトリはありません
+$ echo '{"mtu":1420}' | sudo tee /etc/docker/daemon.json
+{"mtu":1420}
+$ sudo systemctl restart docker
+$ docker network prune -f
+$ docker run --rm -it --init ubuntu:24.04 bash -c "apt update >/dev/null 2>&1 && apt install --yes curl >/dev/null 2>&1 && curl -o /dev/null -L 'https://github.com/freerouting/freerouting/releases/download/v2.1.0/freerouting-2.1.0.jar'"
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 63.8M  100 63.8M    0     0  58.9M      0  0:00:01  0:00:01 --:--:--  105M
+```
