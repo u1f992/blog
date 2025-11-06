@@ -67,24 +67,24 @@
 - [GhostscriptをWASMにしたい](articles/0196e6d1-edd0-7940-ab91-1f2930eb8f7a/README.md)
 - [PDF内のビットマップ画像を別の画像に置換するそこそこまともな方法](articles/0197a636-f1e1-76ae-a625-c813a2b80a3d/README.md)
 - [ミッドマウントタイプのUSB Type-C レセプタクルについて](articles/01988924-00d6-7623-bb90-86a09dc42fde/README.md)
-- [だいたい狙った時間で指定したファイルを配信するローカルサーバ](articles/0198bfcb-cbef-7e17-8c11-4ce3bc66c47a/README.md)
+- [だいたい狙った時間で指定したファイルを配信するローカルサーバ](articles/0198bfcb-cbef-7e17-8c11-4ce3bc66c47a/README.md)
 - [ラップトップにプリインストールされたOEM版Windows 11をKVM上にインストールし直して利用する](articles/0198cacd-dcc9-7017-97a8-6fc964adb687/README.md)
 - [OEM版WindowsをLinuxに置き換えたあとにそのライセンスをKVM等の上で使うことに問題はあるのか](articles/0198ccbf-0be3-78bc-907c-8d4b8736f893/README.md)
-- [GitHub上のPythonパッケージをインストールする](articles/0198cf48-ef65-7a71-9d3b-10be054e876f/README.md)
-- [Ardourのインストール時警告（frequency scaling）に対応する](articles/01995510-f66f-7199-8af1-826b203d4f98/README.md)
-- [ポエム](articles/01997f2d-7b25-7613-8ab6-f6d7aa254364/README.md)
-- [WindowsでCodex CLIのMCPにPlaywrightを追加する](articles/0199838e-d973-7bf4-8fcb-bd8df3660c65/README.md)
+- [GitHub上のPythonパッケージをインストールする](articles/0198cf48-ef65-7a71-9d3b-10be054e876f/README.md)
+- [Ardourのインストール時警告（frequency scaling）に対応する](articles/01995510-f66f-7199-8af1-826b203d4f98/README.md)
+- [ポエム](articles/01997f2d-7b25-7613-8ab6-f6d7aa254364/README.md)
+- [WindowsでCodex CLIのMCPにPlaywrightを追加する](articles/0199838e-d973-7bf4-8fcb-bd8df3660c65/README.md)
 - [ふつうのPCにSPIを生やす](articles/0199b078-c5f8-7d90-b63a-390c41cbb142/README.md)
 - [可変抵抗によるLED光量調整](articles/0199b2bd-3393-791d-bedd-9858cc706526/README.md)
 - [FFmpegでmp4からgifに変換](articles/0199b308-a0a2-7d44-86b1-dd2327d4f433/README.md)
 - [Ubuntu 24.04作業ログ](articles/0199b484-c4c0-79bc-9570-7791f59940d9/README.md)
-- [環境変数の取り扱いの指針](articles/0199c69e-5b30-70e5-8788-15733124b791/README.md)
-- [WSL＋Dockerディスク食いすぎ](articles/0199c74b-3b67-79c4-9b9d-82a950aa4d73/README.md)
+- [環境変数の取り扱いの指針](articles/0199c69e-5b30-70e5-8788-15733124b791/README.md)
+- [WSL＋Dockerディスク食いすぎ](articles/0199c74b-3b67-79c4-9b9d-82a950aa4d73/README.md)
 - [GLM-MN3350](articles/0199d804-fa2f-7925-82e1-003224f2d920/README.md)
 - [CLIでUSBストレージの安全な取り外し](articles/0199d80a-98e9-72fb-94aa-f24b5fe2ff78/README.md)
 - [再起動後にUEFIに入る](articles/0199d814-d1a6-7b4e-b283-44e72571f725/README.md)
 - [Z390-A PRO (MS-7B98)におけるWoL有効化](articles/0199d851-4ce7-724f-a0c9-6df368692ac3/README.md)
-- [マシンのグローバルIPアドレスを定期的に特定のGistにアップロードする](articles/0199e067-737c-7025-ad6f-6e2e546fc451/README.md)
+- [マシンのグローバルIPアドレスを定期的に特定のGistにアップロードする](articles/0199e067-737c-7025-ad6f-6e2e546fc451/README.md)
 - [SSH／RDPからでもカメラやマイクに触りたい](articles/0199f09e-6287-7636-b981-e8e8baa2c800/README.md)
 - [退避ファイルの拡張子はorgよりorigがよい](articles/0199f1a3-18bc-7e0f-872d-d8ac4587db31/README.md)
 - [ThinkPad X1 Carbon Gen 12利用ログ](articles/019a13c7-2a12-7453-b753-6114042fb4e8/README.md)
