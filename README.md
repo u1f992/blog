@@ -5589,6 +5589,148 @@ $ npm list --global
 $ curl -fsSL https://claude.ai/install.sh | bash
 ```
 
+### KVM
+
+- https://help.ubuntu.com/community/KVM/Installation （ちょっと古い）
+- https://virt-manager.org/
+
+```
+$ kvm-ok 
+コマンド 'kvm-ok' が見つかりません。次の方法でインストールできます:
+sudo apt install cpu-checker
+$ sudo apt install cpu-checker
+$ kvm-ok 
+INFO: /dev/kvm exists
+KVM acceleration can be used
+$ sudo apt install virt-manager virtiofsd
+```
+
+再起動するとlibvirtdが自動起動する
+
+[ラップトップにプリインストールされたOEM版Windows 11をKVM上にインストールし直して利用する](../0198cacd-dcc9-7017-97a8-6fc964adb687/README.md)
+
+```
+$ mkdir ~/.win11
+$ mv ~/Downloads/Win11_25H2_Japanese_x64.iso ~/.win11/
+$ mv ~/Downloads/virtio-win-0.1.285.iso ~/.win11/
+$ sudo cat /sys/firmware/acpi/tables/SLIC
+cat: /sys/firmware/acpi/tables/SLIC: そのようなファイルやディレクトリはありません
+$ sudo cat /sys/firmware/acpi/tables/MSDM | tee ~/.win11/msdm.bin
+$ sudo dmidecode -t 0 -u | awk '/^\t\t[0-9A-F][0-9A-F]( |$)/' | xxd -r -p > ~/.win11/smbios_type_0.bin
+$ sudo dmidecode -t 1 -u | awk '/^\t\t[0-9A-F][0-9A-F]( |$)/' | xxd -r -p > ~/.win11/smbios_type_1.bin
+$ ls -la ~/.win11/
+合計 8242188
+drwxrwxr-x  2 mukai mukai       4096 11月  6 10:13 .
+drwxr-x--- 26 mukai mukai       4096 11月  6 10:08 ..
+-rw-rw-r--  1 mukai mukai 7650324480 11月  6 09:52 Win11_25H2_Japanese_x64.iso
+-rw-rw-r--  1 mukai mukai         85 11月  6 10:11 msdm.bin
+-rw-rw-r--  1 mukai mukai         61 11月  6 10:12 smbios_type_0.bin
+-rw-rw-r--  1 mukai mukai        159 11月  6 10:13 smbios_type_1.bin
+-rw-rw-r--  1 mukai mukai  789645312 11月  6 10:07 virtio-win-0.1.285.iso
+```
+
+```
+$ sudo cp /etc/apparmor.d/abstractions/libvirt-qemu /etc/apparmor.d/abstractions/libvirt-qemu.orig
+$ sudo nano /etc/apparmor.d/abstractions/libvirt-qemu
+$ sudo apparmor_parser -r /etc/apparmor.d/abstractions/libvirt-qemu
+AppArmor parser error for /etc/apparmor.d/abstractions/libvirt-qemu in profile /etc/apparmor.d/abstractions/openssl at line 13: syntax error, unexpected TOK_MODE, expecting TOK_OPEN
+$ sudo cat /etc/apparmor.d/abstractions/libvirt-qemu | tail -n 3
+  include if exists <local/abstractions/libvirt-qemu>
+
+/home/mukai/.win11/** r,
+```
+
+インストールメディアを指定する画面から進める際に「エミュレーターはパス'/home/mukai/.win11/Win11_25H2_Japanese_x64.iso'を検索する権限を持っていません。今すぐこれを訂正しますか？」というダイアログが表示される。「今後これらのティレクトリーについては確認しない。」にチェックを入れて「はい」で進める。
+
+メモリとCPUはホストの半分で15800(/31601)と7(/14)
+
+ストレージは256GBあげる
+
+vGPUはできないらしい、ざんねん。
+
+[Intel® Core™ Ultra 7 Processor 155U](https://www.intel.com/content/www/us/en/products/sku/237327/intel-core-ultra-7-processor-155u-12m-cache-up-to-4-80-ghz/specifications.html)
+
+> <dl><dt>Product Collection</dt><dd>Intel® Core™ Ultra processors (Series 1)</dd>
+> <dt>Code Name</dt><dd>Products formerly Meteor Lake</dd></dl>
+
+[Graphics Virtualization Technologies Support for Each Intel® Graphics Family](https://www.intel.com/content/www/us/en/support/articles/000093216/graphics/processor-graphics.html)
+
+> | Product Family | Graphics Virtualization Technology Supported |
+> | --- | --- |
+> | Intel® Core™ Ultra Processor (Series 1) processor family (Formerly Known as Meteor Lake) | Not Supported |
+
+[Dockerと同じ](../0199d804-fa2f-7925-82e1-003224f2d920/README.md)ように、MTUを明示的に設定する必要がある。
+
+```xml
+<interface type="network">
+  <mac address="52:54:00:6f:7d:05"/>
+  <source network="default"/>
+  <model type="virtio"/>
+  <link state="up"/>
+  <mtu size="1420"/>
+  <address type="pci" domain="0x0000" bus="0x02" slot="0x00" function="0x0"/>
+</interface>
+```
+
+設定を完了してインストールを開始しようとするとエラーが発生
+
+```
+インストールを完了できません: 'internal error: process exited while connecting to monitor: qemu-system-x86_64: -acpitable file=/home/mukai/.win11/msdm.bin: can't open file /home/mukai/.win11/msdm.bin: Permission denied'
+
+Traceback (most recent call last):
+  File "/usr/share/virt-manager/virtManager/asyncjob.py", line 72, in cb_wrapper
+    callback(asyncjob, *args, **kwargs)
+  File "/usr/share/virt-manager/virtManager/createvm.py", line 2008, in _do_async_install
+    installer.start_install(guest, meter=meter)
+  File "/usr/share/virt-manager/virtinst/install/installer.py", line 695, in start_install
+    domain = self._create_guest(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/share/virt-manager/virtinst/install/installer.py", line 637, in _create_guest
+    domain = self.conn.createXML(initial_xml or final_xml, 0)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/libvirt.py", line 4529, in createXML
+    raise libvirtError('virDomainCreateXML() failed')
+libvirt.libvirtError: internal error: process exited while connecting to monitor: qemu-system-x86_64: -acpitable file=/home/mukai/.win11/msdm.bin: can't open file /home/mukai/.win11/msdm.bin: Permission denied
+```
+
+```
+$ getfacl /home/mukai/.win11/msdm.bin
+getfacl: 絶対パス名から先頭の '/' を削除
+
+# file: home/mukai/.win11/msdm.bin
+# owner: mukai
+# group: mukai
+user::rw-
+group::rw-
+other::r--
+
+$ sudo setfacl -m u:libvirt-qemu:r /home/mukai/.win11/msdm.bin
+$ getfacl /home/mukai/.win11/msdm.bin
+getfacl: 絶対パス名から先頭の '/' を削除
+
+# file: home/mukai/.win11/msdm.bin
+# owner: mukai
+# group: mukai
+user::rw-
+user:libvirt-qemu:r--
+group::rw-
+mask::rw-
+other::r--
+
+sudo setfacl -m u:libvirt-qemu:x /home/mukai
+```
+
+やっとVMが起動する。「ショートカットの置き換えを許可する　アプリ仮想マシンマネージャーがショットカットを置き換えることを要求しています　&lt;Super&gt;Escapeを押してショートカットを復元できます。」せめて何を置き換えるつもりか説明してほしいものだ。許可
+
+電源プラン高パフォーマンス
+画面タイムアウトなし
+ディスプレイ拡大縮小150%（SPICE側で表示＞画面の拡大縮小＞常に行う＋仮想マシンのウィンドウを自動的にリサイズ　と併用）
+sudoの有効化
+開発者モードon
+エクスプローラー＞ファイル拡張子を表示するon
+デバイスの暗号化off
+OneDrive削除
+
 ## WireGuard Android版アプリにおけるフルトンネル設定＋プライベートIPアドレス除外
 
 フルトンネル時のクライアント側のAllowedIPs設定値は「0.0.0.0/0, ::/0」だが、これではすべてのトラフィックがトンネルに入り、クライアント自身のLANの機器に到達できない（WireGuardサーバーを置いているLANの機器にアクセスする）。
