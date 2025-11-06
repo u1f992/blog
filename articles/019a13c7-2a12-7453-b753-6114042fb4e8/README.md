@@ -563,3 +563,25 @@ $ npm install --global @devcontainers/cli
 $ devcontainer --version
 0.80.1
 ```
+
+Claude Codeのネイティブバイナリ版が公開され、インストールもこちらが推奨になっていた。なお中身はBunらしい https://docs.claude.com/ja/docs/claude-code/overview
+
+```
+$ npm list --global
+/home/mukai/.local/share/fnm/node-versions/v22.20.0/installation/lib
+├── @anthropic-ai/claude-code@2.0.33
+├── @devcontainers/cli@0.80.1
+├── corepack@0.34.0
+└── npm@11.6.2
+
+$ npm uninstall --global @anthropic-ai/claude-code
+
+removed 3 packages in 108ms
+$ npm list --global
+/home/mukai/.local/share/fnm/node-versions/v22.20.0/installation/lib
+├── @devcontainers/cli@0.80.1
+├── corepack@0.34.0
+└── npm@11.6.2
+
+$ curl -fsSL https://claude.ai/install.sh | bash
+```
