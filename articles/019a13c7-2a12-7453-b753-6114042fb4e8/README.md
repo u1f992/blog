@@ -727,3 +727,7 @@ sudoの有効化
 エクスプローラー＞ファイル拡張子を表示するon
 デバイスの暗号化off
 OneDrive削除
+
+## ESLint
+
+dbaeumer.vscode-eslint

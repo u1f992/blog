@@ -5731,6 +5731,10 @@ sudoの有効化
 デバイスの暗号化off
 OneDrive削除
 
+## ESLint
+
+dbaeumer.vscode-eslint
+
 ## WireGuard Android版アプリにおけるフルトンネル設定＋プライベートIPアドレス除外
 
 フルトンネル時のクライアント側のAllowedIPs設定値は「0.0.0.0/0, ::/0」だが、これではすべてのトラフィックがトンネルに入り、クライアント自身のLANの機器に到達できない（WireGuardサーバーを置いているLANの機器にアクセスする）。
