@@ -731,3 +731,8 @@ OneDrive削除
 ## ESLint
 
 dbaeumer.vscode-eslint
+
+
+```
+$ sudo apt install --yes gddrescue
+```
