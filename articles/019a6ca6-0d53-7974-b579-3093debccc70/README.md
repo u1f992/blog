@@ -88,3 +88,30 @@ sudo umount /mnt/Windows
 sudo rmdir /mnt/Windows
 sudo losetup -d /dev/loop14
 ```
+
+img直はサイズが大きすぎるので、qcow2に変換する。
+
+```
+sudo apt install qemu-utils
+qemu-img convert -c -O qcow2 ~/sda.img ~/sda.qcow2
+```
+
+マウント。nbd（Network Block Device）を使う。max_partは各デバイスのパーティション数の上限。ラベル確認はループバックと同じようにできる。
+
+```
+sudo modprobe nbd max_part=8
+sudo qemu-nbd --connect=/dev/nbd0 ~/sda.qcow2
+
+sudo blkid /dev/nbd0*
+
+sudo mkdir -p /mnt/Windows
+sudo mount /dev/nbd0p3 /mnt/Windows
+```
+
+アンマウント
+
+```
+sudo umount /mnt/Windows
+sudo rmdir /mnt/Windows
+sudo qemu-nbd --disconnect /dev/nbd0
+```
