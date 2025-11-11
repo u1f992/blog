@@ -5739,6 +5739,7 @@ dbaeumer.vscode-eslint
 
 ```
 $ sudo apt install --yes gddrescue
+$ sudo apt install --yes xxhash
 ```
 
 ## WireGuard Android版アプリにおけるフルトンネル設定＋プライベートIPアドレス除外
