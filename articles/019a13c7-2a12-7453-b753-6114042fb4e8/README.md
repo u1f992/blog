@@ -737,3 +737,5 @@ dbaeumer.vscode-eslint
 $ sudo apt install --yes gddrescue
 $ sudo apt install --yes xxhash
 ```
+
+[指紋認証](../019a76b5-4753-7fac-8408-7141665a8faa/README.md)
