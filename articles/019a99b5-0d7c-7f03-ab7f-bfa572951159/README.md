@@ -72,13 +72,116 @@ peer: <key>
 
 #### 1. PCは起動しているか？　ログイン画面まで到達しているか？
 
+してた。
+
 #### 2. WireGuardは起動しているか？　自動起動設定が死んでいないか？
 
 ```
 $ sudo systemctl status wg-quick@wg0
+● wg-quick@wg0.service - WireGuard via wg-quick(8) for wg0
+     Loaded: loaded (/usr/lib/systemd/system/wg-quick@.service; enabled; preset: enabled)
+     Active: active (exited) since Wed 2025-11-19 09:49:06 JST; 10h ago
+       Docs: man:wg-quick(8)
+             man:wg(8)
+             https://www.wireguard.com/
+             https://www.wireguard.com/quickstart/
+             https://git.zx2c4.com/wireguard-tools/about/src/man/wg-quick.8
+             https://git.zx2c4.com/wireguard-tools/about/src/man/wg.8
+   Main PID: 2413 (code=exited, status=0/SUCCESS)
+        CPU: 24ms
+
+11月 19 09:49:06 mukai-MS-7B98 systemd[1]: Starting wg-quick@wg0.service - WireGuard via wg-quick(8) for wg0...
+11月 19 09:49:06 mukai-MS-7B98 wg-quick[2413]: [#] ip link add wg0 type wireguard
+11月 19 09:49:06 mukai-MS-7B98 wg-quick[2413]: [#] wg setconf wg0 /dev/fd/63
+11月 19 09:49:06 mukai-MS-7B98 wg-quick[2413]: [#] ip -4 address add 10.8.0.2/24 dev wg0
+11月 19 09:49:06 mukai-MS-7B98 wg-quick[2413]: [#] ip -6 address add fd42:42:42::2/64 dev wg0
+11月 19 09:49:06 mukai-MS-7B98 wg-quick[2413]: [#] ip link set mtu 1420 up dev wg0
+11月 19 09:49:06 mukai-MS-7B98 systemd[1]: Finished wg-quick@wg0.service - WireGuard via wg-quick(8) for wg0.
+
 $ sudo journalctl -u wg-quick@wg0 -b
+11月 19 09:49:06 mukai-MS-7B98 systemd[1]: Starting wg-quick@wg0.service - WireGuard via wg-quick(8) for wg0...
+11月 19 09:49:06 mukai-MS-7B98 wg-quick[2413]: [#] ip link add wg0 type wireguard
+11月 19 09:49:06 mukai-MS-7B98 wg-quick[2413]: [#] wg setconf wg0 /dev/fd/63
+11月 19 09:49:06 mukai-MS-7B98 wg-quick[2413]: [#] ip -4 address add 10.8.0.2/24 dev wg0
+11月 19 09:49:06 mukai-MS-7B98 wg-quick[2413]: [#] ip -6 address add fd42:42:42::2/64 dev wg0
+11月 19 09:49:06 mukai-MS-7B98 wg-quick[2413]: [#] ip link set mtu 1420 up dev wg0
+11月 19 09:49:06 mukai-MS-7B98 systemd[1]: Finished wg-quick@wg0.service - WireGuard via wg-quick(8) for wg0.
+
 $ sudo systemctl is-enabled wg-quick@wg0
+enabled
+
 ```
+
+全部正常だ……
+
+```
+$ sudo tcpdump -i eno1 udp port 51820 -n
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on eno1, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+... : UDP, length 148
+... : UDP, length 148
+^C
+2 packets captured
+2 packets received by filter
+0 packets dropped by kernel
+
+$ sudo tcpdump -i wlp3s0 udp port 51820 -n
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on wlp3s0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+^C
+0 packets captured
+0 packets received by filter
+0 packets dropped by kernel
+```
+
+ハンドシェイクもちゃんと出ている。なぜ返ってこない？
+
+サーバー側で見た設定の以下の箇所に注目する。10.8.0.2の設定ではグローバルIPを指定しているのに、サーバーからはルーターのアドレスが見えている。つまり、ルーター側のヘアピンNATを利用していたことがわかる（グローバルIPを指定していたのは冗長だったといえる）。このヘアピンNATになんらかの不具合が起こっているのでは
+
+```
+peer: <key>
+  endpoint: 192.168.0.1:1053
+```
+
+そこで、別端末をLANに参加させた後、先程までssh接続できていたはずの10.8.0.1にアクセスしてみたらタイムアウトが発生する。ヘアピンNATがかなり怪しいことがわかってきた。
+
+民生品ルーターの管理画面からは簡易的なログしか見られない……が、深夜に、リモート制御による再起動がかけられていることがわかった。これがかなり怪しい。
+
+```
+2025-11-19 01:55:08 staup - 0.ntc: システム起動(初期化)成功
+2025-11-19 01:55:18 dhcpc - 0.ntc: アドレス割り当て ,<IP> ,WAN
+2025-11-19 01:55:21 dhcps - 0.ntc: アドレス割り当て ,192.168.0.2 ,<MAC> ,LAN
+2025-11-19 01:55:22 iface - 2.ntc: LAN1 ポートリンクアップ
+2025-11-19 01:55:22 iface - 2.ntc: LAN4 ポートリンクアップ
+2025-11-19 01:55:23 voip  - 4.ntc: レジスタ要求
+2025-11-19 01:55:23 voip  - 0.ntc: レジスタ成功 200OK
+2025-11-19 01:55:24 voip  - 4.ntc: レジスタ要求
+2025-11-19 01:55:24 voip  - 0.ntc: レジスタ成功 200OK
+2025-11-19 01:55:36 voip  -15.war: リンクダウン
+2025-11-19 01:55:36 dhcpc - 0.ntc: アドレス割り当て ,<IP> ,WAN
+2025-11-19 01:55:37 voip  - 4.ntc: レジスタ要求
+2025-11-19 01:55:37 voip  - 0.ntc: レジスタ成功 200OK
+2025-11-19 01:55:38 voip  - 4.ntc: レジスタ要求
+2025-11-19 01:55:38 voip  - 0.ntc: レジスタ成功 200OK
+2025-11-19 01:55:54 tr069 - 0.inf: TR069 Inform 開始 EventCode=1 BOOT/7 TRANSFER COMPLETE/M Download
+2025-11-19 01:55:56 tr069 - 2.inf: TR069 Method=Inform FaultCode=0
+2025-11-19 01:55:56 tr069 - 2.inf: TR069 Method=TransferComplete FaultCode=0
+2025-11-19 01:55:57 tr069 - 1.inf: TR069 Inform 完了
+```
+
+これ以上はわかりそうにない。ルーターを再起動してみる。が、ダメ
+
+```
+$ sudo traceroute -n -U -p 51820 118.156.113.172
+traceroute to 118.156.113.172 (118.156.113.172), 30 hops max, 60 byte packets
+ 1  118.156.113.172  0.462 ms  0.552 ms  0.628 ms
+```
+
+ということは192.168.0.3まで届いていないな？　ルーターの設定を初期化してセットアップし直したが変わらず。
+
+お手上げ
+
+wg0.confの`Endpoint = <IP>:51820`としているのを、`192.168.0.3:51820`とすればVPNには参加できるようになる。起動用PCは常に同じLANにあるはずだから、これはまあ許容できる。問題はLANから参加することもWANからVPNに参加することもあるスマートフォンで、グローバルIPを指定している間は自宅Wi-Fi＋WireGuardに接続できない。
 
 ### 今後の対応
 
