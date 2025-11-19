@@ -5746,6 +5746,18 @@ $ sudo apt install --yes xxhash
 
 [指紋認証](../019a76b5-4753-7fac-8408-7141665a8faa/README.md)
 
+よくCapsLockを間違えて入力してしまいめんどくさい。
+
+```
+$ gsettings get org.gnome.desktop.input-sources xkb-options
+@as []
+$ gsettings set org.gnome.desktop.input-sources xkb-options "['caps:none']"
+$ gsettings get org.gnome.desktop.input-sources xkb-options
+['caps:none']
+```
+
+ログアウトして再ログインすればCapsLockが無効化される
+
 ## WireGuard Android版アプリにおけるフルトンネル設定＋プライベートIPアドレス除外
 
 フルトンネル時のクライアント側のAllowedIPs設定値は「0.0.0.0/0, ::/0」だが、これではすべてのトラフィックがトンネルに入り、クライアント自身のLANの機器に到達できない（WireGuardサーバーを置いているLANの機器にアクセスする）。
