@@ -728,7 +728,7 @@ sudoの有効化
 デバイスの暗号化off
 OneDrive削除
 
-## ESLint
+### ESLint
 
 dbaeumer.vscode-eslint
 
@@ -751,3 +751,19 @@ $ gsettings get org.gnome.desktop.input-sources xkb-options
 ```
 
 ログアウトして再ログインすればCapsLockが無効化される
+
+### Tkinter
+
+```
+$ python3
+Python 3.12.3 (main, Nov  6 2025, 13:44:16) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import tkinter as tk
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'tkinter'
+```
+
+ないんだ。でも確かにvenvとかpipも入っていないんだっけ。
+
+- https://stackoverflow.com/a/18143036

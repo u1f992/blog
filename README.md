@@ -94,6 +94,7 @@
 - [ThinkPad X1 Carbon Gen 12についている指紋認証デバイスをLinuxでも使う](articles/019a76b5-4753-7fac-8408-7141665a8faa/README.md)
 - [障害対応メモ](articles/019a99b5-0d7c-7f03-ab7f-bfa572951159/README.md)
 - [VDS1022(I)をLinuxで使う](articles/019ab3b5-a998-7b84-be66-f553639e55c3/README.md)
+- [別のPCのX Windowアプリをローカルの画面で表示させる](articles/019ab98b-ec14-722f-871a-3404abf1046b/README.md)
 
 ---
 
@@ -5735,7 +5736,7 @@ sudoの有効化
 デバイスの暗号化off
 OneDrive削除
 
-## ESLint
+### ESLint
 
 dbaeumer.vscode-eslint
 
@@ -5758,6 +5759,22 @@ $ gsettings get org.gnome.desktop.input-sources xkb-options
 ```
 
 ログアウトして再ログインすればCapsLockが無効化される
+
+### Tkinter
+
+```
+$ python3
+Python 3.12.3 (main, Nov  6 2025, 13:44:16) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import tkinter as tk
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'tkinter'
+```
+
+ないんだ。でも確かにvenvとかpipも入っていないんだっけ。
+
+- https://stackoverflow.com/a/18143036
 
 ## WireGuard Android版アプリにおけるフルトンネル設定＋プライベートIPアドレス除外
 
@@ -6564,3 +6581,54 @@ $ 7z l OWON_VDS_C2_1.1.7_Setup.exe | grep -i '\.jar'
 ```
 
 具体的な手順は書かれていないけれど、[florentbr/OWON-VDS1022](https://github.com/florentbr/OWON-VDS1022)は公式配布からJava部分を取り出して、必要なネイティブライブラリを補ったものなのだろう。確かに、少しファイルを確認するとlibusb-0.1.so.4などが含まれている。
+## 別のPCのX Windowアプリをローカルの画面で表示させる
+
+例えば、うちでは10.8.0.2のPCが最もパワフルなので、ほとんどの作業はこちらでやりたい。
+
+サーバー側で設定が必要。
+
+```
+$ sudo vim /etc/ssh/sshd_config
+→ X11Forwarding yes をアンコメント。デフォルト有効かも
+$ sudo systemctl restart sshd
+$ sudo apt install xauth
+```
+
+ローカル側では、以下のどちらかでSSH接続する。`-X`ではリモート側のXクライアントがローカルXサーバへアクセスできる権限が制限される。`-Y`では制限されない（trusted）。
+
+```
+$ ssh -X user@host
+$ ssh -Y user@host
+```
+
+接続された先でGUIアプリを起動すると、ローカルのXサーバで表示される。
+
+```
+$ xcalc &
+```
+
+ただしファイルを開くダイアログなどで表示されるファイルシステムはリモートのものになる。
+
+**サーバー側のファイルシステムがローカルに**マウントする方法は以下の通り。実体はサーバー側にあることに注意。逆にしたければ、リモートからローカルにsshfsを実行できるようにしておく必要がある。
+
+サーバーとローカルでマウントポイントを用意
+
+```
+$ mkdir -p /tmp/Public
+```
+
+ローカルで
+
+```
+$ sudo vim /etc/fuse.conf
+→ user_allow_other をアンコメント
+
+$ sshfs /tmp/Public user@host:/tmp/Public -o allow_other -o default_permissions -o reconnect
+（user@hostの/tmp/Publicを、ローカルの/tmp/Publicにマウントする）
+```
+
+切断はローカルで
+
+```
+$ fusermount -u /tmp/Public
+```
