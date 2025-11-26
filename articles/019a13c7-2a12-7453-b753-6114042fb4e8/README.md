@@ -767,3 +767,27 @@ ModuleNotFoundError: No module named 'tkinter'
 ないんだ。でも確かにvenvとかpipも入っていないんだっけ。
 
 - https://stackoverflow.com/a/18143036
+
+## Inkscape
+
+今回はAppImage版を選択した。
+
+[AppImageを手動でインストールする（Ubuntu 24.04）](../articles/0194d66f-55fa-7755-93b3-7b488b50edaa/README.md)
+
+```
+~/.local/bin/org.inkscape.Inkscape/squashfs-root$ diff org.inkscape.Inkscape.desktop.orig org.inkscape.Inkscape.desktop
+263,264c263,264
+< Exec=inkscape %F
+< TryExec=inkscape
+---
+> Exec=/home/mukai/.local/bin/org.inkscape.Inkscape/squashfs-root/AppRun %F
+> TryExec=/home/mukai/.local/bin/org.inkscape.Inkscape/squashfs-root/AppRun
+267c267
+< Icon=org.inkscape.Inkscape
+---
+> Icon=/home/mukai/.local/bin/org.inkscape.Inkscape/squashfs-root/org.inkscape.Inkscape.png
+303c303
+< Exec=inkscape
+---
+> Exec=/home/mukai/.local/bin/org.inkscape.Inkscape/squashfs-root/AppRun
+```
