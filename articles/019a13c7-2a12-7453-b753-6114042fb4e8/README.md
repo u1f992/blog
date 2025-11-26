@@ -768,9 +768,9 @@ ModuleNotFoundError: No module named 'tkinter'
 
 - https://stackoverflow.com/a/18143036
 
-## Inkscape
+### Inkscape
 
-今回はAppImage版を選択した。
+今回はAppImage版を選択した。`~/.local/bin`に作るディレクトリ名は`.desktop`の名前に合わせておくと丸いのかも（つまりダウンロードした直後に一回extractして中身を見ておく）
 
 [AppImageを手動でインストールする（Ubuntu 24.04）](../articles/0194d66f-55fa-7755-93b3-7b488b50edaa/README.md)
 
@@ -790,4 +790,41 @@ ModuleNotFoundError: No module named 'tkinter'
 < Exec=inkscape
 ---
 > Exec=/home/mukai/.local/bin/org.inkscape.Inkscape/squashfs-root/AppRun
+```
+
+いつの間にかNautilusに`/home/mukai/ドキュメント`・`/home/mukai/ミュージック`・`/home/mukai/ピクチャ`・`/home/mukai/ビデオ`・`/home/mukai/ダウンロード`へのブックマークが追加されている（もとから残っていた？）これらは一番はじめに英語に切り替えたのですべてリンク切れの状態になっている。右クリック＞ブックマークから削除
+
+### GIMP
+
+```
+$ mkdir ~/.local/bin/org.gimp.GIMP.Stable
+$ mv ~/Downloads/GIMP-3.0.6-x86_64.AppImage ~/.local/bin/org.gimp.GIMP.Stable/
+$ cd ~/.local/bin/org.gimp.GIMP.Stable/
+~/.local/bin/org.gimp.GIMP.Stable$ chmod +x GIMP-3.0.6-x86_64.AppImage
+~/.local/bin/org.gimp.GIMP.Stable$ ./GIMP-3.0.6-x86_64.AppImage --appimage-extract
+~/.local/bin/org.gimp.GIMP.Stable$ chmod +x squashfs-root/org.gimp.GIMP.Stable.desktop
+~/.local/bin/org.gimp.GIMP.Stable$ ln -s /home/mukai/.local/bin/org.gimp.GIMP.Stable/squashfs-root/org.gimp.GIMP.Stable.desktop ~/.local/share/applications/org.gimp.GIMP.Stable.desktop
+~/.local/bin/org.gimp.GIMP.Stable$ cp squashfs-root/org.gimp.GIMP.Stable.desktop squashfs-root/org.gimp.GIMP.Stable.desktop.orig
+~/.local/bin/org.gimp.GIMP.Stable$ vim squashfs-root/org.gimp.GIMP.Stable.desktop
+~/.local/bin/org.gimp.GIMP.Stable$ diff squashfs-root/org.gimp.GIMP.Stable.desktop.orig squashfs-root/org.gimp.GIMP.Stable.desktop
+271,273c271,273
+< Exec=org.gimp.GIMP.Stable %U
+< TryExec=org.gimp.GIMP.Stable
+< Icon=org.gimp.GIMP.Stable
+---
+> Exec=/home/mukai/.local/bin/org.gimp.GIMP.Stable/squashfs-root/AppRun %U
+> TryExec=/home/mukai/.local/bin/org.gimp.GIMP.Stable/squashfs-root/AppRun
+> Icon=/home/mukai/.local/bin/org.gimp.GIMP.Stable/squashfs-root/org.gimp.GIMP.Stable.svg
+```
+
+よく見たらGIMPのdesktopはリンクだったから、origへの退避を間違えている気がする（書き戻す際に`.orig`を外すだけでは不足）。
+
+```
+$ ls -l /home/mukai/.local/bin/org.gimp.GIMP.Stable/squashfs-root/
+合計 40
+-rwxrwxrwx 1 mukai mukai  1553 10月  6 03:06 AppRun
+lrwxrwxrwx 1 mukai mukai    51 11月 26 11:56 org.gimp.GIMP.Stable.desktop -> usr/share/applications/org.gimp.GIMP.Stable.desktop
+-rw-r--r-- 1 mukai mukai 17099 11月 26 11:58 org.gimp.GIMP.Stable.desktop.orig
+-rw-r--r-- 1 mukai mukai  9604 10月  6 03:06 org.gimp.GIMP.Stable.svg
+drwxr-xr-x 9 mukai mukai  4096 11月 26 11:56 usr
 ```
