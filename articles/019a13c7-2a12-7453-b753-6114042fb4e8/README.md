@@ -864,3 +864,27 @@ $ diff ~/.local/bin/org.gimp.GIMP.Stable/squashfs-root/org.gimp.GIMP.Stable.desk
 > TryExec=/home/mukai/.local/bin/org.gimp.GIMP.Stable/GIMP-3.0.6-x86_64.AppImage
 > Icon=/home/mukai/.local/bin/org.gimp.GIMP.Stable/squashfs-root/org.gimp.GIMP.Stable.svg
 ```
+
+で、この場合、FUSEが必要
+
+```
+$ /home/mukai/.local/bin/org.inkscape.Inkscape/Inkscape-ebf0e94-x86_64.AppImage
+dlopen(): error loading libfuse.so.2
+
+AppImages require FUSE to run. 
+You might still be able to extract the contents of this AppImage 
+if you run it with the --appimage-extract option. 
+See https://github.com/AppImage/AppImageKit/wiki/FUSE 
+for more information
+```
+
+- https://github.com/AppImage/AppImageKit/wiki/FUSE
+
+> For example, on **Debian (>= 13) and Ubuntu (>= 24.04)**:
+> 
+> ```
+> sudo add-apt-repository universe
+> sudo apt install libfuse2t64
+> ```
+>
+> Note: In Ubuntu 24.04, the `libfuse2` package was [renamed](https://changelogs.ubuntu.com/changelogs/pool/universe/f/fuse/fuse_2.9.9-8.1build1/changelog) to `libfuse2t64`.
