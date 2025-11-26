@@ -828,3 +828,39 @@ lrwxrwxrwx 1 mukai mukai    51 11月 26 11:56 org.gimp.GIMP.Stable.desktop -> us
 -rw-r--r-- 1 mukai mukai  9604 10月  6 03:06 org.gimp.GIMP.Stable.svg
 drwxr-xr-x 9 mukai mukai  4096 11月 26 11:56 usr
 ```
+
+上の記事でも触れたけれど、展開したsquashfs-rootから実行するのはAppImageファイルを直接実行するのとは処理が違うらしい。GIMPではちゃんと分岐できているようだが、Arduino IDEのように分岐を実装していないものもある。
+
+```
+$ /home/mukai/.local/bin/org.gimp.GIMP.Stable/squashfs-root/AppRun
+Running without type2-runtime. AppDir is /home/mukai/.local/bin/org.gimp.GIMP.Stable/squashfs-root
+```
+
+こっちのほうがよさそう。
+
+```
+$ diff ~/.local/bin/org.inkscape.Inkscape/squashfs-root/org.inkscape.Inkscape.desktop.orig ~/.local/bin/org.inkscape.Inkscape/squashfs-root/org.inkscape.Inkscape.desktop
+263,264c263,264
+< Exec=inkscape %F
+< TryExec=inkscape
+---
+> Exec=/home/mukai/.local/bin/org.inkscape.Inkscape/Inkscape-ebf0e94-x86_64.AppImage %F
+> TryExec=/home/mukai/.local/bin/org.inkscape.Inkscape/Inkscape-ebf0e94-x86_64.AppImage
+267c267
+< Icon=org.inkscape.Inkscape
+---
+> Icon=/home/mukai/.local/bin/org.inkscape.Inkscape/squashfs-root/org.inkscape.Inkscape.png
+303c303
+< Exec=inkscape
+---
+> Exec=/home/mukai/.local/bin/org.inkscape.Inkscape/Inkscape-ebf0e94-x86_64.AppImage
+$ diff ~/.local/bin/org.gimp.GIMP.Stable/squashfs-root/org.gimp.GIMP.Stable.desktop.orig ~/.local/bin/org.gimp.GIMP.Stable/squashfs-root/org.gimp.GIMP.Stable.desktop
+271,273c271,273
+< Exec=org.gimp.GIMP.Stable %U
+< TryExec=org.gimp.GIMP.Stable
+< Icon=org.gimp.GIMP.Stable
+---
+> Exec=/home/mukai/.local/bin/org.gimp.GIMP.Stable/GIMP-3.0.6-x86_64.AppImage %U
+> TryExec=/home/mukai/.local/bin/org.gimp.GIMP.Stable/GIMP-3.0.6-x86_64.AppImage
+> Icon=/home/mukai/.local/bin/org.gimp.GIMP.Stable/squashfs-root/org.gimp.GIMP.Stable.svg
+```
