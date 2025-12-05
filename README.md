@@ -5897,6 +5897,10 @@ for more information
 >
 > Note: In Ubuntu 24.04, the `libfuse2` package was [renamed](https://changelogs.ubuntu.com/changelogs/pool/universe/f/fuse/fuse_2.9.9-8.1build1/changelog) to `libfuse2t64`.
 
+```
+sudo apt install pv
+```
+
 ## WireGuard Android版アプリにおけるフルトンネル設定＋プライベートIPアドレス除外
 
 フルトンネル時のクライアント側のAllowedIPs設定値は「0.0.0.0/0, ::/0」だが、これではすべてのトラフィックがトンネルに入り、クライアント自身のLANの機器に到達できない（WireGuardサーバーを置いているLANの機器にアクセスする）。
