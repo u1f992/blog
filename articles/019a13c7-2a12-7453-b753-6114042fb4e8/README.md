@@ -890,5 +890,5 @@ for more information
 > Note: In Ubuntu 24.04, the `libfuse2` package was [renamed](https://changelogs.ubuntu.com/changelogs/pool/universe/f/fuse/fuse_2.9.9-8.1build1/changelog) to `libfuse2t64`.
 
 ```
-sudo apt install pv arping nmap
+sudo apt install pv arping nmap pdftk-java
 ```
