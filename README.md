@@ -5930,6 +5930,15 @@ for more information
 sudo apt install pv arping nmap pdftk-java
 ```
 
+`uv run`でもplaywrightは使えるが、ブラウザのインストールは別途必要
+
+```
+$ sudo /home/mukai/.local/bin/uv run --with playwright python -m playwright install-deps
+$ uv run --with playwright python -m playwright install
+```
+
+VS Codeのeditor.colorDecoratorsを切る
+
 ## WireGuard Android版アプリにおけるフルトンネル設定＋プライベートIPアドレス除外
 
 フルトンネル時のクライアント側のAllowedIPs設定値は「0.0.0.0/0, ::/0」だが、これではすべてのトラフィックがトンネルに入り、クライアント自身のLANの機器に到達できない（WireGuardサーバーを置いているLANの機器にアクセスする）。

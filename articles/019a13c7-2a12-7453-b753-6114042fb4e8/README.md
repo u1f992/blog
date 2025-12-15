@@ -892,3 +892,12 @@ for more information
 ```
 sudo apt install pv arping nmap pdftk-java
 ```
+
+`uv run`でもplaywrightは使えるが、ブラウザのインストールは別途必要
+
+```
+$ sudo /home/mukai/.local/bin/uv run --with playwright python -m playwright install-deps
+$ uv run --with playwright python -m playwright install
+```
+
+VS Codeのeditor.colorDecoratorsを切る
