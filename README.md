@@ -5941,6 +5941,65 @@ $ uv run --with playwright python -m playwright install
 
 VS Codeのeditor.colorDecoratorsを切る
 
+### Windows VMをローカルネットワークのプリンターに触らせたい
+
+現在のネットワークを確認。
+
+```
+$ ip link
+<mask>
+```
+
+`enx3c18a0226677`が対象の実ネットワークであることを確認する。直接IPが付いているか
+
+```
+$ ip addr show enx3c18a0226677
+2: enx3c18a0226677: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    inet 192.168. ...
+```
+
+`inet ...`が重要で、直接付いていることを表している。
+
+現在の接続名を確認
+
+```
+$ nmcli connection show
+NAME                     UUID                                  TYPE       DEVIC>
+netplan-enx3c18a0226677  <mask>                                ethernet   enx3c>
+...
+```
+
+ブリッジを作成してIPを付け替える
+
+```
+$ nmcli connection add type bridge ifname br0 con-name br0
+$ nmcli connection add type ethernet ifname enx3c18a0226677 con-name br0-slave master br0
+$ nmcli connection modify br0 ipv4.method auto
+$ nmcli connection modify br0 ipv6.method auto
+$ nmcli connection down netplan-enx3c18a0226677
+$ nmcli connection up br0
+
+$ ip addr show br0
+8: br0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
+    link/ether <mask>            brd ff:ff:ff:ff:ff:ff
+```
+
+来てない。スレーブも明示的に起動する必要がある。
+
+```
+$ nmcli connection up br0-slave
+$ ip addr show br0
+8: br0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
+    link/ether <mask>            brd ff:ff:ff:ff:ff:ff
+    inet 192.168. ...
+```
+
+`inet ...`がついた。
+
+VMのネットワーク設定も変更する
+
+NIC > ネットワークソースを「ブリッジデバイス」に変更。必要があればデバイス名を変更。
+
 ## WireGuard Android版アプリにおけるフルトンネル設定＋プライベートIPアドレス除外
 
 フルトンネル時のクライアント側のAllowedIPs設定値は「0.0.0.0/0, ::/0」だが、これではすべてのトラフィックがトンネルに入り、クライアント自身のLANの機器に到達できない（WireGuardサーバーを置いているLANの機器にアクセスする）。
