@@ -101,6 +101,7 @@
 - [PDF出力した際に任意のデータを埋め込むWebページ](articles/019b2070-5f7b-7d2a-a692-0f923491f27a/README.md)
 - [ライブラリを使わない](articles/019b589b-c579-747a-88fb-da655e9130e7/README.md)
 - [メモ](articles/019b74e5-a155-7355-96c2-3a4d39b2ebb4/README.md)
+- [Bottles](articles/019b76a2-67f3-7e4b-abbe-05d11991c0bb/README.md)
 
 ---
 
@@ -7203,3 +7204,48 @@ def make_html(data_url: str) -> str:
 ## メモ
 
 自分自身の理想の体現として自分がコミットしたオープンソースのシステムで書籍を作るのであって、理想を共有しない同僚や同業者に対して同じように実践するべきだとは考えていません。ただしこれは他人に協力しない、秘密主義でありたいという宣言ではありません。むしろ私は、わずかにはある自分の知見や技術を、私が使うソフトウェアと同じようにできる限り公開します。私が来た道を誰かが辿ることを信じているし、私もまた誰かが信じた理想を辿ってきた一人です。現実世界に存在する問題に汎用解はありません。誰かが自分ごととして私と同じ問題を引き受けた時、先人と私の活動が価値のあるものになることを願います。
+
+## Bottles
+
+https://usebottles.com/
+
+Flatpakからインストールするように指示されている[^1]。Flatpakをインストールしていなければ手順[^2]通りインストールする。GNOME Software FlatpakプラグインはUbuntuが提供しているアプリセンターと噛み合わせが悪いことが説明されている。そもそも私は使っていないからインストールは不要そうだ。
+
+[^1]: https://docs.usebottles.com/getting-started/installation
+[^2]: https://flathub.org/en/setup/Ubuntu
+
+```
+$ sudo apt install flatpak
+$ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+$ systemctl reboot
+
+$ flatpak install flathub com.usebottles.bottles
+$ flatpak run com.usebottles.bottles
+```
+
+中華フォントっぽい。
+
+![](image.png)
+
+キャッシュをクリアしてみる[^3]。
+
+[^3]: https://sites.google.com/site/fuguzaemon/saikin/flatpak%E7%89%88gimp%E3%81%AE%E6%96%87%E5%AD%97%E5%8C%96%E3%81%91%E3%82%92%E6%B2%BB%E3%81%99
+
+```
+$ flatpak run --command=fc-cache com.usebottles.bottles --force --verbose
+...
+/run/host/fonts/truetype: failed to write cache
+...
+fc-cache: failed
+```
+
+失敗しているし、直ってもいない。一旦これは無視しよう。
+
+はじめに選択されるデフォルトっぽい設定でWINEPREFIXを……Bottlesでは「ボトル」と言うらしい、ボトルを作成してみる。
+
+```
+名前：test
+アプリケーション
+ランナー：soda-9.0-1
+ボトルのディレクトリ：（デフォルト）
+```
