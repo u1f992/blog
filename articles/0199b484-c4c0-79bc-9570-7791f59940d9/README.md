@@ -426,6 +426,8 @@ Categories=AudioVideo;AudioEditing;Audio;Recorder;
 
 ### Ardourのメモリ制限を解除
 
+![](image-2.png)
+
 https://forum.manjaro.org/t/maximum-amount-of-locked-memory/34528
 
 ```
@@ -433,6 +435,8 @@ sudo groupadd audio
 sudo usermod -aG audio $USER
 echo '@audio - memlock unlimited' | sudo tee /etc/security/limits.d/audio.conf
 ```
+
+再起動
 
 ### QEMU
 
