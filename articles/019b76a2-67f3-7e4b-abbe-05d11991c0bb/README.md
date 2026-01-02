@@ -284,3 +284,49 @@ Ardourではウィンドウ＞プラグインマネージャから確認する�
 [Info]: Found Plugin: 'sV1S' Synth1 VSTi
 [Info]: Saved VST2 plugin cache to /home/mukai/.cache/ardour8/vst/24347eb6cc2d884a66c11af6d7490d79ced432fc-x64.v2i
 ```
+
+### IK Product Manager
+
+```
+$ sha256sum Downloads/ik_product_manager_1.1.10.zip 
+d4957265b79a15fc86ee6bad5ae613fdfb3109ced59e2063f75b4a408a80c5e8  Downloads/ik_product_manager_1.1.10.zip
+$ unzip Downloads/ik_product_manager_1.1.10.zip -d Downloads/ik_product_manager_1.1.10
+```
+
+新たなボトルを作成
+
+```
+名前：IK Multimedia
+アプリケーション
+ランナー：kron4ek-wine-9.21-staging-tkg-amd64
+ボトルのディレクトリ：（デフォルト）
+
+- allfonts
+- cjkfonts
+```
+
+```
+$ mv Downloads/ik_product_manager_1.1.10 ~/.var/app/com.usebottles.bottles/data/bottles/bottles/IK-Multimedia/drive_c/users/mukai/Downloads/
+```
+
+<!--
+これでよいはずだが、GUIが崩れてフリーズしてしまった。放っておけば復帰したかも？
+
+$ flatpak run --command=bottles-cli com.usebottles.bottles run --bottle "IK Multimedia" --executable ~/.var/app/com.usebottles.bottles/data/bottles/bottles/IK-Multimedia/drive_c/users/mukai/Downloads/ik_product_manager_1.1.10/ProductManager_1_1_10/Install\ IK\ Product\ Manager\ \(v1.1.10\).exe
+-->
+
+オーソライズは普通に行えたが、インストーラーのダウンロード後自動起動時にインストーラーの表示が崩れて操作不能になった。ウィンドウタイトルを何度かクリックしていると復帰した。インストーラーは`/home/mukai/.var/app/com.usebottles.bottles/data/bottles/bottles/IK-Multimedia/drive_c/users/mukai/Documents/IK Multimedia/IK Product Manager/MODO BASS 2`にある。
+
+```
+MODO Base 2
+Full installation (AAX,VST,VST3)
+C:\Program Files\VstPlugIns
+C:\Program Files\Common Files\VST3
+C:\Program Files\Common Files\Avid\Audio\Plug-Ins
+```
+
+```
+$ yabridgectl add /home/mukai/.var/app/com.usebottles.bottles/data/bottles/bottles/IK-Multimedia/drive_c/Program\ Files/VstPlugIns
+$ yabridgectl add /home/mukai/.var/app/com.usebottles.bottles/data/bottles/bottles/IK-Multimedia/drive_c/Program\ Files/Common\ Files/VST3
+$ yabridgectl sync
+```
