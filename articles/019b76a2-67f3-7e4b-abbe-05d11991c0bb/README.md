@@ -285,18 +285,18 @@ Ardourではウィンドウ＞プラグインマネージャから確認する�
 [Info]: Saved VST2 plugin cache to /home/mukai/.cache/ardour8/vst/24347eb6cc2d884a66c11af6d7490d79ced432fc-x64.v2i
 ```
 
-### IK Product Manager
+### MODO BASS 2
 
 ```
-$ sha256sum Downloads/ik_product_manager_1.1.10.zip 
+$ sha256sum ~/Downloads/ik_product_manager_1.1.10.zip 
 d4957265b79a15fc86ee6bad5ae613fdfb3109ced59e2063f75b4a408a80c5e8  Downloads/ik_product_manager_1.1.10.zip
-$ unzip Downloads/ik_product_manager_1.1.10.zip -d Downloads/ik_product_manager_1.1.10
+$ unzip ~/Downloads/ik_product_manager_1.1.10.zip -d ~/Downloads/ik_product_manager_1.1.10
 ```
 
 新たなボトルを作成
 
 ```
-名前：IK Multimedia
+名前：MODO BASS 2
 アプリケーション
 ランナー：kron4ek-wine-9.21-staging-tkg-amd64
 ボトルのディレクトリ：（デフォルト）
@@ -306,27 +306,57 @@ $ unzip Downloads/ik_product_manager_1.1.10.zip -d Downloads/ik_product_manager_
 ```
 
 ```
-$ mv Downloads/ik_product_manager_1.1.10 ~/.var/app/com.usebottles.bottles/data/bottles/bottles/IK-Multimedia/drive_c/users/mukai/Downloads/
+$ cp -r ~/Downloads/ik_product_manager_1.1.10 ~/.var/app/com.usebottles.bottles/data/bottles/bottles/MODO-BASS-2/drive_c/users/mukai/Downloads/
+$ flatpak run --command=bottles-cli com.usebottles.bottles run --bottle "MODO BASS 2" --executable ~/.var/app/com.usebottles.bottles/data/bottles/bottles/MODO-BASS-2/drive_c/users/mukai/Downloads/ik_product_manager_1.1.10/ProductManager_1_1_10/Install\ IK\ Product\ Manager\ \(v1.1.10\).exe
 ```
 
-<!--
-これでよいはずだが、GUIが崩れてフリーズしてしまった。放っておけば復帰したかも？
+ログイン画面のレスポンスがやたら悪いが動作には問題ない。
 
-$ flatpak run --command=bottles-cli com.usebottles.bottles run --bottle "IK Multimedia" --executable ~/.var/app/com.usebottles.bottles/data/bottles/bottles/IK-Multimedia/drive_c/users/mukai/Downloads/ik_product_manager_1.1.10/ProductManager_1_1_10/Install\ IK\ Product\ Manager\ \(v1.1.10\).exe
--->
+オーソライズは普通に行えた。
 
-オーソライズは普通に行えたが、インストーラーのダウンロード後自動起動時にインストーラーの表示が崩れて操作不能になった。ウィンドウタイトルを何度かクリックしていると復帰した。インストーラーは`/home/mukai/.var/app/com.usebottles.bottles/data/bottles/bottles/IK-Multimedia/drive_c/users/mukai/Documents/IK Multimedia/IK Product Manager/MODO BASS 2`にある。
+ダウンロードが静止していることがある。システムモニターを見ながら止まっていたらPause→Resume
+
+インストーラーのダウンロード後自動起動時にインストーラーの表示が崩れて操作不能になった。
+
+![](image-6.png)
+
+この極小Windowか？
+
+![](image-7.png)
+
+WINEPREFIX内のタスクマネージャーを起動して「切り替え」を行うとインストーラーが復帰した。インストーラーは`/home/mukai/.var/app/com.usebottles.bottles/data/bottles/bottles/MODO-BASS-2/drive_c/users/mukai/Documents/IK Multimedia/IK Product Manager/MODO BASS 2`にあるので最悪手動起動でなんとかなるはず。
 
 ```
-MODO Base 2
-Full installation (AAX,VST,VST3)
+C:\Program Files\IK Multimedia\MODO BASS 2
+VST3だけ残す
 C:\Program Files\VstPlugIns
 C:\Program Files\Common Files\VST3
-C:\Program Files\Common Files\Avid\Audio\Plug-Ins
+
+$ yabridgectl add /home/mukai/.var/app/com.usebottles.bottles/data/bottles/bottles/MODO-BASS-2/drive_c/Program\ Files/Common\ Files/VST3
+$ yabridgectl sync
 ```
 
+### MODO Drum
+
+IK Product ManagerのオーソライズはWINEPREFIXごとに判定される。別PREFIXにインストールしておけば個別の問題に対処しやすそうだ
+
 ```
-$ yabridgectl add /home/mukai/.var/app/com.usebottles.bottles/data/bottles/bottles/IK-Multimedia/drive_c/Program\ Files/VstPlugIns
-$ yabridgectl add /home/mukai/.var/app/com.usebottles.bottles/data/bottles/bottles/IK-Multimedia/drive_c/Program\ Files/Common\ Files/VST3
+名前：MODO DRUM
+アプリケーション
+ランナー：kron4ek-wine-9.21-staging-tkg-amd64
+ボトルのディレクトリ：（デフォルト）
+
+- allfonts
+- cjkfonts
+
+$ cp -r ~/.var/app/com.usebottles.bottles/data/bottles/bottles/IK-Multimedia/drive_c/users/mukai/Downloads/ik_product_manager_1.1.10 ~/.var/app/com.usebottles.bottles/data/bottles/bottles/MODO-DRUM/drive_c/users/mukai/Downloads/
+$ flatpak run --command=bottles-cli com.usebottles.bottles run --bottle "MODO DRUM" --executable ~/.var/app/com.usebottles.bottles/data/bottles/bottles/MODO-DRUM/drive_c/users/mukai/Downloads/ik_product_manager_1.1.10/ProductManager_1_1_10/Install\ IK\ Product\ Manager\ \(v1.1.10\).exe
+
+C:\Program Files\IK Multimedia\MODO DRUM
+VST3だけ残す
+C:\Program Files\VstPlugIns
+C:\Program Files\Common Files\VST3
+
+$ yabridgectl add /home/mukai/.var/app/com.usebottles.bottles/data/bottles/bottles/MODO-DRUM/drive_c/Program\ Files/Common\ Files/VST3
 $ yabridgectl sync
 ```
