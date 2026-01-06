@@ -960,3 +960,5 @@ $ ip addr show br0
 VMのネットワーク設定も変更する
 
 NIC > ネットワークソースを「ブリッジデバイス」に変更。必要があればデバイス名を変更。
+
+VS Codeシェル補完どうもうまくないように見える。`terminal.integrated.suggest.enabled = false`
