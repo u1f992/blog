@@ -7654,16 +7654,21 @@ $ tree -L 1
 $ mkdir a b
 $ tar -xzf cli-10.2.1.tgz -C a
 $ tar -xzf vivliostyle-cli-10.2.1.tgz -C b
-$ LANG=C diff --recursive --unified --new-file a/package b/package > pr-712.patch || true
-$ head -n 5 pr-712.patch 
-diff --recursive --unified --new-file a/package/dist/chunk-37OLZSNI.js b/package/dist/chunk-37OLZSNI.js
---- a/package/dist/chunk-37OLZSNI.js    1985-10-26 17:15:00.000000000 +0900
-+++ b/package/dist/chunk-37OLZSNI.js    1970-01-01 09:00:00.000000000 +0900
-@@ -1,87 +0,0 @@
--import {
+$ git diff --no-index --find-renames a/package b/package > pr-712.patch || true
+$ head -n 10 pr-712.patch 
+diff --git a/a/package/dist/chunk-5MEUINC4.js b/b/package/dist/chunk-5JTKT7VK.js
+similarity index 99%
+rename from a/package/dist/chunk-5MEUINC4.js
+rename to b/package/dist/chunk-5JTKT7VK.js
+index a026c93..bffb601 100644
+--- a/a/package/dist/chunk-5MEUINC4.js
++++ b/b/package/dist/chunk-5JTKT7VK.js
+@@ -16,7 +16,7 @@ import {
+   prepareThemeDirectory,
+   resolveTaskConfig,
 ```
 
-カレントディレクトリがNode.jsプロジェクトで`node_modules`ディレクトリがあり、`@vivliostyle/cli@10.2.1`をインストール済みの時、以下の手順でパッチを適用できる（パスの先頭2階層`{a,b}/package`を無視）。
+カレントディレクトリがNode.jsプロジェクトで`node_modules`ディレクトリがあり、`@vivliostyle/cli@10.2.1`をインストール済みの時、以下の手順でパッチを適用できる（パスの先頭3階層`a/a/package`を無視）。
 
 ```
 $ tree -L 1
@@ -7680,5 +7685,5 @@ $ cat package.json
     "@vivliostyle/cli": "10.2.1"
   }
 }
-$ patch --strip=2 --directory=node_modules/@vivliostyle/cli < pr-712.patch
+$ git apply -p3 --directory=node_modules/@vivliostyle/cli < pr-712.patch
 ```
