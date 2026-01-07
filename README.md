@@ -103,6 +103,7 @@
 - [メモ](articles/019b74e5-a155-7355-96c2-3a4d39b2ebb4/README.md)
 - [Bottles](articles/019b76a2-67f3-7e4b-abbe-05d11991c0bb/README.md)
 - [Ubuntuのリアルタイム性能を上げる](articles/019b8888-df50-7bc9-8012-5820e7444405/README.md)
+- [node_modules以下にパッチをあてる](articles/019b95ce-a85a-73f3-957e-ee65d4157f25/README.md)
 
 ---
 
@@ -6008,6 +6009,8 @@ VMのネットワーク設定も変更する
 
 NIC > ネットワークソースを「ブリッジデバイス」に変更。必要があればデバイス名を変更。
 
+VS Codeシェル補完どうもうまくないように見える。`terminal.integrated.suggest.enabled = false`
+
 ## WireGuard Android版アプリにおけるフルトンネル設定＋プライベートIPアドレス除外
 
 フルトンネル時のクライアント側のAllowedIPs設定値は「0.0.0.0/0, ::/0」だが、これではすべてのトラフィックがトンネルに入り、クライアント自身のLANの機器に到達できない（WireGuardサーバーを置いているLANの機器にアクセスする）。
@@ -7619,4 +7622,63 @@ linux-realtime-tools-6.8.1-1015/noble-updates 6.8.1-1015.16 amd64
 
 ubuntu-realtime/noble-updates 1.1.2~24.04.1 amd64
   Install and configure linux-realtime kernel for real-time systems.
+```
+
+## node_modules以下にパッチをあてる
+
+開発中の機能を一時的に他のプロジェクトで使えるようにしたいことがある。例えば今`@vivliostyle/cli`のlatestは10.2.1で、PR 712の機能を使いたい。
+
+```
+$ cd $(mktemp --directory)
+
+$ npm view @vivliostyle/cli@10.2.1 dist.tarball | xargs curl -O
+
+$ git clone https://github.com/vivliostyle/vivliostyle-cli --depth=1
+$ cd vivliostyle-cli
+$ git fetch origin pull/712/head
+$ git merge FETCH_HEAD --no-edit
+$ pnpm install
+$ pnpm build
+$ pnpm pack
+$ mv vivliostyle-cli-10.2.1.tgz ..
+$ cd ..
+
+$ tree -L 1
+.
+├── cli-10.2.1.tgz
+├── vivliostyle-cli
+└── vivliostyle-cli-10.2.1.tgz
+
+2 directories, 2 files
+
+$ mkdir a b
+$ tar -xzf cli-10.2.1.tgz -C a
+$ tar -xzf vivliostyle-cli-10.2.1.tgz -C b
+$ LANG=C diff --recursive --unified --new-file a/package b/package > pr-712.patch || true
+$ head -n 5 pr-712.patch 
+diff --recursive --unified --new-file a/package/dist/chunk-37OLZSNI.js b/package/dist/chunk-37OLZSNI.js
+--- a/package/dist/chunk-37OLZSNI.js    1985-10-26 17:15:00.000000000 +0900
++++ b/package/dist/chunk-37OLZSNI.js    1970-01-01 09:00:00.000000000 +0900
+@@ -1,87 +0,0 @@
+-import {
+```
+
+カレントディレクトリがNode.jsプロジェクトで`node_modules`ディレクトリがあり、`@vivliostyle/cli@10.2.1`をインストール済みの時、以下の手順でパッチを適用できる（パスの先頭2階層`{a,b}/package`を無視）。
+
+```
+$ tree -L 1
+.
+├── node_modules
+├── package-lock.json
+├── package.json
+└── pr-712.patch
+
+2 directories, 3 files
+$ cat package.json
+{
+  "dependencies": {
+    "@vivliostyle/cli": "10.2.1"
+  }
+}
+$ patch --strip=2 --directory=node_modules/@vivliostyle/cli < pr-712.patch
 ```
