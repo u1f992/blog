@@ -104,6 +104,7 @@
 - [Bottles](articles/019b76a2-67f3-7e4b-abbe-05d11991c0bb/README.md)
 - [Ubuntuのリアルタイム性能を上げる](articles/019b8888-df50-7bc9-8012-5820e7444405/README.md)
 - [node_modules以下にパッチをあてる](articles/019b95ce-a85a-73f3-957e-ee65d4157f25/README.md)
+- [鍵認証によるSSH接続をセットアップする](articles/019bb9d8-575c-7540-a95d-e63e62606895/README.md)
 
 ---
 
@@ -1514,8 +1515,10 @@ $ rm -rf /path/to/mount
 $ mkdir ~/.local/bin/arduino-ide && cd ~/.local/bin/arduino-ide/
 $ mv ~/Downloads/arduino-ide_2.3.6_Linux_64bit.AppImage .
 $ chmod +x arduino-ide_2.3.6_Linux_64bit.AppImage
+$ cp arduino-ide_2.3.6_Linux_64bit.AppImage arduino-ide_2.3.6_Linux_64bit.AppImage.orig
 $ ./arduino-ide_2.3.6_Linux_64bit.AppImage --appimage-extract
 $ chmod +x ~/.local/bin/arduino-ide/squashfs-root/arduino-ide.desktop
+$ cp squashfs-root/arduino-ide.desktop squashfs-root/arduino-ide.desktop.orig
 $ ln -s ~/.local/bin/arduino-ide/squashfs-root/arduino-ide.desktop ~/.local/share/applications/arduino-ide.desktop
 $ cat ~/.local/share/applications/arduino-ide.desktop 
 [Desktop Entry]
@@ -6011,6 +6014,148 @@ NIC > ネットワークソースを「ブリッジデバイス」に変更。�
 
 VS Codeシェル補完どうもうまくないように見える。`terminal.integrated.suggest.enabled = false`
 
+### バッテリーヘルス対策
+
+このPCは1日の1/3程度は電源に接続したまま起動している。これはバッテリー寿命にはよくないだろう。
+
+Ubuntu 24.04に（Ubuntu Serverにも）標準搭載されているupowerで確かめてみると、今のところは良好のようだ。
+
+```
+$ upower -e
+/org/freedesktop/UPower/devices/battery_BAT0
+/org/freedesktop/UPower/devices/line_power_AC
+/org/freedesktop/UPower/devices/line_power_ucsi_source_psy_USBC000o001
+/org/freedesktop/UPower/devices/line_power_ucsi_source_psy_USBC000o002
+/org/freedesktop/UPower/devices/mouse_dev_E2_BF_22_A8_B2_36
+/org/freedesktop/UPower/devices/DisplayDevice
+$ upower -i /org/freedesktop/UPower/devices/battery_BAT0
+  native-path:          BAT0
+  vendor:               Sunwoda
+  model:                5B11H56385
+  serial:               530
+  power supply:         yes
+  updated:              2026年01月13日 09時25分23秒 (11 seconds ago)
+  has history:          yes
+  has statistics:       yes
+  battery
+    present:             yes
+    rechargeable:        yes
+    state:               fully-charged
+    warning-level:       none
+    energy:              55.29 Wh
+    energy-empty:        0 Wh
+    energy-full:         56.02 Wh
+    energy-full-design:  57 Wh
+    energy-rate:         0 W
+    voltage:             13.044 V
+    charge-cycles:       40
+    percentage:          98%
+    capacity:            98.2807%
+    technology:          lithium-polymer
+    icon-name:          'battery-full-charged-symbolic'
+```
+
+良好なうちに対策を施す。この用途で有名なのはTLPというコマンドラインツールらしい。
+
+- https://github.com/linrunner/TLP
+- https://linrunner.de/tlp/installation/ubuntu.html
+
+```
+$ sudo add-apt-repository ppa:linrunner/tlp
+$ sudo apt update
+$ sudo apt install tlp
+```
+
+- tlp
+- tlp-pd - オプション・マウスクリックでプロファイルを選択（バージョン 1.9 以降）
+- tlp-rdw - オプション・無線デバイスウィザード
+
+まあメインツールだけでよいだろう。
+
+ChatGPTによると、以下の対策が有効という
+
+- 満充電を避ける
+- 0%を避ける
+- 高温を避ける
+- たまに（3ヶ月ごと程度）10%程度まで使ってから100%まで充電するキャリブレーションを行う
+
+充電と放電を自動制御して常に75%〜80%に保つように設定。デフォルトも75〜80ぽいけど。
+
+```
+$ sudo tlp-stat -b
+指紋読取装置に右の人指し指を置いてください
+--- TLP 1.9.1 --------------------------------------------
+
++++ Battery Care
+Plugin: thinkpad
+Supported features: charge thresholds, chargeonce, discharge, recalibrate
+Driver usage:
+* natacpi (thinkpad_acpi) = active (charge thresholds, force-discharge)
+Parameter value ranges:
+* START_CHARGE_THRESH_BAT0/1:  0(off)..96(default)..99
+* STOP_CHARGE_THRESH_BAT0/1:   1..100(default)
+
++++ ThinkPad Battery Status: BAT0 (Main / Internal)
+...
+/sys/class/power_supply/BAT0/charge_control_start_threshold =     75 [%]
+/sys/class/power_supply/BAT0/charge_control_end_threshold   =     80 [%]
+/sys/class/power_supply/BAT0/charge_behaviour               = [auto] inhibit-charge force-discharge
+...
+
+$ grep "START_CHARGE_THRESH_BAT0" /etc/tlp.conf
+#START_CHARGE_THRESH_BAT0=75
+$ grep "STOP_CHARGE_THRESH_BAT0" /etc/tlp.conf
+#STOP_CHARGE_THRESH_BAT0=80
+$ sudo vim /etc/tlp.conf  # コメントアウトを解除
+$ systemctl reboot
+
+$ sudo tlp-stat -b
+...
+/sys/class/power_supply/BAT0/charge_control_start_threshold =     75 [%]
+/sys/class/power_supply/BAT0/charge_control_end_threshold   =     80 [%]
+/sys/class/power_supply/BAT0/charge_behaviour               = [auto] inhibit-charge force-discharge
+...
+```
+
+### Scribus
+
+AppImage版のダウンロードリンクを探すのが少し混乱した。リリースページにSourceForgeへのリンクがあった。
+
+- https://wiki.scribus.net/canvas/1.6.5_Release
+- [AppImageを手動でインストールする（Ubuntu 24.04）](../articles/0194d66f-55fa-7755-93b3-7b488b50edaa/README.md)
+
+```
+$ mkdir ~/.local/bin/scribus-1.6.5
+$ cd ~/.local/bin/scribus-1.6.5
+$ mv ~/Downloads/scribus-1.6.5-linux-x86_64.AppImage .
+$ chmod +x scribus-1.6.5-linux-x86_64.AppImage
+$ cp scribus-1.6.5-linux-x86_64.AppImage scribus-1.6.5-linux-x86_64.AppImage.orig
+$ ./scribus-1.6.5-linux-x86_64.AppImage --appimage-extract
+$ find squashfs-root -name *.desktop
+squashfs-root/scribus.desktop
+squashfs-root/usr/share/applications/python3.12.desktop
+squashfs-root/usr/share/applications/scribus.desktop
+$ chmod +x squashfs-root/scribus.desktop
+$ cp squashfs-root/scribus.desktop squashfs-root/scribus.desktop.orig
+$ ln -s ~/.local/bin/scribus-1.6.5/squashfs-root/scribus.desktop ~/.local/share/applications/scribus.desktop
+$ diff -u squashfs-root/scribus.desktop.orig squashfs-root/scribus.desktop
+--- squashfs-root/scribus.desktop.orig  2026-01-13 14:39:06.328662443 +0900
++++ squashfs-root/scribus.desktop       2026-01-13 14:43:24.680336069 +0900
+@@ -93,9 +93,9 @@
+ GenericName[zh_CN]=桌面出版
+ GenericName[zh_TW]=桌面出版
+ GenericName[zu]=Ukushicilelwa kwe-Desktop
+-TryExec=scribus
+-Exec=scribus %f
+-Icon=scribus
++TryExec=/home/mukai/.local/bin/scribus-1.6.5/scribus-1.6.5-linux-x86_64.AppImage
++Exec=/home/mukai/.local/bin/scribus-1.6.5/scribus-1.6.5-linux-x86_64.AppImage %f
++Icon=/home/mukai/.local/bin/scribus-1.6.5/squashfs-root/scribus.png
+ Terminal=false
+ MimeType=application/vnd.scribus;
+ Categories=Qt;Graphics;Publishing;
+```
+
 ## WireGuard Android版アプリにおけるフルトンネル設定＋プライベートIPアドレス除外
 
 フルトンネル時のクライアント側のAllowedIPs設定値は「0.0.0.0/0, ::/0」だが、これではすべてのトラフィックがトンネルに入り、クライアント自身のLANの機器に到達できない（WireGuardサーバーを置いているLANの機器にアクセスする）。
@@ -7687,3 +7832,71 @@ $ cat package.json
 }
 $ git apply -p3 --directory=node_modules/@vivliostyle/cli < pr-712.patch
 ```
+
+## 鍵認証によるSSH接続をセットアップする
+
+まずクライアント（接続元）で鍵ペアを作成する。
+
+```
+$ ssh-keygen -t ed25519
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/mukai/.ssh/id_ed25519): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/mukai/.ssh/id_ed25519
+Your public key has been saved in /home/mukai/.ssh/id_ed25519.pub
+...
+
+$ ls -l .ssh/id_ed25519*
+-rw------- 1 mukai mukai 484  1月 14 09:20 .ssh/id_ed25519
+-rw-r--r-- 1 mukai mukai 119  1月 14 09:15 .ssh/id_ed25519.pub
+```
+
+- `-t`（key-type）：高速でセキュアな楕円曲線系のEd25519を明示するとよい
+- `-C`（comment）：つけておくとよい
+- 対話で要求されるパスフレーズ：つけておくとよい（後述）
+  - あとから変更する場合`ssh-keygen -p -f ~/.ssh/id_ed25519`
+
+続いて公開鍵をホスト（接続先）にコピーする。
+
+```
+$ ssh-copy-id -i ~/.ssh/id_ed25519.pub <user>@<host>
+```
+
+- これはホストの`~/.ssh/authorized_keys`ファイルの末尾に追記するのと同じこと。ただし権限を適切に設定したり、よりセキュアな方法であることを期待できる
+
+鍵認証でログインできることを確認する。パスワードを要求されなければ成功。
+
+```
+$ ssh <user>@<host>  # または明示して ssh -i ~/.ssh/id_ed25519 <user>@<host>
+```
+
+### パスフレーズ
+
+秘密鍵が漏れるとアクセスし放題になってしまう。これを防ぐために、秘密鍵自体をパスフレーズで暗号化できる。
+
+```
+$ ssh-keygen -p -f ~/.ssh/id_ed25519
+```
+
+都度パスフレーズを入力したり、`eval "$(ssh-agent -s)"`（ssh-agentを起動し、環境変数を表示して現在のシェルでeval）→`ssh-add ~/.ssh/id_ed25519`で暗号化を解除して使う。GNOMEデスクトップでログイン中はssh-agentが自動でkeyringに紐付いて起動している。
+
+```
+$ echo $SSH_AUTH_SOCK
+/run/user/1000/keyring/ssh
+```
+
+![初回に表示される「パスワードを入力して秘密鍵のロックを…」ダイアログ　ロックの自動解除を設定できる](image.png)
+
+同じマシンでも例えばttyログインだと
+
+```
+$ echo $SSH_AUTH_SOCK
+
+$ ssh <user>@<host>
+Enter passphrase for key '/home/mukai/.ssh/id_ed25519':
+```
+
+### パスワードログインを無効化
+
+（TODO）

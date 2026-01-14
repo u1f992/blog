@@ -4,8 +4,10 @@
 $ mkdir ~/.local/bin/arduino-ide && cd ~/.local/bin/arduino-ide/
 $ mv ~/Downloads/arduino-ide_2.3.6_Linux_64bit.AppImage .
 $ chmod +x arduino-ide_2.3.6_Linux_64bit.AppImage
+$ cp arduino-ide_2.3.6_Linux_64bit.AppImage arduino-ide_2.3.6_Linux_64bit.AppImage.orig
 $ ./arduino-ide_2.3.6_Linux_64bit.AppImage --appimage-extract
 $ chmod +x ~/.local/bin/arduino-ide/squashfs-root/arduino-ide.desktop
+$ cp squashfs-root/arduino-ide.desktop squashfs-root/arduino-ide.desktop.orig
 $ ln -s ~/.local/bin/arduino-ide/squashfs-root/arduino-ide.desktop ~/.local/share/applications/arduino-ide.desktop
 $ cat ~/.local/share/applications/arduino-ide.desktop 
 [Desktop Entry]
