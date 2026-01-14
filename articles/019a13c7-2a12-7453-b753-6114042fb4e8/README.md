@@ -1104,3 +1104,23 @@ $ diff -u squashfs-root/scribus.desktop.orig squashfs-root/scribus.desktop
  MimeType=application/vnd.scribus;
  Categories=Qt;Graphics;Publishing;
 ```
+
+### GitHub CLI
+
+ずいぶん古いものがインストールされている。[現在](https://github.com/cli/cli/blob/d994a9cf5e267b694e95d62f6974b08089dd635c/docs/install_linux.md)のドキュメントを参照すると「As of November 2025, GitHub CLI maintainers strongly recommend official Debian packages especially as the community-distributed 2.45.x / 2.46.x version is broken due to deprecated GitHub APIs.」とのこと
+
+```
+$ sudo apt remove gh
+$ (type -p wget >/dev/null || (sudo apt update && sudo apt install wget -y)) \
+    && sudo mkdir -p -m 755 /etc/apt/keyrings \
+    && out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+    && cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+    && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+    && sudo mkdir -p -m 755 /etc/apt/sources.list.d \
+    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+    && sudo apt update \
+    && sudo apt install gh -y
+$ gh --version
+gh version 2.85.0 (2026-01-14)
+https://github.com/cli/cli/releases/tag/v2.85.0
+```
