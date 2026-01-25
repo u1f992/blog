@@ -107,7 +107,7 @@
 - [鍵認証によるSSH接続をセットアップする](articles/019bb9d8-575c-7540-a95d-e63e62606895/README.md)
 - [SATA SSDのヘルスチェック](articles/019bbc70-aae1-7624-b93e-4075d783c1cd/README.md)
 - [ThinkPad P52 (20MA)](articles/019bca2d-1360-74d5-b863-7cdf35f80d99/README.md)
-- [](articles/019bf31a-65fd-7655-a72f-1f9ffcbfe82d/README.md)
+- [Ubuntu（Desktop, 24.04）のデフォルトのコンピューター名](articles/019bf31a-65fd-7655-a72f-1f9ffcbfe82d/README.md)
 
 ---
 
@@ -8849,7 +8849,83 @@ PersistentKeepalive = 25
 
 </figure>
 
-# Ubuntu（Desktop, 24.04）のデフォルトのコンピューター名
+### バッテリーと熱対策
+
+少し消耗が見受けられる（`capacity: 81.1792%`）が、ブレーカーを落とした際に踏ん張るくらいなら問題はないだろう。
+
+```
+mukai@thinkpad-p52:~$ upower -e
+/org/freedesktop/UPower/devices/battery_BAT0
+/org/freedesktop/UPower/devices/line_power_AC
+/org/freedesktop/UPower/devices/line_power_ucsi_source_psy_USBC000o001
+/org/freedesktop/UPower/devices/line_power_ucsi_source_psy_USBC000o002
+/org/freedesktop/UPower/devices/DisplayDevice
+mukai@thinkpad-p52:~$ upower -i /org/freedesktop/UPower/devices/battery_BAT0
+  native-path:          BAT0
+  vendor:               LGC
+  model:                01AV495
+  serial:               99
+  power supply:         yes
+  updated:              Sun 25 Jan 2026 08:43:17 AM UTC (24 seconds ago)
+  has history:          yes
+  has statistics:       yes
+  battery
+    present:             yes
+    rechargeable:        yes
+    state:               discharging
+    warning-level:       none
+    energy:              58.09 Wh
+    energy-empty:        0 Wh
+    energy-full:         73.11 Wh
+    energy-full-design:  90.06 Wh
+    energy-rate:         7.041 W
+    voltage:             12.057 V
+    charge-cycles:       35
+    time to empty:       8.2 hours
+    percentage:          79%
+    capacity:            81.1792%
+    technology:          lithium-polymer
+    icon-name:          'battery-full-symbolic'
+  History (rate):
+    1769330597	7.041	discharging
+    1769330567	7.056	discharging
+    1769330537	7.033	discharging
+```
+
+TLPについては[別マシンのセットアップ](../019a13c7-2a12-7453-b753-6114042fb4e8/README.md)を参照のこと
+
+- https://linrunner.de/tlp/installation/ubuntu.html
+
+```
+$ sudo add-apt-repository ppa:linrunner/tlp
+$ sudo apt update
+$ sudo apt --yes install tlp
+
+$ grep "START_CHARGE_THRESH_BAT0" /etc/tlp.conf
+#START_CHARGE_THRESH_BAT0=75
+$ grep "STOP_CHARGE_THRESH_BAT0" /etc/tlp.conf
+#STOP_CHARGE_THRESH_BAT0=80
+$ sudo vim /etc/tlp.conf  # コメントアウトを解除
+
+$ sudo systemctl reboot
+```
+
+### 前サーバーからの引き継ぎ
+
+#### WoL
+
+```
+$ sudo apt install --yes wakeonlan
+$ cat wakeonlan-(client-name).sh 
+#!/bin/sh
+wakeonlan (client_mac)
+```
+
+#### グローバルIPの定期更新
+
+- [マシンのグローバルIPアドレスを定期的に特定のGistにアップロードする](../0199e067-737c-7025-ad6f-6e2e546fc451/README.md)
+
+## Ubuntu（Desktop, 24.04）のデフォルトのコンピューター名
 
 DMI System InformationのFamilyを見て、有効な値がない（Default string）場合はProduct Nameを見るという挙動だと推測する。
 

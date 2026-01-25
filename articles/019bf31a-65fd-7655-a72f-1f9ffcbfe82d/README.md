@@ -1,4 +1,4 @@
-# Ubuntu（Desktop, 24.04）のデフォルトのコンピューター名
+## Ubuntu（Desktop, 24.04）のデフォルトのコンピューター名
 
 DMI System InformationのFamilyを見て、有効な値がない（Default string）場合はProduct Nameを見るという挙動だと推測する。
 
