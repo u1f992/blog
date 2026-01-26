@@ -1124,3 +1124,7 @@ $ gh --version
 gh version 2.85.0 (2026-01-14)
 https://github.com/cli/cli/releases/tag/v2.85.0
 ```
+
+```
+sudo apt --yes install cifs-utils
+```
