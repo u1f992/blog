@@ -854,3 +854,188 @@ wakeonlan (client_mac)
 #### グローバルIPの定期更新
 
 - [マシンのグローバルIPアドレスを定期的に特定のGistにアップロードする](../0199e067-737c-7025-ad6f-6e2e546fc451/README.md)
+
+### RAID構築
+
+まずはディスクの確認
+
+```
+$ lsblk -o NAME,SIZE,MODEL,FSTYPE,MOUNTPOINT
+NAME              SIZE MODEL            FSTYPE      MOUNTPOINT
+sda               3.6T Samsung SSD 870
+├─sda1            128M
+└─sda2            3.6T
+nvme0n1         238.5G SAMSUNG MZVLB256
+├─nvme0n1p1         1G                  vfat        /boot/efi
+├─nvme0n1p2         2G                  ext4        /boot
+└─nvme0n1p3     235.4G                  LVM2_member
+  └─ubuntu--vg-ubuntu--lv
+                  100G                  ext4        /
+nvme1n1           3.7T Lexar SSD NM790
+```
+
+- `/dev/nvme1n1`
+- `/dev/sda`
+
+を使う。両ディスクをクリアして、同じ構成でGPTパーティション作成する。
+
+```
+$ sudo wipefs -a /dev/nvme1n1
+$ sudo wipefs -a /dev/sda
+
+$ sudo parted /dev/nvme1n1 --script mklabel gpt
+$ sudo parted /dev/nvme1n1 --script mkpart primary 0% 100%
+$ sudo parted /dev/nvme1n1 --script set 1 raid on
+
+$ sudo parted /dev/sda --script mklabel gpt
+$ sudo parted /dev/sda --script mkpart primary 0% 100%
+$ sudo parted /dev/sda --script set 1 raid on
+
+$ lsblk
+NAME                     MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+sda                        8:0    0   3.6T  0 disk
+└─sda1                     8:1    0   3.6T  0 part
+nvme0n1                  259:0    0 238.5G  0 disk
+├─nvme0n1p1              259:1    0     1G  0 part /boot/efi
+├─nvme0n1p2              259:2    0     2G  0 part /boot
+└─nvme0n1p3              259:3    0 235.4G  0 part
+  └─ubuntu--vg-ubuntu--lv
+                         252:0    0   100G  0 lvm  /
+nvme1n1                  259:4    0   3.7T  0 disk
+└─nvme1n1p1              259:5    0   3.7T  0 part
+```
+
+Ubuntu Serverにはmdadmはデフォルトでインストールされているようだ。md (multiple devices) / adm (admin)（複数（ブロック）デバイス管理）なので、読みは「エムディーアドム」かな。
+
+```
+$ sudo apt update
+$ sudo apt install --yes mdadm
+
+mdadm is already the newest version (4.3-1ubuntu2.1).
+
+$ sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/nvme1n1p1 /dev/sda1
+
+$ sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/nvme1n1p1 /dev/sda1
+mdadm: Note: this array has metadata at the start and
+    may not be suitable as a boot device.  If you plan to
+    store '/boot' on this device please ensure that
+    your boot-loader understands md/v1.x metadata, or use
+    --metadata=0.90
+mdadm: size set to 3906884608K
+mdadm: automatically enabling write-intent bitmap on large array
+mdadm: largest drive (/dev/nvme1n1p1) exceeds size (3906884608K) by more than 1%
+Continue creating array?
+```
+
+- `may not be suitable as a boot device.` データ用ディスクなので関係ない
+- `mdadm: largest drive (/dev/nvme1n1p1) exceeds size (3906884608K) by more than 1%` RAID1（ミラーリング）は小さい方のディスクのサイズになる。
+
+```
+y
+mdadm: Defaulting to version 1.2 metadata
+mdadm: array /dev/md0 started.
+```
+
+進捗確認。5時間ほどかかった。
+
+```
+$ cat /proc/mdstat
+Personalities : [raid0] [raid1] [raid6] [raid5] [raid4] [raid10]
+md0 : active raid1 sda1[1] nvme1n1p1[0]
+      3906884608 blocks super 1.2 [2/2] [UU]
+      [>....................]  resync =  0.1% (7471744/3906884608) finish=321.3min speed=202252K/sec
+      bitmap: 30/30 pages [120KB], 65536KB chunk
+
+unused devices: <none>
+
+$ cat /proc/mdstat
+Personalities : [raid0] [raid1] [raid6] [raid5] [raid4] [raid10]
+md0 : active raid1 sda1[1] nvme1n1p1[0]
+      3906884608 blocks super 1.2 [2/2] [UU]
+      bitmap: 0/30 pages [0KB], 65536KB chunk
+
+unused devices: <none>
+```
+
+再起動後にもRAID1が認識されるように設定
+
+```
+$ sudo mdadm --detail --scan | sudo tee -a /etc/mdadm/mdadm.conf
+ARRAY /dev/md0 metadata=1.2 UUID=ce3ece66:3cca33bd:09004218:8cd3632c
+$ sudo update-initramfs -u
+```
+
+ファイルシステムを作成して`/srv/storage`にマウントポイントを作成
+
+```
+$ sudo mkfs.ext4 /dev/md0
+$ sudo mkdir -p /srv/storage
+```
+
+UUIDを取得して、/etc/fstabに自動マウントを設定
+
+- defaults：標準オプションの一括指定（`rw,suid,dev,exec,auto,nouser,async`）
+- noatime：読み込み時にatime = access time（最終アクセス時刻）を更新しない。書き込み回数が減りやや有利
+
+```
+$ sudo blkid /dev/md0
+UUID="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+$ sudo vim /etc/fstab
+UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  /srv/storage  ext4  defaults,noatime  0  2
+
+$ sudo systemctl daemon-reload
+$ sudo mount -a
+```
+
+メンテナンス。`[UU]`が欠けていないこと（`[U_]`）や`State : clean`・`Failed Devices : 0`をよく見る。
+
+```
+$ cat /proc/mdstat
+Personalities : [raid0] [raid1] [raid6] [raid5] [raid4] [raid10] 
+md0 : active raid1 sda1[1] nvme1n1p1[0]
+      3906884608 blocks super 1.2 [2/2] [UU]
+      bitmap: 0/30 pages [0KB], 65536KB chunk
+
+unused devices: <none>
+$ sudo mdadm --detail /dev/md0
+/dev/md0:
+           Version : 1.2
+     Creation Time : Sun Jan 25 23:35:10 2026
+        Raid Level : raid1
+        Array Size : 3906884608 (3.64 TiB 4.00 TB)
+     Used Dev Size : 3906884608 (3.64 TiB 4.00 TB)
+      Raid Devices : 2
+     Total Devices : 2
+       Persistence : Superblock is persistent
+
+     Intent Bitmap : Internal
+
+       Update Time : Mon Jan 26 10:41:22 2026
+             State : clean 
+    Active Devices : 2
+   Working Devices : 2
+    Failed Devices : 0
+     Spare Devices : 0
+
+Consistency Policy : bitmap
+
+              Name : thinkpad-p52:0  (local to host thinkpad-p52)
+              UUID : ce3ece66:3cca33bd:09004218:8cd3632c
+            Events : 4915
+
+    Number   Major   Minor   RaidDevice State
+       0     259        5        0      active sync   /dev/nvme1n1p1
+       1       8        1        1      active sync   /dev/sda1
+```
+
+S.M.A.R.T.も監視。`-H`はヘルス情報の簡易表示。`-a`が全情報を表示。
+
+```
+$ sudo apt --yes install smartmontools
+$ sudo smartctl -H /dev/sda  # /dev/nvme1n1
+smartctl 7.4 2023-08-01 r5530 [x86_64-linux-6.8.0-90-generic] (local build)
+Copyright (C) 2002-23, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF READ SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+```
