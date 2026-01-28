@@ -109,6 +109,7 @@
 - [ThinkPad P52 (20MA)](articles/019bca2d-1360-74d5-b863-7cdf35f80d99/README.md)
 - [Ubuntu（Desktop, 24.04）のデフォルトのコンピューター名](articles/019bf31a-65fd-7655-a72f-1f9ffcbfe82d/README.md)
 - [SMBを特定ディレクトリにマウント](articles/019bf7c1-99b7-766a-bb92-e2e6745612b2/README.md)
+- [Vivliostyle　CSSメモ](articles/019c06d0-5ab4-7035-8259-22dd940e4926/README.md)
 
 ---
 
@@ -9215,3 +9216,12 @@ mount: (hint) your fstab has been modified, but systemd still uses
 $ sudo systemctl daemon-reload
 $ sudo mount -a
 ```
+
+## Vivliostyle　CSSメモ
+
+Vivliostyle.jsにおいて`@page :first-page`と`@page :nth(1)`は複数ファイルの結合（[Web Publications](https://www.w3.org/TR/wpub/)）時に動作が異なる。`:first-page`はグローバルの第1ページにマッチし、`:nth(1)`は各ファイルの第1ページにマッチする。これらはどちらも詳細度+256なので、両方指定された場合は後勝ち。なお`:blank`も同じ+256。
+
+`:first-page` `:nth(1)`は`:left` `:right`（詳細度+1）に勝つ。
+
+と説明したらClaude Codeがサンプルを作ってくれた。
+

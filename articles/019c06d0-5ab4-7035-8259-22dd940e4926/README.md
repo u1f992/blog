@@ -4,3 +4,5 @@ Vivliostyle.jsにおいて`@page :first-page`と`@page :nth(1)`は複数ファ�
 
 `:first-page` `:nth(1)`は`:left` `:right`（詳細度+1）に勝つ。
 
+と説明したらClaude Codeがサンプルを作ってくれた。
+
