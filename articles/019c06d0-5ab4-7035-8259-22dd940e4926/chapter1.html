@@ -25,26 +25,26 @@
   }
 }
 
-/* --- :first-page（緑）— グローバル第1ページにマッチ — 詳細度+256 --- */
-@page :first {
-  background-color: #e8f5e9;
-  border: 3px solid #4caf50;
+/* --- :nth(1)（青）— 各ファイルの第1ページにマッチ — 詳細度+256 --- */
+@page :nth(1) {
+  background-color: #e3f2fd;
+  border: 3px solid #1976d2;
   @top-center {
-    content: ":first-page 適用中 (詳細度+256)";
-    color: #2e7d32;
+    content: ":nth(1) 適用中 (詳細度+256)";
+    color: #1565c0;
     font-weight: bold;
     font-size: 9pt;
   }
 }
 
-/* --- :nth(1)（青）— 各ファイルの第1ページにマッチ — 詳細度+256 --- */
-/* :first-page の後に宣言 → 同一詳細度のため後勝ちでこちらが適用される */
-@page :nth(1) {
-  background-color: #e3f2fd;
-  border: 3px solid #1976d2;
+/* --- :first-page（緑）— グローバル第1ページにマッチ — 詳細度+256 --- */
+/* :nth(1) の後に宣言 → 同一詳細度のため後勝ちでこちらが適用される */
+@page :first {
+  background-color: #e8f5e9;
+  border: 3px solid #4caf50;
   @top-center {
-    content: ":nth(1) 適用中 (詳細度+256・後勝ち)";
-    color: #1565c0;
+    content: ":first-page 適用中 (詳細度+256・後勝ち)";
+    color: #2e7d32;
     font-weight: bold;
     font-size: 9pt;
   }
@@ -105,14 +105,14 @@ table.spec th {
 
 <div class="box note">
 <p>このファイルは Web Publication の<strong>最初のファイル</strong>です。<br>
-CSS では <span class="label label-first">:first-page (緑)</span> → <span class="label label-nth">:nth(1) (青)</span> の順に宣言しています。</p>
+CSS では <span class="label label-nth">:nth(1) (青)</span> → <span class="label label-first">:first-page (緑)</span> の順に宣言しています。</p>
 </div>
 
 <div class="box expect">
 <p><strong>期待される表示:</strong></p>
 <ul>
-  <li><strong>1ページ目</strong> → <span class="label label-nth">青 :nth(1)</span> が適用<br>
-    理由: :first-page と :nth(1) は両方マッチするが、詳細度が同じ+256のため後に宣言された :nth(1) が勝つ</li>
+  <li><strong>1ページ目</strong> → <span class="label label-first">緑 :first-page</span> が適用<br>
+    理由: :first-page と :nth(1) は両方マッチするが、詳細度が同じ+256のため後に宣言された :first-page が勝つ（後勝ち）</li>
   <li><strong>2ページ目以降</strong> → 通常ページ（灰色枠線のみ）</li>
 </ul>
 </div>
@@ -121,13 +121,13 @@ CSS では <span class="label label-first">:first-page (緑)</span> → <span cl
 
 <table class="spec">
 <tr><th>セレクター</th><th>詳細度</th><th>宣言順</th><th>このページでマッチ?</th></tr>
-<tr><td><code>@page :first</code></td><td>+256</td><td>1番目</td><td>する（グローバル第1ページ）</td></tr>
-<tr><td><code>@page :nth(1)</code></td><td>+256</td><td>2番目</td><td>する（ファイル内第1ページ）</td></tr>
+<tr><td><code>@page :nth(1)</code></td><td>+256</td><td>1番目</td><td>する（ファイル内第1ページ）</td></tr>
+<tr><td><code>@page :first</code></td><td>+256</td><td>2番目</td><td>する（グローバル第1ページ）</td></tr>
 </table>
 
-<p>両方のセレクターがマッチし、詳細度が等しいため、CSS カスケード規則により<strong>後に宣言された :nth(1) のスタイルが優先</strong>されます。</p>
+<p>両方のセレクターがマッチし、詳細度が等しいため、CSS カスケード規則により<strong>後に宣言された :first-page のスタイルが優先</strong>されます。</p>
 
-<p>ヘッダー領域（<code>@top-center</code>）の文字列を確認してください。「:nth(1) 適用中」と表示されていれば後勝ちが正しく動作しています。</p>
+<p>ヘッダー領域（<code>@top-center</code>）の文字列を確認してください。「:first-page 適用中」と表示され、背景が緑であれば後勝ちが正しく動作しています。</p>
 
 <h2>補足: :blank の詳細度</h2>
 

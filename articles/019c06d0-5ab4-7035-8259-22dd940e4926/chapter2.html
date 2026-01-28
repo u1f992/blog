@@ -26,19 +26,6 @@
   }
 }
 
-/* --- :first-page（緑）— グローバル第1ページにマッチ — 詳細度+256 --- */
-/* このファイルは出版物の2番目 → グローバル第1ページではない → マッチしない */
-@page :first {
-  background-color: #e8f5e9;
-  border: 3px solid #4caf50;
-  @top-center {
-    content: ":first-page 適用中 (詳細度+256)";
-    color: #2e7d32;
-    font-weight: bold;
-    font-size: 9pt;
-  }
-}
-
 /* --- :nth(1)（青）— 各ファイルの第1ページにマッチ — 詳細度+256 --- */
 /* このファイルの第1ページにマッチする */
 @page :nth(1) {
@@ -47,6 +34,20 @@
   @top-center {
     content: ":nth(1) 適用中 (詳細度+256・ファイル単位)";
     color: #1565c0;
+    font-weight: bold;
+    font-size: 9pt;
+  }
+}
+
+/* --- :first-page（緑）— グローバル第1ページにマッチ — 詳細度+256 --- */
+/* このファイルは出版物の2番目 → グローバル第1ページではない → マッチしない */
+/* 後に宣言されているが、マッチしないので適用されない */
+@page :first {
+  background-color: #e8f5e9;
+  border: 3px solid #4caf50;
+  @top-center {
+    content: ":first-page 適用中 (詳細度+256)";
+    color: #2e7d32;
     font-weight: bold;
     font-size: 9pt;
   }
@@ -130,10 +131,10 @@ CSS は Chapter 1 と<strong>まったく同一</strong>です。</p>
 <div class="box compare">
 <p><strong>Chapter 1 との比較:</strong></p>
 <ul>
-  <li>Chapter 1（1番目のファイル）: :first-page も :nth(1) も<strong>両方</strong>マッチ → 後勝ちで :nth(1)</li>
-  <li>Chapter 2（2番目のファイル）: :nth(1) <strong>のみ</strong>マッチ → :nth(1) が単独適用</li>
+  <li>Chapter 1（1番目のファイル）: :first-page も :nth(1) も<strong>両方</strong>マッチ → 後勝ちで <span class="label label-first">:first-page（緑）</span></li>
+  <li>Chapter 2（2番目のファイル）: :nth(1) <strong>のみ</strong>マッチ → <span class="label label-nth">:nth(1)（青）</span> が単独適用</li>
 </ul>
-<p>結果は同じ青に見えますが、<strong>マッチしているセレクターの数が異なります</strong>。</p>
+<p><strong>色の違い（緑 vs 青）で :first-page がグローバル第1ページにしかマッチしないことが視覚的に確認できます。</strong></p>
 </div>
 
 <h2>マッチ状況の比較</h2>
