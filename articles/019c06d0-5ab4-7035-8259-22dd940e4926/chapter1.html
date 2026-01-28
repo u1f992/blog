@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Chapter 1: :first-page と :nth(1) の両方がマッチ</title>
+<style>
+/* ============================================================
+   Chapter 1 — 出版物の最初のファイル
+   :first-page と :nth(1) の両方を宣言し、後勝ちを確認する
+   ============================================================ */
+
+@page {
+  size: A5;
+  margin: 18mm 15mm;
+  border: 1px solid #ccc;
+  @top-center {
+    content: "通常ページ";
+    font-size: 9pt;
+    color: #999;
+  }
+  @bottom-center {
+    content: "p." counter(page);
+    font-size: 9pt;
+    color: #666;
+  }
+}
+
+/* --- :first-page（緑）— グローバル第1ページにマッチ — 詳細度+256 --- */
+@page :first {
+  background-color: #e8f5e9;
+  border: 3px solid #4caf50;
+  @top-center {
+    content: ":first-page 適用中 (詳細度+256)";
+    color: #2e7d32;
+    font-weight: bold;
+    font-size: 9pt;
+  }
+}
+
+/* --- :nth(1)（青）— 各ファイルの第1ページにマッチ — 詳細度+256 --- */
+/* :first-page の後に宣言 → 同一詳細度のため後勝ちでこちらが適用される */
+@page :nth(1) {
+  background-color: #e3f2fd;
+  border: 3px solid #1976d2;
+  @top-center {
+    content: ":nth(1) 適用中 (詳細度+256・後勝ち)";
+    color: #1565c0;
+    font-weight: bold;
+    font-size: 9pt;
+  }
+}
+
+/* ---- 本文スタイル ---- */
+body {
+  font-family: "Noto Sans JP", "Hiragino Sans", sans-serif;
+  line-height: 1.8;
+  font-size: 10.5pt;
+}
+h1 {
+  font-size: 1.3em;
+  border-bottom: 2px solid #333;
+  padding-bottom: 0.3em;
+  margin-top: 0;
+}
+.box {
+  padding: 0.8em 1em;
+  margin: 1em 0;
+  font-size: 0.92em;
+}
+.note {
+  background: #f5f5f5;
+  border-left: 4px solid #666;
+}
+.expect {
+  background: #fff9c4;
+  border: 1px solid #f9a825;
+}
+.label {
+  font-weight: bold;
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 0.88em;
+}
+.label-first { background: #e8f5e9; color: #2e7d32; border: 1px solid #4caf50; }
+.label-nth   { background: #e3f2fd; color: #1565c0; border: 1px solid #1976d2; }
+table.spec {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+  font-size: 0.9em;
+}
+table.spec th, table.spec td {
+  border: 1px solid #aaa;
+  padding: 0.4em 0.7em;
+}
+table.spec th {
+  background: #f0f0f0;
+}
+</style>
+</head>
+<body>
+
+<h1>Chapter 1: :first-page と :nth(1) の後勝ち</h1>
+
+<div class="box note">
+<p>このファイルは Web Publication の<strong>最初のファイル</strong>です。<br>
+CSS では <span class="label label-first">:first-page (緑)</span> → <span class="label label-nth">:nth(1) (青)</span> の順に宣言しています。</p>
+</div>
+
+<div class="box expect">
+<p><strong>期待される表示:</strong></p>
+<ul>
+  <li><strong>1ページ目</strong> → <span class="label label-nth">青 :nth(1)</span> が適用<br>
+    理由: :first-page と :nth(1) は両方マッチするが、詳細度が同じ+256のため後に宣言された :nth(1) が勝つ</li>
+  <li><strong>2ページ目以降</strong> → 通常ページ（灰色枠線のみ）</li>
+</ul>
+</div>
+
+<h2>宣言順序と詳細度</h2>
+
+<table class="spec">
+<tr><th>セレクター</th><th>詳細度</th><th>宣言順</th><th>このページでマッチ?</th></tr>
+<tr><td><code>@page :first</code></td><td>+256</td><td>1番目</td><td>する（グローバル第1ページ）</td></tr>
+<tr><td><code>@page :nth(1)</code></td><td>+256</td><td>2番目</td><td>する（ファイル内第1ページ）</td></tr>
+</table>
+
+<p>両方のセレクターがマッチし、詳細度が等しいため、CSS カスケード規則により<strong>後に宣言された :nth(1) のスタイルが優先</strong>されます。</p>
+
+<p>ヘッダー領域（<code>@top-center</code>）の文字列を確認してください。「:nth(1) 適用中」と表示されていれば後勝ちが正しく動作しています。</p>
+
+<h2>補足: :blank の詳細度</h2>
+
+<p><code>@page :blank</code>（強制改ページで生じる空白ページ用）も詳細度は+256です。:first-page、:nth(1)、:blank はすべて同じ詳細度に属するため、宣言順のみで優先度が決まります。</p>
+
+<p>ここから先は2ページ目に送るためのテキストです。Vivliostyle における CSS Paged Media の扱いは W3C の仕様に準拠しつつ、Web Publication の結合処理において独自の解釈を持ちます。特に :first-page がグローバルスコープであるという動作は、複数ファイルを結合する際に重要な意味を持ちます。次の Chapter 2 で、この違いを実際に確認します。</p>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "@context": ["https://schema.org", "https://www.w3.org/ns/wp-context"],
+  "type": "Book",
+  "conformsTo": "https://vivliostyle.org",
+  "name": "Vivliostyle @page セレクター動作デモ",
+  "author": "mukai",
+  "readingOrder": [
+    { "url": "chapter1.html", "name": "Chapter 1: :first-page と :nth(1) の両方がマッチ" },
+    { "url": "chapter2.html", "name": "Chapter 2: :nth(1) のみマッチ" },
+    { "url": "chapter3.html", "name": "Chapter 3: :left/:right と :nth(1) の詳細度" }
+  ]
+}

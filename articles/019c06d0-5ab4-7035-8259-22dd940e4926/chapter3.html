@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Chapter 3: :left/:right と :nth(1) の詳細度比較</title>
+<style>
+/* ============================================================
+   Chapter 3 — 出版物の3番目のファイル
+   :left / :right（詳細度+1）と :nth(1)（詳細度+256）の比較
+   1ページ目では :nth(1) が :left/:right に勝つ
+   2ページ目以降は :left/:right が適用される
+   ============================================================ */
+
+@page {
+  size: A5;
+  margin: 18mm 15mm;
+  border: 1px solid #ccc;
+  @top-center {
+    content: "通常ページ";
+    font-size: 9pt;
+    color: #999;
+  }
+  @bottom-center {
+    content: "p." counter(page);
+    font-size: 9pt;
+    color: #666;
+  }
+}
+
+/* --- :left（橙）— 左ページ（偶数ページ）にマッチ — 詳細度+1 --- */
+@page :left {
+  background-color: #fff3e0;
+  border: 3px solid #ff9800;
+  @top-center {
+    content: ":left 適用中 (詳細度+1)";
+    color: #e65100;
+    font-weight: bold;
+    font-size: 9pt;
+  }
+}
+
+/* --- :right（桃）— 右ページ（奇数ページ）にマッチ — 詳細度+1 --- */
+@page :right {
+  background-color: #fce4ec;
+  border: 3px solid #e91e63;
+  @top-center {
+    content: ":right 適用中 (詳細度+1)";
+    color: #c62828;
+    font-weight: bold;
+    font-size: 9pt;
+  }
+}
+
+/* --- :nth(1)（青）— ファイル内第1ページにマッチ — 詳細度+256 --- */
+/* +256 は +1 に勝つため、1ページ目では :left/:right を上書きする */
+@page :nth(1) {
+  background-color: #e3f2fd;
+  border: 3px solid #1976d2;
+  @top-center {
+    content: ":nth(1) 適用中 (詳細度+256 > :left/:rightの+1)";
+    color: #1565c0;
+    font-weight: bold;
+    font-size: 9pt;
+  }
+}
+
+/* ---- 本文スタイル ---- */
+body {
+  font-family: "Noto Sans JP", "Hiragino Sans", sans-serif;
+  line-height: 1.8;
+  font-size: 10.5pt;
+}
+h1 {
+  font-size: 1.3em;
+  border-bottom: 2px solid #333;
+  padding-bottom: 0.3em;
+  margin-top: 0;
+}
+.box {
+  padding: 0.8em 1em;
+  margin: 1em 0;
+  font-size: 0.92em;
+}
+.note {
+  background: #f5f5f5;
+  border-left: 4px solid #666;
+}
+.expect {
+  background: #fff9c4;
+  border: 1px solid #f9a825;
+}
+.label {
+  font-weight: bold;
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 0.88em;
+}
+.label-first { background: #e8f5e9; color: #2e7d32; border: 1px solid #4caf50; }
+.label-nth   { background: #e3f2fd; color: #1565c0; border: 1px solid #1976d2; }
+.label-left  { background: #fff3e0; color: #e65100; border: 1px solid #ff9800; }
+.label-right { background: #fce4ec; color: #c62828; border: 1px solid #e91e63; }
+table.spec {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+  font-size: 0.9em;
+}
+table.spec th, table.spec td {
+  border: 1px solid #aaa;
+  padding: 0.4em 0.7em;
+}
+table.spec th {
+  background: #f0f0f0;
+}
+.win { background: #e3f2fd; font-weight: bold; }
+.lose { color: #999; }
+</style>
+</head>
+<body>
+
+<h1>Chapter 3: :left/:right vs :nth(1) の詳細度</h1>
+
+<div class="box note">
+<p>このファイルは Web Publication の<strong>3番目のファイル</strong>です。<br>
+CSS では <span class="label label-left">:left (橙)</span> <span class="label label-right">:right (桃)</span> <span class="label label-nth">:nth(1) (青)</span> を宣言しています。</p>
+</div>
+
+<div class="box expect">
+<p><strong>期待される表示:</strong></p>
+<ul>
+  <li><strong>1ページ目</strong> → <span class="label label-nth">青 :nth(1)</span> が適用<br>
+    理由: :nth(1) の詳細度+256 は :left/:right の詳細度+1 に勝つ</li>
+  <li><strong>2ページ目</strong> → <span class="label label-left">橙 :left</span> または <span class="label label-right">桃 :right</span><br>
+    理由: :nth(1) はマッチしない。:left/:right が適用される</li>
+  <li><strong>3ページ目以降</strong> → 左右ページに応じて橙/桃が交互に適用</li>
+</ul>
+</div>
+
+<h2>詳細度の一覧</h2>
+
+<table class="spec">
+<tr><th>セレクター</th><th>詳細度</th><th>1ページ目</th><th>2ページ目以降</th></tr>
+<tr><td><code>@page :left</code></td><td>+1</td><td class="lose">マッチしうるが +256 に負ける</td><td>左ページに適用</td></tr>
+<tr><td><code>@page :right</code></td><td>+1</td><td class="lose">マッチしうるが +256 に負ける</td><td>右ページに適用</td></tr>
+<tr><td><code>@page :nth(1)</code></td><td>+256</td><td class="win">適用 (+256 &gt; +1)</td><td>マッチしない</td></tr>
+</table>
+
+<h2>解説</h2>
+
+<p>CSS Paged Media の仕様では、ページセレクターに異なる詳細度が定められています:</p>
+<ul>
+  <li><code>:left</code> / <code>:right</code> → 詳細度 <strong>+1</strong></li>
+  <li><code>:first</code> / <code>:nth()</code> / <code>:blank</code> → 詳細度 <strong>+256</strong></li>
+</ul>
+
+<p>そのため、1ページ目で :nth(1) と :left（または :right）が同時にマッチした場合、:nth(1) の方が詳細度が高いため常に優先されます。宣言順に関係なく :nth(1) が勝ちます。</p>
+
+<p>このページのヘッダーに「:nth(1) 適用中」と表示され背景が青であれば、詳細度+256が+1に勝っていることが確認できます。</p>
+
+<h2>まとめ: 3つの Chapter の対比</h2>
+
+<table class="spec">
+<tr><th></th><th>Chapter 1</th><th>Chapter 2</th><th>Chapter 3</th></tr>
+<tr>
+  <td><strong>ファイル位置</strong></td>
+  <td>1番目</td>
+  <td>2番目</td>
+  <td>3番目</td>
+</tr>
+<tr>
+  <td><strong>使用セレクター</strong></td>
+  <td>:first + :nth(1)</td>
+  <td>:first + :nth(1)</td>
+  <td>:left + :right + :nth(1)</td>
+</tr>
+<tr>
+  <td><strong>1ページ目の結果</strong></td>
+  <td>:nth(1) が後勝ち<br>(+256 同士)</td>
+  <td>:nth(1) が単独適用<br>(:first は非マッチ)</td>
+  <td>:nth(1) が詳細度勝ち<br>(+256 &gt; +1)</td>
+</tr>
+<tr>
+  <td><strong>確認できる挙動</strong></td>
+  <td>同一詳細度の後勝ち</td>
+  <td>:first のグローバル性<br>:nth(1) のファイル単位性</td>
+  <td>詳細度の優劣</td>
+</tr>
+</table>
+
+<p>ここから先は2ページ目に送るためのテキストです。2ページ目以降では :left または :right のスタイル（橙または桃の背景）が確認できるはずです。CSS Paged Media Module Level 3 の仕様書では、ページセレクターの詳細度について「A page selector has the specificity of a pseudo-class selector」とされていますが、:first / :blank / :nth() は単純な擬似クラスよりも高い詳細度が割り当てられています。</p>
+
+<p>Vivliostyle はこの仕様に準拠しつつ、Web Publication の結合という追加コンテキストにおいて :first-page をグローバルに解釈するという動作を実装しています。この動作を把握しておくことで、複数章構成の組版において意図したとおりのページスタイルを実現できます。</p>
+
+<p>以上の3章を通じて、:first-page のグローバルスコープ、:nth(1) のファイルスコープ、同一詳細度における後勝ち、異なる詳細度における優先順位を視覚的に確認できます。</p>
+
+</body>
+</html>

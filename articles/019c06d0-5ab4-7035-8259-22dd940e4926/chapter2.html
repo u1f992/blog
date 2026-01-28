@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Chapter 2: :nth(1) のみマッチ</title>
+<style>
+/* ============================================================
+   Chapter 2 — 出版物の2番目のファイル
+   CSS は Chapter 1 と同一。しかし :first-page はマッチしない。
+   :nth(1) のみがこのファイルの第1ページにマッチする。
+   ============================================================ */
+
+@page {
+  size: A5;
+  margin: 18mm 15mm;
+  border: 1px solid #ccc;
+  @top-center {
+    content: "通常ページ";
+    font-size: 9pt;
+    color: #999;
+  }
+  @bottom-center {
+    content: "p." counter(page);
+    font-size: 9pt;
+    color: #666;
+  }
+}
+
+/* --- :first-page（緑）— グローバル第1ページにマッチ — 詳細度+256 --- */
+/* このファイルは出版物の2番目 → グローバル第1ページではない → マッチしない */
+@page :first {
+  background-color: #e8f5e9;
+  border: 3px solid #4caf50;
+  @top-center {
+    content: ":first-page 適用中 (詳細度+256)";
+    color: #2e7d32;
+    font-weight: bold;
+    font-size: 9pt;
+  }
+}
+
+/* --- :nth(1)（青）— 各ファイルの第1ページにマッチ — 詳細度+256 --- */
+/* このファイルの第1ページにマッチする */
+@page :nth(1) {
+  background-color: #e3f2fd;
+  border: 3px solid #1976d2;
+  @top-center {
+    content: ":nth(1) 適用中 (詳細度+256・ファイル単位)";
+    color: #1565c0;
+    font-weight: bold;
+    font-size: 9pt;
+  }
+}
+
+/* ---- 本文スタイル ---- */
+body {
+  font-family: "Noto Sans JP", "Hiragino Sans", sans-serif;
+  line-height: 1.8;
+  font-size: 10.5pt;
+}
+h1 {
+  font-size: 1.3em;
+  border-bottom: 2px solid #333;
+  padding-bottom: 0.3em;
+  margin-top: 0;
+}
+.box {
+  padding: 0.8em 1em;
+  margin: 1em 0;
+  font-size: 0.92em;
+}
+.note {
+  background: #f5f5f5;
+  border-left: 4px solid #666;
+}
+.expect {
+  background: #fff9c4;
+  border: 1px solid #f9a825;
+}
+.compare {
+  background: #f3e5f5;
+  border: 1px solid #9c27b0;
+}
+.label {
+  font-weight: bold;
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 0.88em;
+}
+.label-first { background: #e8f5e9; color: #2e7d32; border: 1px solid #4caf50; }
+.label-nth   { background: #e3f2fd; color: #1565c0; border: 1px solid #1976d2; }
+table.spec {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+  font-size: 0.9em;
+}
+table.spec th, table.spec td {
+  border: 1px solid #aaa;
+  padding: 0.4em 0.7em;
+}
+table.spec th {
+  background: #f0f0f0;
+}
+.highlight {
+  font-weight: bold;
+  color: #d32f2f;
+}
+</style>
+</head>
+<body>
+
+<h1>Chapter 2: :first-page と :nth(1) の違い</h1>
+
+<div class="box note">
+<p>このファイルは Web Publication の<strong>2番目のファイル</strong>です。<br>
+CSS は Chapter 1 と<strong>まったく同一</strong>です。</p>
+</div>
+
+<div class="box expect">
+<p><strong>期待される表示:</strong></p>
+<ul>
+  <li><strong>1ページ目</strong> → <span class="label label-nth">青 :nth(1)</span> が適用<br>
+    理由: :first-page はグローバル第1ページにしかマッチしない。このファイルは2番目のファイルなので <span class="highlight">:first-page は非マッチ</span>。:nth(1) はファイル単位の第1ページにマッチする。</li>
+  <li><strong>2ページ目以降</strong> → 通常ページ（灰色枠線のみ）</li>
+</ul>
+</div>
+
+<div class="box compare">
+<p><strong>Chapter 1 との比較:</strong></p>
+<ul>
+  <li>Chapter 1（1番目のファイル）: :first-page も :nth(1) も<strong>両方</strong>マッチ → 後勝ちで :nth(1)</li>
+  <li>Chapter 2（2番目のファイル）: :nth(1) <strong>のみ</strong>マッチ → :nth(1) が単独適用</li>
+</ul>
+<p>結果は同じ青に見えますが、<strong>マッチしているセレクターの数が異なります</strong>。</p>
+</div>
+
+<h2>マッチ状況の比較</h2>
+
+<table class="spec">
+<tr><th>セレクター</th><th>詳細度</th><th>Chapter 1 (1番目)</th><th>Chapter 2 (2番目)</th></tr>
+<tr><td><code>@page :first</code></td><td>+256</td><td>マッチする</td><td class="highlight">マッチしない</td></tr>
+<tr><td><code>@page :nth(1)</code></td><td>+256</td><td>マッチする</td><td>マッチする</td></tr>
+</table>
+
+<h2>核心: スコープの違い</h2>
+
+<p><code>:first-page</code> は出版物全体（グローバル）の第1ページを指します。Web Publication で複数ファイルを結合した場合、最初のファイルの第1ページのみが該当します。</p>
+
+<p>対して <code>:nth(1)</code> は各ファイル（ドキュメント）単位の第1ページを指します。何番目のファイルであっても、そのファイルの第1ページにマッチします。</p>
+
+<p>この違いにより、例えば「各章の冒頭ページだけに特別なスタイルを適用したい」場合は <code>:nth(1)</code> を使い、「表紙ページだけに特別なスタイルを適用したい」場合は <code>:first-page</code> を使う、という使い分けが可能です。</p>
+
+<p>ここから先は2ページ目に送るためのテキストです。CSS Paged Media Module Level 3 では :first 擬似クラスの動作が定義されていますが、Web Publication のような複数文書結合時の動作は Vivliostyle 独自の拡張的解釈です。次の Chapter 3 では、:left / :right との詳細度の違いを確認します。</p>
+
+</body>
+</html>
