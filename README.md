@@ -6189,6 +6189,23 @@ https://github.com/cli/cli/releases/tag/v2.85.0
 sudo apt --yes install cifs-utils
 ```
 
+### ImageMagick
+
+- [ImageMagick | Download](https://imagemagick.org/script/download.php#linux)
+
+AppImage版が提供されている
+
+```
+$ chmod +x ~/Downloads/magick
+$ ~/Downloads/magick --version
+Version: ImageMagick 7.1.2-13 Q16-HDRI x86_64 2fae24192:20260118 https://imagemagick.org
+Copyright: (C) 1999 ImageMagick Studio LLC
+License: https://imagemagick.org/license/
+Features: Cipher DPC HDRI 
+Delegates (built-in): bzlib djvu fontconfig freetype heic jbig jng jp2 jpeg lcms lqr lzma openexr png raqm tiff webp x xml zlib
+Compiler: clang (14.0.0)
+```
+
 ## WireGuard Android版アプリにおけるフルトンネル設定＋プライベートIPアドレス除外
 
 フルトンネル時のクライアント側のAllowedIPs設定値は「0.0.0.0/0, ::/0」だが、これではすべてのトラフィックがトンネルに入り、クライアント自身のLANの機器に到達できない（WireGuardサーバーを置いているLANの機器にアクセスする）。
