@@ -6206,6 +6206,21 @@ Delegates (built-in): bzlib djvu fontconfig freetype heic jbig jng jp2 jpeg lcms
 Compiler: clang (14.0.0)
 ```
 
+### スプラッシュスクリーンの代わりにブートログを出してほしい
+
+若干起動が遅いことがある気がする。
+
+```
+$ grep "GRUB_CMD"  /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+GRUB_CMDLINE_LINUX=""
+$ sudo vim /etc/default/grub
+$ grep "GRUB_CMD"  /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT=""
+GRUB_CMDLINE_LINUX=""
+$ sudo update-grub
+```
+
 ## WireGuard Android版アプリにおけるフルトンネル設定＋プライベートIPアドレス除外
 
 フルトンネル時のクライアント側のAllowedIPs設定値は「0.0.0.0/0, ::/0」だが、これではすべてのトラフィックがトンネルに入り、クライアント自身のLANの機器に到達できない（WireGuardサーバーを置いているLANの機器にアクセスする）。

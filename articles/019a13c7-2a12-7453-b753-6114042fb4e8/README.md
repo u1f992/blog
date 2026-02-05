@@ -1145,3 +1145,18 @@ Features: Cipher DPC HDRI
 Delegates (built-in): bzlib djvu fontconfig freetype heic jbig jng jp2 jpeg lcms lqr lzma openexr png raqm tiff webp x xml zlib
 Compiler: clang (14.0.0)
 ```
+
+### スプラッシュスクリーンの代わりにブートログを出してほしい
+
+若干起動が遅いことがある気がする。
+
+```
+$ grep "GRUB_CMD"  /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+GRUB_CMDLINE_LINUX=""
+$ sudo vim /etc/default/grub
+$ grep "GRUB_CMD"  /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT=""
+GRUB_CMDLINE_LINUX=""
+$ sudo update-grub
+```
