@@ -1148,7 +1148,7 @@ Compiler: clang (14.0.0)
 
 ### スプラッシュスクリーンの代わりにブートログを出してほしい
 
-若干起動が遅いことがある気がする。
+若干起動が遅いことがある気がする。→これはNASのマウント設定に`nofail`・`x-systemd.automount`がなかったからだった。
 
 ```
 $ grep "GRUB_CMD"  /etc/default/grub

@@ -42,7 +42,11 @@ $ sudo mount -t cifs //192.168.x.x/SHARE_NAME /mnt/share -o credentials=/root/.s
 
 常にマウントするなら、この資格情報ファイルを作成した上で`/etc/fstab`に追記する。ただしディレクトリは事前に作成しておく必要がある。
 
-`_netdev`はネットワークが有効になってからマウントする指定。起動時にマウント失敗してブートが止まるようなトラブルを防ぐ。
+- `_netdev` → ネットワークが有効になってからマウントする指定。起動時にマウント失敗してブートが止まるようなトラブルを防ぐ
+- `nofail` → 失敗しても起動を止めない
+- `x-systemd.automount` → 起動時に実マウントしない。実際にアクセスした瞬間にマウント
+  - `x-systemd.idle-timeout=60` → 60秒アクセスがなければ自動アンマウント
+  - 今回は使用していない。直感的に、うかつにwatch（inotify）したりするとトラブルになりそう
 
 `uid`／`gid`は必要に応じて合わせる。SMBはそもそもUNIXパーミッションとは仕組みが異なる（WindowsのACLモデル）。`uid`／`gid`やパーミッションの設定はLinux側からみた見た目だけを制御し、実際に操作できるかはサーバー側による。
 
@@ -60,7 +64,7 @@ $ sudo mount -t cifs //192.168.x.x/SHARE_NAME /mnt/share -o credentials=/root/.s
 ```
 $ sudo vim /etc/fstab
 
-  //192.168.x.x/SHARE_NAME  /mnt/share  cifs  credentials=/root/.smbcred,vers=3.0,_netdev,uid=1000,gid=1000,file_mode=0644,dir_mode=0755  0  0
+  //192.168.x.x/SHARE_NAME  /mnt/share  cifs  credentials=/root/.smbcred,vers=3.0,_netdev,nofail,x-systemd.automount,uid=1000,gid=1000,file_mode=0644,dir_mode=0755  0  0
 
 $ sudo mount -a
 mount: (hint) your fstab has been modified, but systemd still uses
