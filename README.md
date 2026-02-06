@@ -407,6 +407,56 @@ WScript.Echo(generateUUID());
 
 ## PDFの指定したページをトリミングして出力
 
+```
+$ docker run --rm --mount type=bind,source=.,target=/workdir --user texlive --entrypoint /usr/local/texlive/2024/bin/x86_64-linux/pdfjam registry.gitlab.com/islandoftex/images/texlive:TL2024-historic-doc --trim "左 下 右 上" --clip true --fitpaper true input.pdf -o output.pdf
+```
+
+```
+  --KEY VALUE
+               Specify options to '\includepdfmerge', in the LaTeX
+               'pdfpages' package.  See the the pdfpages documentation
+               (usually 'texdoc pdfpages') for more information.
+               Here KEY is the name of any of the many options for
+               '\includepdfmerge', and VALUE is a corresponding value.
+               Examples:
+                   --nup 2x1     (for 2-up side-by-side imposition)
+                   --scale 0.7   (to scale all input pages to 70% size)
+                   --offset '1cm 0.5cm'
+                                 (to offset all pages -- note the quotes!)
+                   --frame true  (to put a frame round each input page)
+                   --booklet true (to reorder the pages in signatures,
+                                   generally useful with --nup)
+                   --signature N (specify the signature size, as the
+                                  number of original pages in a signature
+                                  in the final document. Caveat: booklet
+                                  is a short form for signature, so if
+                                  you use booklet true, signature will be
+                                  ignored)
+                   --trim '1cm 2cm 1cm 2cm' --clip true
+                                 (to trim those amounts from left, bottom,
+                                  right and top, respectively, of input
+                                  pages)
+                   --angle NNN (The angle of rotation in degrees. Angles
+                                that are not either 90, 180 or 270 will
+                                still create straight rectangular pages,
+                                only the content will be rotated.)
+               etc., etc.  For more information see the manual for
+               the 'pdfpages' package, at
+               https://www.ctan.org/tex-archive/macros/latex/contrib/pdfpages
+```
+
+<!--
+docker run --rm --mount type=bind,source=.,target=/workdir --user texlive --entrypoint /usr/local/texlive/2024/bin/x86_64-linux/pdfjam registry.gitlab.com/islandoftex/images/texlive:TL2024-historic-doc --trim "380.6mm 35.3mm 167.6mm 35.3mm" --clip true --fitpaper true input.pdf -o output.pdf
+
+上35.3mm
+左380.6mm
+下35.3mm
+右167.6mm
+-->
+
+<details>
+<summary>過去のメモ</summary>
+
 メモ：こっちのほうが楽かも
 
 ```python
@@ -564,6 +614,8 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+</details>
 
 ## WSLのディスクサイズを削減
 
