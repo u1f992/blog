@@ -1160,3 +1160,7 @@ GRUB_CMDLINE_LINUX_DEFAULT=""
 GRUB_CMDLINE_LINUX=""
 $ sudo update-grub
 ```
+
+```
+sudo apt-get install -y dotnet-runtime-10.0
+```
