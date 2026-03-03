@@ -6412,6 +6412,12 @@ $ sudo update-grub
 
 ```
 sudo apt-get install -y dotnet-runtime-10.0
+
+ 1983  sudo apt install lzip
+ 1984  sudo apt install lziprecover
+
+ sudo apt-get install -y tesseract-ocr tesseract-ocr-jpn ocrmypdf 2>&1 | tail -5
+
 ```
 
 ## WireGuard Android版アプリにおけるフルトンネル設定＋プライベートIPアドレス除外
