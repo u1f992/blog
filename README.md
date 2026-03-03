@@ -114,6 +114,7 @@
 - [TypeScript　パッケージ自体はNode.jsに依存していないけどテストだけNode.jsの型を使いたい](articles/019c44f4-bc9c-7487-b398-712364c3c380/README.md)
 - [ファイル名／URLセーフな日付表現](articles/019c6e5b-c34d-7119-b9d7-cafb18630c7b/README.md)
 - [光学ディスクメディアのバックアップ](articles/019cb148-e2ae-7fba-9aed-2cc1f18b584f/README.md)
+- [Windows PCのディスクまるごとバックアップ](articles/019cb208-4c78-7583-85d5-c4abc6e91b5a/README.md)
 
 ---
 
@@ -9821,3 +9822,19 @@ $ docker run --rm --mount type=bind,src="$PWD",dst=/work ubuntu:24.04 bash -c '
     chown '"$(id -u):$(id -g)"' "${archive}.fec"
   '
 ```
+
+## Windows PCのディスクまるごとバックアップ
+
+事前に確認しておくこと
+
+- Windowsのライセンス形態とプロダクトキー
+  - OEM版：MSDMテーブルにある。Windowsを飛ばした後も確認できる。同じマシン内ならVMに移し替えられる（詳細は他の記事をみること）
+  - Retail版：**MSアカウントに紐付いているかを要確認**。紐付いていない場合はプロダクトキー実体をなんとかする必要がある
+  - DSP版：使ったことない。ハードウェア構成（マザーボード？）に紐付いているらしい
+  - VL版：怪しい中華激安PCに入っているやつ。使うなそんなもん
+- 高速スタートアップ無効
+  - 有効状態でディスクをダンプすると読み取り専用でしか開けないものになる
+  - Shift+シャットダウンで単発完全シャットダウンもできるが、成功しているか分かりづらい。ダンプした後に気づくのはつらい
+- ディスク暗号化／BitLocker（Proの場合）の無効化
+
+Ubuntu DesktopのLive環境にddrescueを入れて、NASなりDドライブなりに退避すればよい
