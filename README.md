@@ -120,6 +120,7 @@
 - [Ubuntu Serverにおけるファームウェア（BIOS／UEFI）更新](articles/019cbe27-04e8-7d05-92d2-f986812a619b/README.md)
 - [SSHからUbuntu Serverのインストールを進める](articles/019cc0ad-6673-7624-a364-5300a27a194e/README.md)
 - [ffmpegによるビデオデバイスのマルチプレクシング（多重化）](articles/019cc7c5-5bad-7f2f-900a-351576fe0aa3/README.md)
+- [追加したUSBデバイスを追跡する](articles/019ccfef-65ab-7879-92d3-ba2881b62a03/README.md)
 
 ---
 
@@ -10368,4 +10369,24 @@ $ ffmpeg -f v4l2 -input_format mjpeg -framerate 60 -video_size 720x480 -i $ORIGI
 $ ffmpeg -f v4l2 -input_format yuyv422 -framerate 30 -video_size 720x480 -i $ORIGIN \
     -codec copy -f v4l2 /dev/video10 \
     -codec copy -f v4l2 /dev/video11
+```
+
+## 追加したUSBデバイスを追跡する
+
+未知のデバイスならまずは
+
+```shellsession
+$ sudo udevadm monitor
+```
+
+`--udev`をつけることで（カーネルの生の情報ではなく）udevが処理した後の情報、つまりユーザー空間から見て意味のある段階まで進んだ出来事を表示する。
+
+```shellsession
+$ sudo udevadm monitor --udev
+```
+
+`--subsystem-match`で絞り込むこともできる。
+
+```shellsession
+$ sudo udevadm monitor --subsystem-match=block --udev
 ```
