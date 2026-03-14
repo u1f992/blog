@@ -36,6 +36,47 @@ $ ssh-copy-id -i ~/.ssh/id_ed25519.pub <user>@<host>
 $ ssh <user>@<host>  # または明示して ssh -i ~/.ssh/id_ed25519 <user>@<host>
 ```
 
+<details>
+<summary>ホストがWindowsの場合</summary>
+
+- https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement
+
+ログインシェルがcmdの場合（デフォルト？）`ssh-copy-id`が失敗するようだ。`added`と出るが、引き続きパスワードを要求され正しく書き込まれていない。
+
+```
+'exec' �́A�����R�}���h�܂��͊O���R�}���h�A
+����\�ȃv���O�����܂��̓o�b�` �t�@�C���Ƃ��ĔF������Ă��܂���B
+（'exec' は、内部コマンドまたは外部コマンド、操作可能なプログラムまたはバッチ ファイルとして認識されていません。）
+
+Number of key(s) added: 1   
+```
+
+手動でコピーするが、アカウントの種別によって配置する場所が異なる。
+
+```
+> net localgroup Administrators
+
+メンバーに対象のアカウントが含まれているか？
+```
+
+含まれる場合：
+
+`C:\ProgramData\ssh\`は一般ユーザーも読み書きできてしまう。他人の鍵を追加して管理者としてログインできたら危険なので、sshdは権限が厳格でないとこのファイルを無視する。
+
+```
+$ scp ~/.ssh/id_ed25519.pub mukai@192.168.0.5:C:/ProgramData/ssh/administrators_authorized_keys
+
+> icacls C:\ProgramData\ssh\administrators_authorized_keys /inheritance:r /grant "Administrators:F" /grant "SYSTEM:F"
+```
+
+含まれない場合：
+
+```
+$ scp ~/.ssh/id_ed25519.pub mukai@192.168.0.5:.ssh/authorized_keys
+```
+
+</details>
+
 ### パスフレーズ
 
 秘密鍵が漏れるとアクセスし放題になってしまう。これを防ぐために、秘密鍵自体をパスフレーズで暗号化できる。

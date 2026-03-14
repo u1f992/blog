@@ -123,6 +123,7 @@
 - [追加したUSBデバイスを追跡する](articles/019ccfef-65ab-7879-92d3-ba2881b62a03/README.md)
 - [（私家訳）Ubuntuでvgpu_unlockを使用してNVIDIA vGPUをアンロックし、QEMU/KVM仮想マシンでGPU仮想化を有効にする](articles/019cd76e-e3e8-7e77-9745-a6262c5bb13b/README.md)
 - [zshとbashでPATH設定を共通化する（Mac）](articles/019cdb6b-b2ab-787e-9210-c36644ad95ee/README.md)
+- [Windows 11マシンでSSH Serverを有効化](articles/019cea7e-8067-765e-a399-1e570d927076/README.md)
 
 ---
 
@@ -8143,6 +8144,47 @@ $ ssh-copy-id -i ~/.ssh/id_ed25519.pub <user>@<host>
 $ ssh <user>@<host>  # または明示して ssh -i ~/.ssh/id_ed25519 <user>@<host>
 ```
 
+<details>
+<summary>ホストがWindowsの場合</summary>
+
+- https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement
+
+ログインシェルがcmdの場合（デフォルト？）`ssh-copy-id`が失敗するようだ。`added`と出るが、引き続きパスワードを要求され正しく書き込まれていない。
+
+```
+'exec' �́A�����R�}���h�܂��͊O���R�}���h�A
+����\�ȃv���O�����܂��̓o�b�` �t�@�C���Ƃ��ĔF������Ă��܂���B
+（'exec' は、内部コマンドまたは外部コマンド、操作可能なプログラムまたはバッチ ファイルとして認識されていません。）
+
+Number of key(s) added: 1   
+```
+
+手動でコピーするが、アカウントの種別によって配置する場所が異なる。
+
+```
+> net localgroup Administrators
+
+メンバーに対象のアカウントが含まれているか？
+```
+
+含まれる場合：
+
+`C:\ProgramData\ssh\`は一般ユーザーも読み書きできてしまう。他人の鍵を追加して管理者としてログインできたら危険なので、sshdは権限が厳格でないとこのファイルを無視する。
+
+```
+$ scp ~/.ssh/id_ed25519.pub mukai@192.168.0.5:C:/ProgramData/ssh/administrators_authorized_keys
+
+> icacls C:\ProgramData\ssh\administrators_authorized_keys /inheritance:r /grant "Administrators:F" /grant "SYSTEM:F"
+```
+
+含まれない場合：
+
+```
+$ scp ~/.ssh/id_ed25519.pub mukai@192.168.0.5:.ssh/authorized_keys
+```
+
+</details>
+
 ### パスフレーズ
 
 秘密鍵が漏れるとアクセスし放題になってしまう。これを防ぐために、秘密鍵自体をパスフレーズで暗号化できる。
@@ -11372,3 +11414,93 @@ export PATH
 ```
 
 </figure>
+
+## Windows 11マシンでSSH Serverを有効化
+
+- https://learn.microsoft.com/ja-jp/windows-server/administration/openssh/openssh_install_firstuse?tabs=powershell&pivots=windows-11
+
+管理者として実行したPowerShellで
+
+```
+PS C:\WINDOWS\system32> (New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+True
+PS C:\WINDOWS\system32> Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH*'
+
+
+Name  : OpenSSH.Client~~~~0.0.1.0
+State : Installed
+
+Name  : OpenSSH.Server~~~~0.0.1.0
+State : NotPresent
+
+
+
+PS C:\WINDOWS\system32> Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+
+
+Path          :
+Online        : True
+RestartNeeded : False
+
+
+
+PS C:\WINDOWS\system32> Set-Service -Name sshd -StartupType 'Automatic'
+```
+
+再起動後、sshdが自動起動しファイアウォールが自動設定されていることを確認する。
+
+```
+PS C:\WINDOWS\system32> Get-Service sshd
+
+Status   Name               DisplayName
+------   ----               -----------
+Running  sshd               OpenSSH SSH Server
+
+
+PS C:\WINDOWS\system32> Get-NetFirewallRule -Name "OpenSSH-Server-In-TCP" -ErrorAction SilentlyContinue
+
+
+Name                          : OpenSSH-Server-In-TCP
+DisplayName                   : OpenSSH SSH Server (sshd)
+Description                   : Inbound rule for OpenSSH SSH Server (sshd)
+DisplayGroup                  : OpenSSH Server
+Group                         : OpenSSH Server
+Enabled                       : True
+Profile                       : Private
+Platform                      : {}
+Direction                     : Inbound
+Action                        : Allow
+EdgeTraversalPolicy           : Block
+LooseSourceMapping            : False
+LocalOnlyMapping              : False
+Owner                         :
+PrimaryStatus                 : OK
+Status                        : 規則は、ストアから正常に解析されました。 (65536)
+EnforcementStatus             : NotApplicable
+PolicyStoreSource             : PersistentStore
+PolicyStoreSourceType         : Local
+RemoteDynamicKeywordAddresses : {}
+PolicyAppId                   :
+PackageFamilyName             :
+```
+
+デフォルトで`Profile : Private`となっているため、`Public`になっているイーサネットからは接続できない。`Any`（`Private,Public,Domain`）に設定してアドレスを絞る。
+
+また、パスワードが設定されていないとログインできない。
+
+```
+PS C:\WINDOWS\system32> Get-NetConnectionProfile
+
+
+Name                     : ネットワーク 2
+InterfaceAlias           : イーサネット
+InterfaceIndex           : 10
+NetworkCategory          : Public
+DomainAuthenticationKind : None
+IPv4Connectivity         : Internet
+IPv6Connectivity         : Internet
+
+
+
+PS C:\WINDOWS\system32> Set-NetFirewallRule -Name "OpenSSH-Server-In-TCP" -Profile Any -RemoteAddress 192.168.0.0/16
+```
