@@ -31,4 +31,4 @@ $(VENV_SITE_PACKAGES)/uuid6: $(VENV)
 	$(VENV_PIP) install uuid6
 
 new: $(VENV_SITE_PACKAGES)/uuid6
-	$(VENV_PYTHON) -c "import os, uuid6; path = os.path.join('articles', str(uuid6.uuid7())); os.makedirs(path); open(os.path.join(path, 'README.md'), 'w').close()"
+	@$(VENV_PYTHON) -c "import os, uuid6; path = os.path.join('articles', str(uuid6.uuid7()), 'README.md'); os.makedirs(os.path.dirname(path)); open(path, 'w').close(); print(path)"
