@@ -125,6 +125,8 @@
 - [zshとbashでPATH設定を共通化する（Mac）](articles/019cdb6b-b2ab-787e-9210-c36644ad95ee/README.md)
 - [Windows 11マシンでSSH Serverを有効化](articles/019cea7e-8067-765e-a399-1e570d927076/README.md)
 - [Ubuntuのネットワーク設定](articles/019cf95e-af82-7e04-8694-0e232c431b83/README.md)
+- [リモートのリソースでKVMを動作させる](articles/019cf966-1fcb-71ba-abb3-78b1d98aa720/README.md)
+- [PCのハードウェアの生の情報をダンプする](articles/019cfa39-f811-7b04-bded-1e5ae1f59365/README.md)
 
 ---
 
@@ -3467,7 +3469,7 @@ RAMFBディスプレイを有効化
 
 「vioscsi」ドライバをインストールするまでディスクを見つけられない。virtio-winのディスクからインストールする。
 
-途中まで進めるとネットワークに繋げと要求されて進行不能になるが、ここまでNICのリンクを切っている上ドライバーもインストールしていない。`Shift+F10`・`start ms-cxh:localonly`で回避（[参考](https://x.com/witherornot1337/status/1906050664741937328)）。情報収集系の機能は全部切って置いたほうがよいだろう。ここで、ユーザー名がホームディレクトリ名になり、パスワードは空でも通る。インストールが完了したらそのまま高速スタートアップ無効シャットダウン（スタートメニューの「シャットダウン」をShiftを押しながらクリック）しスナップショットを作成しておくとよい。高速スタートアップ有効だとディスクイメージに書き込みロックがかかる。
+途中まで進めるとネットワークに繋げと要求されて進行不能になるが、ここまでNICのリンクを切っている上ドライバーもインストールしていない。`Shift+F10`・`start ms-cxh:localonly`で回避（[参考](https://x.com/witherornot1337/status/1906050664741937328)）。ここで、ユーザー名がホームディレクトリ名になり、パスワードは空でも通る。情報収集系の機能は全部切って置いたほうがよいだろう。デフォルトでは「位置情報」「手書き入力とタイプ入力」「カスタマイズされたエクスペリエンス」が有効になっている（25H2）。インストールが完了したらそのまま高速スタートアップ無効シャットダウン（スタートメニューの「シャットダウン」をShiftを押しながらクリック）しスナップショットを作成しておくとよい。高速スタートアップ有効だとディスクイメージに書き込みロックがかかる。
 
 ディスクドライブ1のWindowsのインストールディスクを割当解除し、追加した2つめのディスクドライブを削除、1つめのディスクドライブにvirtio-winのディスクを割り当て直す。
 
@@ -11623,3 +11625,89 @@ $ sudo nmcli connection up bridge-br0
 [^7]: [How to integrate Netplan with desktop - Netplan documentation](https://netplan.readthedocs.io/en/stable/netplan-everywhere/)
 [^8]: [Setting up a bridge network on Ubuntu 24.04 Desktop - Support and Help - Ubuntu Community Hub](https://discourse.ubuntu.com/t/setting-up-a-bridge-network-on-ubuntu-24-04-desktop/51734)
 [^9]: [NetworkConnectionBridge - Community Help Wiki](https://help.ubuntu.com/community/NetworkConnectionBridge)
+
+## リモートのリソースでKVMを動作させる
+
+サーバー（Ubuntu Server 24.04）に必要なのはlibvirtdと管理用のCLIとしてlibvirt-clients（virsh）。共有ドライブを使用するならvirtiofsdが必要。サーバー側ですでにSSHは有効化されており、SSHクライアント側でvirshなりvirt-managerなりで操作する前提。サーバー側ではブリッジを構成しておけば、VMに直接接続できるようになる。
+
+<figure>
+<figcaption>サーバー側</figcaption>
+
+```shellsession
+$ sudo apt install qemu-kvm libvirt-daemon-system virtiofsd
+$ sudo usermod -aG libvirt $(whoami)
+```
+
+- -a (append)：ユーザーを既存のグループに追加する。これがないと、指定したグループ以外のすべての補助グループから外されてしまう。
+- -G (groups)：補助グループを指定する。
+
+なおlibvirtグループはインストール時に作成されているはず。グループはログインし直すまで反映されないので再起動。
+
+</figure>
+
+クライアント側でvirshだけ使えるようにしたければlibvirt-clientsをインストールする。
+
+virt-managerでは［ファイル(F)＞接続を追加(A)...］から追加できる。
+
+virt-managerで新規作成する際のISOメディアのデフォルトパスは`/var/lib/libvirt/images/`
+
+### VMインストール時にDHCPが失敗する場合
+
+Ubuntu Serverのインストーラー（subiquity）はsystemd-networkdでネットワークを管理するが、DHCPv4のClient-IDとしてSMBIOS UUIDベースのDUID（hardware-type 255）を送信する。一部のDHCPサーバーはこの形式を処理できず応答しない。
+
+tcpdumpで確認すると、正常な端末のClient-IDが`ether xx:xx:xx:xx:xx:xx`（7バイト）であるのに対し、VMは`hardware-type 255`の19バイトのDUIDを送信していることがわかる。
+
+```shellsession
+$ # ホスト側でDHCPトラフィックを監視
+$ sudo tcpdump -i enp3s0 -vvv port 67 or port 68
+```
+
+インストーラー環境ではnetplanの設定変更（`dhcp-identifier: mac`）は反映されない。インストーラーが独自にsystemd-networkdを管理しており？、`/run/systemd/network/`も空の状態である。直接systemd-networkdの設定を作成する必要がある。
+
+<figure>
+<figcaption>VM側（インストーラーのシェル）</figcaption>
+
+```shellsession
+$ cat > /run/systemd/network/10-dhcp.network << 'EOF'
+[Match]
+Name=enp1s0
+
+[Network]
+DHCP=yes
+
+[DHCPv4]
+ClientIdentifier=mac
+EOF
+$ systemctl restart systemd-networkd
+```
+
+</figure>
+
+これによりClient-IDがMACアドレスベースに変わり、DHCPサーバーから応答を得られるようになる。インストール完了後の環境ではnetplanで`dhcp-identifier: mac`を指定すればよい（[過去のセットアップ](../0199d804-fa2f-7925-82e1-003224f2d920/README.md)）。
+
+
+## PCのハードウェアの生の情報をダンプする
+
+スクリプト添付済み。lzipとflashromを使用する
+
+```
+fw_dump_gihyo-Vostro-15-3510_20260317_143618
+├── _errors.log
+├── acpi
+│   ├── APIC
+│   ├── ...
+│   └── dynamic
+│       ├── SSDT12
+│       ├── ...
+│       └── SSDT19
+├── efivars
+│   ├── AbtStatus-a0b1889e-00eb-445b-8ca9-e91ce43c907d
+│   ├── ...
+│   └── dbxDefault-8be4df61-93ca-11d2-aa0d-00e098032b8c
+├── smbios.bin
+└── spiflash_bios.bin
+
+5 directories, 259 files
+```
+
+`dmidecode --from-dump smbios.bin`とすれば、PCの情報を抽出するのと同様に扱える。
