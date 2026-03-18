@@ -1170,3 +1170,7 @@ sudo apt-get install -y dotnet-runtime-10.0
  sudo apt-get install -y tesseract-ocr tesseract-ocr-jpn ocrmypdf 2>&1 | tail -5
 
 ```
+
+```
+sudo apt install uefitool
+```

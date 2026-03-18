@@ -6435,6 +6435,10 @@ sudo apt-get install -y dotnet-runtime-10.0
 
 ```
 
+```
+sudo apt install uefitool
+```
+
 ## WireGuard Android版アプリにおけるフルトンネル設定＋プライベートIPアドレス除外
 
 フルトンネル時のクライアント側のAllowedIPs設定値は「0.0.0.0/0, ::/0」だが、これではすべてのトラフィックがトンネルに入り、クライアント自身のLANの機器に到達できない（WireGuardサーバーを置いているLANの機器にアクセスする）。
