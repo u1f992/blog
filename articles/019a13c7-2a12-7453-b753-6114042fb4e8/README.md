@@ -1171,6 +1171,9 @@ sudo apt-get install -y dotnet-runtime-10.0
 
 ```
 
+いらなかった
+
 ```
-sudo apt install uefitool
+$ sudo apt install uefitool
+$ sudo apt remove uefitool
 ```
