@@ -11837,8 +11837,8 @@ npmの原作者である[Isaac Schlueter](https://github.com/isaacs)氏がNode.j
 <!-- prettier-ignore-start -->
 
 > As long as I have a say in the matter, package.json file will always<br>
-> be json. If anything, future versions of npm and node will *remove*<br>
-> features rather than add them. (I'm looking at you, `scripts.install`<br>
+> be json. If anything, future versions of npm and node will *\remove\*<br>
+> features rather than add them. (I'm looking at you, \`scripts.install\`<br>
 > ;)
 > 
 > That being said, I completely understand the desire to put additional<br>
