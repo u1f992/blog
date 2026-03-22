@@ -132,6 +132,7 @@
 - [GitHub CLIにはgitignoreを生成する機能がある](articles/019d0498-17d0-7815-8ad6-d1bd6f576eda/README.md)
 - [package.jsonにはコメントを書ける](articles/019d0996-58c1-7636-9a67-5692eba6b6fc/README.md)
 - [VMのバージョン管理について感想](articles/019d1090-ef57-745a-8454-6e834c71199e/README.md)
+- [ジャンプホストありのSSH設定](articles/019d145e-14c1-79b9-8eee-a1a2eec2fc44/README.md)
 
 ---
 
@@ -11958,3 +11959,24 @@ libvirt VMをGitで（XMLをGitで、ディスクイメージはGit LFSで）管
 VMの状態そのものを差分管理しようとしたことが筋が悪かったと理解している。考えてみると、IaCで管理できるのはVMやコンテナの状態ではなく、その状態を自動で作るための手順だ。これらはコードとして管理できる。一方で、たとえばWindows VMにおいてGUIインストーラーの操作や設定の変更は自動化と相性が悪い。このような非構造的な状態は、手法や効率の程度に差はあれ結局のところディスクそのものを保存して手動管理するくらいしか手立てがない。数十〜数百GB程度のディスクイメージについて生バイト列の差という意味での差分の管理は非常に効率が悪く良いアイディアではない、実用的でもない。
 
 本当に持ち運びたかったものをもう一度よく考える必要がある。ある環境を自動で再現したいならIaCで都度作るべきで、VMそのものを持ち運びたいならlibvirtが提供する方法（dumpxml、qcow2スナップショット）に乗るべきだ。
+
+## ジャンプホストありのSSH設定
+
+ジャンプホストの設定がないアプリケーションでは、予めSSH設定が必要。
+
+<figure>
+<figcaption>~/.ssh/config</figcaption>
+
+```
+Host foobar
+    HostName 192.168.x.x
+    ProxyJump jump-user@jump-host
+```
+
+</figure>
+
+```shellsession
+$ ssh user@foobar
+```
+
+これは`ssh -J jump-user@jump-host user@192.168.x.x`と同じこと。
