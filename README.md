@@ -134,7 +134,7 @@
 - [VMのバージョン管理について感想](articles/019d1090-ef57-745a-8454-6e834c71199e/README.md)
 - [ジャンプホストありのSSH設定](articles/019d145e-14c1-79b9-8eee-a1a2eec2fc44/README.md)
 - [Ubuntu ServerのLVMデフォルト割り当て](articles/019d14a6-45be-74be-9a73-197c8112f3ab/README.md)
-- [VMのDNS割当結果を知りたい](articles/019d4180-08b1-7677-9c80-f85e22602b6f/README.md)
+- [VMのDHCP割当結果を知りたい](articles/019d4180-08b1-7677-9c80-f85e22602b6f/README.md)
 
 ---
 
@@ -12025,9 +12025,9 @@ $ sudo resize2fs /dev/ubuntu-vg/ubuntu-lv
 - [Bug #1907128 "Subiquity only provisions half of available space"](https://bugs.launchpad.net/bugs/1907128)
 - [Autoinstall configuration reference manual](https://canonical-subiquity.readthedocs-hosted.com/en/latest/reference/autoinstall-reference.html)
 
-## VMのDNS割当結果を知りたい
+## VMのDHCP割当結果を知りたい
 
-ブリッジでホストと同じネットワークに参加しているゲストのIPアドレスを知りたい。ゲストはDNSからIPアドレスを得ており、ゲストには特にゲストエージェントなどは入っていないものとする。
+ブリッジでホストと同じネットワークに参加しているゲストのIPアドレスを知りたい。ゲストはDHCPからIPアドレスを得ており、ゲストには特にゲストエージェントなどは入っていないものとする。
 
 ```shellsession
 $ virsh -c qemu:///system list --all
@@ -12037,3 +12037,23 @@ $ ip neigh show dev br0 | grep VM_NIC_MAC
 ```
 
 サブネット下の全アドレスにpingを飛ばすことで、IPアドレス→MACアドレスの対応表であるところのARPテーブルを更新して、MACでフィルタすればIPアドレスを得られる。
+
+以下は失敗した他の方法のメモ
+
+libvirtのDHCPリースから取得する。今回はVMがlibvirtのDHCPを通らずブリッジで直接参加しているため動作しない。`--source arp`とすることでlibvirtの管理するARPテーブルから得ることもできるが、今回のケースでは同じ結果。
+
+```
+virsh -c qemu:///system domifaddr VM_NAME
+```
+
+VM内のQEMUゲストエージェントから取得する方法。今回はインストールしておらず動作しない。またゲストエージェントが起動している必要がある点にも注意。
+
+```
+virsh domifaddr --source agent
+```
+
+nmapによるネットワークスキャン。Ubuntu Serverのデフォルト構成ではnmapは入っていない。
+
+```
+sudo nmap -sn 192.168.8.0/24
+```
