@@ -135,6 +135,7 @@
 - [ジャンプホストありのSSH設定](articles/019d145e-14c1-79b9-8eee-a1a2eec2fc44/README.md)
 - [Ubuntu ServerのLVMデフォルト割り当て](articles/019d14a6-45be-74be-9a73-197c8112f3ab/README.md)
 - [VMのDHCP割当結果を知りたい](articles/019d4180-08b1-7677-9c80-f85e22602b6f/README.md)
+- [USBイーサネットアダプタを取り外した後Wi-Fiに接続できない](articles/019d46f1-f39e-76b9-8eaa-66b71a80f163/README.md)
 
 ---
 
@@ -12056,4 +12057,32 @@ nmapによるネットワークスキャン。Ubuntu Serverのデフォルト構
 
 ```
 sudo nmap -sn 192.168.8.0/24
+```
+
+## USBイーサネットアダプタを取り外した後Wi-Fiに接続できない
+
+USBイーサネットアダプタでブリッジbr0を構成していたPCで、USBイーサネットアダプタを取り外し後、Wi-Fiを有効化すると、APは見つけられているのにインターネットに接続できなかった。
+
+原因1：br0のデフォルトルートがWi-Fiより優先されていた。NMがbr0の接続プロファイルを維持し続け、br0にDHCPリース（192.168.8.38/24）とデフォルトルート（metric 425）が残っていた。WiFiのデフォルトルート（metric 600）より小さい＝優先度が高いため、すべてのトラフィックがリンクダウンしたbr0に吸い込まれていた。
+
+原因2：br0とWi-Fiが同一サブネットに存在した。上に気づいてアドレスを消した（`sudo ip addr flush dev br0`）が、インターフェイス自体が残っていたためルーティングが曖昧になり接続できなかった。
+
+恒久対策としてbr0の自動接続を無効化。
+
+```shellsession
+$ nmcli connection modify br0 connection.autoconnect no
+```
+
+USBイーサネットアダプタ取り外し時には手動で削除。USBイーサネットアダプタの抜き差しに反応させることもできるが、そこまでは行っていない。
+
+削除してからWi-Fiを有効化
+
+```shellsession
+$ sudo ip link delete br0
+```
+
+USBイーサネットを再接続した際にbr0をup
+
+```shellsession
+$ sudo ip link delete br0
 ```
