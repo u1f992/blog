@@ -136,6 +136,7 @@
 - [Ubuntu ServerのLVMデフォルト割り当て](articles/019d14a6-45be-74be-9a73-197c8112f3ab/README.md)
 - [VMのDHCP割当結果を知りたい](articles/019d4180-08b1-7677-9c80-f85e22602b6f/README.md)
 - [USBイーサネットアダプタを取り外した後Wi-Fiに接続できない](articles/019d46f1-f39e-76b9-8eaa-66b71a80f163/README.md)
+- [Claude CodeのDev Containerセットアップを一手でセットアップする](articles/019d683b-95fb-7940-87a6-f4aae181ec98/README.md)
 
 ---
 
@@ -12086,3 +12087,32 @@ USBイーサネットを再接続した後にbr0をup。少し時間がかかる
 ```shellsession
 $ nmcli connection up br0
 ```
+
+## Claude CodeのDev Containerセットアップを一手でセットアップする
+
+Claude CodeのリポジトリにはDev Containerのセットアップが含まれており、`--dangerously-skip-permissions`とともに紹介されている。
+
+- https://code.claude.com/docs/en/devcontainer
+
+> The container’s enhanced security measures (isolation and firewall rules) allow you to run `claude --dangerously-skip-permissions` to bypass permission prompts for unattended operation.
+
+GitHub CLIを次のように使用すると`git clone`を経由せずにカレントディレクトリに展開できる。`--wildcards`はGNU tar系のオプションなのでMacでは注意（`--include`？）。
+
+```shellsession
+$ gh api repos/anthropics/claude-code/tarball/main | tar xz --strip-components=1 --wildcards '*/.devcontainer/*'
+```
+
+`--strip-components`は各エントリのパスからN番目以下を詰めるオプション。ダウンロードするtarballは以下のような構造なので、
+
+```shellsession
+$ gh api repos/anthropics/claude-code/tarball/main | tar tz | grep '\.devcontainer'
+anthropics-claude-code-b543a25/.devcontainer/
+anthropics-claude-code-b543a25/.devcontainer/Dockerfile
+anthropics-claude-code-b543a25/.devcontainer/devcontainer.json
+anthropics-claude-code-b543a25/.devcontainer/init-firewall.sh
+```
+
+`anthropics-claude-code-b543a25/`が切り取られてカレントディレクトリに`.devcontainer/`ディレクトリが作成される。
+
+ちなみに`--strip-components=2`ならファイルが直接カレントディレクトリに保存され、`--strip-components=3`以上になると何も保存されない。
+
