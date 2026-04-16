@@ -6469,6 +6469,65 @@ $ sudo apt install uefitool
 $ sudo apt remove uefitool
 ```
 
+### devcontainer CLI
+
+以前インストールしたものが古くなっていた。手順も新しくなっており、今はNode.jsもバンドルしているそうだ
+
+- https://github.com/devcontainers/cli/blob/v0.86.0/README.md#install-script
+
+```shellsession
+$ curl -fsSL https://raw.githubusercontent.com/devcontainers/cli/main/scripts/install.sh | sh
+
+> Dev Containers CLI installer
+
+> Platform: linux-x64
+> Install directory: /home/mukai/.devcontainers
+warning: Found existing devcontainer at: /run/user/1000/fnm_multishells/55521_1776311360735/bin/devcontainer
+warning: After installation, ensure /home/mukai/.devcontainers/bin is first in your PATH
+> Resolving latest Dev Containers CLI version...
+> Dev Containers CLI version: 0.86.0
+> Resolving Node.js v20 LTS version...
+> Node.js version: v20.20.2
+> Downloading Node.js v20.20.2...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 24.9M  100 24.9M    0     0  53.5M      0 --:--:-- --:--:-- --:--:-- 53.6M
+> Extracting Node.js...
+> Activating Node.js v20.20.2...
+> Downloading Dev Containers CLI v0.86.0...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  589k  100  589k    0     0  1126k      0 --:--:-- --:--:-- --:--:-- 1125k
+> Extracting Dev Containers CLI...
+> Activating Dev Containers CLI v0.86.0...
+> Creating wrapper script...
+> Verifying installation...
+> Installed: devcontainer 0.86.0
+
+> Installation complete!
+
+> Add the following to your shell profile to use devcontainer:
+
+  export PATH="/home/mukai/.devcontainers/bin:$PATH"
+
+> For bash, add to: ~/.bashrc
+
+> Then restart your shell or run:
+  export PATH="/home/mukai/.devcontainers/bin:$PATH"
+
+> To update:
+  curl -fsSL https://raw.githubusercontent.com/devcontainers/cli/main/scripts/install.sh | sh -s -- --update
+> To uninstall:
+  curl -fsSL https://raw.githubusercontent.com/devcontainers/cli/main/scripts/install.sh | sh -s -- --uninstall
+> Or simply: rm -rf /home/mukai/.devcontainers
+```
+
+npm経由のアンインストールを忘れていると警告してくれている。
+
+```shellsession
+$ npm uninstall @devcontainers/cli --global
+```
+
 ## WireGuard Android版アプリにおけるフルトンネル設定＋プライベートIPアドレス除外
 
 フルトンネル時のクライアント側のAllowedIPs設定値は「0.0.0.0/0, ::/0」だが、これではすべてのトラフィックがトンネルに入り、クライアント自身のLANの機器に到達できない（WireGuardサーバーを置いているLANの機器にアクセスする）。
