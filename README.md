@@ -9791,6 +9791,7 @@ tsconfig.jsonを編集する。ここではNode.jsの型を使用していない
      // and npm install -D @types/node
  
 +    // Interoperability with Node.js Type Stripping
++    // see https://github.com/u1f992/blog/blob/main/articles/019c44f4-bc9c-7487-b398-712364c3c380/README.md
 +    "rewriteRelativeImportExtensions": true,
 +
      // Other Outputs
@@ -9802,7 +9803,8 @@ tsconfig.jsonを編集する。ここではNode.jsの型を使用していない
      "skipLibCheck": true,
 -  }
 +  },
-+  // error TS6059: File '/.../test/index.test.ts' is not under 'rootDir' '/.../src'. 'rootDir' is expected to contain all source files.
++  // error TS6059: File '/ ... /test/ ... .ts' is not under 'rootDir' '/ ... /src'. 'rootDir' is expected to contain all source files.
++  // see https://github.com/u1f992/blog/blob/main/articles/019c44f4-bc9c-7487-b398-712364c3c380/README.md
 +  "include": ["src"]
  }
 ```
@@ -9812,6 +9814,7 @@ test/tsconfig.jsonを作成し、こちらではNode.jsの型を使用する。t
 > Default: `true` if `rewriteRelativeImportExtensions`; `false` otherwise. - https://www.typescriptlang.org/tsconfig/#allowImportingTsExtensions
 
 ```json
+// see https://github.com/u1f992/blog/blob/main/articles/019c44f4-bc9c-7487-b398-712364c3c380/README.md
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
