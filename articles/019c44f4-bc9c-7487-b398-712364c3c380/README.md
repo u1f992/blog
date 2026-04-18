@@ -1,6 +1,6 @@
 ## TypeScript　パッケージ自体はNode.jsに依存していないけどテストだけNode.jsの型を使いたい
 
-このとき、`test/`でだけNode.jsの型（`@types/node`）を使用したい。ただし、`dist/`の構造は以下のようにテストのコードを含めないものとし、`test/`はNode.jsのType Strippingで実行する。
+このとき、`tests/`でだけNode.jsの型（`@types/node`）を使用したい。ただし、`dist/`の構造は以下のようにテストのコードを含めないものとし、`tests/`はNode.jsのType Strippingで実行する。
 
 ```
 .
@@ -11,7 +11,7 @@
 │   └── index.js.map
 ├── src
 │   └── index.ts
-├── test
+├── tests
 │   └── index.test.ts
 └── tsconfig.json
 ```
@@ -49,13 +49,13 @@ tsconfig.jsonを編集する。ここではNode.jsの型を使用していない
      "skipLibCheck": true,
 -  }
 +  },
-+  // error TS6059: File '/ ... /test/ ... .ts' is not under 'rootDir' '/ ... /src'. 'rootDir' is expected to contain all source files.
++  // error TS6059: File '/ ... /tests/ ... .ts' is not under 'rootDir' '/ ... /src'. 'rootDir' is expected to contain all source files.
 +  // see https://github.com/u1f992/blog/blob/main/articles/019c44f4-bc9c-7487-b398-712364c3c380/README.md
 +  "include": ["src"]
  }
 ```
 
-test/tsconfig.jsonを作成し、こちらではNode.jsの型を使用する。tsconfig.jsonから継承される`compilerOptions.rootDir`と`include`を上書きする必要がある。`include`では、`../src`は`import`から解決されて取り込まれるので不要。もちろん解決された先の型検査も行われる。このtsconfig.jsonは型検査のみに使用するものだから、`noEmit`を有効化する。`"rewriteRelativeImportExtensions": true`を継承しているので`*.ts`拡張子のインポートは許可される（`noEmit`と相まって許可の効果だけが残る）。
+tests/tsconfig.jsonを作成し、こちらではNode.jsの型を使用する。tsconfig.jsonから継承される`compilerOptions.rootDir`と`include`を上書きする必要がある。`include`では、`../src`は`import`から解決されて取り込まれるので不要。もちろん解決された先の型検査も行われる。このtsconfig.jsonは型検査のみに使用するものだから、`noEmit`を有効化する。`"rewriteRelativeImportExtensions": true`を継承しているので`*.ts`拡張子のインポートは許可される（`noEmit`と相まって許可の効果だけが残る）。
 
 > Default: `true` if `rewriteRelativeImportExtensions`; `false` otherwise. - https://www.typescriptlang.org/tsconfig/#allowImportingTsExtensions
 
@@ -79,6 +79,6 @@ test/tsconfig.jsonを作成し、こちらではNode.jsの型を使用する。t
 ```
 "scripts": {
   "build": "tsc",
-  "test": "tsc --project test/tsconfig.json && node --test \"test/**/*.test.ts\""
+  "test": "tsc --project tests/tsconfig.json && node --test \"tests/**/*.test.ts\""
 },
 ```
