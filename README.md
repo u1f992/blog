@@ -139,6 +139,7 @@
 - [Claude CodeのDev Containerセットアップを一手でセットアップする](articles/019d683b-95fb-7940-87a6-f4aae181ec98/README.md)
 - [このローカルリポジトリでだけ一時的に特定のファイルの変更を無視したい](articles/019d685e-20ff-7c1c-8d3f-7f1f4d57626f/README.md)
 - [Dev Container CLIのdevcontainer upがフォアグラウンドで継続してしまう問題が解消していた](articles/019d8a1a-18da-77ff-aa27-85acc2ea1052/README.md)
+- [mise](articles/019dd8e8-b27a-7006-afdf-87168b3fde89/README.md)
 
 ---
 
@@ -12224,3 +12225,42 @@ $ docker ps --all --filter "label=devcontainer.local_folder=$PWD" --format '{{.I
 $ docker images --format '{{.Repository}}' | grep "vsc-$(basename "$PWD")" | xargs --no-run-if-empty docker rmi
 ```
 
+
+## mise
+
+- https://github.com/jdx/mise
+
+今度VFMで使うので勉強する。
+
+### インストール
+
+- https://github.com/jdx/mise/blob/0c645defc0e5794528ec2ee48084e463fbe51845/README.md#quickstart
+
+```shellsession
+$ curl https://mise.run | sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 10669  100 10669    0     0  86258      0 --:--:-- --:--:-- --:--:-- 86739
+mise: installing mise...
+######################################################################## 100.0%
+mise: installed successfully to /home/mukai/.local/bin/mise
+mise: run the following to activate mise in your shell:
+echo "eval \"\$(/home/mukai/.local/bin/mise activate bash)\"" >> ~/.bashrc
+
+mise: run `mise doctor` to verify this is set up correctly
+$ echo "eval \"\$(/home/mukai/.local/bin/mise activate bash)\"" >> ~/.bashrc
+$ cat .bashrc | tail -n 1
+eval "$(/home/mukai/.local/bin/mise activate bash)"
+```
+
+シェルを再起動して
+
+```shellsession
+$ mise doctor
+version: 2026.4.25 linux-x64 (2026-04-28)
+activated: yes
+shims_on_path: no
+self_update_available: yes
+...
+No problems found
+```
