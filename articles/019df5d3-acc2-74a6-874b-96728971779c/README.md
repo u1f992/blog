@@ -29,3 +29,12 @@ $ sudo unzip ~/Downloads/7B98v1F.zip -d /mnt/sdf1/
 $ sudo umount /mnt/sdf1
 $ sudo rmdir /mnt/sdf1
 ```
+
+How_to_flash_the_BIOS.pdfに従って更新。
+
+```shellsession
+$ sudo dmidecode -s bios-version
+1.F0
+$ sudo dmidecode -s bios-release-date
+07/10/2024
+```
