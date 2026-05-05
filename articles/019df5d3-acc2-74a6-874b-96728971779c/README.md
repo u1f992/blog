@@ -66,3 +66,5 @@ $ sudo update-grub
 ```
 
 再起動してメーカーロゴやスプラッシュスクリーンの代わりにログが表示されることを確認。
+
+以前から、（シャットダウン状態で）停電から復帰した際、初回だけWoLで起動しない問題があった。`Settings\Advanced\Power Management Setup\Restore after AC Power Loss`を`Power off`→`Power On`（原文ママ）に変更。この場合、復帰時にPCが自動で起動することでWoLで起動しなくなる状態は回避できる……が、実際の困り具合に対してオーバーかも。電源ピンに中継する形で電気的に電源ボタンを押すためのデバイスもあるらしい（執筆時点では「DalaiTech Auto Power On Module」で検索するとヒット）。シャットダウン後コンセントから取り外し、再度差し込むと起動することを確認。
