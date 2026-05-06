@@ -33,6 +33,12 @@ Linux以外におけるストレートなセットアップです。Docker（Eng
 
 - [Install WSL | Microsoft Learn](https://web.archive.org/web/20260504153105/https://learn.microsoft.com/en-us/windows/wsl/install) ([latest](https://learn.microsoft.com/en-us/windows/wsl/install))
 - [Install Docker Desktop on Windows | Docker Docs](https://github.com/docker/docs/blob/60163a77f0442205aee2fa8662454e089ab3b67d/content/manuals/desktop/setup/install/windows-install.md) ([latest](https://docs.docker.com/desktop/setup/install/windows-install/))
+  - メモ：インストールはヘッドレスでできることになっているけど、どうせGUIで起動するまで使えないのではじめからGUIでやるとよし
+  - `> docker run hello-world  docker: error getting credentials - err: exit status 1, out: A specified logon session does not exist. It may already have been terminated.`
+    - `edit.exe .\.docker\config.json`で`credsStore`エントリを`""`にする https://github.com/docker/cli/issues/4353#issuecomment-2278090903
+      - うまくいかず
+      - その上Docker Desktopを起動するたびに書き戻される https://github.com/docker/for-win/issues/14351
+    - [SSH接続先のWindowsでDocker Desktopを起動する](../019dfe73-2da8-7aec-93d5-a212b70a469b/README.md)
 - [Install Docker Desktop on Mac | Docker Docs](https://github.com/docker/docs/blob/60163a77f0442205aee2fa8662454e089ab3b67d/content/manuals/desktop/setup/install/mac-install.md) ([latest](https://docs.docker.com/desktop/setup/install/mac-install/))
   - メモ：インストールはヘッドレスでできるが、GUIで初回起動しないとPATHを通してもらえない。
     - Allow "Docker" to find devices on local networks? -> Allow
