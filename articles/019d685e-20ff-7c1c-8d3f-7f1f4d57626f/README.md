@@ -6,3 +6,8 @@
 $ echo ".devcontainer/" >> .git/info/exclude
 ```
 
+追跡済みのファイルでは
+
+```shellsession
+$ git update-index --skip-worktree OVMF_VARS_4M.fd
+```

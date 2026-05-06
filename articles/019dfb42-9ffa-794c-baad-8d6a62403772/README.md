@@ -34,6 +34,12 @@ Linux以外におけるストレートなセットアップです。Docker（Eng
 - [Install WSL | Microsoft Learn](https://web.archive.org/web/20260504153105/https://learn.microsoft.com/en-us/windows/wsl/install) ([latest](https://learn.microsoft.com/en-us/windows/wsl/install))
 - [Install Docker Desktop on Windows | Docker Docs](https://github.com/docker/docs/blob/60163a77f0442205aee2fa8662454e089ab3b67d/content/manuals/desktop/setup/install/windows-install.md) ([latest](https://docs.docker.com/desktop/setup/install/windows-install/))
 - [Install Docker Desktop on Mac | Docker Docs](https://github.com/docker/docs/blob/60163a77f0442205aee2fa8662454e089ab3b67d/content/manuals/desktop/setup/install/mac-install.md) ([latest](https://docs.docker.com/desktop/setup/install/mac-install/))
+  - メモ：インストールはヘッドレスでできるが、GUIで初回起動しないとPATHを通してもらえない。
+    - Allow "Docker" to find devices on local networks? -> Allow
+    - Docker Subscription Service Agreement -> Accept
+    - Use recommended settings (requires password) -> Finish
+    - Welcome to Docker -> Skip
+  - メモ：Docker Desktopを起動しないとDockerデーモンも起動しない。Docker Desktopはログイン済みでないと起動しない。`% open -a Docker  The application /Applications/Docker.app cannot be opened for an unexpected reason, error=Error Domain=RBSRequestErrorDomain Code=5 "Launch failed." UserInfo={NSLocalizedFailureReason=Launch failed., NSUnderlyingError=0x600003c9e670 {Error Domain=OSLaunchdErrorDomain Code=125 "Domain does not support specified action" UserInfo={NSLocalizedFailureReason=Domain does not support specified action}}}`　ヘッドレス運用のためには自動ログインを構成する必要がある
 
 ### Docker Desktop for Linux
 
