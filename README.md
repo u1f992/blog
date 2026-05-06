@@ -12431,8 +12431,8 @@ $ sudo update-grub
 <table>
 <tr><td></td><th>Docker Engineのみ</th><th>Docker Desktopあり</th></tr>
 <tr><th>Linux</th><td><a href="#linux--docker-engineのみ">↩</a></td><td><a href="#docker-desktop-for-linux">↩</a></td></tr>
-<tr><th>Windows</th><td><a href="#非linuxプラットフォームでdocker-engineを直接インストール">↩</a></td><td><a href="#docker-desktop-for-windowsmac">↩</a></td></tr>
-<tr><th>macOS</th><td><a href="#非linuxプラットフォームでdocker-engineを直接インストール">↩</a></td><td><a href="#docker-desktop-for-windowsmac">↩</a></td></tr>
+<tr><th>Windows</th><td><a href="#docker-desktop-for-windowsmac">↩</a></td><td><a href="#非linuxプラットフォームでdocker-engineを直接インストール">↩</a></td></tr>
+<tr><th>macOS</th><td><a href="#docker-desktop-for-windowsmac">↩</a></td><td><a href="#非linuxプラットフォームでdocker-engineを直接インストール">↩</a></td></tr>
 </table>
 
 ### Linux + Docker Engineのみ
