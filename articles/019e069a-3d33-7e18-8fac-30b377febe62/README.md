@@ -24,7 +24,6 @@ PS> if (-not (Test-Path $dest)) { New-Item -ItemType Directory -Path $dest | Out
 PS> Invoke-WebRequest -Uri "https://download.docker.com/win/static/stable/x86_64/docker-$ver.zip" -OutFile $zip -UseBasicParsing
 PS> Expand-Archive -Path $zip -DestinationPath $dest -Force
 
-PS> $bin = Join-Path $env:LOCALAPPDATA 'Programs\docker'
 PS> $userPath = [Environment]::GetEnvironmentVariable('PATH','User')
 PS> if (-not ($userPath -split ';' -contains $bin)) { [Environment]::SetEnvironmentVariable('PATH', "$bin;$userPath", 'User') }
 ```
