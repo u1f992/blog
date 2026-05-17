@@ -15,14 +15,11 @@ clean:
 	$(RM) README.md
 
 README.md:
-	> README.md
 	printf "# 雑記帳\n\n" > README.md
 	for file in articles/*/README.md; do \
 	    title=$$(grep -m 1 "^## " "$$file" | sed "s/^## //"); \
 	    echo "- [$$title]($$file)" >> README.md; \
 	done
-	printf "\n---\n\n" >> README.md
-	ls articles/*/README.md | awk '{ if (NR > 1) printf "\n"; system("cat " $$0) }' >> README.md
 
 $(VENV):
 	$(PYTHON) -m venv $(VENV)
