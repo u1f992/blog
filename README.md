@@ -148,6 +148,7 @@
 - [Legion T5-28IMB05におけるWoL有効化](articles/019e01bb-9b82-795f-9e82-22324b02bf8c/README.md)
 - [WSL内にDocker Engineをセットアップし、Windows側にDocker CLIだけ配置する](articles/019e069a-3d33-7e18-8fac-30b377febe62/README.md)
 - [GNOME Shell Extensions](articles/019e2066-1f97-7e70-9804-a4739659a45b/README.md)
+- [Controller Mod](articles/019e363f-4dea-7cd0-8881-817a59ec064f/README.md)
 
 ---
 
@@ -12851,3 +12852,8 @@ gnome-extensions install "$ZIP"
 # ログアウト→ログイン後に有効化（公式 GUI からトグル ON でも可）
 # gnome-extensions enable "$UUID"
 ```
+
+## Controller Mod
+
+- https://3dscapture.com/controller/
+  - 最後のアーカイブ：https://web.archive.org/web/20240520235210/https://3dscapture.com/controller/
