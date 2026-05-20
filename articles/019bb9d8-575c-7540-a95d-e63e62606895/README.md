@@ -64,7 +64,7 @@ Number of key(s) added: 1
 `C:\ProgramData\ssh\`は一般ユーザーも読み書きできてしまう。他人の鍵を追加して管理者としてログインできたら危険なので、sshdは権限が厳格でないとこのファイルを無視する。
 
 ```
-$ scp ~/.ssh/id_ed25519.pub mukai@192.168.0.5:C:/ProgramData/ssh/administrators_authorized_keys
+$ cat ~/.ssh/id_ed25519.pub | ssh mukai@192.168.0.5 "powershell -Command \"\$input | Out-File -Append -Encoding ascii -FilePath C:\\ProgramData\\ssh\\administrators_authorized_keys\""
 
 > icacls C:\ProgramData\ssh\administrators_authorized_keys /inheritance:r /grant "Administrators:F" /grant "SYSTEM:F"
 ```
@@ -72,7 +72,7 @@ $ scp ~/.ssh/id_ed25519.pub mukai@192.168.0.5:C:/ProgramData/ssh/administrators_
 含まれない場合：
 
 ```
-$ scp ~/.ssh/id_ed25519.pub mukai@192.168.0.5:.ssh/authorized_keys
+$ cat ~/.ssh/id_ed25519.pub | ssh mukai@192.168.0.5 "powershell -Command \"New-Item -ItemType Directory -Force -Path \$env:USERPROFILE\\.ssh | Out-Null; \$input | Out-File -Append -Encoding ascii -FilePath \$env:USERPROFILE\\.ssh\\authorized_keys\""
 ```
 
 </details>
