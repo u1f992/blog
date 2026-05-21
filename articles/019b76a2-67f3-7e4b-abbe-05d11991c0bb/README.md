@@ -20,35 +20,9 @@ $ flatpak run com.usebottles.bottles
 
 ![](image.png)
 
-おそらくこれはflatpakサンドボックスがシステムのフォントを正しく参照できていない。以下のような情報が見つかった。
+おそらくこれはflatpakサンドボックスがシステムのフォントを正しく参照できていない。
 
-- https://github.com/flatpak/flatpak/issues/5425
-- https://okutom.hatenablog.com/entry/2024/11/07/204055
-
-```
-$ mkdir -p ~/.config/fontconfig/conf.d
-$ cp /etc/fonts/fonts.conf ~/.config/fontconfig/fonts.conf
-$ cp -L /etc/fonts/conf.d/*.conf ~/.config/fontconfig/conf.d/
-$ tree ~/.config/fontconfig/
-/home/mukai/.config/fontconfig/
-├── conf.d
-│   ├── 10-hinting-slight.conf
-│   ├── 10-scale-bitmap-fonts.conf
-│   ├── 10-sub-pixel-rgb.conf
-...
-│   ├── 80-delicious.conf
-│   ├── 90-synthetic.conf
-│   └── 99-language-selector-zh.conf
-└── fonts.conf
-
-2 directories, 63 files
-$ sudo flatpak override --filesystem=xdg-config/fontconfig:ro
-
-$ rm -rf ~/.cache/fontconfig
-$ rm -rf ~/.var/app/*/cache/fontconfig
-
-$ flatpak run com.usebottles.bottles
-```
+- [Flatpakアプリの中華フォント対策](../019e480f-bfea-71a6-8ddb-62b8ef3eaa3f/README.md)
 
 ![](image-1.png)
 
