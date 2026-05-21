@@ -150,3 +150,4 @@
 - [GNOME Shell Extensions](articles/019e2066-1f97-7e70-9804-a4739659a45b/README.md)
 - [Controller Mod](articles/019e363f-4dea-7cd0-8881-817a59ec064f/README.md)
 - [Yaruのカラーバリアント（アクセントカラー）について](articles/019e391f-8330-7dd4-846a-e2948f42fba5/README.md)
+- [Flatpakアプリの中華フォント対策](articles/019e480f-bfea-71a6-8ddb-62b8ef3eaa3f/README.md)
