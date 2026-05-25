@@ -152,3 +152,4 @@
 - [Yaruのカラーバリアント（アクセントカラー）について](articles/019e391f-8330-7dd4-846a-e2948f42fba5/README.md)
 - [Flatpakアプリの中華フォント対策](articles/019e480f-bfea-71a6-8ddb-62b8ef3eaa3f/README.md)
 - [babarot/gomiのインストールスクリプト](articles/019e53d7-00c8-70d2-9aec-94f44a963c50/README.md)
+- [TypeScriptプロジェクトのテンプレート](articles/019e5d64-4923-750b-b7dc-735c408f9750/README.md)

@@ -1,0 +1,37 @@
+{
+  "name": "proj",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "tsc --project tests/tsconfig.json && node --test \"tests/**/*.test.ts\"",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "lint": "eslint --flag unstable_native_nodejs_ts_config --fix \"src/**/*.ts\" \"tests/**/*.ts\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/u1f992/blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/u1f992/blog/issues"
+  },
+  "homepage": "https://github.com/u1f992/blog#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.19.19",
+    "eslint": "^10.4.0",
+    "prettier": "^3.8.3",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.4"
+  },
+  "//": {
+    "$.scripts.lint": [
+      "see https://github.com/eslint/eslint/issues/19985"
+    ]
+  }
+}
