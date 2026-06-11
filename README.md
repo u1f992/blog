@@ -153,3 +153,4 @@
 - [Flatpakアプリの中華フォント対策](articles/019e480f-bfea-71a6-8ddb-62b8ef3eaa3f/README.md)
 - [babarot/gomiのインストールスクリプト](articles/019e53d7-00c8-70d2-9aec-94f44a963c50/README.md)
 - [TypeScriptプロジェクトのテンプレート](articles/019e5d64-4923-750b-b7dc-735c408f9750/README.md)
+- [`font-family`名をフォント自体のデータから適当に決めたい](articles/019eb53b-5280-76a3-81c3-9903f8c05a44/README.md)
