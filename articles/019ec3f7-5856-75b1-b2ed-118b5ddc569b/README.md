@@ -6,6 +6,10 @@
 
 ![](image-1.png)
 
+[chrome://version/](chrome://version/)でプロファイルのディレクトリを取得する（Chromeはこのディレクトリ毎にインスタンスを持つ）。この場合はプロファイルである`Default`を取り除いた`/home/mukai/.config/google-chrome`。
+
+![](image.png)alt text
+
 Claude CodeでのMCP設定（.mcp.json）は次の通り。
 
 ```json
@@ -13,19 +17,24 @@ Claude CodeでのMCP設定（.mcp.json）は次の通り。
   "mcpServers": {
     "chrome-devtools": {
       "command": "npx",
-      "args": ["chrome-devtools-mcp@latest", "--autoConnect"]
+      "args": [
+        "--yes",
+        "chrome-devtools-mcp@latest",
+        "--autoConnect",
+        "--userDataDir=/home/mukai/.config/google-chrome"
+      ]
     }
   }
 }
 ```
 
-接続を試みる際に許可ダイアログが表示される。MCPクライアントを起動し、例えば次のようなメッセージでウォームアップする。
+MCPクライアントを起動し、例えば次のようなメッセージでウォームアップする。
 
 ```
 This is a warm-up to confirm the Chrome DevTools MCP server is connected to my running Chrome. Just list the pages currently open in my browser, then stop.
 ```
 
-> メモ：予めデバッグポートを開放して起動する際はユーザーデータの退避が必要になり、これだと起動中のChromeと条件が揃わない。
+> メモ：以上の手順は手動で行なう必要があり、それがガードの扱いになっている。予めデバッグポートを開放して起動する際はセキュリティの都合でユーザーデータの退避が必要になり、これだと起動中のChromeと条件が揃わない。
 > 
 > ```
 > $ google-chrome --remote-debugging-port=9222 --user-data-dir=/tmp/chrome-profile-stable
