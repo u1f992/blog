@@ -154,3 +154,4 @@
 - [babarot/gomiのインストールスクリプト](articles/019e53d7-00c8-70d2-9aec-94f44a963c50/README.md)
 - [TypeScriptプロジェクトのテンプレート](articles/019e5d64-4923-750b-b7dc-735c408f9750/README.md)
 - [`font-family`名をフォント自体のデータから適当に決めたい](articles/019eb53b-5280-76a3-81c3-9903f8c05a44/README.md)
+- [Chrome DevTools for agents（chrome-devtools-mcp）で、起動中のインスタンスに接続する](articles/019ec3f7-5856-75b1-b2ed-118b5ddc569b/README.md)
