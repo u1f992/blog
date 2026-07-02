@@ -156,3 +156,4 @@
 - [`font-family`名をフォント自体のデータから適当に決めたい](articles/019eb53b-5280-76a3-81c3-9903f8c05a44/README.md)
 - [Chrome DevTools for agents（chrome-devtools-mcp）で、起動中のインスタンスに接続する](articles/019ec3f7-5856-75b1-b2ed-118b5ddc569b/README.md)
 - [AIエージェントに全部使わせるVM　virshによるVMの管理](articles/019ef6f8-1522-7529-9458-b534a4e30cdc/README.md)
+- [単発のPythonスクリプトをフォーマット](articles/019f20cb-c8a7-7e16-9034-db7cdebfcd95/README.md)
