@@ -1236,3 +1236,21 @@ npm経由のアンインストールを忘れていると警告してくれて�
 ```shellsession
 $ npm uninstall @devcontainers/cli --global
 ```
+
+### Codex CLI
+
+https://github.com/openai/codex/blob/bb5054fe47abe73ecbbd454751066a28c89f4bb9/README.md#installing-and-running-codex-cli
+
+```shellsession
+$ curl -fsSL https://chatgpt.com/codex/install.sh | sh
+==> Installing Codex CLI
+==> Detected platform: Linux (x64)
+==> Resolved version: 0.146.0
+==> Downloading Codex CLI
+==> Installing standalone package to /home/mukai/.codex/packages/standalone/releases/0.146.0-x86_64-unknown-linux-musl
+==> /home/mukai/.local/bin is already on PATH
+==> Current terminal: codex
+==> Future terminals: open a new terminal and run: codex
+Codex CLI 0.146.0 installed successfully.
+Start Codex now? [y/N] N
+```
