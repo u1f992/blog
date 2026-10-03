@@ -1,4 +1,4 @@
-# libvirtで管理するWindows VMをセットアップする
+## libvirtで管理するWindows VMをセットアップする
 
 ホストにvirt-managerとvirtiofsdをインストールする。ブリッジネットワークを予め構成する。
 
@@ -570,3 +570,61 @@ PCを更新する
 - [鍵認証によるSSH接続をセットアップする](../019bb9d8-575c-7540-a95d-e63e62606895/README.md)
 
 鍵を登録してシャットダウンして、スナップショット作成。VMのMACでDHCP固定割当も設定しておくとよい。
+
+WindowsのOpenSSH Serverでは、「昇格」済みのセッションに入る。ここらへんのWindowsの詳しい権限の仕組みはよくわかっていないが、常に「管理者として実行」されている状態と考えるとよい。
+
+- [gsudoは「降格」もできる](../01a0ff97-1618-705d-834d-c7a8210be085/README.md)
+
+Win+R `cmd /c curl -L https://github.com/gerardog/gsudo/releases/download/v2.6.1/gsudo.setup.x64.msi -o "%USERPROFILE%\Desktop\gsudo.setup.x64.msi"`
+
+```
+gsudo v2.6.1 Setup
+Welcome to the gsudo v2.6.1 Setup Wizard
+---
+Next
+---
+
+Destination Folder
+---
+C:\Program Files\gsudo\
+
+Next
+---
+
+Ready to install gsudo v2.6.1
+---
+Install
+---
+```
+
+インストーラーはShift+Delete。シャットダウンしてスナップショットを作成。
+
+```
+PS > wsl --install
+```
+
+「既定では、インストールされている Linux ディストリビューションは Ubuntu になります。」[WSL のインストール | Microsoft Learn](https://learn.microsoft.com/ja-jp/windows/wsl/install)とあるが、実際にはディストリビューションはインストールされなかった。2回目の`wsl --install`でインストールされた。
+
+```
+PS > wsl
+Linux 用 Windows サブシステムにインストールされているディストリビューションはありません。
+この問題を解決するには、以下の手順に従ってディストリビューションをインストールしてください:
+
+'wsl.exe --list --online' を使用して利用可能な配布を一覧表示する
+および 'wsl.exe --install <Distro>' を使用してインストールしてください。
+
+PS > wsl --install
+ダウンロードしています： Ubuntu
+...
+```
+
+必要に応じてsudoersを設定しておくといい。VMの中のさらにコンテナなのだし。
+
+```
+$ sudo visudo -f /etc/sudoers.d/mukai
+mukai ALL=(ALL:ALL) NOPASSWD: ALL
+```
+
+WSLの初回利用時に「Linux 用 Windows サブシステムにようこそ」というウィンドウが表示された。
+
+シャットダウンしてスナップショットを作成。
