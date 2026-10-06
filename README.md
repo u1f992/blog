@@ -160,3 +160,4 @@
 - [`strictNullChecks`有効化](articles/019fc515-166e-769d-bdb6-f24d0b78b2d0/README.md)
 - [libvirtで管理するWindows VMをセットアップする](articles/01a0f727-34fa-787f-80ca-561bd6b97e0a/README.md)
 - [gsudoは「降格」もできる](articles/01a0ff97-1618-705d-834d-c7a8210be085/README.md)
+- [OSS開発において周辺資源の管理コストは下げるべき](articles/01a10ec1-a42a-7c06-88cc-e7f3f479e5fe/README.md)
