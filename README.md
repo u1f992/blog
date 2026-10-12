@@ -161,3 +161,4 @@
 - [libvirtで管理するWindows VMをセットアップする](articles/01a0f727-34fa-787f-80ca-561bd6b97e0a/README.md)
 - [gsudoは「降格」もできる](articles/01a0ff97-1618-705d-834d-c7a8210be085/README.md)
 - [OSS開発において周辺資源の管理コストは下げるべき](articles/01a10ec1-a42a-7c06-88cc-e7f3f479e5fe/README.md)
+- [PCの一部アップグレード検討](articles/01a12eaf-da29-7ce4-8e47-da79a2583950/README.md)
