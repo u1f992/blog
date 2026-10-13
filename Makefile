@@ -1,4 +1,4 @@
-.PHONY: all clean README.md new
+.PHONY: all clean README.md new search
 
 PYTHON := python3
 PYTHON_VERSION := $(shell $(PYTHON) -c "import sys; print(f'python{sys.version_info.major}.{sys.version_info.minor}')")
@@ -29,3 +29,6 @@ $(VENV_SITE_PACKAGES)/uuid6: $(VENV)
 
 new: $(VENV_SITE_PACKAGES)/uuid6
 	@$(VENV_PYTHON) -c "import os, uuid6; path = os.path.join('articles', str(uuid6.uuid7()), 'README.md'); os.makedirs(os.path.dirname(path)); open(path, 'w').close(); print(path)"
+
+search:
+	@$(PYTHON) search.py $(ARGS)
