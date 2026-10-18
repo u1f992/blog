@@ -242,3 +242,23 @@ dGPUはCPU直結のx16スロットを占有するので、USB増設カードは�
 - 個人売買ではCPUとボードを別々に売るほうが高く、合計で28,000円前後になる。セット売りは20,500〜24,000円で、単体の合計を下回る
 - 店舗買取は2点合計でパソコン工房の17,000円が確実な下限。じゃんぱらとドスパラのCPU買取上限は高いが、掲載時期が不明なので持ち込み前に当日の価格を確認する
 - 新規購入分（14900Kが83,980円、MSI B760 GAMING PLUS WIFI DDR4が17,980円、合計101,960円）に対する回収率は、個人売買で約27%、店舗買取で約17%
+
+### 最終採用結果
+
+2026年10月19日時点で組み上がった構成。値は実機の`lscpu`、`lspci`、sysfs、DIMMのSPDの読み取りによる。
+
+| 部品 | 採用 |
+| --- | --- |
+| CPU | Core i9-14900K（B0ステッピング、マイクロコード0x137） |
+| マザーボード | MSI B760 GAMING PLUS WIFI DDR4、BIOS 7D98vMA |
+| メモリ | 流用。CT32G4DFD8266.C16FF ×2とMicron 16ATF4G64AZ-2G6B1 ×2の4枚で128GB |
+| CPUクーラー | NH-D15を流用 |
+| SSD | WD Black SN7100を流用。CPU直結のM.2でPCIe 4.0 x4リンク |
+| グラフィックス | GTX 1650を撤去し、UHD Graphics 770（i915）。DisplayPortとHDMIの2画面 |
+| 電源 | V750 Goldを流用 |
+| ケース | Silencio S600を流用 |
+| USB増設カード | PEXUSB3S44Vを流用。CPU直結のPCI_E1でPCIe 2.0 x4リンク、uPD720202 ×4をすべて認識 |
+| 無線LANカード | TX3000Eを撤去。有線はRTL8125（r8169）、無線はオンボードのAX211（iwlwifi） |
+
+- 電力制限はIntel Default SettingsのPerformanceプロファイル（PL1 = PL2 = 253W）
+- OSはUbuntu 24.04.5 LTS（カーネル7.0.0-38-generic）。使用しているドライバはすべてカーネル同梱
