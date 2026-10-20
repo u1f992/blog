@@ -7,16 +7,16 @@
 - タイトルは`h2`
 - 末尾に改行を付ける
 
-以下のようにすれば作成と同時に編集に入れる。初回だけvenvの作成処理が標準出力に混じって使えないのはご愛嬌
+事前に`npm install`を済ませておく。以下のようにすれば作成と同時に編集に入れる。
 
 ```
-$ vim $(make new)
+$ vim $(npm run -s new)
 ```
 
 ### `./README.md`を作成
 
 ```
-$ make README.md
+$ npm run readme
 ```
 
 ### 全文検索
@@ -24,11 +24,11 @@ $ make README.md
 記事本文を正規表現で検索する。大文字と小文字は区別しない。複数指定するとすべてにマッチする記事だけに絞り込まれる。
 
 ```
-$ make search ARGS="wsl docker"
+$ npm run search -- wsl docker
 ```
 
 `-l`でマッチした行を省略し、記事のパスとタイトルだけを一覧する。`-s`で大文字と小文字を区別する。
 
 ```
-$ make search ARGS="-l vivliostyle"
+$ npm run search -- -l vivliostyle
 ```

@@ -1,0 +1,25 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "雑記帳",
+  "type": "module",
+  "scripts": {
+    "new": "node scripts/new.js",
+    "readme": "node scripts/readme.js",
+    "search": "node scripts/search.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/u1f992/blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/u1f992/blog/issues"
+  },
+  "homepage": "https://github.com/u1f992/blog#readme",
+  "dependencies": {
+    "uuid": "^14.0.3"
+  }
+}
