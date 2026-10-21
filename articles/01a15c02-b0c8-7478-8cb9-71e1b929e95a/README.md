@@ -79,7 +79,20 @@ $ sudo nano /etc/systemd/logind.conf
 
 $ sudo pam-auth-update
   #「Fingerprint authentication」にチェック
+
+スプラッシュスクリーン無効化
+
+$ grep "GRUB_CMD"  /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+GRUB_CMDLINE_LINUX=""
+$ sudo nano /etc/default/grub
+$ grep "GRUB_CMD"  /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT=""
+GRUB_CMDLINE_LINUX=""
+$ sudo update-grub
 ```
+
+[以前](../articles/019a13c7-2a12-7453-b753-6114042fb4e8/README.md)TLPで設定したバッテリー満充電75%〜80%制限は不揮発で保持されている。設定を変えたくなったらTLPをインストールすることになる。
 
 ### Google Chrome
 
@@ -298,3 +311,27 @@ mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~$ sudo apt install --yes vim-gtk3
 
 :PlugInstall
 ```
+
+#### AppImage
+
+- GIMP
+- Inkscape
+- Scribus
+- ImageMagick
+
+あまりうまい方法が思いつかない。AppImageをランチャーに登録するために別のアプリを入れるのも本末転倒な気がする。当面は手動で管理してみる。
+
+```
+mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~/Downloads$ ls
+GIMP-3.2.6-x86_64.AppImage  ImageMagick-7.1.2-34-gcc-x86_64.AppImage  Inkscape-1.4.4.AppImage  google-chrome-stable_current_amd64.deb  scribus-1.6.6-linux-x86_64.AppImage
+mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~/Downloads$ ls *.AppImage
+GIMP-3.2.6-x86_64.AppImage  ImageMagick-7.1.2-34-gcc-x86_64.AppImage  Inkscape-1.4.4.AppImage  scribus-1.6.6-linux-x86_64.AppImage
+mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~/Downloads$ chmod a+x GIMP-3.2.6-x86_64.AppImage 
+mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~/Downloads$ mv GIMP-3.2.6-x86_64.AppImage ~/.local/bin/
+mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~/Downloads$ GIMP-3.2.6-x86_64.AppImage 
+```
+
+```
+mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~/Downloads$ ln -s ~/.local/bin/ImageMagick-7.1.2-34-gcc-x86_64.AppImage ~/.local/bin/magick
+```
+
