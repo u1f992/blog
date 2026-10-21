@@ -335,3 +335,68 @@ mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~/Downloads$ GIMP-3.2.6-x86_64.AppImage
 mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~/Downloads$ ln -s ~/.local/bin/ImageMagick-7.1.2-34-gcc-x86_64.AppImage ~/.local/bin/magick
 ```
 
+#### Slack
+
+https://slack.com/intl/ja-jp/downloads/linux
+
+Snap, debから選べるらしい。Snapが第一に見えるのでSnap版を使ってみる……のだが、「Snap storeからダウンロード」をクリックしてもなにも起こらない。
+
+https://snapcraft.io/slack
+
+```
+$ sudo snap install slack
+```
+
+#### ChatGPT / Codex
+
+https://chatgpt.com/ja-JP/download/
+
+```
+$ sudo dpkg -i chatgpt_amd64.deb
+
+あなたの仕事に最も近いものは？
+エンジニアリング
+[x] 自分向けのタスクを提案
+
+スキップ
+ChatGPTへ移動
+
+他のAIアプリから作業をインポート
+スキップ
+
+利用を開始する＞セットアップを非表示
+```
+
+アカウントの切り替えはログアウトして再ログインが必要。初めてのアカウントにログインしても初期設定は現れなかった。
+
+`codex`にはパスは通らないようだ。
+
+```
+mukai@mukai-ThinkPad-X1-Carbon-Gen-12:/tmp/tmp.mhbtqYB6wO$ codex
+コマンド 'codex' が見つかりません。もしかして:
+  command 'godex' from deb golang-golang-x-tools (1:0.42.0+ds-3)
+次を試してみてください: sudo apt install <deb name>
+mukai@mukai-ThinkPad-X1-Carbon-Gen-12:/tmp/tmp.mhbtqYB6wO$ which codex
+mukai@mukai-ThinkPad-X1-Carbon-Gen-12:/tmp/tmp.mhbtqYB6wO$
+```
+
+https://learn.chatgpt.com/docs/codex/cli#getting-started
+
+Launching Codexで起動しなかった。初回起動時からログイン済みの状態になっていた。
+
+```
+mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~/Downloads$ curl -fsSL https://chatgpt.com/codex/install.sh | sh
+==> Installing Codex CLI
+==> Detected platform: Linux (x64)
+==> Resolved version: 0.163.0
+==> Downloading Codex CLI
+==> Installing standalone package to /home/mukai/.codex/packages/standalone/releases/0.163.0-x86_64-unknown-linux-musl
+==> /home/mukai/.local/bin is already on PATH
+==> Current terminal: codex
+==> Future terminals: open a new terminal and run: codex
+Codex CLI 0.163.0 installed successfully.
+Start Codex now? [y/N] y
+==> Launching Codex
+mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~/Downloads$ codex
+```
+
