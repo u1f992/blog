@@ -165,3 +165,4 @@
 - [マザーボード変更後のネットワーク復旧](articles/01a14fbc-d76c-724c-8204-75ae8f9df9d7/README.md)
 - [BtrfsによるRAID1](articles/01a15210-d4a6-7727-982c-346aa9e70e53/README.md)
 - [mdadm構成を解除する](articles/01a1526f-9d82-778e-bd2a-d39075741935/README.md)
+- [ThinkPad X1 Carbon Gen 12にUbuntu 26.04をセットアップする](articles/01a15c02-b0c8-7478-8cb9-71e1b929e95a/README.md)
