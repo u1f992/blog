@@ -29,6 +29,7 @@ $ ssh-copy-id -i ~/.ssh/id_ed25519.pub <user>@<host>
 ```
 
 - これはホストの`~/.ssh/authorized_keys`ファイルの末尾に追記するのと同じこと。ただし権限を適切に設定したり、よりセキュアな方法であることを期待できる
+- ジャンプホスト越しなら`ssh-copy-id -i ~/.ssh/id_ed25519.pub -o ProxyJump=<jumpuser>@<jumphost> <user>@<LAN内のIP>`
 
 鍵認証でログインできることを確認する。パスワードを要求されなければ成功。
 

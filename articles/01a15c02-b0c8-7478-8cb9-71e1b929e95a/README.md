@@ -474,3 +474,34 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
 
+#### Remmina
+
+- https://remmina.org/
+- https://snapcraft.io/remmina
+
+```
+sudo snap install remmina
+```
+
+Snap版では追加の設定が必要と表示された。ダイアログの指示通り実行
+
+```
+sudo snap connect remmina:audio-record :audio-record
+sudo snap connect remmina:avahi-observe :avahi-observe
+sudo snap connect remmina:cups-control :cups-control
+sudo snap connect remmina:mount-observe :mount-observe
+sudo snap connect remmina:password-manager-service :password-manager-service
+sudo snap connect remmina:ssh-keys :ssh-keys
+sudo snap connect remmina:ssh-public-keys :ssh-public-keys
+```
+
+「Remmina VNCプラグイン」を選択
+サーバーはIPのみ、`user@`つけない
+ユーザー名・ユーザーパスワード
+SSHトンネルを有効化
+認証方式：公開鍵
+ユーザー名必要
+パスワード不要
+秘密鍵の明示必要
+
+
