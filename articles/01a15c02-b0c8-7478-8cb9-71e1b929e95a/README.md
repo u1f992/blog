@@ -400,3 +400,40 @@ Start Codex now? [y/N] y
 mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~/Downloads$ codex
 ```
 
+#### virt-manager
+
+```
+mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~$ sudo apt install --yes virt-manager
+mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~$ groups mukai
+mukai : mukai adm cdrom sudo dip plugdev users lpadmin lxd
+```
+
+Group libvirtに追加すると`qemu:///system`を触れるようになる
+
+今回はあえて追加しないことにした。このシステムには仮想マシンは作らず、リモートの仮想マシンだけを扱う。
+
+```
+$ virsh --connect qemu+ssh://mukai@10.8.0.2/system list --all
+```
+
+リモートサーバー側で設定変更
+
+```
+$ sudo vim /etc/ssh/sshd_config.d/10-gatewayports.conf
+
+GatewayPorts clientspecified
+
+$ sudo sshd -t
+$ sudo sshd -T | grep -i gatewayports    # → gatewayports clientspecified と出ればOK
+$ sudo systemctl reload ssh
+
+$ sudo ufw allow from 192.168.0.0/24 to 192.168.0.3 port 9100 proto tcp
+```
+
+こっちのLANの何らかに、リモートの仮想マシンから触る
+
+```
+ssh -N -o ExitOnForwardFailure=yes -R 192.168.0.3:9100:192.168.x.x:9100 mukai@10.8.0.2
+```
+
+
