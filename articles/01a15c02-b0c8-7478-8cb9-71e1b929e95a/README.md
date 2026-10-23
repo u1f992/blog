@@ -525,4 +525,11 @@ SSHトンネルを有効化
 パスワード不要
 秘密鍵の明示必要
 
+#### chezmoi
+
+- https://www.chezmoi.io/install/#one-line-binary-install
+
+```
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin
+```
 
