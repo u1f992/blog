@@ -59,6 +59,27 @@ x 次回から表示しない
 古い名前のままにする
 ```
 
+Nautilusのサイドバーにある「ドキュメント」「ミュージック」「ピクチャ」「ビデオ」「ダウンロード」は、初回セットアップ時に書き出されたブックマークで、日本語名のディレクトリを指したまま残る。警告アイコンが付いて開けなくなるので、参照先を英語パスに書き換える。ブックマークファイルは1行につき「URI 表示名」の書式で、表示名を指定すればサイドバーの日本語名はそのまま残せる。
+
+```
+mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~$ cat ~/.config/gtk-3.0/bookmarks
+file:///home/mukai/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88
+file:///home/mukai/%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%B8%E3%83%83%E3%82%AF
+file:///home/mukai/%E3%83%94%E3%82%AF%E3%83%81%E3%83%A3
+file:///home/mukai/%E3%83%93%E3%83%87%E3%82%AA
+file:///home/mukai/%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89
+mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~$ cp ~/.config/gtk-3.0/bookmarks ~/.config/gtk-3.0/bookmarks.orig
+mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~$ cat > ~/.config/gtk-3.0/bookmarks <<'EOF'
+file:///home/mukai/Documents ドキュメント
+file:///home/mukai/Music ミュージック
+file:///home/mukai/Pictures ピクチャ
+file:///home/mukai/Videos ビデオ
+file:///home/mukai/Downloads ダウンロード
+EOF
+```
+
+書き込むと即座にサイドバーへ反映される。
+
 ### デスクトップ設定
 
 ```
