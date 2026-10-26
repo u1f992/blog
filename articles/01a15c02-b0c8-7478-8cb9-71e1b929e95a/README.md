@@ -142,6 +142,10 @@ Chromeをピン留めしてFirefox外す
 
 ### ツール
 
+```
+$ sudo apt install --yes tree
+```
+
 #### Git＋GitHub CLI
 
 ```
