@@ -1,32 +1,29 @@
 ## SMBを特定ディレクトリにマウント
 
-`vers`がわからなければ省略可。匿名アクセスが許可されているなら`guest`、文字化けするなら`,iocharset=utf8`を追加。
+`vers`がわからなければ省略可。匿名アクセスが許可されているならユーザー名とパスワードのかわりに`guest`、文字化けするなら`,iocharset=utf8`を追加。`uid`／`gid`は必要に応じて合わせる。SMBはそもそもUNIXパーミッションとは仕組みが異なる（WindowsのACLモデル）。`uid`／`gid`やパーミッションの設定はLinux側からみた見た目だけを制御し、実際に操作できるかはサーバー側による。
 
 ```
-$ sudo mkdir -p /mnt/share
-$ sudo mount -t cifs //192.168.x.x/SHARE_NAME /mnt/share -o username=USERNAME,password=PASSWORD,vers=3.0
+$ sudo mkdir -p /media/share
+$ sudo mount -t cifs //192.168.x.x/SHARE_NAME /media/share -o username=USERNAME,password=PASSWORD,vers=3.0,uid=1000,gid=1000
 
 アンマウント
-$ sudo umount /mnt/share
+$ sudo umount /media/share
 
 
 このエラーがでたらパッケージ不足
-mount: /mnt/work_user: bad option; for several filesystems (e.g. nfs, cifs) you might need a /sbin/mount.<type> helper program.
-       dmesg(1) may have more information after failed mount system call.
+mount: /media/SHARE_NAME: 間違ったオプション設定; (nfs, cifs など)ファイルシステムによっては /sbin/mount.<タイプ> のヘルパープログラムが必要です.
+       mount システムコールの失敗について、 dmesg(1) で詳しい情報が得られる場合があります。
 
 $ sudo apt update && sudo apt --yes install cifs-utils
 
 
-このエラーは正しいversの指定を求められている
-$ sudo mount -t cifs //192.168.x.x/share /mnt/share -o guest
+このエラーは、正しいバージョンの指定を求めているようだ
 mount error(22): Invalid argument
 Refer to the mount.cifs(8) manual page (e.g. man mount.cifs) and kernel log messages (dmesg)
-$ sudo dmesg | tail -n 80
-...
-[ 2308.191095] CIFS: No dialect specified on mount. Default has changed to a more secure dialect, SMB2.1 or later (e.g. SMB3.1.1), from CIFS (SMB1). To use the less secure SMB1 dialect to access old servers which do not support SMB3.1.1 (or even SMB3 or SMB2.1) specify vers=1.0 on mount.
-...
 
-$ sudo mount -t cifs //192.168.x.x/share /mnt/share -o guest,vers=1.0
+$ sudo dmesg | tail -n 10
+[234325.007137] CIFS: Attempting to mount //192.168.x.x/SHARE_NAME
+[234325.015140] CIFS: VFS: cifs_mount failed w/return code = -22
 ```
 
 コマンドにパスワードを書かないためには資格情報ファイルを作成する。名前は任意だが権限に注意。
@@ -37,7 +34,7 @@ $ sudo vim /root/.smbcred
   username=USERNAME
   password=PASSWORD
 
-$ sudo mount -t cifs //192.168.x.x/SHARE_NAME /mnt/share -o credentials=/root/.smbcred,vers=3.0
+$ sudo mount -t cifs //192.168.x.x/SHARE_NAME /media/share -o credentials=/root/.smbcred,vers=3.0
 ```
 
 常にマウントするなら、この資格情報ファイルを作成した上で`/etc/fstab`に追記する。ただしディレクトリは事前に作成しておく必要がある。
@@ -48,7 +45,6 @@ $ sudo mount -t cifs //192.168.x.x/SHARE_NAME /mnt/share -o credentials=/root/.s
   - `x-systemd.idle-timeout=60` → 60秒アクセスがなければ自動アンマウント
   - 今回は使用していない。直感的に、うかつにwatch（inotify）したりするとトラブルになりそう
 
-`uid`／`gid`は必要に応じて合わせる。SMBはそもそもUNIXパーミッションとは仕組みが異なる（WindowsのACLモデル）。`uid`／`gid`やパーミッションの設定はLinux側からみた見た目だけを制御し、実際に操作できるかはサーバー側による。
 
 第5フィールド（dump）dumpコマンド（バックアップ用）が対象にするかどうか。通常0。
 
@@ -64,7 +60,7 @@ $ sudo mount -t cifs //192.168.x.x/SHARE_NAME /mnt/share -o credentials=/root/.s
 ```
 $ sudo vim /etc/fstab
 
-  //192.168.x.x/SHARE_NAME  /mnt/share  cifs  credentials=/root/.smbcred,vers=3.0,_netdev,nofail,x-systemd.automount,uid=1000,gid=1000,file_mode=0644,dir_mode=0755  0  0
+  //192.168.x.x/SHARE_NAME  /media/share  cifs  credentials=/root/.smbcred,vers=3.0,_netdev,nofail,x-systemd.automount,uid=1000,gid=1000,file_mode=0644,dir_mode=0755  0  0
 
 $ sudo mount -a
 mount: (hint) your fstab has been modified, but systemd still uses
