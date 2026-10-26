@@ -226,6 +226,12 @@ mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~$ curl -fsSL https://claude.ai/install.sh
 mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~$ claude login
 ```
 
+#### Python
+
+```
+$ sudo apt install --yes python3-venv
+```
+
 #### mise
 
 このマシンでは以下のツールをmise下で管理する
