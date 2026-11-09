@@ -1,0 +1,28 @@
+-rw-rw-r-- 1 libvirt-qemu kvm 215346385 11月  9 10:56 trace2.raw
+      2 10:44:18
+      1 10:44:21
+      1 10:45:33
+      1 10:45:54
+      2 10:46:12
+      1 10:46:14
+      1 10:46:46
+      1 10:47:49
+      1 10:48:36
+      1 10:48:37
+      1 10:48:39
+      1 10:49:19
+      1 10:50:08
+      1 10:50:30
+      1 10:50:51
+      1 10:51:12
+10:51:13 1794189073.416401:usb_msd_cmd_submit lun 0, tag 0x50eb7a70, flags 0x00000000, len 10, data-len 4096
+10:51:13 1794189073.416589:usb_msd_cmd_submit lun 0, tag 0x50eb7a70, flags 0x00000000, len 10, data-len 4096
+10:51:13 1794189073.417264:usb_msd_cmd_submit lun 0, tag 0x50cf0520, flags 0x00000000, len 10, data-len 4096
+10:51:13 1794189073.417464:usb_msd_cmd_submit lun 0, tag 0x50eb7a70, flags 0x00000000, len 10, data-len 4096
+10:51:13 1794189073.417646:usb_msd_cmd_submit lun 0, tag 0x54c407b0, flags 0x00000000, len 10, data-len 4096
+    666 usb_msd_cmd_complete
+    666 usb_msd_cmd_submit
+    668 usb_msd_send_status
+10:56:36 1794189396.973957:usb_msd_send_status status 0, tag 0x506114a0, len 13
+10:56:36 1794189396.973982:usb_msd_send_status status 0, tag 0x5057e010, len 13
+10:56:36 1794189396.973993:usb_msd_send_status status 0, tag 0x506279f0, len 13

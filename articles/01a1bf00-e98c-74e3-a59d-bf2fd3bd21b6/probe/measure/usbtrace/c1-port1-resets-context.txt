@@ -1,0 +1,71 @@
+1423830 trace2.raw
+cmd_submit total=262602 complete=262602 csw_sent=262598
+submits by data-len: [(4096, 146280), (8192, 14723), (16384, 12702), (65536, 11392), (524288, 10011), (32768, 9947), (131072, 6833), (512, 5503), (12288, 5277), (8, 3937), (1024, 3010), (0, 2342)]
+port 1 resets: 5
+
+=== port 1 reset at 1794188658.424596; open command at reset: None
+     +0.000s usb_xhci_port_reset port 1, warm 0
+
+=== port 1 reset at 1794188733.583639; open command at reset: None
+     -2.848s usb_msd_send_status status 0, tag 0x34d3e010, len 13
+     -1.996s usb_msd_cmd_submit lun 0, tag 0x338b25b0, flags 0x00000000, len 6, data-len 0
+     -1.996s usb_msd_cmd_complete status 0, tag 0x338b25b0
+     -1.996s usb_msd_send_status status 0, tag 0x338b25b0, len 13
+     -1.838s usb_msd_cmd_submit lun 0, tag 0x34d3e010, flags 0x00000000, len 6, data-len 0
+     -1.838s usb_msd_cmd_complete status 0, tag 0x34d3e010
+     -1.838s usb_msd_send_status status 0, tag 0x34d3e010, len 13
+     -0.984s usb_msd_cmd_submit lun 0, tag 0x338b25b0, flags 0x00000000, len 6, data-len 0
+     -0.984s usb_msd_cmd_complete status 0, tag 0x338b25b0
+     -0.984s usb_msd_send_status status 0, tag 0x338b25b0, len 13
+     -0.825s usb_msd_cmd_submit lun 0, tag 0x34d3e010, flags 0x00000000, len 6, data-len 0
+     -0.825s usb_msd_cmd_complete status 0, tag 0x34d3e010
+     -0.825s usb_msd_send_status status 0, tag 0x34d3e010, len 13
+     +0.000s usb_xhci_port_reset port 1, warm 0
+
+=== port 1 reset at 1794188754.599443; open command at reset: None
+     -2.627s usb_msd_send_status status 0, tag 0x34d3e010, len 13
+     -1.772s usb_msd_cmd_submit lun 0, tag 0x338b25b0, flags 0x00000000, len 6, data-len 0
+     -1.772s usb_msd_cmd_complete status 0, tag 0x338b25b0
+     -1.772s usb_msd_send_status status 0, tag 0x338b25b0, len 13
+     -1.614s usb_msd_cmd_submit lun 0, tag 0x34d3e010, flags 0x00000000, len 6, data-len 0
+     -1.614s usb_msd_cmd_complete status 0, tag 0x34d3e010
+     -1.614s usb_msd_send_status status 0, tag 0x34d3e010, len 13
+     -0.758s usb_msd_cmd_submit lun 0, tag 0x338b25b0, flags 0x00000000, len 6, data-len 0
+     -0.758s usb_msd_cmd_complete status 0, tag 0x338b25b0
+     -0.758s usb_msd_send_status status 0, tag 0x338b25b0, len 13
+     -0.599s usb_msd_cmd_submit lun 0, tag 0x34d3e010, flags 0x00000000, len 6, data-len 0
+     -0.599s usb_msd_cmd_complete status 0, tag 0x34d3e010
+     -0.599s usb_msd_send_status status 0, tag 0x34d3e010, len 13
+     +0.000s usb_xhci_port_reset port 1, warm 0
+
+=== port 1 reset at 1794188772.359247; open command at reset: None
+     -0.825s usb_msd_packet_complete 
+     -0.825s usb_msd_cmd_submit lun 0, tag 0x38394520, flags 0x00000000, len 6, data-len 0
+     -0.825s usb_msd_cmd_complete status 0, tag 0x38394520
+     -0.825s usb_msd_send_status status 0, tag 0x38394520, len 13
+     -0.825s usb_msd_cmd_submit lun 0, tag 0x380b5010, flags 0x00000000, len 6, data-len 0
+     -0.825s usb_msd_cmd_complete status 0, tag 0x380b5010
+     -0.825s usb_msd_send_status status 0, tag 0x380b5010, len 13
+     -0.825s usb_msd_cmd_submit lun 0, tag 0x380b5010, flags 0x00000000, len 6, data-len 0
+     -0.825s usb_msd_cmd_complete status 0, tag 0x380b5010
+     -0.825s usb_msd_send_status status 0, tag 0x380b5010, len 13
+     -0.825s usb_msd_cmd_submit lun 0, tag 0x380b5010, flags 0x00000000, len 6, data-len 0
+     -0.825s usb_msd_cmd_complete status 0, tag 0x380b5010
+     -0.825s usb_msd_send_status status 0, tag 0x380b5010, len 13
+     +0.000s usb_xhci_port_reset port 1, warm 0
+
+=== port 1 reset at 1794188806.978322; open command at reset: None
+     -2.946s usb_msd_send_status status 0, tag 0xe456a010, len 13
+     -1.937s usb_msd_cmd_submit lun 0, tag 0xe4568010, flags 0x00000000, len 6, data-len 0
+     -1.937s usb_msd_cmd_complete status 0, tag 0xe4568010
+     -1.937s usb_msd_cmd_submit lun 0, tag 0xe456a010, flags 0x00000000, len 6, data-len 0
+     -1.937s usb_msd_cmd_complete status 0, tag 0xe456a010
+     -1.937s usb_msd_send_status status 0, tag 0xe4568010, len 13
+     -1.937s usb_msd_send_status status 0, tag 0xe456a010, len 13
+     -0.927s usb_msd_cmd_submit lun 0, tag 0xe4568010, flags 0x00000000, len 6, data-len 0
+     -0.927s usb_msd_cmd_complete status 0, tag 0xe4568010
+     -0.927s usb_msd_cmd_submit lun 0, tag 0xe456a010, flags 0x00000000, len 6, data-len 0
+     -0.927s usb_msd_cmd_complete status 0, tag 0xe456a010
+     -0.927s usb_msd_send_status status 0, tag 0xe4568010, len 13
+     -0.927s usb_msd_send_status status 0, tag 0xe456a010, len 13
+     +0.000s usb_xhci_port_reset port 1, warm 0

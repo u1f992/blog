@@ -1,0 +1,39 @@
+2026-11-09T11:59:15.4211216+09:00
+      3 Id               : 98
+      3 ProviderName     : Microsoft-Windows-Ntfs
+BitLocker ドライブ暗号化: 構成ツール Version 10.0.26100
+Copyright (C) 2013 Microsoft Corporation. All rights reserved.
+
+BitLocker ドライブ暗号化で保護可能な
+ディスク ボリューム:
+ボリューム C: [CCCOMA_X64FRE_JA-JP_DV9]
+[OS ボリューム]
+
+    サイズ:                 63.62 GB
+    BitLocker のバージョン: 2.0
+    変換状態:               暗号化を実行中です
+    暗号化された割合:       72.4%
+    暗号化の方法:           XTS-AES 128
+    保護状態:               保護はオフです
+    ロック状態:             ロック解除
+    識別子フィールド:       不明
+    キーの保護機能:         見つかりません
+
+ボリューム E: []
+[データ ボリューム]
+FriendlyName      : QEMU QEMU HARDDISK
+BusType           : USB
+IsBoot            : False
+FriendlyName      : QEMU QEMU HARDDISK
+BusType           : USB
+IsBoot            : False
+FriendlyName      : QEMU QEMU HARDDISK
+BusType           : USB
+IsBoot            : True
+      1 Id               : 4146
+      1 Id               : 768
+      1 Id               : 780
+      1 Id               : 796
+      2 Id               : 900
+TimeCreated      : 2026/11/09 11:50:29
+TimeCreated      : 2026/11/09 11:50:25

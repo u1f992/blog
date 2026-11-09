@@ -1,0 +1,37 @@
+
+
+Number            : 2
+FriendlyName      : QEMU QEMU HARDDISK
+BusType           : USB
+IsBoot            : False
+IsSystem          : False
+IsOffline         : False
+IsReadOnly        : False
+OperationalStatus : Online
+PartitionStyle    : MBR
+Size              : 1073741824
+
+Number            : 1
+FriendlyName      : QEMU QEMU HARDDISK
+BusType           : USB
+IsBoot            : False
+IsSystem          : False
+IsOffline         : False
+IsReadOnly        : False
+OperationalStatus : Online
+PartitionStyle    : MBR
+Size              : 1048576
+
+Number            : 0
+FriendlyName      : QEMU QEMU HARDDISK
+BusType           : USB
+IsBoot            : True
+IsSystem          : True
+IsOffline         : False
+IsReadOnly        : False
+OperationalStatus : Online
+PartitionStyle    : GPT
+Size              : 68719476736
+
+
+

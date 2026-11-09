@@ -1,0 +1,318 @@
+
+
+TimeCreated      : 2026/11/09 11:55:01
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10005
+LevelDisplayName : エラー
+Message          : サーバー:
+                   {1FCBE96C-1697-43AF-9140-2897C7C69767} を実行するためにサービス MicrosoftEdgeElevationService (引数 "利用不可") を開始しよう
+                   としたときに、DCOM にエラー "1053" が返されました。
+
+TimeCreated      : 2026/11/09 11:55:01
+ProviderName     : Service Control Manager
+Id               : 7000
+LevelDisplayName : エラー
+Message          : Microsoft Edge Elevation Service (MicrosoftEdgeElevationService) サービスを、次のエラーが原因で開始できませんでした: 
+                   そのサービスは指定時間内に開始要求または制御要求に応答しませんでした。
+
+TimeCreated      : 2026/11/09 11:55:01
+ProviderName     : Service Control Manager
+Id               : 7009
+LevelDisplayName : エラー
+Message          : Microsoft Edge Elevation Service (MicrosoftEdgeElevationService) サービスの接続を待機中にタイムアウト (30000 ミリ秒) になりま
+                   した。
+
+TimeCreated      : 2026/11/09 11:50:09
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10016
+LevelDisplayName : 警告
+Message          : アプリケーション固有 のアクセス許可の設定では、CLSID 
+                   Windows.SecurityCenter.WscDataProtection
+                    および APPID 
+                   利用不可
+                    の COM サーバー アプリケーションに対するローカル起動のアクセス許可を、アプリケーション コンテナー 利用不可 SID (利用不可) で実行中のアドレス LocalHost (LRPC 使用) 
+                   のユーザー NT AUTHORITY\SYSTEM SID (S-1-5-18) に与えることはできません。このセキュリティ アクセス許可は、コンポーネント サービス管理ツールを使って変更できます。
+
+TimeCreated      : 2026/11/09 11:48:36
+ProviderName     : Service Control Manager
+Id               : 7022
+LevelDisplayName : エラー
+Message          : Orchestrator Service の更新 サービスは開始時にハングしました。
+
+TimeCreated      : 2026/11/09 11:44:56
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10016
+LevelDisplayName : 警告
+Message          : アプリケーション固有 のアクセス許可の設定では、CLSID 
+                   {9EA82395-E31B-41CA-8DF7-EC1CEE7194DF}
+                    および APPID 
+                   {2ED83BAA-B2FD-43B1-99BF-E6149C622692}
+                    の COM サーバー アプリケーションに対するローカルアクティブ化のアクセス許可を、アプリケーション コンテナー 利用不可 SID (利用不可) で実行中のアドレス LocalHost (LRPC 
+                   使用) のユーザー NT AUTHORITY\NETWORK SERVICE SID (S-1-5-20) に与えることはできません。このセキュリティ アクセス許可は、コンポーネント サービス管理ツー
+                   ルを使って変更できます。
+
+TimeCreated      : 2026/11/09 11:43:25
+ProviderName     : Microsoft-Windows-TPM-WMI
+Id               : 1040
+LevelDisplayName : エラー
+Message          : 構成証明前の正常性チェックで、重要なコンポーネントが失敗し、デバイスが構成証明に合格しないことが確認されました。
+                    行われたチェックの詳細については、C:\Windows\Logs\MeasuredBoot\0000000003-0000000000.json を参照してください。
+
+TimeCreated      : 2026/11/09 11:40:07
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10005
+LevelDisplayName : エラー
+Message          : サーバー:
+                   {E60687F7-01A1-40AA-86AC-DB1CBF673334} を実行するためにサービス wuauserv (引数 "利用不可") を開始しようとしたときに、DCOM にエラー "111
+                   5" が返されました。
+
+TimeCreated      : 2026/11/09 11:33:47
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10016
+LevelDisplayName : 警告
+Message          : アプリケーション固有 のアクセス許可の設定では、CLSID 
+                   {9EA82395-E31B-41CA-8DF7-EC1CEE7194DF}
+                    および APPID 
+                   {2ED83BAA-B2FD-43B1-99BF-E6149C622692}
+                    の COM サーバー アプリケーションに対するローカルアクティブ化のアクセス許可を、アプリケーション コンテナー 利用不可 SID (利用不可) で実行中のアドレス LocalHost (LRPC 
+                   使用) のユーザー NT AUTHORITY\NETWORK SERVICE SID (S-1-5-20) に与えることはできません。このセキュリティ アクセス許可は、コンポーネント サービス管理ツー
+                   ルを使って変更できます。
+
+TimeCreated      : 2026/11/09 11:33:20
+ProviderName     : Microsoft-Windows-TPM-WMI
+Id               : 1801
+LevelDisplayName : エラー
+Message          : 更新されたセキュア ブート証明書は、このデバイスで使用できますが、ファームウェアにはまだ適用されていません。公開されているガイダンスを確認し、更新を完了し、完全な保護を維持してください。このデバイス署
+                   名情報は次に含まれています。
+                   DeviceAttributes: BaseBoardManufacturer:;FirmwareManufacturer:Ubuntu distribution of EDK II;Firmware
+                   Version:2024.02-2ubuntu0.10;OEMModelNumber:Ubuntu 24.04 PC (Q35 + ICH9, 2009);OEMModelBaseBoard:;OEM
+                   ModelSystemFamily:;OEMManufacturerName:QEMU;OEMModelSKU:;OSArchitecture:amd64;
+                   BucketId: 744bb849d97134911b7e62d447b4f0f1e12862fae7c378b6a82da54405825703
+                   BucketConfidenceLevel: No Data Observed - Action Required
+                   UpdateType: 
+                   詳細については、https://go.microsoft.com/fwlink/?linkid=2301018 を参照してください。
+
+TimeCreated      : 2026/11/09 11:30:38
+ProviderName     : Service Control Manager
+Id               : 7034
+LevelDisplayName : エラー
+Message          : Microsoft Edge Update Service (edgeupdate) サービスは予期せぬ原因により終了しました。このサービスの強制終了は 1 回目です。
+
+TimeCreated      : 2026/11/09 11:26:00
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10005
+LevelDisplayName : エラー
+Message          : サーバー:
+                   Windows.Internal.Security.Authentication.Web.TokenBrokerInternal を実行するためにサービス TokenBroker (引数 "利用不可"
+                   ) を開始しようとしたときに、DCOM にエラー "1053" が返されました。
+
+TimeCreated      : 2026/11/09 11:26:00
+ProviderName     : Service Control Manager
+Id               : 7000
+LevelDisplayName : エラー
+Message          : Web アカウント マネージャー サービスを、次のエラーが原因で開始できませんでした: 
+                   そのサービスは指定時間内に開始要求または制御要求に応答しませんでした。
+
+TimeCreated      : 2026/11/09 11:26:00
+ProviderName     : Service Control Manager
+Id               : 7009
+LevelDisplayName : エラー
+Message          : Web アカウント マネージャー サービスの接続を待機中にタイムアウト (30000 ミリ秒) になりました。
+
+TimeCreated      : 2026/11/09 11:22:02
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10010
+LevelDisplayName : エラー
+Message          : サーバー Windows.Internal.StateRepository.PackageUser は、必要なタイムアウト期間内に DCOM に登録しませんでした。
+
+TimeCreated      : 2026/11/09 11:20:29
+ProviderName     : Microsoft-Windows-Time-Service
+Id               : 52
+LevelDisplayName : 警告
+Message          : タイム サービスは、32399 秒のオフセットで時刻を設定しました。
+
+TimeCreated      : 2026/11/09 2:19:34
+ProviderName     : Microsoft-Windows-Time-Service
+Id               : 134
+LevelDisplayName : 警告
+Message          : 'time.windows.com,0x9' での DNS 解決エラーのため、NtpClient でタイム ソースとして使う手動ピアを設定できませんでした。15 分後に再試行し、それ以降は 2 倍の間
+                   隔で再試行します。エラー: そのようなホストは不明です。 (0x80072AF9)
+
+TimeCreated      : 2026/11/09 2:19:29
+ProviderName     : Microsoft-Windows-Time-Service
+Id               : 134
+LevelDisplayName : 警告
+Message          : 'time.windows.com,0x9' での DNS 解決エラーのため、NtpClient でタイム ソースとして使う手動ピアを設定できませんでした。15 分後に再試行し、それ以降は 2 倍の間
+                   隔で再試行します。エラー: そのようなホストは不明です。 (0x80072AF9)
+
+TimeCreated      : 2026/11/09 2:17:27
+ProviderName     : Service Control Manager
+Id               : 7043
+LevelDisplayName : エラー
+Message          : Windows Update サービスは、プレシャットダウン コントロールを受け取った後に正しくシャットダウンされませんでした。
+
+TimeCreated      : 2026/11/09 2:17:11
+ProviderName     : Service Control Manager
+Id               : 7023
+LevelDisplayName : エラー
+Message          : Network List Service サービスは、次のエラーで終了しました: 
+                   デバイスの準備ができていません。
+
+TimeCreated      : 2026/11/09 2:17:11
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10010
+LevelDisplayName : エラー
+Message          : サーバー {A47979D2-C419-11D9-A5B4-001185AD2B89} は、必要なタイムアウト期間内に DCOM に登録しませんでした。
+
+TimeCreated      : 2026/11/09 2:15:11
+ProviderName     : Service Control Manager
+Id               : 7023
+LevelDisplayName : エラー
+Message          : Network List Service サービスは、次のエラーで終了しました: 
+                   デバイスの準備ができていません。
+
+TimeCreated      : 2026/11/09 2:15:11
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10010
+LevelDisplayName : エラー
+Message          : サーバー {A47979D2-C419-11D9-A5B4-001185AD2B89} は、必要なタイムアウト期間内に DCOM に登録しませんでした。
+
+TimeCreated      : 2026/11/09 2:13:11
+ProviderName     : Service Control Manager
+Id               : 7023
+LevelDisplayName : エラー
+Message          : Network List Service サービスは、次のエラーで終了しました: 
+                   デバイスの準備ができていません。
+
+TimeCreated      : 2026/11/09 2:13:11
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10010
+LevelDisplayName : エラー
+Message          : サーバー {A47979D2-C419-11D9-A5B4-001185AD2B89} は、必要なタイムアウト期間内に DCOM に登録しませんでした。
+
+TimeCreated      : 2026/11/09 2:11:11
+ProviderName     : Service Control Manager
+Id               : 7023
+LevelDisplayName : エラー
+Message          : Network List Service サービスは、次のエラーで終了しました: 
+                   デバイスの準備ができていません。
+
+TimeCreated      : 2026/11/09 2:11:10
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10010
+LevelDisplayName : エラー
+Message          : サーバー {A47979D2-C419-11D9-A5B4-001185AD2B89} は、必要なタイムアウト期間内に DCOM に登録しませんでした。
+
+TimeCreated      : 2026/11/09 2:09:10
+ProviderName     : Service Control Manager
+Id               : 7023
+LevelDisplayName : エラー
+Message          : Network List Service サービスは、次のエラーで終了しました: 
+                   デバイスの準備ができていません。
+
+TimeCreated      : 2026/11/09 2:09:10
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10010
+LevelDisplayName : エラー
+Message          : サーバー {A47979D2-C419-11D9-A5B4-001185AD2B89} は、必要なタイムアウト期間内に DCOM に登録しませんでした。
+
+TimeCreated      : 2026/11/09 2:07:10
+ProviderName     : Service Control Manager
+Id               : 7023
+LevelDisplayName : エラー
+Message          : Network List Service サービスは、次のエラーで終了しました: 
+                   デバイスの準備ができていません。
+
+TimeCreated      : 2026/11/09 2:07:10
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10010
+LevelDisplayName : エラー
+Message          : サーバー {A47979D2-C419-11D9-A5B4-001185AD2B89} は、必要なタイムアウト期間内に DCOM に登録しませんでした。
+
+TimeCreated      : 2026/11/09 2:05:10
+ProviderName     : Service Control Manager
+Id               : 7023
+LevelDisplayName : エラー
+Message          : Network List Service サービスは、次のエラーで終了しました: 
+                   デバイスの準備ができていません。
+
+TimeCreated      : 2026/11/09 2:05:10
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10010
+LevelDisplayName : エラー
+Message          : サーバー {A47979D2-C419-11D9-A5B4-001185AD2B89} は、必要なタイムアウト期間内に DCOM に登録しませんでした。
+
+TimeCreated      : 2026/11/09 2:03:10
+ProviderName     : Service Control Manager
+Id               : 7023
+LevelDisplayName : エラー
+Message          : Network List Service サービスは、次のエラーで終了しました: 
+                   デバイスの準備ができていません。
+
+TimeCreated      : 2026/11/09 2:03:10
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10010
+LevelDisplayName : エラー
+Message          : サーバー {A47979D2-C419-11D9-A5B4-001185AD2B89} は、必要なタイムアウト期間内に DCOM に登録しませんでした。
+
+TimeCreated      : 2026/11/09 2:01:42
+ProviderName     : Service Control Manager
+Id               : 7030
+LevelDisplayName : エラー
+Message          : Printer Extensions and Notifications サービスは、対話型サービスとしてマークされています。しかし、システムは対話型サービスを許可しないように構成されています。このサ
+                   ービスは正常に機能しない可能性があります。
+
+TimeCreated      : 2026/11/09 2:01:10
+ProviderName     : Service Control Manager
+Id               : 7023
+LevelDisplayName : エラー
+Message          : Network List Service サービスは、次のエラーで終了しました: 
+                   デバイスの準備ができていません。
+
+TimeCreated      : 2026/11/09 2:01:10
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10010
+LevelDisplayName : エラー
+Message          : サーバー {A47979D2-C419-11D9-A5B4-001185AD2B89} は、必要なタイムアウト期間内に DCOM に登録しませんでした。
+
+TimeCreated      : 2026/11/09 2:00:18
+ProviderName     : Service Control Manager
+Id               : 7022
+LevelDisplayName : エラー
+Message          : Connected Devices Platform Service サービスは開始時にハングしました。
+
+TimeCreated      : 2026/11/09 1:59:10
+ProviderName     : Service Control Manager
+Id               : 7023
+LevelDisplayName : エラー
+Message          : Network List Service サービスは、次のエラーで終了しました: 
+                   デバイスの準備ができていません。
+
+TimeCreated      : 2026/11/09 1:59:10
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10010
+LevelDisplayName : エラー
+Message          : サーバー {A47979D2-C419-11D9-A5B4-001185AD2B89} は、必要なタイムアウト期間内に DCOM に登録しませんでした。
+
+TimeCreated      : 2026/11/09 1:57:10
+ProviderName     : Service Control Manager
+Id               : 7023
+LevelDisplayName : エラー
+Message          : Network List Service サービスは、次のエラーで終了しました: 
+                   デバイスの準備ができていません。
+
+TimeCreated      : 2026/11/09 1:57:10
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10010
+LevelDisplayName : エラー
+Message          : サーバー {A47979D2-C419-11D9-A5B4-001185AD2B89} は、必要なタイムアウト期間内に DCOM に登録しませんでした。
+
+TimeCreated      : 2026/11/09 1:55:11
+ProviderName     : Service Control Manager
+Id               : 7023
+LevelDisplayName : エラー
+Message          : netprofm サービスは、次のエラーで終了しました: 
+                   デバイスの準備ができていません。
+
+
+

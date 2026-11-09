@@ -1,0 +1,27 @@
+NAME      SIZE TYPE TRAN   MODEL
+loop0       4K loop        
+loop1      74M loop        
+loop2      74M loop        
+loop3    66.8M loop        
+loop4    66.8M loop        
+loop5   262.2M loop        
+loop6   283.8M loop        
+loop7    12.7M loop        
+loop8    12.7M loop        
+loop9   531.4M loop        
+loop10  531.5M loop        
+loop11  606.1M loop        
+loop12  614.5M loop        
+loop13   91.7M loop        
+loop14    395M loop        
+loop15    402M loop        
+loop16     12M loop        
+loop17   11.6M loop        
+loop18   50.3M loop        
+loop19   44.7M loop        
+loop20    828K loop        
+loop21    828K loop        
+sda       7.3T disk sata   ST8000DM004-2U9188
+sdb       7.3T disk sata   ST8000DM004-2U9188
+sdc         0B disk usb    Multiple Reader
+nvme0n1   1.8T disk nvme   WD_BLACK SN7100 2TB

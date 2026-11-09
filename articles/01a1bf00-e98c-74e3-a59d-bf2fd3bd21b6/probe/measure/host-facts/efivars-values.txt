@@ -1,0 +1,3 @@
+SbatLevelRT attr=0x6 'sbat,1,2023012900\nshim,2\ngrub,3\ngrub.debian,4\n'
+OsIndicationsSupported attr=0x6 value=0x1b FILE_CAPSULE_DELIVERY_SUPPORTED=False FMP_CAPSULE_SUPPORTED=True
+BootOrder attr=0x7 ['0x1']

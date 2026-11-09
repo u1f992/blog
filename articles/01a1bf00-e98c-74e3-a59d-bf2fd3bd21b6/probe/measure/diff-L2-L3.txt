@@ -1,0 +1,79 @@
+=== non-volatile UEFI variables: L2 -> L3 ===
+ADDED CurrentPolicy-77fa9abd-0359-4d32-bd60-28f4e78f784b MISSING -> sha=dbc1b4c900ffe48d
+CHANGED MTC-eb704011-1402-11d3-8e77-00a0c969723b sha=2594b6a92ebfb1c3 -> sha=43c66c260828c983
+ADDED OfflineUniqueIDEKPub-eaec226f-c9a3-477a-a826-ddc716cdc0e3 MISSING -> sha=6f479fedb26a2ee7
+ADDED OfflineUniqueIDEKPubCRC-eaec226f-c9a3-477a-a826-ddc716cdc0e3 MISSING -> sha=68a4cb417a377bf6
+ADDED UnlockIDCopy-eaec226f-c9a3-477a-a826-ddc716cdc0e3 MISSING -> sha=0073418c4c3f550e
+CHANGED certdb-d9bee56e-75dc-49d9-b4d7-b534210f637a sha=fb5e512425fc9449 -> sha=6e500080cc801b5d
+CHANGED dbx-d719b2cb-3d3a-4596-a3bc-dad00e67656f sha=31d2fc5d94df3953 -> sha=eac7765468a6f015
+=== volatile UEFI variables (for reference): L2 -> L3 ===
+CHANGED SbatLevelRT-605dab50-e046-4300-abb6-3dd810dd8b23 sha=5acc0985076195ac -> sha=285dde5c77d8a5b6
+=== efibootmgr ===
+(no change)
+=== Secure Boot db/dbx/KEK/PK ===
+pk: no change
+kek: no change
+db: no change
+dbx: CHANGED
+377a378,451
+> 
+> [key 3]
+>   [sha256]
+>   5c39f0e5e0e7fa3be05090813b13d161acaf48494fde6233b452c416d29cddbe
+>   bb4919d8f38dba90154f963c47be83b665076c6eb4b230b3cee91e4b7706cc12
+>   15dd2ff6416858790a5241c335f675540750f611110a5d2d67b4517d08260af9
+>   b1bc5ef4f5c7e8f683601217650f42e7d69efc0098c22a4989c7990b7771c277
+>   39e7da89ca9899b8ca2cb826d7fd910e525ac9e6784d54d8316e00650156a341
+>   20082b6101f8d7dade206f4fdeb367622c11f809c4cf2d215d834460179ef2dd
+>   1e73f9dcf231163c9b99c9632b0c379b94209b068eda8945951f125edd6acc9f
+>   08d13a5ab1795d47a3830fb3e34437882514e0ffc9bcee122227c354d29ffd1d
+>   9e531d100ac08c28833fad3ca5d3b863bd1323d2f118f83d9db2b21407ca9e64
+>   73782e2981c4eed10ca0170dd06b2adf54b1b6e95112fc60db610c1039e3931a
+>   4561a888723ef5d879b44b02144125c9566d4fc7c674ee5a6e3246e6457f3df9
+>   db34cfa2f5239656efeb51537a7eacb98aec10ed2b40209c0f50dcd3df6b50cd
+>   0690eadbd2302957bf7912c2851c33463c855c10ad226a11bbfdc8d69d8a14b3
+>   fa0d9315715290276f4558dac2368bd828789f42214f5707a932e5c518e59f80
+>   9b4bf870dcb0610a34e441d32669dcce2abe5e697c67b7c4328a891397f4db0c
+>   f41da7deb9a214e653f738bbf4dc9168c606e71e8095e7d50215b0dcc2cf71a3
+>   48befa8cab6dbe7493ede483396bb41ba9d46594606174b7fbca3c0d17e2b6aa
+>   6cca75ea065b35b9aac96999dc3a4254cde518139169c4bd160797f8e63e29ed
+>   109c91802d4eeca88bf607cbfa6a67449cc63f6e6e9bd0be6b20eed263420c04
+>   e261c78511a77e74801f273919b0852bf44a31bc0600d188c535d88be7aba052
+>   d12924557c7e2714a9c77f64d6cd391fdd6509fc138ccde16512ef226d15fa7f
+>   6c611bd22926d8778f0a6b0a095a839d6bbc40d5ad23f55b9f8560647361ffc7
+>   080a627e31bdc90041ad30b5604de9eae8c85abdb621b5b55d25cd13ed182d06
+>   8a6e68d85ab00fd79783bfb955cf989bd1938f02dc57e371fb07eb1faaf55901
+>   28412fa02802a3939a709f518798404582ff601e67ea9c542c78963f2eae18ff
+>   ee606fa2cd686db7554c99c4bb37d87e64f89153ef26b4cff41834da74eb4c1c
+>   136089ab3a7dc68c19f139558f0644dc57d32e9ceb79d6e54d9d6492ad2de614
+>   f5a5415aca106c63aa6595d58861f8d7e87143ba9c742e2e2819e3411d685496
+>   decf57d609f02ab417fe4da0d96ee4388181a3c6593083ae57c5df05f5f918f3
+>   1e91fc3fee40bb2b6077f7e9a31f26c2e887ce91b41e5268ee795be53f11329b
+>   ff6acfbd5962499fb8846daf87b88320c115d7711ea645ba6742e8598e884bd8
+>   8c1edb6a3f46d13cc6e58f6d2c7efd958ec079aa029478baba9aa9f53db9f0e3
+>   5e41b89f7f471806e1917efdd040953cc22f3f362e7b71423ff70e55b98adb13
+>   8ce986614e7037218a61db51b876341898817741ade85156cf54bd1cd17999a6
+>   d9247336ac0d12cabf04dfd88227d1e640c0dc59739bd5b3ca17df90b3331c3b
+>   ecb789c173e1fa4e604ff45a57a45b2868d8acb1ce616d8aeef08d5e252ccd6f
+=== TPM permanent/startup-clear properties ===
+23,24c23,24
+< TPM2_PT_HR_PERSISTENT: 0x2
+< TPM2_PT_HR_PERSISTENT_AVAIL: 0x3D
+---
+> TPM2_PT_HR_PERSISTENT: 0x3
+> TPM2_PT_HR_PERSISTENT_AVAIL: 0x3C
+=== TPM persistent handles ===
+0a1
+> - 0x81000001
+=== TPM NV indexes ===
+(no change)
+=== TPM NV public ===
+(no change)
+=== TPM fixed (firmware version etc.) ===
+(no change)
+=== hwclock ===
+/tmp/measure.sh: line 11: hwclock: command not found
+Sat Nov  7 11:07:03 UTC 2026
+--
+/tmp/measure.sh: line 11: hwclock: command not found
+Sat Nov  7 11:52:33 UTC 2026

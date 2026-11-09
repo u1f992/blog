@@ -1,0 +1,8 @@
+grub-efi-amd64-bin 2.12-1ubuntu7.3
+grub-efi-amd64-signed 1.202.5+2.12-1ubuntu7.3
+shim-signed 1.58+15.8-0ubuntu1
+== shimx64.efi
+sudo: objcopy: command not found
+== grubx64.efi
+sudo: objcopy: command not found
+SecureBoot enabled

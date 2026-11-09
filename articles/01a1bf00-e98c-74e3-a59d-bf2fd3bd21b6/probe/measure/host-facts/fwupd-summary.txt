@@ -1,0 +1,25 @@
+?                                        ver=-                  plugin=linux_display  updatable=False internal=False
+?                                        ver=-                  plugin=linux_display  updatable=False internal=False
+Core™ i9-14900K                          ver=0x00000137         plugin=cpu            updatable=False internal=True
+Internal SPI Controller                  ver=-                  plugin=mtd            updatable=False internal=True
+Internal SPI Controller (BIOS)           ver=M.A0               plugin=mtd            updatable=False internal=True
+Internal SPI Controller (IFD descriptor  ver=-                  plugin=mtd            updatable=False internal=True
+Internal SPI Controller (Management Engi ver=-                  plugin=mtd            updatable=False internal=True
+Internal SPI Controller (Region 9)       ver=-                  plugin=mtd            updatable=False internal=True
+KEK CA                                   ver=2023               plugin=uefi_kek       updatable=True internal=True
+MSI SHIP DB                              ver=2021               plugin=uefi_db        updatable=False internal=True
+MSI SHIP KEK                             ver=2021               plugin=uefi_kek       updatable=False internal=True
+MSI SHIP PK                              ver=2021               plugin=uefi_pk        updatable=False internal=True
+Option ROM UEFI CA                       ver=2023               plugin=uefi_db        updatable=True internal=True
+SBAT                                     ver=1.5.4              plugin=uefi_sbat      updatable=True internal=False
+ST8000DM004-2U9188                       ver=0001               plugin=ata            updatable=True internal=True
+ST8000DM004-2U9188                       ver=0001               plugin=ata            updatable=True internal=True
+System Firmware                          ver=1                  plugin=uefi_capsule   updatable=True internal=True
+TPM                                      ver=600.18.38.2676     plugin=tpm            updatable=False internal=True
+UEFI CA                                  ver=2023               plugin=uefi_db        updatable=True internal=True
+UEFI Device Firmware                     ver=1                  plugin=uefi_capsule   updatable=True internal=True
+UEFI Key Exchange Key                    ver=-                  plugin=uefi_kek       updatable=False internal=True
+UEFI Signature Database                  ver=-                  plugin=uefi_db        updatable=False internal=True
+UEFI dbx                                 ver=-                  plugin=uefi_dbx       updatable=True internal=True
+WD BLACK SN7100 2TB                      ver=7615M0WD           plugin=nvme           updatable=True internal=True
+Windows UEFI CA                          ver=2023               plugin=uefi_db        updatable=True internal=True

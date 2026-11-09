@@ -1,0 +1,340 @@
+
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : 警告
+Message          : ディスク 0 (PDO 名: \Device\00000028) の論理ブロック アドレス 0x1f95a78 で IO 操作が再試行されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:01
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : 警告
+Message          : ディスク 2 (PDO 名: \Device\0000002a) の論理ブロック アドレス 0x0 で IO 操作が再試行されました。
+
+TimeCreated      : 2026/11/09 10:49:01
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk2\DR2 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:48:39
+ProviderName     : Microsoft-Windows-Ntfs
+Id               : 98
+LevelDisplayName : 情報
+Message          : ボリューム C: (\Device\HarddiskVolume3) 正常です。必要な操作はありません。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : 警告
+Message          : ディスク 1 (PDO 名: \Device\00000029) の論理ブロック アドレス 0x964e78 で IO 操作が再試行されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : 警告
+Message          : ディスク 1 (PDO 名: \Device\00000029) の論理ブロック アドレス 0x10b3a88 で IO 操作が再試行されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:46:14
+ProviderName     : Microsoft-Windows-Ntfs
+Id               : 98
+LevelDisplayName : 情報
+Message          : ボリューム C: (\Device\HarddiskVolume4) 正常です。必要な操作はありません。
+
+TimeCreated      : 2026/11/09 1:45:53
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:45:53
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:45:53
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:45:53
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:45:53
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : 警告
+Message          : ディスク 0 (PDO 名: \Device\00000024) の論理ブロック アドレス 0x2a7e30 で IO 操作が再試行されました。
+
+TimeCreated      : 2026/11/09 1:45:53
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:45:32
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:45:32
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:45:32
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:45:32
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:45:32
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : 警告
+Message          : ディスク 0 (PDO 名: \Device\00000024) の論理ブロック アドレス 0x2a7dd8 で IO 操作が再試行されました。
+
+TimeCreated      : 2026/11/09 1:45:32
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:44:20
+ProviderName     : Microsoft-Windows-Ntfs
+Id               : 98
+LevelDisplayName : 情報
+Message          : ボリューム C: (\Device\HarddiskVolume3) 正常です。必要な操作はありません。
+
+
+

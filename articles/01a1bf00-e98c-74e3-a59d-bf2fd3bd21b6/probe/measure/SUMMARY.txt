@@ -1,0 +1,167 @@
+### host NVRAM hashes
+N0   a9b2b13aba3d4629
+a9b2b13aba3d4629
+N1   a73e5e733a9a0315
+N2   f053b44aa60b5711
+N2b  c964a3daef20b2cc
+N2c  14d5c447f6f79412
+N3   9811b4561eb101c4
+N3b  a3009bd54a036e12
+N4   a21afbd107daf27f
+
+### N2c -> N3 (Windows session 1, host view)
+11,16c11,15
+< Boot0001            : boot entry: title="UEFI PXEv4 (MAC:525400E41B33)" devpath=PciRoot()/PCI(dev=02:0)/PCI(dev=00:0)/MAC()/IPv4() optdata=4eac0881119f594d850ee21a522c59b2
+< Boot0002            : boot entry: title="Ubuntu" devpath=Partition(nr=15)/FilePath(\EFI\ubuntu\shimx64.efi)
+< Boot0003            : boot entry: title="UEFI PXEv6 (MAC:525400E41B33)" devpath=PciRoot()/PCI(dev=02:0)/PCI(dev=00:0)/MAC()/IPv6() optdata=4eac0881119f594d850ee21a522c59b2
+< Boot0004            : boot entry: title="UEFI HTTPv4 (MAC:525400E41B33)" devpath=PciRoot()/PCI(dev=02:0)/PCI(dev=00:0)/MAC()/IPv4()/URI() optdata=4eac0881119f594d850ee21a522c59b2
+< Boot0005            : boot entry: title="UEFI HTTPv6 (MAC:525400E41B33)" devpath=PciRoot()/PCI(dev=02:0)/PCI(dev=00:0)/MAC()/IPv6()/URI() optdata=4eac0881119f594d850ee21a522c59b2
+< BootOrder           : boot order: 0002, 0000, 0001, 0003, 0004, 0005
+---
+> Boot0001            : boot entry: title="UEFI QEMU QEMU USB HARDDRIVE WIN2GO64" devpath=PciRoot()/PCI(dev=02:1)/PCI(dev=00:0)/USB(port=1) optdata=4eac0881119f594d850ee21a522c59b2
+> Boot0003            : boot entry: title="Windows Boot Manager" devpath=Partition(nr=1)/FilePath(\EFI\Microsoft\Boot\bootmgfw.efi) optdata=57494e444f5753000100000088000000780000004200430044004f0042004a004500430054003d007b00390064006500610038003600320063002d0035006300640064002d0034006500370030002d0061006300630031002d006600330032006200330034003400640034003700390035007d00000044000100000010000000040000007fff0400
+> BootDebugPolicyApplied: byte: 0x2a
+> BootOrder           : boot order: 0003, 0001, 0000
+> BootingDeviceTypeInfo: dword: 0x00040001
+19a19,21
+> ConfigCIPolicyIndiv : blob: 48 bytes
+> CurrentActivePolicy : byte: 0x00
+> CurrentPolicy       : byte: 0x02
+23c25
+< HDDP                : blob: 74 bytes
+---
+> HDDP                : blob: 150 bytes
+29c31
+< MTC                 : dword: 0x00000007
+---
+> MTC                 : dword: 0x0000000a
+30a33,34
+> OfflineUniqueIDEKPub: blob: 256 bytes
+> OfflineUniqueIDEKPubCRC: dword: 0x5a15c454
+33c37,38
+< SbatLevel           : ascii: "sbat,1,2023012900\nshim,2\ngrub,3\ngrub.debian,4\n"
+---
+> RevocationList      : blob: 1975 bytes
+> SbatLevel           : ascii: "sbat,1,2025051000\nshim,4\ngrub,5\ngrub.debian,4\ngrub.peimage,2\ngrub.proxmox,2"
+38a44,45
+> UnlockID            : blob: 32 bytes
+> UnlockIDCopy        : blob: 32 bytes
+41c48
+< certdb              : dword: 0x00000004
+---
+> certdb              : blob: 90 bytes
+43c50
+< dbx                 : blob: 17912 bytes
+---
+> dbx                 : blob: 21348 bytes
+
+### N0 -> N1 (Ubuntu first boots)
+10a11,12
+> Boot0002            : boot entry: title="Ubuntu" devpath=Partition(nr=15)/FilePath(\EFI\ubuntu\shimx64.efi)
+> BootOrder           : boot order: 0002, 0001, 0000
+14a17,18
+> FirmwareSecvarUpdaterVersion: dword: 0x00000001
+> HDDP                : blob: 74 bytes
+20c24
+< MTC                 : dword: 0x00000001
+---
+> MTC                 : dword: 0x00000004
+23a28
+> SbatLevel           : ascii: "sbat,1,2023012900\nshim,2\ngrub,3\ngrub.debian,4\n"
+24a30,32
+> TCG2_CONFIGURATION  : byte: 0x02
+> TCG2_DEVICE_DETECTION: byte: 0x02
+> TCG2_VERSION        : blob: 16 bytes
+30c38
+< dbx                 : blob: 76 bytes
+---
+> dbx                 : blob: 17912 bytes
+
+### N1 -> N2 (Linux reboot noise)
+24c24
+< MTC                 : dword: 0x00000004
+---
+> MTC                 : dword: 0x00000005
+
+### N2 -> N2b (diskless firmware boot)
+0a1
+> 525400E41B33        : blob: 60 bytes
+10c11
+< Boot0001            : boot entry: title="UEFI QEMU HARDDISK QM00001 " devpath=PciRoot()/PCI(dev=1f:2)/SATA(port=0) optdata=4eac0881119f594d850ee21a522c59b2
+---
+> Boot0001            : boot entry: title="UEFI PXEv4 (MAC:525400E41B33)" devpath=PciRoot()/PCI(dev=02:0)/PCI(dev=00:0)/MAC()/IPv4() optdata=4eac0881119f594d850ee21a522c59b2
+12c13,17
+< BootOrder           : boot order: 0002, 0001, 0000
+---
+> Boot0003            : boot entry: title="UEFI PXEv6 (MAC:525400E41B33)" devpath=PciRoot()/PCI(dev=02:0)/PCI(dev=00:0)/MAC()/IPv6() optdata=4eac0881119f594d850ee21a522c59b2
+> Boot0004            : boot entry: title="UEFI HTTPv4 (MAC:525400E41B33)" devpath=PciRoot()/PCI(dev=02:0)/PCI(dev=00:0)/MAC()/IPv4()/URI() optdata=4eac0881119f594d850ee21a522c59b2
+> Boot0005            : boot entry: title="UEFI HTTPv6 (MAC:525400E41B33)" devpath=PciRoot()/PCI(dev=02:0)/PCI(dev=00:0)/MAC()/IPv6()/URI() optdata=4eac0881119f594d850ee21a522c59b2
+> BootOrder           : boot order: 0002, 0000, 0001, 0003, 0004, 0005
+> ClientId            : blob: 20 bytes
+24c29
+< MTC                 : dword: 0x00000005
+---
+> MTC                 : dword: 0x00000006
+
+### N3b -> N4 (Linux boot after Windows)
+0a1
+> 5254007F0D7E        : blob: 60 bytes
+11,12c12,13
+< Boot0001            : boot entry: title="UEFI QEMU QEMU USB HARDDRIVE WIN2GO64" devpath=PciRoot()/PCI(dev=02:1)/PCI(dev=00:0)/USB(port=1) optdata=4eac0881119f594d850ee21a522c59b2
+< Boot0003            : boot entry: title="Windows Boot Manager" devpath=Partition(nr=1)/FilePath(\EFI\Microsoft\Boot\bootmgfw.efi) optdata=57494e444f5753000100000088000000780000004200430044004f0042004a004500430054003d007b00390064006500610038003600320063002d0035006300640064002d0034006500370030002d0061006300630031002d006600330032006200330034003400640034003700390035007d00000044000100000010000000040000007fff0400
+---
+> Boot0001            : boot entry: title="UEFI QEMU HARDDISK QM00001 " devpath=PciRoot()/PCI(dev=1f:2)/SATA(port=0) optdata=4eac0881119f594d850ee21a522c59b2
+> Boot0002            : boot entry: title="Ubuntu" devpath=Partition(nr=15)/FilePath(\EFI\ubuntu\shimx64.efi)
+14c15
+< BootOrder           : boot order: 0003, 0001, 0000
+---
+> BootOrder           : boot order: 0002, 0001, 0000
+31c32
+< MTC                 : dword: 0x0000000b
+---
+> MTC                 : dword: 0x0000000d
+
+### L2 -> L3 (guest view)
+=== non-volatile UEFI variables: L2 -> L3 ===
+ADDED CurrentPolicy-77fa9abd-0359-4d32-bd60-28f4e78f784b MISSING -> sha=dbc1b4c900ffe48d
+CHANGED MTC-eb704011-1402-11d3-8e77-00a0c969723b sha=2594b6a92ebfb1c3 -> sha=43c66c260828c983
+ADDED OfflineUniqueIDEKPub-eaec226f-c9a3-477a-a826-ddc716cdc0e3 MISSING -> sha=6f479fedb26a2ee7
+ADDED OfflineUniqueIDEKPubCRC-eaec226f-c9a3-477a-a826-ddc716cdc0e3 MISSING -> sha=68a4cb417a377bf6
+ADDED UnlockIDCopy-eaec226f-c9a3-477a-a826-ddc716cdc0e3 MISSING -> sha=0073418c4c3f550e
+CHANGED certdb-d9bee56e-75dc-49d9-b4d7-b534210f637a sha=fb5e512425fc9449 -> sha=6e500080cc801b5d
+CHANGED dbx-d719b2cb-3d3a-4596-a3bc-dad00e67656f sha=31d2fc5d94df3953 -> sha=eac7765468a6f015
+=== volatile UEFI variables (for reference): L2 -> L3 ===
+CHANGED SbatLevelRT-605dab50-e046-4300-abb6-3dd810dd8b23 sha=5acc0985076195ac -> sha=285dde5c77d8a5b6
+=== efibootmgr ===
+(no change)
+=== Secure Boot db/dbx/KEK/PK ===
+pk: no change
+kek: no change
+db: no change
+dbx: CHANGED
+377a378,451
+> 
+> [key 3]
+>   [sha256]
+=== TPM permanent/startup-clear properties ===
+23,24c23,24
+< TPM2_PT_HR_PERSISTENT: 0x2
+< TPM2_PT_HR_PERSISTENT_AVAIL: 0x3D
+---
+> TPM2_PT_HR_PERSISTENT: 0x3
+> TPM2_PT_HR_PERSISTENT_AVAIL: 0x3C
+=== TPM persistent handles ===
+0a1
+> - 0x81000001
+=== TPM NV indexes ===
+(no change)
+=== TPM NV public ===
+(no change)
+=== TPM fixed (firmware version etc.) ===
+(no change)
+=== hwclock ===
+/tmp/measure.sh: line 11: hwclock: command not found
+Sat Nov  7 11:07:03 UTC 2026
+--
+/tmp/measure.sh: line 11: hwclock: command not found
+Sat Nov  7 11:52:33 UTC 2026

@@ -1,0 +1,91 @@
+0x1410001:
+  name: 000b31be078fc493fa57095b4d041e4b27fefe1e69c4a6543576a37b289c9f2c2b56
+  hash algorithm:
+    friendly: sha256
+    value: 0xB
+  attributes:
+    friendly: authwrite|nt=0x1|authread|no_da|orderly|written
+    value: 0x26040014
+  size: 8
+
+0x1410002:
+  name: 000b0c141eb1d038579d74843d9734ba22c2c540b8577177826419f4d30bab4c650a
+  hash algorithm:
+    friendly: sha256
+    value: 0xB
+  attributes:
+    friendly: authwrite|nt=0x1|authread|no_da|written
+    value: 0x22040014
+  size: 8
+
+0x1410003:
+  name: 000b036b2beeada2ca5b5e21c0117576b961de0f8905b1fab4a7b868de94634edbb4
+  hash algorithm:
+    friendly: sha256
+    value: 0xB
+  attributes:
+    friendly: authwrite|nt=0x1|authread|no_da|written
+    value: 0x22040014
+  size: 8
+
+0x1800100:
+  name: 000b8d38b2c5534287a29dceca2118ac4138889e1b9c839944227c5cb996cb6284eb
+  hash algorithm:
+    friendly: sha256
+    value: 0xB
+  attributes:
+    friendly: ownerwrite|ownerread|no_da|written
+    value: 0x22020002
+  size: 8
+
+0x1880001:
+  name: 000bd5e41629f4d1ee7b318d4a3e7eae93b0d11e72ffe71e5478f11461c49fa2e6f2
+  hash algorithm:
+    friendly: sha256
+    value: 0xB
+  attributes:
+    friendly: policywrite|nt=0x1|writeall|ownerread|authread|written
+    value: 0x20061028
+  size: 8
+  authorization policy: 0C8DF0CF0169C38828C8FA4C0FF37A548C23C041AEECD2A12CA740D501D620B7
+
+0x1880011:
+  name: 000b51a55522eb40aa7f66605334f0814377c886126edb72391675ec8132258398ad
+  hash algorithm:
+    friendly: sha256
+    value: 0xB
+  attributes:
+    friendly: ownerwrite|authwrite|ownerread|authread|written
+    value: 0x20060006
+  size: 32
+
+0x1c00002:
+  name: 000b57e04aab340036942c5b90e76ba6a7f1d32e07bda3a3cbac578b96614553a8ec
+  hash algorithm:
+    friendly: sha256
+    value: 0xB
+  attributes:
+    friendly: ppwrite|writelocked|writedefine|ppread|ownerread|authread|no_da|written|platformcreate
+    value: 0x62072801
+  size: 1055
+
+0x1c00016:
+  name: 000bf9ecd8b87450bbb1da6e16b0cab15c8aa4a8f9af9b1a2e050e41331ad812a6a7
+  hash algorithm:
+    friendly: sha256
+    value: 0xB
+  attributes:
+    friendly: ppwrite|writelocked|writedefine|ppread|ownerread|authread|no_da|written|platformcreate
+    value: 0x62072801
+  size: 881
+
+0x1c08000:
+  name: 000b21aefcf53340e1f314772067dd1a1ede7327ab3b25212e079eb3c4906a3013ec
+  hash algorithm:
+    friendly: sha256
+    value: 0xB
+  attributes:
+    friendly: ppwrite|writelocked|writedefine|ppread|ownerread|authread|no_da|written|platformcreate
+    value: 0x62072801
+  size: 1008
+

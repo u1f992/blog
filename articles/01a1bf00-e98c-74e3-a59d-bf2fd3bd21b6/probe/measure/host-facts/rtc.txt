@@ -1,0 +1,5 @@
+rtc_cmos rtc_cmos
+           Universal time: 土 2026-11-07 13:10:35 UTC
+                 RTC time: 土 2026-11-07 13:10:35
+                Time zone: Asia/Tokyo (JST, +0900)
+          RTC in local TZ: no

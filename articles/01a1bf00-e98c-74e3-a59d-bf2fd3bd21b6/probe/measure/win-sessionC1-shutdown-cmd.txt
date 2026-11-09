@@ -1,0 +1,3 @@
+10:57:51
+Domain 'w2g-ctrl' is being shutdown
+

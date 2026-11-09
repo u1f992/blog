@@ -1,0 +1,5 @@
+forced (ACPI shutdown ignored for 4.5 min)
+Domain 'w2g-probe' destroyed
+
+shut off
+

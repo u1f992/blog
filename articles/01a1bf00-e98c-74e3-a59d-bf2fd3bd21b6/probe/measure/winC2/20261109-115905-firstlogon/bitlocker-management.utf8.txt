@@ -1,0 +1,35 @@
+
+
+TimeCreated      : 2026/11/09 11:50:29
+Id               : 4146
+LevelDisplayName : 情報
+Message          : Device Encryption initialized automatically for volume C:.
+
+TimeCreated      : 2026/11/09 11:50:29
+Id               : 900
+LevelDisplayName : 情報
+Message          : BitLocker successfully committed metadata changes for volume C:.
+
+TimeCreated      : 2026/11/09 11:50:25
+Id               : 768
+LevelDisplayName : 情報
+Message          : BitLocker encryption was started for volume C: using XTS-AES 128 algorithm.
+
+TimeCreated      : 2026/11/09 11:50:14
+Id               : 900
+LevelDisplayName : 情報
+Message          : BitLocker successfully committed metadata changes for volume C:.
+
+TimeCreated      : 2026/11/09 11:50:11
+Id               : 780
+LevelDisplayName : 情報
+Message          : The identification field was changed. 
+                   Identification GUID: {98207b34-4271-41e0-9ed9-1bac4e93a186}
+
+TimeCreated      : 2026/11/09 11:49:12
+Id               : 796
+LevelDisplayName : 情報
+Message          : BitLocker Drive Encryption is using software-based encryption to protect volume C:.
+
+
+

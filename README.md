@@ -167,3 +167,4 @@
 - [mdadm構成を解除する](articles/01a1526f-9d82-778e-bd2a-d39075741935/README.md)
 - [ThinkPad X1 Carbon Gen 12にUbuntu 26.04をセットアップする](articles/01a15c02-b0c8-7478-8cb9-71e1b929e95a/README.md)
 - [Chromeのショートカット](articles/01a1a414-3af6-70d5-9ec6-2e3cfdd3ccd3/README.md)
+- [Windows To Go（Rufus）](articles/01a1bf00-e98c-74e3-a59d-bf2fd3bd21b6/README.md)

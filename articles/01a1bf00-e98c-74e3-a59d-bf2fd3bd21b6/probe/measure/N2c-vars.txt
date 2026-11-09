@@ -1,0 +1,45 @@
+INFO: reading raw edk2 varstore from /tmp/tmp.xOxHRLiBYH/probe/probe_VARS.fd
+INFO: var store range: 0x64 -> 0x40000
+525400E41B33        : blob: 60 bytes
+Attempt 1           : blob: 1049 bytes
+Attempt 2           : blob: 1049 bytes
+Attempt 3           : blob: 1049 bytes
+Attempt 4           : blob: 1049 bytes
+Attempt 5           : blob: 1049 bytes
+Attempt 6           : blob: 1049 bytes
+Attempt 7           : blob: 1049 bytes
+Attempt 8           : blob: 1049 bytes
+Boot0000            : boot entry: title="UiApp" devpath=FvName(7cb8bdc9-f8eb-4f34-aaea-3ee4af6516a1)/FvFileName(462caa21-7614-4503-836e-8ab6f4662331)
+Boot0001            : boot entry: title="UEFI PXEv4 (MAC:525400E41B33)" devpath=PciRoot()/PCI(dev=02:0)/PCI(dev=00:0)/MAC()/IPv4() optdata=4eac0881119f594d850ee21a522c59b2
+Boot0002            : boot entry: title="Ubuntu" devpath=Partition(nr=15)/FilePath(\EFI\ubuntu\shimx64.efi)
+Boot0003            : boot entry: title="UEFI PXEv6 (MAC:525400E41B33)" devpath=PciRoot()/PCI(dev=02:0)/PCI(dev=00:0)/MAC()/IPv6() optdata=4eac0881119f594d850ee21a522c59b2
+Boot0004            : boot entry: title="UEFI HTTPv4 (MAC:525400E41B33)" devpath=PciRoot()/PCI(dev=02:0)/PCI(dev=00:0)/MAC()/IPv4()/URI() optdata=4eac0881119f594d850ee21a522c59b2
+Boot0005            : boot entry: title="UEFI HTTPv6 (MAC:525400E41B33)" devpath=PciRoot()/PCI(dev=02:0)/PCI(dev=00:0)/MAC()/IPv6()/URI() optdata=4eac0881119f594d850ee21a522c59b2
+BootOrder           : boot order: 0002, 0000, 0001, 0003, 0004, 0005
+ClientId            : blob: 20 bytes
+ConIn               : devpath: PciRoot()/PCI(dev=1f:0)/ACPI(hid=0x30341d0,uid=0x0)
+ConOut              : devpath: PciRoot()/PCI(dev=1f:0)/ACPI(hid=0x50141d0,uid=0x0)/Msg(subtype=0xe)/Msg(subtype=0xa)
+CustomMode          : bool: off
+ErrOut              : devpath: PciRoot()/PCI(dev=1f:0)/ACPI(hid=0x50141d0,uid=0x0)/Msg(subtype=0xe)/Msg(subtype=0xa)
+FirmwareSecvarUpdaterVersion: dword: 0x00000001
+HDDP                : blob: 74 bytes
+InitialAttemptOrder : qword: 0x0807060504030201
+KEK                 : blob: 3936 bytes
+Key0000             : blob: 14 bytes
+Key0001             : blob: 14 bytes
+Lang                : ascii: "eng"
+MTC                 : dword: 0x00000007
+MemoryTypeInformation: blob: 48 bytes
+PK                  : blob: 870 bytes
+PlatformLang        : ascii: "en"
+SbatLevel           : ascii: "sbat,1,2023012900\nshim,2\ngrub,3\ngrub.debian,4\n"
+SecureBootEnable    : bool: ON
+TCG2_CONFIGURATION  : byte: 0x02
+TCG2_DEVICE_DETECTION: byte: 0x02
+TCG2_VERSION        : blob: 16 bytes
+Timeout             : word: 0x0000
+VarErrorFlag        : byte: 0xff
+VendorKeysNv        : byte: 0x00
+certdb              : dword: 0x00000004
+db                  : blob: 7636 bytes
+dbx                 : blob: 17912 bytes

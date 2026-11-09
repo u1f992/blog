@@ -1,0 +1,19 @@
+10:50:36 1794189036.087832:usb_ehci_reset === RESET ===
+10:50:36 1794189036.212658:usb_ehci_port_reset reset port #0 - 1
+10:50:36 1794189036.262678:usb_ehci_port_reset reset port #0 - 0
+10:50:36 1794189036.419200:usb_ehci_port_reset reset port #1 - 1
+10:50:36 1794189036.469218:usb_ehci_port_reset reset port #1 - 0
+10:50:36 1794189036.626529:usb_ehci_port_reset reset port #2 - 1
+10:50:36 1794189036.676546:usb_ehci_port_reset reset port #2 - 0
+10:50:36 1794189036.833557:usb_ehci_port_reset reset port #3 - 1
+10:50:36 1794189036.883582:usb_ehci_port_reset reset port #3 - 0
+10:51:01 1794189061.260851:usb_ehci_reset === RESET ===
+10:51:02 1794189062.568543:usb_ehci_reset === RESET ===
+10:51:02 1794189062.983889:usb_ehci_port_reset reset port #0 - 1
+10:51:03 1794189063.034173:usb_ehci_port_reset reset port #0 - 0
+10:51:03 1794189063.252015:usb_ehci_port_reset reset port #1 - 1
+10:51:03 1794189063.302838:usb_ehci_port_reset reset port #1 - 0
+10:51:03 1794189063.533127:usb_ehci_port_reset reset port #2 - 1
+10:51:03 1794189063.583364:usb_ehci_port_reset reset port #2 - 0
+10:51:03 1794189063.819589:usb_ehci_port_reset reset port #3 - 1
+10:51:03 1794189063.871101:usb_ehci_port_reset reset port #3 - 0

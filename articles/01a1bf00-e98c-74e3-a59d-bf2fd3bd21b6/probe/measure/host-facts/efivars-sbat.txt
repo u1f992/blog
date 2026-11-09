@@ -1,0 +1,7 @@
+-rw-r--r-- 1 root root     6 11月  7 15:55 BootOrder-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root     6 11月  7 15:55 DefaultBootOrder-45cf35f6-0d6e-4d04-856a-0370a5b16f53
+-rw-r--r-- 1 root root    12 11月  7 15:55 OsIndicationsSupported-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root    50 11月  7 15:55 SbatLevelRT-605dab50-e046-4300-abb6-3dd810dd8b23
+/sys/firmware/efi/efivars/SbatLevelRT-605dab50-e046-4300-abb6-3dd810dd8b23:
+tail: /sys/firmware/efi/efivars/SbatLevelRT-605dab50-e046-4300-abb6-3dd810dd8b23: 相対オフセット 4 まで探査 (seek) できません: 不正なシークです
+

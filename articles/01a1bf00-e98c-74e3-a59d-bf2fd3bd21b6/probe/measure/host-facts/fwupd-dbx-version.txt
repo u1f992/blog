@@ -1,0 +1,2 @@
+SBAT 1.5.4 Generation number based revocation mechanism ['updatable', 'needs-reboot', 'signed-payload'] None
+UEFI dbx 20260707 UEFI revocation database 2ea557c4 ['internal', 'updatable', 'supported', 'needs-reboot', 'usable-during-update', 'only-version-upgrade', 'signed-payload', 'can-emulation-tag'] ['2ea557c44b83c0ad6b71efb7edcc18b6337ad1c1d682155dd9451b051b62ff40']

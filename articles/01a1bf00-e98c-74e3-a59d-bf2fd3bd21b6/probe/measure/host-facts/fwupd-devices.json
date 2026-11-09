@@ -1,0 +1,881 @@
+{
+  "Devices": [
+    {
+      "DeviceId": "57e35fbedc32c4e5e69c55e3d7810f7ae6f1427a",
+      "InstanceIds": [
+        "DRM\\VEN_ACR&DEV_0467"
+      ],
+      "Guid": [
+        "2d8d48af-a6fa-59e6-89f3-f8d253a9b4e5"
+      ],
+      "Serial": "REDACTED",
+      "Plugin": "linux_display",
+      "Flags": [
+        "can-emulation-tag"
+      ],
+      "VendorIds": [
+        "PNP:ACR"
+      ],
+      "Created": 1794057035
+    },
+    {
+      "DeviceId": "d324166a5e48e27ba0360ac27eeaa89559930203",
+      "InstanceIds": [
+        "DRM\\VEN_ACR&DEV_0497"
+      ],
+      "Guid": [
+        "38b63d44-3d44-5ccb-b112-b7f5303a6dc9"
+      ],
+      "Serial": "REDACTED",
+      "Plugin": "linux_display",
+      "Flags": [
+        "can-emulation-tag"
+      ],
+      "VendorIds": [
+        "PNP:ACR"
+      ],
+      "Created": 1794057035
+    },
+    {
+      "Name": "Core™ i9-14900K",
+      "DeviceId": "4bde70ba4e39b28f9eab1628f9dd6e6244c03027",
+      "InstanceIds": [
+        "CPUID\\PRO_0&FAM_06&MOD_B7",
+        "CPUID\\PRO_0&FAM_06&MOD_B7&STP_1"
+      ],
+      "Guid": [
+        "3d4645d8-13fe-541a-ac5c-7d9d944e4500",
+        "988c4cf1-ace4-5eb5-b26c-905ff236f412"
+      ],
+      "Plugin": "cpu",
+      "Flags": [
+        "internal"
+      ],
+      "Vendor": "Intel",
+      "Version": "0x00000137",
+      "VersionFormat": "hex",
+      "VersionRaw": 311,
+      "Icons": [
+        "computer"
+      ],
+      "Created": 1794057035
+    },
+    {
+      "Name": "Internal SPI Controller",
+      "DeviceId": "b04e387fb80d2b91f37a4d0c7b21461c451775e1",
+      "InstanceIds": [
+        "MTD\\NAME_BIOS",
+        "MTD\\VEN_8086&DEV_7A24",
+        "MTD\\VEN_8086&DEV_7A24&NAME_BIOS"
+      ],
+      "Guid": [
+        "af783c5c-0390-55a5-ac35-7a6c43c6dbec",
+        "f0eb7460-6c32-5542-885b-2f2cc1ce6520",
+        "102e647c-a141-5a67-a06b-8ab307ccc5f1"
+      ],
+      "Summary": "Memory Technology Device",
+      "Plugin": "mtd",
+      "Protocols": [
+        "org.infradead.mtd"
+      ],
+      "Flags": [
+        "internal",
+        "needs-reboot",
+        "can-verify",
+        "can-emulation-tag"
+      ],
+      "Problems": [
+        "firmware-locked"
+      ],
+      "Vendor": "Intel",
+      "VendorIds": [
+        "PCI:0x8086"
+      ],
+      "VersionRaw": 17,
+      "Icons": [
+        "drive-harddisk-solidstate"
+      ],
+      "Created": 1794057035
+    },
+    {
+      "Name": "Internal SPI Controller (BIOS)",
+      "DeviceId": "52ff2a08045055357f07ae0fa9bf4a9be948c18a",
+      "ParentDeviceId": "b04e387fb80d2b91f37a4d0c7b21461c451775e1",
+      "CompositeId": "b04e387fb80d2b91f37a4d0c7b21461c451775e1",
+      "InstanceIds": [
+        "IFD\\REGION_bios"
+      ],
+      "Guid": [
+        "75af99a7-8ae0-5c84-8091-cfe7b595f03a"
+      ],
+      "Plugin": "mtd",
+      "Protocols": [
+        "org.infradead.mtd"
+      ],
+      "Flags": [
+        "internal",
+        "needs-reboot",
+        "updatable-hidden",
+        "signed-payload"
+      ],
+      "Problems": [
+        "firmware-locked"
+      ],
+      "Vendor": "Intel",
+      "VendorIds": [
+        "PCI:0x8086"
+      ],
+      "Version": "M.A0",
+      "VersionFormat": "plain",
+      "Icons": [
+        "computer"
+      ],
+      "Created": 1794057035
+    },
+    {
+      "Name": "Internal SPI Controller (IFD descriptor region)",
+      "DeviceId": "417671a3110da5c0fffe460e3afeffa27ecaaab3",
+      "ParentDeviceId": "b04e387fb80d2b91f37a4d0c7b21461c451775e1",
+      "CompositeId": "b04e387fb80d2b91f37a4d0c7b21461c451775e1",
+      "InstanceIds": [
+        "IFD\\REGION_desc"
+      ],
+      "Guid": [
+        "0b745c77-9b02-5c53-9cda-ca6cd77856a9"
+      ],
+      "Plugin": "mtd",
+      "Flags": [
+        "internal",
+        "can-verify",
+        "can-verify-image",
+        "signed-payload"
+      ],
+      "Problems": [
+        "firmware-locked"
+      ],
+      "Vendor": "Intel",
+      "VendorIds": [
+        "PCI:0x8086"
+      ],
+      "Icons": [
+        "computer"
+      ],
+      "Created": 1794057035
+    },
+    {
+      "Name": "Internal SPI Controller (Management Engine)",
+      "DeviceId": "93282f0ad24f23dc8b90a9a4edcd1067e9c6d0c2",
+      "ParentDeviceId": "b04e387fb80d2b91f37a4d0c7b21461c451775e1",
+      "CompositeId": "b04e387fb80d2b91f37a4d0c7b21461c451775e1",
+      "InstanceIds": [
+        "IFD\\REGION_me"
+      ],
+      "Guid": [
+        "3398844b-2c46-57cd-9a4c-c699218db295"
+      ],
+      "Plugin": "mtd",
+      "Flags": [
+        "internal",
+        "can-verify",
+        "can-verify-image",
+        "signed-payload"
+      ],
+      "Problems": [
+        "firmware-locked"
+      ],
+      "Vendor": "Intel",
+      "VendorIds": [
+        "PCI:0x8086"
+      ],
+      "Icons": [
+        "computer"
+      ],
+      "Created": 1794057035
+    },
+    {
+      "Name": "Internal SPI Controller (Region 9)",
+      "DeviceId": "03720460aa6dc37bb8e25d5eb49d47050cfbf459",
+      "ParentDeviceId": "b04e387fb80d2b91f37a4d0c7b21461c451775e1",
+      "CompositeId": "b04e387fb80d2b91f37a4d0c7b21461c451775e1",
+      "InstanceIds": [
+        "IFD\\REGION_9"
+      ],
+      "Guid": [
+        "5f4b048a-f1bc-5e64-a979-2ddc88509ebf"
+      ],
+      "Plugin": "mtd",
+      "Flags": [
+        "internal",
+        "signed-payload"
+      ],
+      "Problems": [
+        "firmware-locked"
+      ],
+      "Vendor": "Intel",
+      "VendorIds": [
+        "PCI:0x8086"
+      ],
+      "Icons": [
+        "computer"
+      ],
+      "Created": 1794057035
+    },
+    {
+      "Name": "KEK CA",
+      "DeviceId": "b7a1d3d90faa1f6275d9a98da4fb3be7118e61c7",
+      "ParentDeviceId": "2a4c23bfb79b5dabe474cb7b1b3e604645d6f9c6",
+      "CompositeId": "0c615d897efcaf9ca878e403c55e607f72de4c8a",
+      "InstanceIds": [
+        "UEFI\\VENDOR_Microsoft&NAME_Microsoft-KEK-CA",
+        "UEFI\\CRT_DEC64D7746D983DB3774829A00BF829D9F19E9CF"
+      ],
+      "Guid": [
+        "814e950f-1449-566a-a190-42c9d3a3a2df",
+        "cd94ec34-7163-5f27-8549-1bd4b7872ae8"
+      ],
+      "Plugin": "uefi_kek",
+      "Protocols": [
+        "org.uefi.dbx2"
+      ],
+      "Flags": [
+        "internal",
+        "updatable",
+        "needs-reboot",
+        "usable-during-update",
+        "signed-payload",
+        "can-emulation-tag"
+      ],
+      "Vendor": "Microsoft",
+      "VendorIds": [
+        "UEFI:Microsoft"
+      ],
+      "Version": "2023",
+      "VersionFormat": "number",
+      "VersionRaw": 2023,
+      "Icons": [
+        "application-certificate"
+      ],
+      "Created": 1794057035
+    },
+    {
+      "Name": "MSI SHIP DB",
+      "DeviceId": "1bf1a9067896c9a5b8a4697518edf9642b2e62fc",
+      "ParentDeviceId": "0352a8acc949c7df21fec16e566ba9a74e797a97",
+      "CompositeId": "0c615d897efcaf9ca878e403c55e607f72de4c8a",
+      "InstanceIds": [
+        "UEFI\\CRT_ACCB87973B9667F0F4EF65CD1A5AC4274C899130"
+      ],
+      "Guid": [
+        "f521f945-673e-58f0-9f67-e575b1440cc9"
+      ],
+      "Plugin": "uefi_db",
+      "Protocols": [
+        "org.uefi.dbx2"
+      ],
+      "Flags": [
+        "internal",
+        "needs-reboot",
+        "updatable-hidden",
+        "signed-payload",
+        "can-emulation-tag"
+      ],
+      "Version": "2021",
+      "VersionFormat": "number",
+      "VersionRaw": 2021,
+      "Icons": [
+        "application-certificate"
+      ],
+      "Created": 1794057035,
+      "UpdateError": "No vendor ID set"
+    },
+    {
+      "Name": "MSI SHIP KEK",
+      "DeviceId": "4100ba9ac84f4a484a25723cb0f3e4225f1eb43b",
+      "ParentDeviceId": "2a4c23bfb79b5dabe474cb7b1b3e604645d6f9c6",
+      "CompositeId": "0c615d897efcaf9ca878e403c55e607f72de4c8a",
+      "InstanceIds": [
+        "UEFI\\CRT_41E6D1E4E3383C0A3DECEB1E589143E9E1562DA2"
+      ],
+      "Guid": [
+        "a1fe36a1-3e0a-576e-9731-762b0f7e8b34"
+      ],
+      "Plugin": "uefi_kek",
+      "Protocols": [
+        "org.uefi.dbx2"
+      ],
+      "Flags": [
+        "internal",
+        "needs-reboot",
+        "usable-during-update",
+        "updatable-hidden",
+        "signed-payload",
+        "can-emulation-tag"
+      ],
+      "Version": "2021",
+      "VersionFormat": "number",
+      "VersionRaw": 2021,
+      "Icons": [
+        "application-certificate"
+      ],
+      "Created": 1794057035,
+      "UpdateError": "No vendor ID set"
+    },
+    {
+      "Name": "MSI SHIP PK",
+      "DeviceId": "6924110cde4fa051bfdc600a60620dc7aa9d3c6a",
+      "ParentDeviceId": "0c615d897efcaf9ca878e403c55e607f72de4c8a",
+      "CompositeId": "0c615d897efcaf9ca878e403c55e607f72de4c8a",
+      "InstanceIds": [
+        "UEFI\\CRT_0089C11A61BBFEA715A7D8AAD7070757E11356A8"
+      ],
+      "Guid": [
+        "e8010bb5-29dc-5c38-ba6a-f7362ab8f4bc"
+      ],
+      "Summary": "UEFI Platform Key",
+      "Plugin": "uefi_pk",
+      "Flags": [
+        "internal"
+      ],
+      "Vendor": "Unknown",
+      "Version": "2021",
+      "VersionFormat": "number",
+      "VersionRaw": 2021,
+      "Icons": [
+        "application-certificate"
+      ],
+      "Created": 1794057035
+    },
+    {
+      "Name": "Option ROM UEFI CA",
+      "DeviceId": "92120fc1a625f725901333cbfec152b8d6e42d43",
+      "ParentDeviceId": "0352a8acc949c7df21fec16e566ba9a74e797a97",
+      "CompositeId": "0c615d897efcaf9ca878e403c55e607f72de4c8a",
+      "InstanceIds": [
+        "UEFI\\VENDOR_Microsoft&NAME_Microsoft-Option-ROM-UEFI-CA",
+        "UEFI\\CRT_F45B559FC1C60F31B3071021298D5ED7D77280B0"
+      ],
+      "Guid": [
+        "ca4668d9-734f-5b2b-aae8-8120b196f659",
+        "965d1919-0e18-5b63-9ebd-e5d122cd11df"
+      ],
+      "Plugin": "uefi_db",
+      "Protocols": [
+        "org.uefi.dbx2"
+      ],
+      "Flags": [
+        "internal",
+        "updatable",
+        "needs-reboot",
+        "signed-payload",
+        "can-emulation-tag"
+      ],
+      "Vendor": "Microsoft",
+      "VendorIds": [
+        "UEFI:Microsoft"
+      ],
+      "Version": "2023",
+      "VersionFormat": "number",
+      "VersionRaw": 2023,
+      "Icons": [
+        "application-certificate"
+      ],
+      "Created": 1794057035
+    },
+    {
+      "Name": "SBAT",
+      "DeviceId": "6469856584e2f5873b2f148302e46c9313c7d054",
+      "InstanceIds": [
+        "UEFI\\OS_ubuntu&VAR_SbatLevelRT"
+      ],
+      "Guid": [
+        "9947c120-b97b-52d6-9d83-738a1c342e23"
+      ],
+      "Summary": "Generation number based revocation mechanism",
+      "Plugin": "uefi_sbat",
+      "Protocols": [
+        "com.uefi.sbat"
+      ],
+      "Flags": [
+        "updatable",
+        "needs-reboot",
+        "signed-payload"
+      ],
+      "VendorIds": [
+        "OS:ubuntu"
+      ],
+      "Version": "1.5.4",
+      "VersionFormat": "triplet",
+      "Icons": [
+        "application-certificate"
+      ],
+      "Created": 1794057035
+    },
+    {
+      "Name": "ST8000DM004-2U9188",
+      "DeviceId": "61c06d13ed8aadc997f9b3938e44cb7476e4dfa2",
+      "InstanceIds": [
+        "STORAGE-DELL-110775",
+        "IDE\\ST8000DM004-2U9188______________________0001",
+        "IDE\\0ST8000DM004-2U9188______________________",
+        "ST8000DM004-2U9188"
+      ],
+      "Guid": [
+        "6bcb3d56-f86a-5a1a-a39f-c8e819f29a15",
+        "78007800-7800-7800-0000-010000000000",
+        "924cb637-2765-5867-8bf7-8335553b34f9",
+        "bc40f62e-7be1-5a35-956f-0160ca587892",
+        "0f3eedb9-51fa-5149-8b60-c1a14327593a"
+      ],
+      "Serial": "REDACTED",
+      "Summary": "ATA drive",
+      "Plugin": "ata",
+      "Protocols": [
+        "org.t13.ata"
+      ],
+      "Flags": [
+        "internal",
+        "updatable",
+        "require-ac",
+        "needs-reboot",
+        "usable-during-update",
+        "can-emulation-tag"
+      ],
+      "Vendor": "Dell",
+      "VendorIds": [
+        "ATA:0x1028",
+        "OUI:000c50"
+      ],
+      "Version": "0001",
+      "VersionFormat": "plain",
+      "Icons": [
+        "drive-harddisk"
+      ],
+      "Created": 1794057035
+    },
+    {
+      "Name": "ST8000DM004-2U9188",
+      "DeviceId": "71fd6bb28805b14ca85b138f46f1ce65dc7e506d",
+      "InstanceIds": [
+        "STORAGE-DELL-110775",
+        "IDE\\ST8000DM004-2U9188______________________0001",
+        "IDE\\0ST8000DM004-2U9188______________________",
+        "ST8000DM004-2U9188"
+      ],
+      "Guid": [
+        "6bcb3d56-f86a-5a1a-a39f-c8e819f29a15",
+        "78007800-7800-7800-0000-010000000000",
+        "924cb637-2765-5867-8bf7-8335553b34f9",
+        "bc40f62e-7be1-5a35-956f-0160ca587892",
+        "0f3eedb9-51fa-5149-8b60-c1a14327593a"
+      ],
+      "Serial": "REDACTED",
+      "Summary": "ATA drive",
+      "Plugin": "ata",
+      "Protocols": [
+        "org.t13.ata"
+      ],
+      "Flags": [
+        "internal",
+        "updatable",
+        "require-ac",
+        "needs-reboot",
+        "usable-during-update",
+        "can-emulation-tag"
+      ],
+      "Vendor": "Dell",
+      "VendorIds": [
+        "ATA:0x1028",
+        "OUI:000c50"
+      ],
+      "Version": "0001",
+      "VersionFormat": "plain",
+      "Icons": [
+        "drive-harddisk"
+      ],
+      "Created": 1794057035
+    },
+    {
+      "Name": "System Firmware",
+      "DeviceId": "0c615d897efcaf9ca878e403c55e607f72de4c8a",
+      "Guid": [
+        "67fb6ccf-64fc-5ba2-ae5a-7927e1b8d083"
+      ],
+      "Summary": "UEFI System Resource Table device (updated via NVRAM)",
+      "Plugin": "uefi_capsule",
+      "Protocols": [
+        "org.uefi.capsule"
+      ],
+      "Flags": [
+        "internal",
+        "updatable",
+        "require-ac",
+        "needs-reboot",
+        "can-verify",
+        "usable-during-update"
+      ],
+      "RequestFlags": [
+        "allow-generic-message"
+      ],
+      "Checksums": [
+        "a2e2f55a14323381ac9454184f3cbea88ab75f21acf491fd9c85d6b4fcea2852"
+      ],
+      "Vendor": "Micro-Star International Co., Ltd.",
+      "VendorIds": [
+        "DMI:American Megatrends International, LLC."
+      ],
+      "Version": "1",
+      "VersionLowest": "1",
+      "VersionFormat": "number",
+      "VersionRaw": 1,
+      "VersionLowestRaw": 1,
+      "Icons": [
+        "computer"
+      ],
+      "Created": 1794057035,
+      "UpdateState": 2
+    },
+    {
+      "Name": "TPM",
+      "DeviceId": "1d8d50a4dbc65618f5c399c2ae827b632b3ccc11",
+      "InstanceIds": [
+        "TPM\\VEN_INTC&DEV_0000",
+        "TPM\\VEN_INTC&MOD_ADL",
+        "TPM\\VEN_INTC&DEV_0000&VER_2.0",
+        "TPM\\VEN_INTC&MOD_ADL&VER_2.0"
+      ],
+      "Guid": [
+        "34801700-3a50-5b05-820c-fe14580e4c2d",
+        "93532b61-86ce-57cf-8a31-f5a5553966c7",
+        "03f304f4-223e-54f4-b2c1-c3cf3b5817c6",
+        "12e61a33-eef7-58d6-855d-ece38114294d"
+      ],
+      "Plugin": "tpm",
+      "Protocols": [
+        "org.trustedcomputinggroup.tpm2"
+      ],
+      "Flags": [
+        "internal",
+        "require-ac",
+        "needs-reboot",
+        "self-recovery",
+        "signed-payload",
+        "can-emulation-tag"
+      ],
+      "Vendor": "Intel",
+      "VendorIds": [
+        "TPM:INTC"
+      ],
+      "Version": "600.18.38.2676",
+      "VersionFormat": "quad",
+      "VersionRaw": 168885063338297972,
+      "Icons": [
+        "computer"
+      ],
+      "Created": 1794057035
+    },
+    {
+      "Name": "UEFI CA",
+      "DeviceId": "5bc922b7bd1adb5b6f99592611404036bd9f42d0",
+      "ParentDeviceId": "0352a8acc949c7df21fec16e566ba9a74e797a97",
+      "CompositeId": "0c615d897efcaf9ca878e403c55e607f72de4c8a",
+      "InstanceIds": [
+        "UEFI\\VENDOR_Microsoft&NAME_Microsoft-UEFI-CA",
+        "UEFI\\CRT_7CD7437C555F89E7C2B50E21937E420C4E583E80"
+      ],
+      "Guid": [
+        "26f42cba-9bf6-5365-802b-e250eb757e96",
+        "308281c7-d0c5-52e0-8c1a-810540de03df"
+      ],
+      "Plugin": "uefi_db",
+      "Protocols": [
+        "org.uefi.dbx2"
+      ],
+      "Flags": [
+        "internal",
+        "updatable",
+        "supported",
+        "needs-reboot",
+        "signed-payload",
+        "can-emulation-tag"
+      ],
+      "Vendor": "Microsoft",
+      "VendorIds": [
+        "UEFI:Microsoft"
+      ],
+      "Version": "2023",
+      "VersionFormat": "number",
+      "VersionRaw": 2023,
+      "Icons": [
+        "application-certificate"
+      ],
+      "Created": 1794057035,
+      "Releases": [
+        {
+          "AppstreamId": "com.microsoft.db-uefi-3p.firmware",
+          "ReleaseId": "116503",
+          "RemoteId": "lvfs",
+          "Name": "Secure Boot Signature Database",
+          "Summary": "UEFI Secure Boot Signature Database",
+          "Description": "<p>This updates the 3rd Party UEFI Signature Database (the &quot;db&quot;) to the latest release from Microsoft.It also adds the latest OptionROM UEFI Signature Database update.</p>",
+          "Version": "2023",
+          "Filename": "DBUpdate-3P2023_OROM2023.cab",
+          "Protocol": "org.uefi.dbx2",
+          "Categories": [
+            "X-Configuration",
+            "X-System"
+          ],
+          "Checksum": [
+            "eadea872bb9176564543e172660c832920d02a3f",
+            "43c643208621eebd2342066225555735fa514304172ac3cd258652ab7858e304"
+          ],
+          "Tags": [
+            "uefi-secure-boot"
+          ],
+          "License": "LicenseRef-proprietary",
+          "Size": 10023,
+          "Created": 1745884800,
+          "Locations": [
+            "https://fwupd.org/downloads/43c643208621eebd2342066225555735fa514304172ac3cd258652ab7858e304-DBUpdate-3P2023_OROM2023.cab"
+          ],
+          "Homepage": "https://fwupd.github.io/libfwupdplugin/uefi-db.html",
+          "Vendor": "Microsoft",
+          "Flags": [
+            "trusted-metadata"
+          ],
+          "Reports": [
+            {
+              "DeviceName": "LENOVO ThinkPad P15v Gen 1",
+              "DistroId": "ubuntu",
+              "DistroVersion": "25.10",
+              "VersionOld": "2011",
+              "Vendor": "Lenovo",
+              "RemoteId": "lvfs",
+              "VendorId": 84,
+              "Flags": [
+                "is-upgrade"
+              ],
+              "RuntimeVersion(org.freedesktop.fwupd)": "2.0.16"
+            },
+            {
+              "DeviceName": "Framework Laptop 16 (AMD Ryzen 7040 Series)",
+              "DistroId": "fedora",
+              "DistroVariant": "workstation",
+              "DistroVersion": "42",
+              "VersionOld": "2011",
+              "Vendor": "Framework",
+              "RemoteId": "lvfs",
+              "VendorId": 438,
+              "Flags": [
+                "is-upgrade"
+              ],
+              "RuntimeVersion(org.freedesktop.fwupd)": "2.0.16"
+            },
+            {
+              "DeviceName": "Framework Laptop (12th Gen Intel Core)",
+              "DistroId": "fedora",
+              "DistroVariant": "workstation",
+              "DistroVersion": "42",
+              "VersionOld": "2011",
+              "Vendor": "Framework",
+              "RemoteId": "lvfs",
+              "VendorId": 438,
+              "Flags": [
+                "is-upgrade"
+              ],
+              "RuntimeVersion(org.freedesktop.fwupd)": "2.0.16"
+            },
+            {
+              "DeviceName": "Framework Laptop 13 (Intel Core Ultra Series 1)",
+              "DistroId": "nixos",
+              "DistroVersion": "25.11",
+              "VersionOld": "2011",
+              "Vendor": "Framework",
+              "RemoteId": "lvfs",
+              "VendorId": 438,
+              "Flags": [
+                "is-upgrade"
+              ],
+              "RuntimeVersion(org.freedesktop.fwupd)": "2.0.12"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "UEFI Device Firmware",
+      "DeviceId": "0b5f744a71ab527203b84dc57da4a146dfa15a86",
+      "Guid": [
+        "ee85a886-1ed7-d62e-0fc1-9d6ccc9677eb"
+      ],
+      "Summary": "UEFI System Resource Table device (updated via NVRAM)",
+      "Plugin": "uefi_capsule",
+      "Protocols": [
+        "org.uefi.capsule"
+      ],
+      "Flags": [
+        "internal",
+        "updatable",
+        "require-ac",
+        "needs-reboot",
+        "usable-during-update"
+      ],
+      "RequestFlags": [
+        "allow-generic-message"
+      ],
+      "VendorIds": [
+        "DMI:American Megatrends International, LLC."
+      ],
+      "Version": "1",
+      "VersionFormat": "number",
+      "VersionRaw": 1,
+      "Created": 1794057035,
+      "UpdateState": 2
+    },
+    {
+      "Name": "UEFI Key Exchange Key",
+      "DeviceId": "2a4c23bfb79b5dabe474cb7b1b3e604645d6f9c6",
+      "ParentDeviceId": "0c615d897efcaf9ca878e403c55e607f72de4c8a",
+      "CompositeId": "0c615d897efcaf9ca878e403c55e607f72de4c8a",
+      "Plugin": "uefi_kek",
+      "Flags": [
+        "internal"
+      ],
+      "Icons": [
+        "application-certificate"
+      ],
+      "Created": 1794057035
+    },
+    {
+      "Name": "UEFI Signature Database",
+      "DeviceId": "0352a8acc949c7df21fec16e566ba9a74e797a97",
+      "ParentDeviceId": "0c615d897efcaf9ca878e403c55e607f72de4c8a",
+      "CompositeId": "0c615d897efcaf9ca878e403c55e607f72de4c8a",
+      "Plugin": "uefi_db",
+      "Flags": [
+        "internal"
+      ],
+      "Icons": [
+        "application-certificate"
+      ],
+      "Created": 1794057035
+    },
+    {
+      "Name": "UEFI dbx",
+      "DeviceId": "362301da643102b9f38477387e2193e57abaa590",
+      "ParentDeviceId": "0c615d897efcaf9ca878e403c55e607f72de4c8a",
+      "CompositeId": "0c615d897efcaf9ca878e403c55e607f72de4c8a",
+      "InstanceIds": [
+        "UEFI\\CRT_A1117F516A32CEFCBA3F2D1ACE10A87972FD6BBE8FE0D0B996E09E65D802A503&ARCH_X64",
+        "UEFI\\CRT_3CD3F0309EDAE228767A976DD40D9F4AFFC4FBD5218F2E8CC3C9DD97E8AC6F9D&ARCH_X64",
+        "UEFI\\CRT_9C25AE3ECE9D93079A158B01AE21E92E520B05D6BBD5CE6C4FA95249D300E38B&ARCH_X64"
+      ],
+      "Guid": [
+        "f8ba2887-9411-5c36-9cee-88995bb39731",
+        "d07ff664-b0e1-5f4e-a723-d7fbcbfcb94f",
+        "5c6c0596-253d-560d-a120-cb32286764c6"
+      ],
+      "Summary": "UEFI revocation database 2ea557c4",
+      "Plugin": "uefi_dbx",
+      "Protocols": [
+        "org.uefi.dbx2"
+      ],
+      "Flags": [
+        "internal",
+        "updatable",
+        "supported",
+        "needs-reboot",
+        "usable-during-update",
+        "only-version-upgrade",
+        "signed-payload",
+        "can-emulation-tag"
+      ],
+      "Checksums": [
+        "2ea557c44b83c0ad6b71efb7edcc18b6337ad1c1d682155dd9451b051b62ff40"
+      ],
+      "Vendor": "Microsoft",
+      "VendorIds": [
+        "UEFI:Microsoft"
+      ],
+      "VersionFormat": "number",
+      "Icons": [
+        "application-certificate"
+      ],
+      "InstallDuration": 1,
+      "Created": 1794057035
+    },
+    {
+      "Name": "WD BLACK SN7100 2TB",
+      "DeviceId": "e32966e41f54b47823eef28bd8b4bd9e1018b923",
+      "InstanceIds": [
+        "NVME\\VEN_15B7&DEV_5045",
+        "NVME\\VEN_15B7&DEV_5045&SUBSYS_15B75045",
+        "WD_BLACK SN7100 2TB"
+      ],
+      "Guid": [
+        "9d42324f-0756-5e0d-ab30-5c66f87c00a5",
+        "a081df63-e4ec-57a6-8718-a699706b8081",
+        "5a04b9ca-ef81-55d1-8086-b6894676cd7b"
+      ],
+      "Serial": "REDACTED",
+      "Summary": "NVM Express solid state drive",
+      "Plugin": "nvme",
+      "Protocols": [
+        "org.nvmexpress"
+      ],
+      "Flags": [
+        "internal",
+        "updatable",
+        "require-ac",
+        "needs-reboot",
+        "usable-during-update",
+        "can-emulation-tag"
+      ],
+      "Vendor": "Sandisk",
+      "VendorIds": [
+        "PCI:0x15B7"
+      ],
+      "Version": "7615M0WD",
+      "VersionFormat": "plain",
+      "Icons": [
+        "drive-harddisk"
+      ],
+      "Created": 1794057035
+    },
+    {
+      "Name": "Windows UEFI CA",
+      "DeviceId": "d31da5f926c6d962ed810b284fab5a2ef623007b",
+      "ParentDeviceId": "0352a8acc949c7df21fec16e566ba9a74e797a97",
+      "CompositeId": "0c615d897efcaf9ca878e403c55e607f72de4c8a",
+      "InstanceIds": [
+        "UEFI\\VENDOR_Microsoft&NAME_Windows-UEFI-CA",
+        "UEFI\\CRT_A794240D25F0CCB2EC8142DC2F7411890717DEAD"
+      ],
+      "Guid": [
+        "914015a8-9d92-5462-9a9b-f2b361e4faae",
+        "89a825bf-78b5-5f1c-905b-e982b2f02584"
+      ],
+      "Plugin": "uefi_db",
+      "Protocols": [
+        "org.uefi.dbx2"
+      ],
+      "Flags": [
+        "internal",
+        "updatable",
+        "needs-reboot",
+        "signed-payload",
+        "can-emulation-tag"
+      ],
+      "Vendor": "Microsoft",
+      "VendorIds": [
+        "UEFI:Microsoft"
+      ],
+      "Version": "2023",
+      "VersionFormat": "number",
+      "VersionRaw": 2023,
+      "Icons": [
+        "application-certificate"
+      ],
+      "Created": 1794057035
+    }
+  ]
+}

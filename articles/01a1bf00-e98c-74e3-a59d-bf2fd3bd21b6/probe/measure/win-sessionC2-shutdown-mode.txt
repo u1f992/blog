@@ -1,0 +1,3 @@
+forced (ACPI shutdown requested 12:48:31 and 12:53:38; guest hung with 4 vCPUs busy and no I/O from 12:54:54)
+Domain 'w2g-ctrl2' destroyed
+

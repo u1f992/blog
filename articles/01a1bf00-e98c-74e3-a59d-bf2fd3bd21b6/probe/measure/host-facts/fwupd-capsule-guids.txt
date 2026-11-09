@@ -1,0 +1,4 @@
+System Firmware ver= 1 guids= ['67fb6ccf-64fc-5ba2-ae5a-7927e1b8d083'] vendor= Micro-Star International Co., Ltd. flags= ['internal', 'updatable', 'needs-reboot']
+TPM ver= 600.18.38.2676 guids= ['34801700-3a50-5b05-820c-fe14580e4c2d', '93532b61-86ce-57cf-8a31-f5a5553966c7', '03f304f4-223e-54f4-b2c1-c3cf3b5817c6', '12e61a33-eef7-58d6-855d-ece38114294d'] vendor= Intel flags= ['internal', 'needs-reboot']
+UEFI Device Firmware ver= 1 guids= ['ee85a886-1ed7-d62e-0fc1-9d6ccc9677eb'] vendor= None flags= ['internal', 'updatable', 'needs-reboot']
+UEFI dbx ver= None guids= ['f8ba2887-9411-5c36-9cee-88995bb39731', 'd07ff664-b0e1-5f4e-a723-d7fbcbfcb94f', '5c6c0596-253d-560d-a120-cb32286764c6'] vendor= Microsoft flags= ['internal', 'updatable', 'supported', 'needs-reboot']

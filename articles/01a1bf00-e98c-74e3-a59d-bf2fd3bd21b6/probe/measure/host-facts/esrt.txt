@@ -1,0 +1,23 @@
+合計 0
+drwxr-xr-x 3 root root    0 11月  7 22:10 .
+drwxr-xr-x 6 root root    0 11月  7 15:55 ..
+drwxr-xr-x 4 root root    0 11月  7 16:08 entries
+-r-------- 1 root root 4096 11月  7 22:10 fw_resource_count
+-r-------- 1 root root 4096 11月  7 22:10 fw_resource_count_max
+-r-------- 1 root root 4096 11月  7 22:10 fw_resource_version
+/sys/firmware/efi/esrt/entries/entry0
+  fw_type                        
+  fw_class                       
+  fw_version                     
+  lowest_supported_fw_version    
+  capsule_flags                  
+  last_attempt_version           
+  last_attempt_status            
+/sys/firmware/efi/esrt/entries/entry1
+  fw_type                        
+  fw_class                       
+  fw_version                     
+  lowest_supported_fw_version    
+  capsule_flags                  
+  last_attempt_version           
+  last_attempt_status            

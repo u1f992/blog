@@ -1,0 +1,475 @@
+
+
+TimeCreated      : 2026/11/09 10:49:21
+ProviderName     : Microsoft-Windows-BitLocker-Driver
+Id               : 24586
+LevelDisplayName : エラー
+Message          : ボリューム C: の変換中にエラーが発生しました。
+
+TimeCreated      : 2026/11/09 10:49:21
+ProviderName     : Microsoft-Windows-BitLocker-Driver
+Id               : 24586
+LevelDisplayName : エラー
+Message          : ボリューム C: の変換中にエラーが発生しました。
+
+TimeCreated      : 2026/11/09 10:49:20
+ProviderName     : Microsoft-Windows-BitLocker-Driver
+Id               : 24669
+LevelDisplayName : エラー
+Message          : ディスク I/O エラーにより、ボリューム C: で、BitLocker の最終処理スイープが失敗しました。ディスクに不良セクターがないか確認してください。
+
+TimeCreated      : 2026/11/09 10:49:20
+ProviderName     : Microsoft-Windows-BitLocker-Driver
+Id               : 24586
+LevelDisplayName : エラー
+Message          : ボリューム C: の変換中にエラーが発生しました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : Microsoft-Windows-BitLocker-Driver
+Id               : 24586
+LevelDisplayName : エラー
+Message          : ボリューム C: の変換中にエラーが発生しました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : 警告
+Message          : ディスク 0 (PDO 名: \Device\00000028) の論理ブロック アドレス 0x1f95a78 で IO 操作が再試行されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:19
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:49:01
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : 警告
+Message          : ディスク 2 (PDO 名: \Device\0000002a) の論理ブロック アドレス 0x0 で IO 操作が再試行されました。
+
+TimeCreated      : 2026/11/09 10:49:01
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk2\DR2 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:48:45
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10016
+LevelDisplayName : 警告
+Message          : アプリケーション固有 のアクセス許可の設定では、CLSID 
+                   {8BC3F05E-D86B-11D0-A075-00C04FB68820}
+                    および APPID 
+                   {8BC3F05E-D86B-11D0-A075-00C04FB68820}
+                    の COM サーバー アプリケーションに対するローカルアクティブ化のアクセス許可を、アプリケーション コンテナー Microsoft.Windows.CloudExperienceHost_10.0
+                   .26100.1_neutral_neutral_cw5n1h2txyewy SID (S-1-15-2-2434737943-167758768-3180539153-984336765-11072
+                   80622-3591121930-2677285773) で実行中のアドレス LocalHost (LRPC 使用) のユーザー DESKTOP-CTFFP7J\defaultuser0 SID (S
+                   -1-5-21-2368979592-3982815140-4163568900-1001) に与えることはできません。このセキュリティ アクセス許可は、コンポーネント サービス管理ツールを使って変更
+                   できます。
+
+TimeCreated      : 2026/11/09 10:48:45
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10016
+LevelDisplayName : 警告
+Message          : アプリケーション固有 のアクセス許可の設定では、CLSID 
+                   {8BC3F05E-D86B-11D0-A075-00C04FB68820}
+                    および APPID 
+                   {8BC3F05E-D86B-11D0-A075-00C04FB68820}
+                    の COM サーバー アプリケーションに対するローカルアクティブ化のアクセス許可を、アプリケーション コンテナー Microsoft.Windows.CloudExperienceHost_10.0
+                   .26100.1_neutral_neutral_cw5n1h2txyewy SID (S-1-15-2-2434737943-167758768-3180539153-984336765-11072
+                   80622-3591121930-2677285773) で実行中のアドレス LocalHost (LRPC 使用) のユーザー DESKTOP-CTFFP7J\defaultuser0 SID (S
+                   -1-5-21-2368979592-3982815140-4163568900-1001) に与えることはできません。このセキュリティ アクセス許可は、コンポーネント サービス管理ツールを使って変更
+                   できます。
+
+TimeCreated      : 2026/11/09 10:48:45
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10016
+LevelDisplayName : 警告
+Message          : アプリケーション固有 のアクセス許可の設定では、CLSID 
+                   {8BC3F05E-D86B-11D0-A075-00C04FB68820}
+                    および APPID 
+                   {8BC3F05E-D86B-11D0-A075-00C04FB68820}
+                    の COM サーバー アプリケーションに対するローカルアクティブ化のアクセス許可を、アプリケーション コンテナー Microsoft.Windows.CloudExperienceHost_10.0
+                   .26100.1_neutral_neutral_cw5n1h2txyewy SID (S-1-15-2-2434737943-167758768-3180539153-984336765-11072
+                   80622-3591121930-2677285773) で実行中のアドレス LocalHost (LRPC 使用) のユーザー DESKTOP-CTFFP7J\defaultuser0 SID (S
+                   -1-5-21-2368979592-3982815140-4163568900-1001) に与えることはできません。このセキュリティ アクセス許可は、コンポーネント サービス管理ツールを使って変更
+                   できます。
+
+TimeCreated      : 2026/11/09 10:48:45
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10016
+LevelDisplayName : 警告
+Message          : アプリケーション固有 のアクセス許可の設定では、CLSID 
+                   {8BC3F05E-D86B-11D0-A075-00C04FB68820}
+                    および APPID 
+                   {8BC3F05E-D86B-11D0-A075-00C04FB68820}
+                    の COM サーバー アプリケーションに対するローカルアクティブ化のアクセス許可を、アプリケーション コンテナー Microsoft.Windows.CloudExperienceHost_10.0
+                   .26100.1_neutral_neutral_cw5n1h2txyewy SID (S-1-15-2-2434737943-167758768-3180539153-984336765-11072
+                   80622-3591121930-2677285773) で実行中のアドレス LocalHost (LRPC 使用) のユーザー DESKTOP-CTFFP7J\defaultuser0 SID (S
+                   -1-5-21-2368979592-3982815140-4163568900-1001) に与えることはできません。このセキュリティ アクセス許可は、コンポーネント サービス管理ツールを使って変更
+                   できます。
+
+TimeCreated      : 2026/11/09 10:48:41
+ProviderName     : Microsoft-Windows-TPM-WMI
+Id               : 1040
+LevelDisplayName : エラー
+Message          : 構成証明前の正常性チェックで、重要なコンポーネントが失敗し、デバイスが構成証明に合格しないことが確認されました。
+                    行われたチェックの詳細については、C:\Windows\Logs\MeasuredBoot\0000000003-0000000000.json を参照してください。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : 警告
+Message          : ディスク 1 (PDO 名: \Device\00000029) の論理ブロック アドレス 0x964e78 で IO 操作が再試行されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:49
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:47:03
+ProviderName     : Microsoft-Windows-TPM-WMI
+Id               : 1040
+LevelDisplayName : エラー
+Message          : 構成証明前の正常性チェックで、重要なコンポーネントが失敗し、デバイスが構成証明に合格しないことが確認されました。
+                    行われたチェックの詳細については、C:\Windows\Logs\MeasuredBoot\0000000002-0000000000.json を参照してください。
+
+TimeCreated      : 2026/11/09 10:47:00
+ProviderName     : Microsoft-Windows-DistributedCOM
+Id               : 10016
+LevelDisplayName : 警告
+Message          : アプリケーション固有 のアクセス許可の設定では、CLSID 
+                   {9EA82395-E31B-41CA-8DF7-EC1CEE7194DF}
+                    および APPID 
+                   {2ED83BAA-B2FD-43B1-99BF-E6149C622692}
+                    の COM サーバー アプリケーションに対するローカルアクティブ化のアクセス許可を、アプリケーション コンテナー 利用不可 SID (利用不可) で実行中のアドレス LocalHost (LRPC 
+                   使用) のユーザー NT AUTHORITY\NETWORK SERVICE SID (S-1-5-20) に与えることはできません。このセキュリティ アクセス許可は、コンポーネント サービス管理ツー
+                   ルを使って変更できます。
+
+TimeCreated      : 2026/11/09 10:46:57
+ProviderName     : Microsoft-Windows-TPM-WMI
+Id               : 1801
+LevelDisplayName : エラー
+Message          : 更新されたセキュア ブート証明書は、このデバイスで使用できますが、ファームウェアにはまだ適用されていません。公開されているガイダンスを確認し、更新を完了し、完全な保護を維持してください。このデバイス署
+                   名情報は次に含まれています。
+                   DeviceAttributes: BaseBoardManufacturer:;FirmwareManufacturer:Ubuntu distribution of EDK II;Firmware
+                   Version:2024.02-2ubuntu0.10;OEMModelNumber:Ubuntu 24.04 PC (Q35 + ICH9, 2009);OEMModelBaseBoard:;OEM
+                   ModelSystemFamily:;OEMManufacturerName:QEMU;OEMModelSKU:;OSArchitecture:amd64;
+                   BucketId: 744bb849d97134911b7e62d447b4f0f1e12862fae7c378b6a82da54405825703
+                   BucketConfidenceLevel: No Data Observed - Action Required
+                   UpdateType: 
+                   詳細については、https://go.microsoft.com/fwlink/?linkid=2301018 を参照してください。
+
+TimeCreated      : 2026/11/09 10:46:55
+ProviderName     : Service Control Manager
+Id               : 7030
+LevelDisplayName : エラー
+Message          : Printer Extensions and Notifications サービスは、対話型サービスとしてマークされています。しかし、システムは対話型サービスを許可しないように構成されています。このサ
+                   ービスは正常に機能しない可能性があります。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : 警告
+Message          : ディスク 1 (PDO 名: \Device\00000029) の論理ブロック アドレス 0x10b3a88 で IO 操作が再試行されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:46
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk1\DR1 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 10:46:21
+ProviderName     : Microsoft-Windows-Time-Service
+Id               : 52
+LevelDisplayName : 警告
+Message          : タイム サービスは、32400 秒のオフセットで時刻を設定しました。
+
+TimeCreated      : 2026/11/09 1:46:19
+ProviderName     : Microsoft-Windows-Time-Service
+Id               : 134
+LevelDisplayName : 警告
+Message          : 'time.windows.com,0x9' での DNS 解決エラーのため、NtpClient でタイム ソースとして使う手動ピアを設定できませんでした。15 分後に再試行し、それ以降は 2 倍の間
+                   隔で再試行します。エラー: そのようなホストは不明です。 (0x80072AF9)
+
+TimeCreated      : 2026/11/09 1:45:53
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:45:53
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:45:53
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:45:53
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:45:53
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : 警告
+Message          : ディスク 0 (PDO 名: \Device\00000024) の論理ブロック アドレス 0x2a7e30 で IO 操作が再試行されました。
+
+TimeCreated      : 2026/11/09 1:45:53
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:45:32
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:45:32
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:45:32
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:45:32
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:45:32
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : 警告
+Message          : ディスク 0 (PDO 名: \Device\00000024) の論理ブロック アドレス 0x2a7dd8 で IO 操作が再試行されました。
+
+TimeCreated      : 2026/11/09 1:45:32
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : 警告
+Message          : ページング操作中にデバイス \Device\Harddisk0\DR0 上でエラーが検出されました。
+
+TimeCreated      : 2026/11/09 1:44:37
+ProviderName     : Service Control Manager
+Id               : 7023
+LevelDisplayName : エラー
+Message          : netprofm サービスは、次のエラーで終了しました: 
+                   デバイスの準備ができていません。
+
+
+

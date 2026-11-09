@@ -1,0 +1,9 @@
+2026-11-07 13:08:18 Microsoft-Windows-TPM-WMI id=1281 lvl=4 
+2026-11-07 13:08:25 Microsoft-Windows-TPM-WMI id=1034 lvl=4 
+2026-11-07 13:08:25 Microsoft-Windows-TPM-WMI id=1801 lvl=2 DeviceAttributes=BaseBoardManufacturer:;FirmwareManufacturer:Ubuntu distribution of EDK II;Firmwa BucketId=744bb849d97134911b7e62d447b4f0f1e12862fae7c378b6a82da54405825703 BucketConfidenceLevel=No Data Observed - Action Required
+2026-11-07 13:08:28 Microsoft-Windows-TPM-WMI id=1041 lvl=4 Json={"Version":2,"HealthStatus":"Cannot be attested","Required":[{"Field":"TpmPresen
+2026-11-07 13:08:28 Microsoft-Windows-TPM-WMI id=1040 lvl=2 Path=C:\Windows\Logs\MeasuredBoot\0000000002-0000000000.json
+2026-11-07 13:09:29 Microsoft-Windows-TPM-WMI id=1041 lvl=4 Json={"Version":2,"HealthStatus":"Cannot be attested","Required":[{"Field":"TpmPresen
+2026-11-07 13:09:29 Microsoft-Windows-TPM-WMI id=1040 lvl=2 Path=C:\Windows\Logs\MeasuredBoot\0000000003-0000000000.json
+2026-11-07 13:09:49 Microsoft-Windows-TPM-WMI id=519 lvl=4 ClearReason=SRK Pub not present or empty.
+2026-11-07 13:09:50 Microsoft-Windows-TPM-WMI id=1282 lvl=4 

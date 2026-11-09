@@ -1,0 +1,12 @@
+10:28:28 wr   333MiB/  7735req avg_wr     0.2ms | flush    0 avg      0.0ms max_possible_total    0.0s
+10:28:59 wr   135MiB/  8258req avg_wr     0.1ms | flush    0 avg      0.0ms max_possible_total    0.0s
+10:29:29 wr   591MiB/ 15094req avg_wr     0.2ms | flush    0 avg      0.0ms max_possible_total    0.0s
+10:29:59 wr  1857MiB/ 21981req avg_wr     0.3ms | flush    0 avg      0.0ms max_possible_total    0.0s
+10:30:29 wr    77MiB/  3832req avg_wr     0.2ms | flush    0 avg      0.0ms max_possible_total    0.0s
+10:30:59 wr  2672MiB/ 29754req avg_wr     0.2ms | flush    0 avg      0.0ms max_possible_total    0.0s
+10:31:29 wr     0MiB/    17req avg_wr     0.2ms | flush    0 avg      0.0ms max_possible_total    0.0s
+10:31:59 wr     0MiB/     0req avg_wr     0.0ms | flush    0 avg      0.0ms max_possible_total    0.0s
+10:32:29 wr     0MiB/     0req avg_wr     0.0ms | flush    0 avg      0.0ms max_possible_total    0.0s
+10:32:59 wr     0MiB/     0req avg_wr     0.0ms | flush    0 avg      0.0ms max_possible_total    0.0s
+10:33:29 wr     0MiB/     0req avg_wr     0.0ms | flush    0 avg      0.0ms max_possible_total    0.0s
+10:33:59 wr     0MiB/     0req avg_wr     0.0ms | flush    0 avg      0.0ms max_possible_total    0.0s

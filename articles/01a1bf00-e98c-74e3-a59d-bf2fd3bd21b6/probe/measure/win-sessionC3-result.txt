@@ -1,0 +1,3 @@
+C3 (qemu-xhci p3=0, all devices high-speed): Windows first boot bugchecks INACCESSIBLE_BOOT_DEVICE (0x7B) and reboots every ~45 s; aborted
+Domain 'w2g-ctrl3' destroyed
+

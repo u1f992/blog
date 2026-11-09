@@ -1,0 +1,9 @@
+sys_vendor       Micro-Star International Co., Ltd.
+product_name     MS-7D98
+product_version  4.0
+board_vendor     Micro-Star International Co., Ltd.
+board_name       B760 GAMING PLUS WIFI DDR4 (MS-7D98)
+bios_vendor      American Megatrends International, LLC.
+bios_version     M.A0
+bios_date        08/19/2026
+bios_release     5.32

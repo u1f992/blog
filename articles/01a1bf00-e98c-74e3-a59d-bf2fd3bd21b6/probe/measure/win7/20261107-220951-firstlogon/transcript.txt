@@ -1,0 +1,22 @@
+﻿**********************
+Windows PowerShell トランスクリプト開始
+開始時刻: 20261107220952
+ユーザー名: DESKTOP-0HU6NDK\probe
+RunAs ユーザー: DESKTOP-0HU6NDK\probe
+構成名: 
+コンピューター: DESKTOP-0HU6NDK (Microsoft Windows NT 10.0.26300.0)
+ホスト アプリケーション: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NonInteractive -ExecutionPolicy Bypass -File C:\probe\export.ps1 firstlogon
+プロセス ID: 9316
+PSVersion: 5.1.26100.9444
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9444
+BuildVersion: 10.0.26100.9444
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+**********************
+Windows PowerShell トランスクリプト終了
+終了時刻: 20261107220958
+**********************

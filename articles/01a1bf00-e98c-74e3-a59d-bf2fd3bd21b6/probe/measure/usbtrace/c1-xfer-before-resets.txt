@@ -1,0 +1,123 @@
+-rw-rw-r-- 1 libvirt-qemu kvm 214963465 11月  9 10:51 trace2.raw
+
+=== port 1 reset #1 at 1794189030.137
+  ... 5023 earlier transfers in window
+   -20.013s slot1 async    0x7dca6c170f20 0x7dca6c170f20
+   -20.013s slot1 success  0x7dca6c170f20 len 8192
+   -20.013s slot1 start    0x7dca6c170f20 epid 3
+   -20.013s slot1 success  0x7dca6c170f20 len 13
+   -20.013s slot1 start    0x7dca6c170f20 epid 4
+   -20.013s slot1 success  0x7dca6c170f20 len 31
+   -20.013s slot1 start    0x7dca6c170f20 epid 3
+   -20.013s slot1 async    0x7dca6c170f20 0x7dca6c170f20
+   -20.013s slot1 success  0x7dca6c170f20 len 512
+   -20.013s slot1 start    0x7dca6c170f20 epid 3
+   -20.013s slot1 success  0x7dca6c170f20 len 13
+   -20.013s slot1 start    0x7dca60185c10 epid 4
+   -20.013s slot1 success  0x7dca60185c10 len 31
+   -20.013s slot1 start    0x7dca6c170f20 epid 3
+   -20.013s slot1 success  0x7dca6c170f20 len 512
+   -20.013s slot1 start    0x7dca6c170f20 epid 3
+   -20.013s slot1 success  0x7dca6c170f20 len 13
+   -20.013s slot1 start    0x7dca60185c10 epid 4
+   -20.013s slot1 success  0x7dca60185c10 len 31
+   -20.013s slot1 start    0x7dca6c170f20 epid 3
+   -20.013s slot1 async    0x7dca6c170f20 0x7dca6c170f20
+   -20.013s slot1 success  0x7dca6c170f20 len 512
+   -20.013s slot1 start    0x636a7ddf5100 epid 3
+   -20.013s slot1 async    0x636a7ddf5100 0x636a7ddf5100
+  last usb_msd events (all devices):
+    -1.066s usb_msd_cmd_submit lun 0, tag 0x5057e010, flags 0x00000000, len 6, data-len 0
+    -1.066s usb_msd_cmd_complete status 0, tag 0x5057e010
+    -1.066s usb_msd_cmd_submit lun 0, tag 0x506279f0, flags 0x00000000, len 6, data-len 0
+    -1.066s usb_msd_cmd_complete status 0, tag 0x506279f0
+    -1.066s usb_msd_send_status status 0, tag 0x5057e010, len 13
+    -1.066s usb_msd_send_status status 0, tag 0x506279f0, len 13
+    -0.066s usb_msd_cmd_submit lun 0, tag 0x5057e010, flags 0x00000000, len 6, data-len 0
+    -0.066s usb_msd_cmd_complete status 0, tag 0x5057e010
+    -0.066s usb_msd_cmd_submit lun 0, tag 0x506279f0, flags 0x00000000, len 6, data-len 0
+    -0.066s usb_msd_cmd_complete status 0, tag 0x506279f0
+    -0.066s usb_msd_send_status status 0, tag 0x5057e010, len 13
+    -0.066s usb_msd_send_status status 0, tag 0x506279f0, len 13
+
+=== port 1 reset #2 at 1794189051.229
+  ... 3011 earlier transfers in window
+   -20.011s slot1 success  0x7dca6c170f20 len 31
+   -20.011s slot1 start    0x7dca6c170f20 epid 3
+   -20.011s slot1 success  0x7dca6c170f20 len 2048
+   -20.011s slot1 start    0x7dca6c170f20 epid 3
+   -20.011s slot1 success  0x7dca6c170f20 len 13
+   -20.011s slot1 start    0x7dca6987da60 epid 4
+   -20.011s slot1 success  0x7dca6987da60 len 31
+   -20.011s slot1 start    0x7dca6c170f20 epid 3
+   -20.011s slot1 success  0x7dca6c170f20 len 512
+   -20.011s slot1 start    0x7dca6c170f20 epid 3
+   -20.011s slot1 success  0x7dca6c170f20 len 13
+   -20.011s slot1 start    0x7dca6987da60 epid 4
+   -20.011s slot1 success  0x7dca6987da60 len 31
+   -20.011s slot1 start    0x7dca6c170f20 epid 3
+   -20.011s slot1 success  0x7dca6c170f20 len 1536
+   -20.011s slot1 start    0x7dca6c170f20 epid 3
+   -20.011s slot1 success  0x7dca6c170f20 len 13
+   -20.011s slot1 start    0x7dca6987da60 epid 4
+   -20.011s slot1 success  0x7dca6987da60 len 31
+   -20.011s slot1 start    0x7dca6c170f20 epid 3
+   -20.011s slot1 async    0x7dca6c170f20 0x7dca6c170f20
+   -20.010s slot1 success  0x7dca6c170f20 len 265216
+   -20.010s slot1 start    0x636a7e1103c0 epid 3
+   -20.010s slot1 async    0x636a7e1103c0 0x636a7e1103c0
+  last usb_msd events (all devices):
+    -1.080s usb_msd_cmd_submit lun 0, tag 0x5057e010, flags 0x00000000, len 6, data-len 0
+    -1.080s usb_msd_cmd_complete status 0, tag 0x5057e010
+    -1.080s usb_msd_cmd_submit lun 0, tag 0x506279f0, flags 0x00000000, len 6, data-len 0
+    -1.080s usb_msd_cmd_complete status 0, tag 0x506279f0
+    -1.080s usb_msd_send_status status 0, tag 0x5057e010, len 13
+    -1.080s usb_msd_send_status status 0, tag 0x506279f0, len 13
+    -0.072s usb_msd_cmd_submit lun 0, tag 0x5057e010, flags 0x00000000, len 6, data-len 0
+    -0.072s usb_msd_cmd_complete status 0, tag 0x5057e010
+    -0.072s usb_msd_cmd_submit lun 0, tag 0x506279f0, flags 0x00000000, len 6, data-len 0
+    -0.072s usb_msd_cmd_complete status 0, tag 0x506279f0
+    -0.071s usb_msd_send_status status 0, tag 0x5057e010, len 13
+    -0.071s usb_msd_send_status status 0, tag 0x506279f0, len 13
+
+=== port 1 reset #3 at 1794189072.302
+  ... 2179 earlier transfers in window
+   -20.012s slot1 start    0x7dca6c170f20 epid 3
+   -20.012s slot1 async    0x7dca6c170f20 0x7dca6c170f20
+   -20.012s slot1 success  0x7dca6c170f20 len 265216
+   -20.012s slot1 start    0x7dca6c170f20 epid 3
+   -20.012s slot1 success  0x7dca6c170f20 len 13
+   -20.012s slot1 start    0x7dca6987da60 epid 4
+   -20.012s slot1 success  0x7dca6987da60 len 31
+   -20.012s slot1 start    0x7dca6c170f20 epid 3
+   -20.012s slot1 success  0x7dca6c170f20 len 512
+   -20.012s slot1 start    0x7dca6c170f20 epid 3
+   -20.012s slot1 success  0x7dca6c170f20 len 13
+   -20.012s slot1 start    0x7dca6987da60 epid 4
+   -20.012s slot1 success  0x7dca6987da60 len 31
+   -20.012s slot1 start    0x7dca6c170f20 epid 3
+   -20.012s slot1 success  0x7dca6c170f20 len 1536
+   -20.012s slot1 start    0x7dca6c170f20 epid 3
+   -20.012s slot1 success  0x7dca6c170f20 len 13
+   -20.011s slot1 start    0x7dca6987da60 epid 4
+   -20.011s slot1 success  0x7dca6987da60 len 31
+   -20.011s slot1 start    0x7dca6c170f20 epid 3
+   -20.011s slot1 async    0x7dca6c170f20 0x7dca6c170f20
+   -20.011s slot1 success  0x7dca6c170f20 len 265216
+   -20.011s slot1 start    0x636a7e0cbb50 epid 3
+   -20.011s slot1 async    0x636a7e0cbb50 0x636a7e0cbb50
+  last usb_msd events (all devices):
+    -1.054s usb_msd_cmd_submit lun 0, tag 0x5057e010, flags 0x00000000, len 6, data-len 0
+    -1.054s usb_msd_cmd_complete status 0, tag 0x5057e010
+    -1.054s usb_msd_cmd_submit lun 0, tag 0x506279f0, flags 0x00000000, len 6, data-len 0
+    -1.054s usb_msd_cmd_complete status 0, tag 0x506279f0
+    -1.054s usb_msd_send_status status 0, tag 0x5057e010, len 13
+    -1.054s usb_msd_send_status status 0, tag 0x506279f0, len 13
+    -0.052s usb_msd_cmd_submit lun 0, tag 0x5057e010, flags 0x00000000, len 6, data-len 0
+    -0.052s usb_msd_cmd_complete status 0, tag 0x5057e010
+    -0.052s usb_msd_cmd_submit lun 0, tag 0x506279f0, flags 0x00000000, len 6, data-len 0
+    -0.052s usb_msd_cmd_complete status 0, tag 0x506279f0
+    -0.052s usb_msd_send_status status 0, tag 0x5057e010, len 13
+    -0.052s usb_msd_send_status status 0, tag 0x506279f0, len 13
+
+port 1 resets since 1794189009.0: 3

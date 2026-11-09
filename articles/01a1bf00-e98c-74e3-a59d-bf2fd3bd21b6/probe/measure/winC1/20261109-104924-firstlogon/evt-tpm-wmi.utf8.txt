@@ -1,0 +1,98 @@
+
+
+TimeCreated : 2026/11/09 10:49:24
+Id          : 1025
+Message     : TPM の準備が正常に完了し、使用できる状態になっています。
+
+TimeCreated : 2026/11/09 10:49:23
+Id          : 1282
+Message     : TBS デバイスの識別子が生成されました。
+
+TimeCreated : 2026/11/09 10:49:23
+Id          : 1027
+Message     : このコンピューターのトラステッド プラットフォーム モジュール (TPM) ハードウェアの所有権が、システムによって正常に取得されました (TPM TakeOwnership コマンド)。
+
+TimeCreated : 2026/11/09 10:49:23
+Id          : 1025
+Message     : TPM の準備が正常に完了し、使用できる状態になっています。
+
+TimeCreated : 2026/11/09 10:48:58
+Id          : 1282
+Message     : TBS デバイスの識別子が生成されました。
+
+TimeCreated : 2026/11/09 10:48:57
+Id          : 1027
+Message     : このコンピューターのトラステッド プラットフォーム モジュール (TPM) ハードウェアの所有権が、システムによって正常に取得されました (TPM TakeOwnership コマンド)。
+
+TimeCreated : 2026/11/09 10:48:54
+Id          : 519
+Message     : TPM がクリアされました。理由: SRK Pub not present or empty.。
+
+TimeCreated : 2026/11/09 10:48:41
+Id          : 1040
+Message     : 構成証明前の正常性チェックで、重要なコンポーネントが失敗し、デバイスが構成証明に合格しないことが確認されました。
+               行われたチェックの詳細については、C:\Windows\Logs\MeasuredBoot\0000000003-0000000000.json を参照してください。
+
+TimeCreated : 2026/11/09 10:48:41
+Id          : 1041
+Message     : 構成証明前の正常性チェックについての詳細情報: {"Version":2,"HealthStatus":"Cannot be attested","Required":[{"Field":"TpmPresent
+              ","Value":true,"DesiredValue":true},{"Field":"TpmMeetsMinimumVersion","Value":true,"DesiredValue":true},{
+              "Field":"TpmIsResponsive","Value":true,"DesiredValue":true},{"Field":"EkCertIsAvailable","Value":false,"D
+              esiredValue":true},{"Field":"TcgLogFound","Value":true,"DesiredValue":true}],"Expected":[{"Field":"PcrsMa
+              tchTcgLog","Value":true,"DesiredValue":true}],"Informational":[{"Field":"SecureBootEnabled","ValueFromCom
+              puter":true,"ValueFromTcgLog":true,"DesiredValue":true,"TcgValueIsVerifiable":true},{"Field":"VirtualSecu
+              reMemory","ValueFromComputer":false,"ValueFromTcgLog":false,"DesiredValue":true,"TcgValueIsVerifiable":tr
+              ue},{"Field":"SecureCorePCCompliant","ValueFromComputer":false,"ValueFromTcgLog":false,"DesiredValue":tru
+              e,"TcgValueIsVerifiable":true},{"Field":"MostRecentBootTcgLogFoundInFileSystem","Value":true,"DesiredValu
+              e":true},{"Field":"CurrentTcgLogFoundInFileSystem","Value":true,"DesiredValue":true},{"Field":"EkCertRsa2
+              048IsAvailable","Value":false,"DesiredValue":true},{"Field":"EkCertEccP256IsAvailable","Value":false,"Des
+              iredValue":true},{"Field":"EkCertEccP384IsAvailable","Value":false,"DesiredValue":true},{"Field":"Windows
+              AikCertRsa2048IsAvailable","Value":false,"DesiredValue":true},{"Field":"WindowsAikCertEccP256IsAvailable"
+              ,"Value":false,"DesiredValue":true},{"Field":"WindowsAikCertEccP384IsAvailable","Value":false,"DesiredVal
+              ue":true}]}
+
+TimeCreated : 2026/11/09 10:47:03
+Id          : 1040
+Message     : 構成証明前の正常性チェックで、重要なコンポーネントが失敗し、デバイスが構成証明に合格しないことが確認されました。
+               行われたチェックの詳細については、C:\Windows\Logs\MeasuredBoot\0000000002-0000000000.json を参照してください。
+
+TimeCreated : 2026/11/09 10:47:03
+Id          : 1041
+Message     : 構成証明前の正常性チェックについての詳細情報: {"Version":2,"HealthStatus":"Cannot be attested","Required":[{"Field":"TpmPresent
+              ","Value":true,"DesiredValue":true},{"Field":"TpmMeetsMinimumVersion","Value":true,"DesiredValue":true},{
+              "Field":"TpmIsResponsive","Value":true,"DesiredValue":true},{"Field":"EkCertIsAvailable","Value":false,"D
+              esiredValue":true},{"Field":"TcgLogFound","Value":true,"DesiredValue":true}],"Expected":[{"Field":"PcrsMa
+              tchTcgLog","Value":true,"DesiredValue":true}],"Informational":[{"Field":"SecureBootEnabled","ValueFromCom
+              puter":true,"ValueFromTcgLog":true,"DesiredValue":true,"TcgValueIsVerifiable":true},{"Field":"VirtualSecu
+              reMemory","ValueFromComputer":false,"ValueFromTcgLog":false,"DesiredValue":true,"TcgValueIsVerifiable":tr
+              ue},{"Field":"SecureCorePCCompliant","ValueFromComputer":false,"ValueFromTcgLog":false,"DesiredValue":tru
+              e,"TcgValueIsVerifiable":true},{"Field":"MostRecentBootTcgLogFoundInFileSystem","Value":true,"DesiredValu
+              e":true},{"Field":"CurrentTcgLogFoundInFileSystem","Value":true,"DesiredValue":true},{"Field":"EkCertRsa2
+              048IsAvailable","Value":false,"DesiredValue":true},{"Field":"EkCertEccP256IsAvailable","Value":false,"Des
+              iredValue":true},{"Field":"EkCertEccP384IsAvailable","Value":false,"DesiredValue":true},{"Field":"Windows
+              AikCertRsa2048IsAvailable","Value":false,"DesiredValue":true},{"Field":"WindowsAikCertEccP256IsAvailable"
+              ,"Value":false,"DesiredValue":true},{"Field":"WindowsAikCertEccP384IsAvailable","Value":false,"DesiredVal
+              ue":true}]}
+
+TimeCreated : 2026/11/09 10:46:57
+Id          : 1801
+Message     : 更新されたセキュア ブート証明書は、このデバイスで使用できますが、ファームウェアにはまだ適用されていません。公開されているガイダンスを確認し、更新を完了し、完全な保護を維持してください。このデバイス署名情報は次
+              に含まれています。
+              DeviceAttributes: BaseBoardManufacturer:;FirmwareManufacturer:Ubuntu distribution of EDK II;FirmwareVersi
+              on:2024.02-2ubuntu0.10;OEMModelNumber:Ubuntu 24.04 PC (Q35 + ICH9, 2009);OEMModelBaseBoard:;OEMModelSyste
+              mFamily:;OEMManufacturerName:QEMU;OEMModelSKU:;OSArchitecture:amd64;
+              BucketId: 744bb849d97134911b7e62d447b4f0f1e12862fae7c378b6a82da54405825703
+              BucketConfidenceLevel: No Data Observed - Action Required
+              UpdateType: 
+              詳細については、https://go.microsoft.com/fwlink/?linkid=2301018 を参照してください。
+
+TimeCreated : 2026/11/09 10:46:57
+Id          : 1034
+Message     : セキュア ブート Dbx 更新プログラムが正常に適用されました
+
+TimeCreated : 2026/11/09 10:46:25
+Id          : 1281
+Message     : このイベントは、TBS デバイスの識別子生成をトリガーします。
+
+
+

@@ -1,0 +1,1 @@
+auto-repair (boot bus changed SATA->USB)

@@ -1,0 +1,26 @@
+36435:2026-11-07T15:55:12+09:00 HOST systemd[1]: Starting secureboot-db.service - Secure Boot updates for DB and DBX...
+36436:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]: Filesystem keystore:
+36437:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]:   /usr/share/secureboot/updates/dbx/dbxupdate_x64.bin [21170 bytes]
+36438:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]: firmware keys:
+36439:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]:   PK:
+36440:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]:     /CN=MSI SHIP PK
+36441:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]:   KEK:
+36442:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]:     /CN=MSI SHIP KEK
+36443:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]:     /C=US/O=Microsoft Corporation/CN=Microsoft Corporation KEK 2K CA 2023
+36444:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]:     /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Corporation KEK CA 2011
+36445:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]:   db:
+36446:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]:     /CN=MSI SHIP DB
+36447:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]:     /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Corporation UEFI CA 2011
+36448:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]:     /C=US/O=Microsoft Corporation/CN=Microsoft Option ROM UEFI CA 2023
+36449:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]:     /C=US/O=Microsoft Corporation/CN=Windows UEFI CA 2023
+36450:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]:     /C=US/O=Microsoft Corporation/CN=Microsoft UEFI CA 2023
+36451:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]:     /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Windows Production PCA 2011
+36452:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]:   dbx:
+36675:2026-11-07T15:55:13+09:00 HOST systemd[1]: secureboot-db.service: Deactivated successfully.
+36705:2026-11-07T15:55:13+09:00 HOST systemd[1]: Finished secureboot-db.service - Secure Boot updates for DB and DBX.
+36900:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]: filesystem keys:
+36901:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]:   PK:
+36902:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]:   KEK:
+36903:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]:   db:
+36904:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]:   dbx:
+37647:2026-11-07T15:55:13+09:00 HOST sbkeysync[1621]: New keys in filesystem:

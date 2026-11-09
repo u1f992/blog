@@ -1,0 +1,7 @@
+12:48:31
+Domain 'w2g-ctrl2' is being shutdown
+
+12:53:38
+second request (first arrived while display was in power save; display woke, no shutdown)
+Domain 'w2g-ctrl2' is being shutdown
+

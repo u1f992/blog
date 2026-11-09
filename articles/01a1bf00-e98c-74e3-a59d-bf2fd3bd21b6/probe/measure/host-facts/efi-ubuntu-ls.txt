@@ -1,0 +1,6 @@
+合計 4396
+-rwxr-xr-x 1 root root     108  9月  1  2025 BOOTX64.CSV
+-rwxr-xr-x 1 root root     117  9月  1  2025 grub.cfg
+-rwxr-xr-x 1 root root 2660232  9月  1  2025 grubx64.efi
+-rwxr-xr-x 1 root root  856280  9月  1  2025 mmx64.efi
+-rwxr-xr-x 1 root root  966664  9月  1  2025 shimx64.efi

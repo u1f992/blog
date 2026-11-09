@@ -1,0 +1,7 @@
+NAME     SIZE TYPE FSTYPE  LABEL           TRAN
+sda       10G disk                         sata
+├─sda1     9G part ext4    cloudimg-rootfs 
+├─sda14    4M part                         
+├─sda15  106M part vfat    UEFI            
+└─sda16  913M part ext4    BOOT            
+sr0      366K rom  iso9660 cidata          sata

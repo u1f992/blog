@@ -1,0 +1,2 @@
+/tmp/measure.sh: line 11: hwclock: command not found
+Sat Nov  7 11:07:03 UTC 2026

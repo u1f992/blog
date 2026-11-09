@@ -1,0 +1,2 @@
+ls: cannot access '/sys/firmware/efi/esrt': No such file or directory
+cat: '/sys/firmware/efi/esrt/entries/*/*': No such file or directory

@@ -1,0 +1,6 @@
+1986 export.raw
+    660 usb_xhci_port_read
+    442 usb_msd_send_status
+    442 usb_msd_cmd_submit
+    442 usb_msd_cmd_complete
+0

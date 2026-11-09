@@ -1,0 +1,166 @@
+2026-11-07 04:06:59 Microsoft-Windows-Kernel-General id=12 lvl=4 MajorVersion=10 MinorVersion=0 BuildVersion=26100 QfeVersion=9457 ServiceVersion=0 BootMode=0 StartTime=2026-11-07 04:06:59.500000+00:00
+2026-11-07 04:06:59 Microsoft-Windows-Kernel-General id=25 lvl=4 SystemTime=2026-11-07 04:06:59.500000+00:00 LoaderTime=2026-11-07 04:06:58+00:00 InternalBootFlags=2 HalRtcErrorCode=0 RealTimeIsUniversal=False IsSoftBoot=False Success=True Phase=0
+2026-11-07 04:06:59 Microsoft-Windows-Kernel-Boot id=153 lvl=4 Status=0 EnableDisableReason=0 VsmPolicy=0
+2026-11-07 04:06:59 Microsoft-Windows-Kernel-Boot id=238 lvl=4 EfiTimeZoneBias=2047 EfiDaylightFlags=0 EfiTime=2026-11-07 13:06:58+00:00
+2026-11-07 04:06:59 Microsoft-Windows-Kernel-Boot id=25 lvl=4 BootMenuPolicy=1
+2026-11-07 04:06:59 Microsoft-Windows-Kernel-Boot id=27 lvl=4 BootType=0 LoadOptions=NOEXECUTE=OPTIN  FVEBOOT=2666496  NOVGA
+2026-11-07 04:06:59 Microsoft-Windows-Kernel-Boot id=18 lvl=4 EntryCount=1
+2026-11-07 04:06:59 Microsoft-Windows-Kernel-Boot id=32 lvl=4 BitlockerUserInputTime=0
+2026-11-07 04:06:59 Microsoft-Windows-Kernel-General id=20 lvl=4 UpdateReason=0 EnabledNew=True CountNew=0 CountOld=0
+2026-11-07 04:07:00 Microsoft-Windows-Kernel-Power id=172 lvl=4 State=2 Reason=6
+2026-11-07 04:07:00 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=36 HiveName=\SystemRoot\System32\Config\SECURITY KeysUpdated=1 DirtyPages=1
+2026-11-07 04:07:00 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=35 HiveName=\SystemRoot\System32\Config\DEFAULT KeysUpdated=1 DirtyPages=1
+2026-11-07 04:07:00 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=31 HiveName=\SystemRoot\System32\Config\SAM KeysUpdated=1 DirtyPages=1
+2026-11-07 04:07:00 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=36 HiveName=\SystemRoot\System32\Config\SOFTWARE KeysUpdated=258802 DirtyPages=17138
+2026-11-07 04:07:01 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=46 HiveName=\Device\HarddiskVolume2\EFI\Microsoft\Boot\BCD KeysUpdated=82 DirtyPages=4
+2026-11-07 04:07:01 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=46 HiveName=\Device\HarddiskVolume2\EFI\Microsoft\Boot\BCD KeysUpdated=82 DirtyPages=4
+2026-11-07 04:07:01 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=46 HiveName=\Device\HarddiskVolume2\EFI\Microsoft\Boot\BCD KeysUpdated=82 DirtyPages=4
+2026-11-07 04:07:01 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=46 HiveName=\Device\HarddiskVolume2\EFI\Microsoft\Boot\BCD KeysUpdated=82 DirtyPages=4
+2026-11-07 04:07:01 Microsoft-Windows-Kernel-General id=24 lvl=4 ExitReason=0 CurrentBias=-540 CurrentTimeZoneID=0 TimeZoneInfoCacheUpdated=0 FirstRefresh=0
+2026-11-07 04:07:01 Microsoft-Windows-Kernel-General id=15 lvl=4 HiveNameLength=35 HiveName=\SystemRoot\System32\config\DRIVERS OriginalSize=4841472 NewSize=4603904
+2026-11-07 04:07:01 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=46 HiveName=\Device\HarddiskVolume2\EFI\Microsoft\Boot\BCD KeysUpdated=82 DirtyPages=4
+2026-11-07 04:07:03 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=31 HiveName=\??\C:\Users\Default\NTUSER.DAT KeysUpdated=1 DirtyPages=1
+2026-11-07 04:07:08 Microsoft-Windows-Kernel-General id=15 lvl=4 HiveNameLength=41 HiveName=\??\C:\Windows\System32\config\COMPONENTS OriginalSize=56090624 NewSize=40738816
+2026-11-07 04:07:09 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=162 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\1527c705-839a-4832-9 KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:09 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=159 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\c5e2524a-ea46-4f67-8 KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:09 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=162 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\E2A4F912-2574-4A75-9 KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:09 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=159 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\F46D4000-FD22-4DB4-A KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:09 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=154 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.AAD.Broker KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:09 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=141 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.AccountsCo KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:09 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=137 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.AIFabric.C KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:10 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=142 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.AsyncTextS KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:10 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=142 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.BioEnrollm KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:10 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=143 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.CredDialog KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:10 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=134 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.ECApp_10.0 KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:10 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=136 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.LockApp_10 KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:10 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=135 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.UI.Xaml.CB KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:10 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=149 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Win32WebVi KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:10 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=159 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Windows.Ap KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:11 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=142 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Windows.Au KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:11 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=150 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Windows.Ca KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:11 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=160 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Windows.Cl KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:11 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=163 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Windows.Co KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:11 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=159 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Windows.Na KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:11 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=161 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Windows.OO KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:11 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=162 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Windows.OO KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:11 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=162 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Windows.Pa KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:11 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=161 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Windows.Pe KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:12 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=164 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Windows.Pi KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:12 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=158 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Windows.Pr KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:12 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=163 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Windows.Sh KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:12 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=167 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Windows.St KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:12 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=156 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Windows.XG KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:12 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=151 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.WindowsApp KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:13 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=142 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.WindowsApp KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:13 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=156 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.XboxGameCa KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:13 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=149 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\MicrosoftWindows.618 KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:13 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=149 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\MicrosoftWindows.618 KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:13 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=149 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\MicrosoftWindows.618 KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:13 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=149 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\MicrosoftWindows.618 KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:14 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=143 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\MicrosoftWindows.Cli KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:14 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=147 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\MicrosoftWindows.Cli KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:14 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=144 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\MicrosoftWindows.Cli KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:15 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=146 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\MicrosoftWindows.Cli KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:15 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=143 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\MicrosoftWindows.Cli KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:15 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=145 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\MicrosoftWindows.Cli KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:15 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=144 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Windows.CBSPreview_1 KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:15 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=151 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\windows.immersivecon KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:15 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=137 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Windows.PrintDialog_ KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:17 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=31 HiveName=\SystemRoot\System32\Config\BBI KeysUpdated=1 DirtyPages=1
+2026-11-07 04:07:35 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=146 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.WindowsApp KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:36 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=135 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.UI.Xaml.2. KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:36 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=136 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.WindowsApp KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:37 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=130 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Clipchamp.Clipchamp_ KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:38 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=125 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.BingNews_1 KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:38 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=128 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.BingSearch KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:38 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=129 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.BingWeathe KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:39 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=128 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Copilot_0. KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:39 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=139 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.DesktopApp KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:40 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=132 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.GamingApp_ KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:40 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=132 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.GetHelp_10 KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:41 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=149 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.MicrosoftS KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:41 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=140 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.MicrosoftS KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:42 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=128 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Paint_11.2 KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:43 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=134 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.ScreenSket KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:43 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=138 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.SecHealthU KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:44 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=140 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.StorePurch KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:44 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=127 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Todos_0.17 KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:45 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=140 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Windows.Ph KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:46 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=131 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.WindowsAla KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:46 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=146 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.WindowsApp KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:47 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=138 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.WindowsCal KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:47 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=136 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.WindowsCam KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:47 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=140 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.WindowsFee KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:48 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=136 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.WindowsNot KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:48 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=138 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.WindowsSou KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:49 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=136 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.WindowsSto KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:49 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=137 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.WindowsTer KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:49 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=131 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Xbox.TCUI_ KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:50 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=139 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.XboxGaming KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:50 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=146 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.XboxIdenti KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:50 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=146 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.XboxSpeech KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:51 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=132 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.YourPhone_ KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:51 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=131 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.ZuneMusic_ KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:51 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=147 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\MicrosoftCorporation KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:56 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=151 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\MicrosoftWindows.Cli KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:56 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=141 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\MicrosoftWindows.Cro KeysUpdated=0 DirtyPages=0
+2026-11-07 04:07:57 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=50 HiveName=\Device\HarddiskVolume2\EFI\Microsoft\Recovery\BCD KeysUpdated=41 DirtyPages=2
+2026-11-07 04:07:59 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=85 HiveName=\??\C:\ProgramData\Microsoft\Provisioning\Microsoft-Desktop-Provisioning-Sequenc KeysUpdated=0 DirtyPages=0
+2026-11-07 04:08:03 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=52 HiveName=\??\C:\Windows\System32\SMI\Store\Machine\SCHEMA.DAT KeysUpdated=14684 DirtyPages=2491
+2026-11-07 04:08:04 Microsoft-Windows-Kernel-Power id=109 lvl=4 ShutdownActionType=5 ShutdownEventCode=0 ShutdownReason=5
+2026-11-07 04:08:04 Microsoft-Windows-Kernel-Power id=577 lvl=4 AdaptiveTargetState=0 IsUnattended=False Status=279
+2026-11-07 04:08:04 Microsoft-Windows-Kernel-General id=13 lvl=4 StopTime=2026-11-07 04:08:04.437256+00:00
+2026-11-07 04:08:07 Microsoft-Windows-Kernel-General id=12 lvl=4 MajorVersion=10 MinorVersion=0 BuildVersion=26100 QfeVersion=9457 ServiceVersion=0 BootMode=0 StartTime=2026-11-07 04:08:07.500000+00:00
+2026-11-07 04:08:07 Microsoft-Windows-Kernel-General id=25 lvl=4 SystemTime=2026-11-07 04:08:07.500000+00:00 LoaderTime=2026-11-07 04:08:07+00:00 InternalBootFlags=2 HalRtcErrorCode=0 RealTimeIsUniversal=False IsSoftBoot=False Success=True Phase=0
+2026-11-07 04:08:07 Microsoft-Windows-Kernel-Boot id=153 lvl=4 Status=0 EnableDisableReason=0 VsmPolicy=0
+2026-11-07 04:08:07 Microsoft-Windows-Kernel-Boot id=20 lvl=4 LastShutdownGood=True LastBootGood=True LastBootId=1 BootStatusPolicy=2
+2026-11-07 04:08:07 Microsoft-Windows-Kernel-Boot id=238 lvl=4 EfiTimeZoneBias=2047 EfiDaylightFlags=0 EfiTime=2026-11-07 13:08:07+00:00
+2026-11-07 04:08:07 Microsoft-Windows-Kernel-Boot id=25 lvl=4 BootMenuPolicy=1
+2026-11-07 04:08:07 Microsoft-Windows-Kernel-Boot id=27 lvl=4 BootType=0 LoadOptions=NOEXECUTE=OPTIN  FVEBOOT=2666496  NOVGA
+2026-11-07 04:08:07 Microsoft-Windows-Kernel-Boot id=18 lvl=4 EntryCount=1
+2026-11-07 04:08:07 Microsoft-Windows-Kernel-Boot id=32 lvl=4 BitlockerUserInputTime=0
+2026-11-07 04:08:07 Microsoft-Windows-Kernel-General id=20 lvl=4 UpdateReason=0 EnabledNew=True CountNew=0 CountOld=0
+2026-11-07 04:08:08 Microsoft-Windows-Kernel-Power id=172 lvl=4 State=2 Reason=6
+2026-11-07 04:08:08 Microsoft-Windows-Kernel-General id=24 lvl=4 ExitReason=0 CurrentBias=-540 CurrentTimeZoneID=0 TimeZoneInfoCacheUpdated=0 FirstRefresh=0
+2026-11-07 04:08:13 Microsoft-Windows-Kernel-General id=24 lvl=4 ExitReason=0 CurrentBias=-540 CurrentTimeZoneID=0 TimeZoneInfoCacheUpdated=0 FirstRefresh=0
+2026-11-07 04:08:13 Microsoft-Windows-Kernel-General id=1 lvl=4 NewTime=2026-11-07 04:08:13.023993+00:00 OldTime=2026-11-07 04:08:13.023993+00:00 TimeDeltaInMs=0 Reason=3 ProcessName=\Device\HarddiskVolume3\Windows\System32\rundll32.exe ProcessID=1580 CmosTime=2026-11-07 13:08:13.023993+00:00 TimeZoneBias=-540
+2026-11-07 04:08:13 Microsoft-Windows-Kernel-General id=24 lvl=4 ExitReason=0 CurrentBias=-540 CurrentTimeZoneID=0 TimeZoneInfoCacheUpdated=0 FirstRefresh=0
+2026-11-07 04:08:13 Microsoft-Windows-Kernel-General id=1 lvl=4 NewTime=2026-11-07 04:08:13.022999+00:00 OldTime=2026-11-07 04:08:13.023993+00:00 TimeDeltaInMs=0 Reason=1 ProcessName=\Device\HarddiskVolume3\Windows\System32\rundll32.exe ProcessID=1580 CmosTime=2026-11-07 13:08:13.022999+00:00 TimeZoneBias=-540
+2026-11-07 13:08:14 Microsoft-Windows-Kernel-General id=24 lvl=4 ExitReason=0 CurrentBias=-540 CurrentTimeZoneID=0 TimeZoneInfoCacheUpdated=0 FirstRefresh=0
+2026-11-07 13:08:14 Microsoft-Windows-Kernel-General id=1 lvl=4 NewTime=2026-11-07 13:08:14.482151+00:00 OldTime=2026-11-07 04:08:14.642893+00:00 TimeDeltaInMs=32399839 Reason=1 ProcessName=\Device\HarddiskVolume3\Windows\System32\svchost.exe ProcessID=1776 CmosTime=2026-11-07 22:08:14.482151+00:00 TimeZoneBias=-540
+2026-11-07 13:08:14 Microsoft-Windows-Kernel-General id=24 lvl=4 ExitReason=0 CurrentBias=-540 CurrentTimeZoneID=0 TimeZoneInfoCacheUpdated=0 FirstRefresh=0
+2026-11-07 13:08:14 Microsoft-Windows-Kernel-General id=1 lvl=4 NewTime=2026-11-07 13:08:14.482634+00:00 OldTime=2026-11-07 13:08:14.482151+00:00 TimeDeltaInMs=0 Reason=1 ProcessName=\Device\HarddiskVolume3\Windows\System32\svchost.exe ProcessID=1776 CmosTime=2026-11-07 22:08:14.482634+00:00 TimeZoneBias=-540
+2026-11-07 13:08:15 Microsoft-Windows-Kernel-General id=24 lvl=4 ExitReason=0 CurrentBias=-540 CurrentTimeZoneID=0 TimeZoneInfoCacheUpdated=0 FirstRefresh=0
+2026-11-07 13:08:15 Microsoft-Windows-Kernel-General id=1 lvl=4 NewTime=2026-11-07 13:08:15.274567+00:00 OldTime=2026-11-07 13:08:15.274567+00:00 TimeDeltaInMs=0 Reason=3 ProcessName=\Device\HarddiskVolume3\Windows\System32\oobe\msoobe.exe ProcessID=1600 CmosTime=2026-11-07 22:08:15.274567+00:00 TimeZoneBias=-540
+2026-11-07 13:08:16 Microsoft-Windows-Kernel-General id=24 lvl=4 ExitReason=0 CurrentBias=-540 CurrentTimeZoneID=0 TimeZoneInfoCacheUpdated=0 FirstRefresh=0
+2026-11-07 13:08:16 Microsoft-Windows-Kernel-General id=1 lvl=4 NewTime=2026-11-07 13:08:16.043119+00:00 OldTime=2026-11-07 13:08:16.042177+00:00 TimeDeltaInMs=0 Reason=1 ProcessName=\Device\HarddiskVolume3\Windows\System32\svchost.exe ProcessID=1776 CmosTime=2026-11-07 22:08:16.043119+00:00 TimeZoneBias=-540
+2026-11-07 13:08:18 Microsoft-Windows-Kernel-General id=11 lvl=4 ExtraStringLength=43 ExtraString=\SystemRoot\System32\AppLocker\AppCache.dat TmId={d68a0695-da60-11f1-a903-525400e41b33} RmId={d68a0694-da60-11f1-a903-525400e41b33} Status=0xc0000022 InternalCode=7
+2026-11-07 13:08:18 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=111 HiveName=\??\C:\Users\defaultuser0\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n KeysUpdated=3 DirtyPages=1
+2026-11-07 13:08:19 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=125 HiveName=\??\C:\Users\defaultuser0\AppData\Local\Packages\Microsoft.Windows.ContentDelive KeysUpdated=3 DirtyPages=1
+2026-11-07 13:08:21 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=122 HiveName=\??\C:\Users\defaultuser0\AppData\Local\Packages\Microsoft.Windows.CloudExperien KeysUpdated=3 DirtyPages=1
+2026-11-07 13:08:22 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=140 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.WidgetsPla KeysUpdated=0 DirtyPages=0
+2026-11-07 13:08:31 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=112 HiveName=\??\C:\Users\defaultuser0\AppData\Local\Packages\MicrosoftWindows.Client.CBS_cw5 KeysUpdated=3 DirtyPages=1
+2026-11-07 13:08:36 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=136 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.WindowsApp KeysUpdated=0 DirtyPages=0
+2026-11-07 13:08:37 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=136 HiveName=\??\C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.WindowsApp KeysUpdated=0 DirtyPages=0
+2026-11-07 13:09:23 Microsoft-Windows-Kernel-Power id=109 lvl=4 ShutdownActionType=5 ShutdownEventCode=0 ShutdownReason=5
+2026-11-07 13:09:23 Microsoft-Windows-Kernel-Power id=577 lvl=4 AdaptiveTargetState=0 IsUnattended=False Status=279
+2026-11-07 13:09:23 Microsoft-Windows-Kernel-General id=13 lvl=4 StopTime=2026-11-07 13:09:23.703350+00:00
+2026-11-07 13:09:26 Microsoft-Windows-Kernel-General id=12 lvl=4 MajorVersion=10 MinorVersion=0 BuildVersion=26100 QfeVersion=9457 ServiceVersion=0 BootMode=0 StartTime=2026-11-07 13:09:26.500000+00:00
+2026-11-07 13:09:26 Microsoft-Windows-Kernel-General id=25 lvl=4 SystemTime=2026-11-07 13:09:26.500000+00:00 LoaderTime=2026-11-07 13:09:26+00:00 InternalBootFlags=2 HalRtcErrorCode=0 RealTimeIsUniversal=False IsSoftBoot=False Success=True Phase=0
+2026-11-07 13:09:26 Microsoft-Windows-Kernel-Boot id=153 lvl=4 Status=0 EnableDisableReason=0 VsmPolicy=0
+2026-11-07 13:09:26 Microsoft-Windows-Kernel-Boot id=20 lvl=4 LastShutdownGood=True LastBootGood=True LastBootId=2 BootStatusPolicy=2
+2026-11-07 13:09:26 Microsoft-Windows-Kernel-Boot id=238 lvl=4 EfiTimeZoneBias=2047 EfiDaylightFlags=0 EfiTime=2026-11-07 22:09:26+00:00
+2026-11-07 13:09:26 Microsoft-Windows-Kernel-Boot id=25 lvl=4 BootMenuPolicy=1
+2026-11-07 13:09:26 Microsoft-Windows-Kernel-Boot id=27 lvl=4 BootType=0 LoadOptions=NOEXECUTE=OPTIN  FVEBOOT=2666496  NOVGA
+2026-11-07 13:09:26 Microsoft-Windows-Kernel-Boot id=18 lvl=4 EntryCount=1
+2026-11-07 13:09:26 Microsoft-Windows-Kernel-Boot id=32 lvl=4 BitlockerUserInputTime=0
+2026-11-07 13:09:26 Microsoft-Windows-Kernel-General id=20 lvl=4 UpdateReason=0 EnabledNew=True CountNew=0 CountOld=0
+2026-11-07 13:09:27 Microsoft-Windows-Kernel-Power id=172 lvl=4 State=2 Reason=6
+2026-11-07 13:09:28 Microsoft-Windows-Kernel-General id=24 lvl=4 ExitReason=0 CurrentBias=-540 CurrentTimeZoneID=0 TimeZoneInfoCacheUpdated=0 FirstRefresh=0
+2026-11-07 13:09:30 Microsoft-Windows-Kernel-General id=11 lvl=4 ExtraStringLength=43 ExtraString=\SystemRoot\System32\AppLocker\AppCache.dat TmId={d68a0695-da60-11f1-a903-525400e41b33} RmId={d68a0694-da60-11f1-a903-525400e41b33} Status=0xc0000022 InternalCode=0
+2026-11-07 13:09:30 Microsoft-Windows-Kernel-General id=11 lvl=4 ExtraStringLength=43 ExtraString=\SystemRoot\System32\AppLocker\AppCache.dat TmId={75882195-daac-11f1-a904-525400e41b33} RmId={75882194-daac-11f1-a904-525400e41b33} Status=0xc0000022 InternalCode=7
+2026-11-07 13:09:32 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=122 HiveName=\??\C:\Users\defaultuser0\AppData\Local\Packages\MicrosoftWindows.Client.WebExpe KeysUpdated=3 DirtyPages=1
+2026-11-07 13:09:41 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=105 HiveName=\??\C:\Users\probe\AppData\Local\Packages\MicrosoftWindows.Client.CBS_cw5n1h2txy KeysUpdated=3 DirtyPages=1
+2026-11-07 13:09:42 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=119 HiveName=\??\C:\Users\probe\AppData\Local\Packages\Microsoft.Windows.StartMenuExperienceH KeysUpdated=3 DirtyPages=1
+2026-11-07 13:09:42 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=104 HiveName=\??\C:\Users\probe\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txye KeysUpdated=3 DirtyPages=1
+2026-11-07 13:09:42 Microsoft-Windows-Kernel-General id=16 lvl=4 HiveNameLength=118 HiveName=\??\C:\Users\probe\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManag KeysUpdated=3 DirtyPages=1

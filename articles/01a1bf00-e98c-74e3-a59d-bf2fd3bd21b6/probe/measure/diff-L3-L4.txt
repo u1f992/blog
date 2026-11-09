@@ -1,0 +1,121 @@
+=== non-volatile UEFI variables: L3 -> L4 ===
+CHANGED MTC-eb704011-1402-11d3-8e77-00a0c969723b sha=43c66c260828c983 -> sha=0623ccb9b1619bd3
+ADDED PBRDevicePath-a9b5f8d2-cb6d-42c2-bc01-b5ffaae4335e MISSING -> sha=d518a23ad4431d81
+=== volatile UEFI variables (for reference): L3 -> L4 ===
+=== efibootmgr ===
+(no change)
+=== Secure Boot db/dbx/KEK/PK ===
+pk: no change
+kek: no change
+db: no change
+dbx: no change
+=== TPM permanent/startup-clear properties ===
+4c4
+<   lockoutAuthSet:            0
+---
+>   lockoutAuthSet:            1
+17c17
+< TPM2_PT_HR_NV_INDEX: 0x3
+---
+> TPM2_PT_HR_NV_INDEX: 0x9
+23,26c23,26
+< TPM2_PT_HR_PERSISTENT: 0x3
+< TPM2_PT_HR_PERSISTENT_AVAIL: 0x3C
+< TPM2_PT_NV_COUNTERS: 0x0
+< TPM2_PT_NV_COUNTERS_AVAIL: 0x19
+---
+> TPM2_PT_HR_PERSISTENT: 0x5
+> TPM2_PT_HR_PERSISTENT_AVAIL: 0x3A
+> TPM2_PT_NV_COUNTERS: 0x3
+> TPM2_PT_NV_COUNTERS_AVAIL: 0x18
+30,32c30,32
+< TPM2_PT_MAX_AUTH_FAIL: 0x3
+< TPM2_PT_LOCKOUT_INTERVAL: 0x3E8
+< TPM2_PT_LOCKOUT_RECOVERY: 0x3E8
+---
+> TPM2_PT_MAX_AUTH_FAIL: 0x1F
+> TPM2_PT_LOCKOUT_INTERVAL: 0x258
+> TPM2_PT_LOCKOUT_RECOVERY: 0x15180
+=== TPM persistent handles ===
+1a2,3
+> - 0x81000002
+> - 0x81000009
+=== TPM NV indexes ===
+0a1,6
+> - 0x1410001
+> - 0x1410002
+> - 0x1410003
+> - 0x1800100
+> - 0x1880001
+> - 0x1880011
+=== TPM NV public ===
+0a1,61
+> 0x1410001:
+>   name: 000b31be078fc493fa57095b4d041e4b27fefe1e69c4a6543576a37b289c9f2c2b56
+>   hash algorithm:
+>     friendly: sha256
+>     value: 0xB
+>   attributes:
+>     friendly: authwrite|nt=0x1|authread|no_da|orderly|written
+>     value: 0x26040014
+>   size: 8
+> 
+> 0x1410002:
+>   name: 000b0c141eb1d038579d74843d9734ba22c2c540b8577177826419f4d30bab4c650a
+>   hash algorithm:
+>     friendly: sha256
+>     value: 0xB
+>   attributes:
+>     friendly: authwrite|nt=0x1|authread|no_da|written
+>     value: 0x22040014
+>   size: 8
+> 
+> 0x1410003:
+>   name: 000b036b2beeada2ca5b5e21c0117576b961de0f8905b1fab4a7b868de94634edbb4
+>   hash algorithm:
+>     friendly: sha256
+>     value: 0xB
+>   attributes:
+>     friendly: authwrite|nt=0x1|authread|no_da|written
+>     value: 0x22040014
+>   size: 8
+> 
+> 0x1800100:
+>   name: 000b8d38b2c5534287a29dceca2118ac4138889e1b9c839944227c5cb996cb6284eb
+>   hash algorithm:
+>     friendly: sha256
+>     value: 0xB
+>   attributes:
+>     friendly: ownerwrite|ownerread|no_da|written
+>     value: 0x22020002
+>   size: 8
+> 
+> 0x1880001:
+>   name: 000bd5e41629f4d1ee7b318d4a3e7eae93b0d11e72ffe71e5478f11461c49fa2e6f2
+>   hash algorithm:
+>     friendly: sha256
+>     value: 0xB
+>   attributes:
+>     friendly: policywrite|nt=0x1|writeall|ownerread|authread|written
+>     value: 0x20061028
+>   size: 8
+>   authorization policy: 0C8DF0CF0169C38828C8FA4C0FF37A548C23C041AEECD2A12CA740D501D620B7
+> 
+> 0x1880011:
+>   name: 000b51a55522eb40aa7f66605334f0814377c886126edb72391675ec8132258398ad
+>   hash algorithm:
+>     friendly: sha256
+>     value: 0xB
+>   attributes:
+>     friendly: ownerwrite|authwrite|ownerread|authread|written
+>     value: 0x20060006
+>   size: 32
+> 
+=== TPM fixed (firmware version etc.) ===
+(no change)
+=== hwclock ===
+/tmp/measure.sh: line 11: hwclock: command not found
+Sat Nov  7 11:52:33 UTC 2026
+--
+/tmp/measure.sh: line 11: hwclock: command not found
+Sat Nov  7 13:00:01 UTC 2026

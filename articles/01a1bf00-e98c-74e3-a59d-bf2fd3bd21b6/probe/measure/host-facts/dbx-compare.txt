@@ -1,0 +1,35 @@
+N2c(VM before Windows): siglist sha256 count=1 owners=['a0baa8a3-041d-48a8-bc87-c36d121b5e3d']
+N2c(VM before Windows): siglist sha256 count=371 owners=['77fa9abd-0359-4d32-bd60-28f4e78f784b']
+N2c(VM before Windows): total bytes=17912 unique sha256=372
+
+N3(VM after Windows): siglist sha256 count=1 owners=['a0baa8a3-041d-48a8-bc87-c36d121b5e3d']
+N3(VM after Windows): siglist sha256 count=371 owners=['77fa9abd-0359-4d32-bd60-28f4e78f784b']
+N3(VM after Windows): siglist sha256 count=71 owners=['77fa9abd-0359-4d32-bd60-28f4e78f784b']
+N3(VM after Windows): total bytes=21348 unique sha256=443
+
+host dbx: siglist sha256 count=431 owners=['77fa9abd-0359-4d32-bd60-28f4e78f784b']
+host dbx: siglist sha256 count=14 owners=['77fa9abd-0359-4d32-bd60-28f4e78f784b']
+host dbx: total bytes=21416 unique sha256=445
+
+host dbxDefault: siglist sha256 count=431 owners=['77fa9abd-0359-4d32-bd60-28f4e78f784b']
+host dbxDefault: total bytes=20716 unique sha256=431
+
+secureboot-db payload: siglist sha256 count=371 owners=['77fa9abd-0359-4d32-bd60-28f4e78f784b']
+secureboot-db payload: total bytes=17836 unique sha256=371
+
+Windows-added (N3-N2c): 71
+Windows-added not in host dbx: 0
+Windows-added not in host dbxDefault: 14
+Windows-added in secureboot-db payload: 0
+secureboot-db payload not in host dbx: 0
+secureboot-db payload not in N2c: 0
+N3 not in host dbx: 1
+host dbx not in N3: 3
+host dbx - host dbxDefault: 14 dbxDefault - dbx: 0
+host 2nd siglist(14) subset of Windows-added: True subset of N3: True
+N2c certdb guid d9bee56e-75dc-49d9-b4d7-b534210f637a attr 0x27 size 4 time None data 04000000
+N3 certdb guid d9bee56e-75dc-49d9-b4d7-b534210f637a attr 0x27 size 90 time None data 5a000000bd9afa775903324dbd6028f4e78f784b560000000d00000020000000430075007200720065006e00740050006f006c006900630079007715a290684d7a037d9b8f5f1e36d3f9bd3446f04a50b8b9e10849bfe95826ab
+N3 CurrentPolicy guid 77fa9abd-0359-4d32-bd60-28f4e78f784b attr 0x27 size 1 time e007090e10332c000000000000000000 data 02
+N3 CurrentActivePolicy guid 77fa9abd-0359-4d32-bd60-28f4e78f784b attr 0x3 size 1 time None data 00
+certdb entry: guid=77fa9abd-0359-4d32-bd60-28f4e78f784b name='CurrentPolicy' nodesize=86 certdatasize=32 certdata=7715a290684d7a037d9b8f5f1e36d3f9bd3446f04a50b8b9e10849bfe95826ab
+secureboot-db payload not in host dbxDefault(factory): 0

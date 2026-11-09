@@ -1,0 +1,53 @@
+INFO: reading raw edk2 varstore from /tmp/tmp.xOxHRLiBYH/probe/probe_VARS.fd
+INFO: var store range: 0x64 -> 0x40000
+5254007F0D7E        : blob: 60 bytes
+525400E41B33        : blob: 60 bytes
+Attempt 1           : blob: 1049 bytes
+Attempt 2           : blob: 1049 bytes
+Attempt 3           : blob: 1049 bytes
+Attempt 4           : blob: 1049 bytes
+Attempt 5           : blob: 1049 bytes
+Attempt 6           : blob: 1049 bytes
+Attempt 7           : blob: 1049 bytes
+Attempt 8           : blob: 1049 bytes
+Boot0000            : boot entry: title="UiApp" devpath=FvName(7cb8bdc9-f8eb-4f34-aaea-3ee4af6516a1)/FvFileName(462caa21-7614-4503-836e-8ab6f4662331)
+Boot0001            : boot entry: title="UEFI QEMU QEMU USB HARDDRIVE WIN2GO64" devpath=PciRoot()/PCI(dev=02:1)/PCI(dev=00:0)/USB(port=0) optdata=4eac0881119f594d850ee21a522c59b2
+Boot0002            : boot entry: title="Windows Boot Manager" devpath=Partition(nr=1)/FilePath(\EFI\Microsoft\Boot\bootmgfw.efi) optdata=57494e444f5753000100000088000000780000004200430044004f0042004a004500430054003d007b00390064006500610038003600320063002d0035006300640064002d0034006500370030002d0061006300630031002d006600330032006200330034003400640034003700390035007d000000ffff0100000010000000040000007fff0400
+BootDebugPolicyApplied: byte: 0x2a
+BootOrder           : boot order: 0002, 0001, 0000
+BootingDeviceTypeInfo: dword: 0x00040001
+ClientId            : blob: 20 bytes
+ConIn               : devpath: PciRoot()/PCI(dev=1f:0)/ACPI(hid=0x30341d0,uid=0x0)
+ConOut              : devpath: PciRoot()/PCI(dev=1f:0)/ACPI(hid=0x50141d0,uid=0x0)/Msg(subtype=0xe)/Msg(subtype=0xa)
+ConfigCIPolicyIndiv : blob: 48 bytes
+CurrentActivePolicy : byte: 0x00
+CurrentPolicy       : byte: 0x02
+CustomMode          : bool: off
+ErrOut              : devpath: PciRoot()/PCI(dev=1f:0)/ACPI(hid=0x50141d0,uid=0x0)/Msg(subtype=0xe)/Msg(subtype=0xa)
+FirmwareSecvarUpdaterVersion: dword: 0x00000001
+HDDP                : blob: 226 bytes
+InitialAttemptOrder : qword: 0x0807060504030201
+KEK                 : blob: 3936 bytes
+Key0000             : blob: 14 bytes
+Key0001             : blob: 14 bytes
+Lang                : ascii: "eng"
+MTC                 : dword: 0x00000011
+MemoryTypeInformation: blob: 48 bytes
+OfflineUniqueIDEKPub: blob: 256 bytes
+OfflineUniqueIDEKPubCRC: dword: 0x5a15c454
+PK                  : blob: 870 bytes
+PlatformLang        : ascii: "en"
+RevocationList      : blob: 1975 bytes
+SbatLevel           : ascii: "sbat,1,2025051000\nshim,4\ngrub,5\ngrub.debian,4\ngrub.peimage,2\ngrub.proxmox,2"
+SecureBootEnable    : bool: ON
+TCG2_CONFIGURATION  : byte: 0x02
+TCG2_DEVICE_DETECTION: byte: 0x02
+TCG2_VERSION        : blob: 16 bytes
+Timeout             : word: 0x0000
+UnlockID            : blob: 32 bytes
+UnlockIDCopy        : blob: 32 bytes
+VarErrorFlag        : byte: 0xff
+VendorKeysNv        : byte: 0x00
+certdb              : blob: 90 bytes
+db                  : blob: 7636 bytes
+dbx                 : blob: 21348 bytes

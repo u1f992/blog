@@ -1,0 +1,10 @@
+BootCurrent: 0002
+Timeout: 0 seconds
+BootOrder: 0002,0001,0000
+Boot0000* UiApp	FvVol(7cb8bdc9-f8eb-4f34-aaea-3ee4af6516a1)/FvFile(462caa21-7614-4503-836e-8ab6f4662331)
+      dp: 04 07 14 00 c9 bd b8 7c eb f8 34 4f aa ea 3e e4 af 65 16 a1 / 04 06 14 00 21 aa 2c 46 14 76 03 45 83 6e 8a b6 f4 66 23 31 / 7f ff 04 00
+Boot0001* UEFI QEMU HARDDISK QM00001 	PciRoot(0x0)/Pci(0x1f,0x2)/Sata(0,65535,0){auto_created_boot_option}
+      dp: 02 01 0c 00 d0 41 03 0a 00 00 00 00 / 01 01 06 00 02 1f / 03 12 0a 00 00 00 ff ff 00 00 / 7f ff 04 00
+    data: 4e ac 08 81 11 9f 59 4d 85 0e e2 1a 52 2c 59 b2
+Boot0002* Ubuntu	HD(15,GPT,6ec49856-0bd6-4fc8-891c-2ab8f712b077,0x2800,0x35000)/File(\EFI\ubuntu\shimx64.efi)
+      dp: 04 01 2a 00 0f 00 00 00 00 28 00 00 00 00 00 00 00 50 03 00 00 00 00 00 56 98 c4 6e d6 0b c8 4f 89 1c 2a b8 f7 12 b0 77 02 02 / 04 04 34 00 5c 00 45 00 46 00 49 00 5c 00 75 00 62 00 75 00 6e 00 74 00 75 00 5c 00 73 00 68 00 69 00 6d 00 78 00 36 00 34 00 2e 00 65 00 66 00 69 00 00 00 / 7f ff 04 00

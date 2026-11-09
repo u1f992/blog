@@ -1,0 +1,80 @@
+2026-11-09T10:49:24.4970837+09:00
+BitLocker ドライブ暗号化: 構成ツール Version 10.0.26100
+Copyright (C) 2013 Microsoft Corporation. All rights reserved.
+
+BitLocker ドライブ暗号化で保護可能な
+ディスク ボリューム:
+ボリューム C: [CCCOMA_X64FRE_JA-JP_DV9]
+[OS ボリューム]
+
+    サイズ:                 63.62 GB
+    BitLocker のバージョン: 2.0
+    変換状態:               暗号化を実行中です
+    暗号化された割合:       74.0%
+    暗号化の方法:           XTS-AES 128
+    保護状態:               保護はオフです
+    ロック状態:             ロック解除
+    識別子フィールド:       不明
+    キーの保護機能:         見つかりません
+
+ボリューム D: []
+[データ ボリューム]
+
+    サイズ:                 不明 GB
+    BitLocker のバージョン: なし
+    変換状態:               暗号化は完全に解除されています
+    暗号化された割合:       0.0%
+    暗号化の方法:           なし
+    保護状態:               保護はオフです
+    ロック状態:             ロック解除
+    識別子フィールド:       なし
+    自動ロック解除:         無効
+    キーの保護機能:         見つかりません
+
+ボリューム E: [EXPORT]
+[データ ボリューム]
+
+    サイズ:                 1.00 GB
+    BitLocker のバージョン: なし
+    変換状態:               暗号化は完全に解除されています
+    暗号化された割合:       0.0%
+    暗号化の方法:           なし
+    保護状態:               保護はオフです
+    ロック状態:             ロック解除
+    識別子フィールド:       なし
+    自動ロック解除:         無効
+    キーの保護機能:         見つかりません
+
+      6 Id               : 153
+     47 Id               : 51
+      3 Id               : 98
+2026/11/09 10:46:46
+2026/11/09 10:47:49
+2026/11/09 10:49:01
+2026/11/09 10:49:19
+2026/11/09 1:45:32
+2026/11/09 1:45:53
+     11 2026/11/09 10:46:46
+     11 2026/11/09 10:47:49
+      1 2026/11/09 10:49:01
+     14 2026/11/09 10:49:19
+      5 2026/11/09 1:45:32
+      5 2026/11/09 1:45:53
+TimeCreated      : 2026/11/09 10:48:51
+Id               : 4146
+Message          : Device Encryption initialized automatically for volume C:.
+TimeCreated      : 2026/11/09 10:48:51
+Id               : 900
+Message          : BitLocker successfully committed metadata changes for volume C:.
+TimeCreated      : 2026/11/09 10:48:51
+Id               : 768
+Message          : BitLocker encryption was started for volume C: using XTS-AES 128 algorithm.
+TimeCreated      : 2026/11/09 10:48:51
+Id               : 900
+Message          : BitLocker successfully committed metadata changes for volume C:.
+TimeCreated      : 2026/11/09 10:48:51
+Id               : 780
+Message          : The identification field was changed. 
+TimeCreated      : 2026/11/09 10:48:51
+Id               : 796
+Message          : BitLocker Drive Encryption is using software-based encryption to protect volume C:.

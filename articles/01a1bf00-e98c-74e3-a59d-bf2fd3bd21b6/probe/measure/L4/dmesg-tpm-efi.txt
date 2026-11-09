@@ -1,0 +1,25 @@
+[    0.000000] efi: EFI v2.7 by Ubuntu distribution of EDK II
+[    0.000000] efi: SMBIOS=0x7e9d5000 SMBIOS 3.0=0x7e9d3000 TPMFinalLog=0x7ebc6000 ACPI=0x7eb7e000 ACPI 2.0=0x7eb7e014 MEMATTR=0x7d68e018 MOKvar=0x7e980000 INITRD=0x7d692498 TPMEventLog=0x7d077018 
+[    0.000000] Kernel is locked down from EFI Secure Boot mode; see man kernel_lockdown.7
+[    0.004071] ACPI: TPM2 0x000000007EB76000 00004C (v04 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.004081] ACPI: Reserving TPM2 table memory at [mem 0x7eb76000-0x7eb7604b]
+[    0.018090] clocksource: refined-jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1910969940391419 ns
+[    0.162730] efi: Freeing EFI boot services memory: 27760K
+[    0.236219] efivars: Registered efivars operations
+[    0.451829] integrity: Loading X.509 certificate: UEFI:db
+[    0.452986] integrity: Loading X.509 certificate: UEFI:db
+[    0.453444] integrity: Loaded X.509 cert 'Microsoft Corporation UEFI CA 2011: 13adbf4309bd82709c8cd54f316ed522988a1bd4'
+[    0.454135] integrity: Loading X.509 certificate: UEFI:db
+[    0.454820] integrity: Loaded X.509 cert 'Microsoft UEFI CA 2023: 81aa6b3244c935bce0d6628af39827421e32497d'
+[    0.455471] integrity: Loading X.509 certificate: UEFI:db
+[    0.456121] integrity: Loaded X.509 cert 'Microsoft Option ROM UEFI CA 2023: 514fbf937fa46fb57bf07af8bed84b3b864b1711'
+[    0.456829] integrity: Loading X.509 certificate: UEFI:db
+[    0.457506] integrity: Loaded X.509 cert 'Microsoft Corporation: Windows UEFI CA 2023: aefc5fbbbe055d8f8daa585473499417ab5a5272'
+[    0.459044] integrity: Loading X.509 certificate: UEFI:MokListRT (MOKvar table)
+[    1.350562] systemd[1]: systemd 255.4-1ubuntu8.18 running in system mode (+PAM +AUDIT +SELINUX +APPARMOR +IMA +SMACK +SECCOMP +GCRYPT -GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN +IPTC +KMOD +LIBCRYPTSETUP +LIBFDISK +PCRE2 -PWQUALITY +P11KIT +QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD -BPF_FRAMEWORK -XKBCOMMON +UTMP +SYSVINIT default-hierarchy=unified)
+[    1.484245] systemd[1]: Expecting device dev-disk-by\x2dlabel-UEFI.device - /dev/disk/by-label/UEFI...
+[    1.501065] systemd[1]: systemd-pcrextend.socket - TPM2 PCR Extension (Varlink) was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+[    1.540383] systemd[1]: Starting modprobe@efi_pstore.service - Load Kernel Module efi_pstore...
+[    1.551417] pstore: Registered efi_pstore as persistent store backend
+[    1.556700] systemd[1]: systemd-pcrmachine.service - TPM2 PCR Machine ID Measurement was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+[    1.559080] systemd[1]: systemd-tpm2-setup-early.service - TPM2 SRK Setup (Early) was skipped because of an unmet condition check (ConditionSecurity=measured-uki).

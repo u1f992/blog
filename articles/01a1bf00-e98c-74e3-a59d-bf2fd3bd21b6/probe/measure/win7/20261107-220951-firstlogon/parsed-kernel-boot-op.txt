@@ -1,0 +1,11 @@
+2026-11-07 04:06:59 Microsoft-Windows-Kernel-Boot id=292 lvl=2 Status=3221225524 FailurePoint=2 UpdateStatusEnum=0
+2026-11-07 04:06:59 Microsoft-Windows-Kernel-Boot id=82 lvl=4 Function=SipaInsertTcgLog Point=0 NTStatus=0
+2026-11-07 04:08:07 Microsoft-Windows-Kernel-Boot id=292 lvl=2 Status=3221225524 FailurePoint=2 UpdateStatusEnum=0
+2026-11-07 04:08:07 Microsoft-Windows-Kernel-Boot id=82 lvl=4 Function=SipaInsertTcgLog Point=0 NTStatus=0
+2026-11-07 13:09:26 Microsoft-Windows-Kernel-Boot id=292 lvl=2 Status=3221225561 FailurePoint=7 UpdateStatusEnum=3 FwLevel=sbat,1,2025051000
+shim,4
+grub,5
+grub.debian,4
+grub.peimage,2
+grub.proxmox,2
+2026-11-07 13:09:26 Microsoft-Windows-Kernel-Boot id=82 lvl=4 Function=SipaInsertTcgLog Point=0 NTStatus=0

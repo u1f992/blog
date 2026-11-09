@@ -1,0 +1,10 @@
+NAME     SIZE TYPE FSTYPE    LABEL           TRAN
+sda       10G disk                           sata
+├─sda1     9G part ext4      cloudimg-rootfs 
+├─sda14    4M part                           
+├─sda15  106M part vfat      UEFI            
+└─sda16  913M part ext4      BOOT            
+sdb       64G disk                           usb
+├─sdb1   260M part vfat                      
+├─sdb2   128M part                           
+└─sdb3  63.6G part BitLocker                 
