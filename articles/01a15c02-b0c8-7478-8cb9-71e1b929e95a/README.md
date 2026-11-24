@@ -433,21 +433,15 @@ mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~/Downloads$ codex
 
 #### virt-manager
 
-```
-mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~$ sudo apt install --yes virt-manager
-mukai@mukai-ThinkPad-X1-Carbon-Gen-12:~$ groups mukai
-mukai : mukai adm cdrom sudo dip plugdev users lpadmin lxd
-```
-
-Group libvirtに追加すると`qemu:///system`を触れるようになる
-
-今回はあえて追加しないことにした。このシステムには仮想マシンは作らず、リモートの仮想マシンだけを扱う。
+リモートの仮想マシンを扱うだけならこれでよい
 
 ```
+$ sudo apt install --yes virt-manager
 $ virsh --connect qemu+ssh://mukai@10.8.0.2/system list --all
+...
 ```
 
-リモートサーバー側で設定変更
+こっちのLANの何らかに、リモートの仮想マシンから触る。リモートサーバー側で設定変更
 
 ```
 $ sudo vim /etc/ssh/sshd_config.d/10-gatewayports.conf
@@ -461,11 +455,35 @@ $ sudo systemctl reload ssh
 $ sudo ufw allow from 192.168.0.0/24 to 192.168.0.3 port 9100 proto tcp
 ```
 
-こっちのLANの何らかに、リモートの仮想マシンから触る
-
 ```
 ssh -N -o ExitOnForwardFailure=yes -R 192.168.0.3:9100:192.168.x.x:9100 mukai@10.8.0.2
 ```
+
+マシンに仮想マシンを作成する場合`qemu:///system`または`qemu:///session`が必要。前者はroot、後者はUIDに紐づく。ここでは`qemu:///system`をセットアップする。
+
+```
+$ sudo apt install libvirt-daemon-system
+```
+
+<!--
+
+`libvirt`グループへの追加はインストール中に行われるようだ。
+
+```
+$ groups mukai
+mukai : mukai adm cdrom sudo dip plugdev users lpadmin lxd docker libvirt
+$ groups
+mukai adm cdrom sudo dip plugdev users lpadmin lxd docker
+```
+
+再ログインすると反映される。
+
+```
+$ groups
+mukai adm cdrom sudo dip plugdev users lpadmin lxd libvirt docker
+```
+
+-->
 
 #### Docker
 
