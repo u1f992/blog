@@ -284,6 +284,10 @@ BdsDxe: Press any key to enter the Boot Manager Menu.
 
 で停止するので［仮想マシン(M)＞シャットダウン(S)＞強制的に電源OFF(F)＞はい(Y)］で停止して、スナップショットを作成。
 
+スナップショットは「外部」を使うことを推奨
+
+> these days the qemu team recommends the use of external snapshots... https://redhat.atlassian.net/browse/RHEL-7528
+
 ```
 Press any key to boot from CD or DVD...
 すばやく何らか入力する
@@ -459,6 +463,59 @@ Close
 
 シャットダウンしてスナップショット作成
 
+- https://github.com/winfsp/winfsp/releases/download/v2.2/winfsp-2.2.26323.msi
+
+```
+$ xorriso -as mkisofs -o winfsp-2.2.26323.msi.iso -J -R winfsp-2.2.26323.msi
+$ sudo cp winfsp-2.2.26323.msi.iso 
+```
+
+```
+SATA CDROM 1
+---
+ソースパス(P):/var/lib/libvirt/images/winfsp-2.2.26323.msi.iso
+
+適用(A)
+---
+```
+
+```
+WinFsp 2025 Setup
+Welcome to the WinFsp 2025 Setup Wizard
+---
+Next
+---
+
+Custom Setup
+---
+Next
+---
+
+Ready to install WinFsp 2025
+---
+Install
+---
+
+Completed the WinFsp 2025 Setup Wizard
+---
+Finish
+---
+```
+
+```
+タスクマネージャー＞サービス＞VirtioFsSvc＞サービス管理ツールを開く(V)
+VirtIO-FS Service＞プロパティ(R)
+
+スタートアップの種類(E): 自動
+
+適用(A)
+OK
+```
+
+シャットダウンしてスナップショット作成
+
+再起動してZ:ドライブが見えていたら成功。
+
 ```
 SATA CDROM 1
 ---
@@ -484,46 +541,9 @@ NIC
 
 シャットダウンしてスナップショット作成
 
-再起動してネットワークの接続を待つ。
 
-Win+R `cmd /c curl -L https://github.com/winfsp/winfsp/releases/download/v2.1/winfsp-2.1.25156.msi -o "%USERPROFILE%\Desktop\winfsp-2.1.25156.msi"`
 
-```
-WinFsp 2025 Setup
-Welcome to the WinFsp 2025 Setup Wizard
----
-Next
----
 
-Custom Setup
----
-Next
----
-
-Ready to install WinFsp 2025
----
-Install
----
-
-Completed the WinFsp 2025 Setup Wizard
----
-Finish
----
-```
-
-インストーラーはShift+Delete
-
-```
-タスクマネージャー＞サービス＞VirtioFsSvc＞サービス管理ツールを開く(V)
-VirtIO-FS Service＞プロパティ(R)
-
-スタートアップの種類(E): 自動
-
-適用(A)
-OK
-```
-
-再起動してZ:ドライブが見えていたら成功。シャットダウンしてスナップショット作成
 
 SPICE側の設定は表示>画面の拡大縮小>常に行う＋仮想マシンのウィンドウを自動的にリサイズ　に設定。
 

@@ -465,8 +465,6 @@ ssh -N -o ExitOnForwardFailure=yes -R 192.168.0.3:9100:192.168.x.x:9100 mukai@10
 $ sudo apt install libvirt-daemon-system
 ```
 
-<!--
-
 `libvirt`グループへの追加はインストール中に行われるようだ。
 
 ```
@@ -483,7 +481,22 @@ $ groups
 mukai adm cdrom sudo dip plugdev users lpadmin lxd libvirt docker
 ```
 
--->
+```
+# cat /sys/firmware/acpi/tables/MSDM > /var/lib/libvirt/images/msdm.bin
+# dmidecode -t 0 -u | awk '/^\t\t[0-9A-F][0-9A-F]( |$)/' | xxd -r -p > /var/lib/libvirt/images/smbios_type_0.bin
+# dmidecode -t 1 -u | awk '/^\t\t[0-9A-F][0-9A-F]( |$)/' | xxd -r -p > /var/lib/libvirt/images/smbios_type_1.bin
+```
+
+`/etc/apparmor.d/local/abstractions/libvirt-qemu`は`/etc/apparmor.d/local/README`で説明されているようにAppArmorのオーバーライドを記載するための場所で、`/etc/apparmor.d/abstractions/libvirt-qemu`から`include if exists <local/abstractions/libvirt-qemu>`として読まれる。
+
+```
+# mkdir -p /etc/apparmor.d/local/abstractions
+# cat > /etc/apparmor.d/local/abstractions/libvirt-qemu <<'EOF'
+/var/lib/libvirt/images/msdm.bin r,
+/var/lib/libvirt/images/smbios_type_0.bin r,
+/var/lib/libvirt/images/smbios_type_1.bin r,
+EOF
+```
 
 #### Docker
 
